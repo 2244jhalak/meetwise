@@ -1,9 +1,12 @@
 import React from 'react';
+import ContactHeader from '../components/Contactpage/ContactHeader';
+import Faq from '../components/Contactpage/Faq';
 
 const page = () => {
     return (
-        <div>
-            <h2>This is my contact page</h2>
+        <div className='bg-[#F8ECFF]'>
+       <ContactHeader></ContactHeader>
+       <Faq></Faq>
         </div>
     );
 };
