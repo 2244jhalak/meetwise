@@ -38,7 +38,7 @@ const Faq = () => {
   Whether you're curious about our services, need details on our processes, or have any other inquiries, our FAQ section is here to help. 
   </p>
 </div>
-            <div className='flex items-center gap-10 md:flex-row flex-col mt-3'  data-aos="fade-up">
+            <div className='flex items-center gap-10 md:flex-row flex-col mt-4'  data-aos="fade-up">
                 {/* image side */}
                 <div className=' w-1/2'>
                 <Image
