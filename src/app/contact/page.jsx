@@ -4,7 +4,7 @@ import React from 'react';
 const page = () => {
     return (
         <div>
-            <div className="relative w-full h-[250px] my-5">
+            {/* <div className="relative w-full h-[250px] my-5">
                 <Image
                     src="https://i.postimg.cc/rmHyqt55/meeting-business-colleagues-brainstorm-word.jpg"
                     alt="image"
@@ -18,7 +18,7 @@ const page = () => {
                         <p>Meetwise | Contact Us</p>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <section className="py-6 bg-[#6b579c]/20 text-gray-900 my-6">
                 <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                     <div className="py-6 md:py-0 md:px-6 mt-16">
@@ -49,11 +49,11 @@ const page = () => {
                     <form noValidate="" className="flex flex-col py-6 space-y-6 md:py-0 md:px-6">
                         <label className="block">
                             <span className="mb-1">Full name</span>
-                            <input type="text" placeholder="ECO DOMAIN" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2" />
+                            <input type="text" placeholder="MeetWise" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2" />
                         </label>
                         <label className="block">
                             <span className="mb-1">Email address</span>
-                            <input type="email" placeholder="eco@domain.com" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2" />
+                            <input type="email" placeholder="meetwise@gmail.com" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2" />
                         </label>
                         <label className="block">
                             <span className="mb-1">Message</span>
