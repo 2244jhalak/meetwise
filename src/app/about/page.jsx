@@ -1,9 +1,14 @@
 import React from 'react';
+import AboutHeader from '../components/AboutUs/AboutHeader';
+import OurOffer from '../components/AboutUs/OurOffer';
+import ChooseUs from '../components/AboutUs/ChooseUs';
 
 const page = () => {
     return (
         <div>
-            <h2>This is my about page</h2>
+            <AboutHeader></AboutHeader>
+            <OurOffer></OurOffer>
+            <ChooseUs></ChooseUs>
         </div>
     );
 };
