@@ -24,10 +24,19 @@ const TryMeet = () => {
           Hover Me
         </button>
       </div>
-      {/* <iframe
-        src="https://youtu.be/hY678TbQR5U?si=-pORpg1nxZBZKFfI"
-        frameborder="0"
-      ></iframe> */}
+      <div className="flex items-center justify-center  rounded-3xl bg-slate-100 w-auto">
+        <iframe
+          className="p-4 rounded-2xl"
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/T-OTCU1xXmY?si=Mt3m5RNjwMpZWKUo"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   );
 };
