@@ -7,6 +7,7 @@ const page = () => {
             <form>
                 <input type="text" name="" id="" />
             </form>
+            <p>yay</p>
         </div>
     );
 };
