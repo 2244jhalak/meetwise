@@ -24,7 +24,7 @@ const TryMeet = () => {
           Hover Me
         </button>
       </div>
-      <div className="flex items-center justify-center  rounded-3xl bg-slate-100 w-auto">
+      <div className="flex items-center justify-center rounded-3xl bg-slate-100 w-auto">
         <iframe
           className="p-4 rounded-2xl"
           width="560"
