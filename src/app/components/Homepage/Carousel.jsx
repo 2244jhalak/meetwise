@@ -23,7 +23,7 @@ const Carousel = () => {
             {/* Image Section */}
             <div className="relative w-1/2">
                 <Slider ref={sliderRef} {...settings}>
-                    <div className='mt-1'>
+                    <div>
                         <div>
                             <Image
                                 src="https://i.postimg.cc/6646C3GF/freepik-export-2024091804480677-VZ.png"
