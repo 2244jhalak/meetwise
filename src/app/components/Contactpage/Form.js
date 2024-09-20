@@ -1,15 +1,64 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Form = () => {
+    const form = useRef();
     useEffect(() => {
         AOS.init({
           duration: 2000, // Duration of animations (optional)
           once: false, // Whether animation should happen only once while scrolling down (optional)
         });
-      }, []);
+    }, []);
+
+    const [formData, setFormData] = useState({
+        from_name: '',
+        from_email: '',
+        message: ''
+      });
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        emailjs.send(
+          'service_91t4uxw', // replace with your service ID
+          'template_ef1tb9q', // replace with your template ID
+          formData,
+          'R6ugbQ72oiCVc6W_y' // replace with your user ID
+        )
+          .then((response) => {
+            console.log('SUCCESS!', response.status, response.text);
+            if(response.status===200){
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Message sent successfully!",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }
+            
+            // Reset form fields
+            setFormData({
+              from_name: '',
+              from_email: '',
+              message: ''
+            });
+          })
+          .catch((error) => {
+            console.log('FAILED...', error);
+            alert('Failed to send message. Please try again later.');
+          });
+      };
+    
     return (
         <div className='container mx-auto'>
        
@@ -40,20 +89,40 @@ const Form = () => {
                         </p>
                     </div>
                 </div>
-                <form noValidate="" className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 font-raleway">
-                    <label className="block">
+                <form 
+                noValidate=""
+                onSubmit={handleSubmit}
+                 className="flex flex-col py-6 space-y-6 md:py-0 md:px-6 font-raleway">
+                    <label className="block" htmlFor='from_name'>
                         <span className="pb-5 font-bold">Full name</span>
-                        <input type="text" placeholder="MeetWise" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2" />
+                        <input
+                        name="from_name"
+                        value={formData.from_name}
+                        onChange={handleChange}
+                        placeholder="Your Name"
+                        type="text" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2" required/>
                     </label>
-                    <label className="block">
+                    <label className="block" htmlFor='from_email'>
                         <span className="mb-2 font-bold">Email address</span>
-                        <input type="email" placeholder="meetwise@gmail.com" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2" />
+                        <input
+                        name="from_email"
+                        value={formData.from_email}
+                        onChange={handleChange}
+                        placeholder="Your Email" 
+                        type="email" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2"
+                        required
+                        />
                     </label>
-                    <label className="block">
+                    <label className="block" htmlFor='message'>
                         <span className="mb-2 font-bold">Message</span>
-                        <textarea rows="3" className="block w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white"></textarea>
+                        <textarea
+                        name="message"
+                        placeholder="Your Message"
+                        value={formData.message}
+                        onChange={handleChange} 
+                        rows="3" className="block w-full p-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white" required></textarea>
                     </label>
-                    <button type="button" className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-[#6b579c] text-gray-50 focus:ring-[#6b579c] hover:ring-[#6b579c]">Submit</button>
+                    <input type='submit' value="Submit" className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-[#6b579c] text-gray-50 focus:ring-[#6b579c] hover:ring-[#6b579c]"></input>
                 </form>
             </div>
         </section>
