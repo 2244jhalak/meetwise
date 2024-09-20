@@ -9,10 +9,8 @@ const Footer = () => {
           <Image src={logo} alt="Website logo" width={80} height={80} />
 
           <p className="text-xs md:text-lg lg:text-xl text-[#000000]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla culpa
-            saepe atque voluptas tempora magni deleniti eius quis, temporibus,
-            reprehenderit, fuga ratione velit alias perferendis labore commodi
-            necessitatibus sunt est?
+            MeetWise - Simplifying the way you schedule meetings. Designed and
+            built with passion by the MeetWise Team.
           </p>
           <h3 className="text-[#33118133] text-2xl md:text-5xl lg:text-7xl font-semibold">
             MEETWISE
@@ -41,7 +39,8 @@ const Footer = () => {
         </div>
       </div>
       <p className="text-black text-center py-12">
-        © 2024 MeetWise | Simplifying your online meeting experience.
+        © 2024 MeetWise | Simplifying your online meeting experience. All rights
+        reserved | Designed and built with passion by the MeetWise Team.
       </p>
     </div>
   );
