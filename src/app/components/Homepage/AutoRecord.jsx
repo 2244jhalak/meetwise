@@ -3,8 +3,8 @@ import Image from 'next/image'
 
 const AutoRecord = () => {
     return (
-        <div className='flex my-12 flex-col container mx-auto md:flex-row md:justify-between gap-6'>
-            <div className='bg-pink-50 h-[500px] w-[600px]  rounded-xl'>
+        <div className='flex my-12 flex-col container bg-[#F8ECFF] px-14 py-10 mx-auto md:flex-row md:justify-between gap-6'>
+            <div className='bg-pink-50 shadow-xl  md:h-[500px] w-full md:w-1/2  rounded-xl'>
                 <div className='bg-gradient-to-r from-violet-500 to-fuchsia-500 flex justify-center items-center h-80' style={{
                     backgroundImage: `url('https://docs.daily.co/assets/prebuilt-hero.png')`,
                     backgroundSize: 'cover',
@@ -30,7 +30,7 @@ const AutoRecord = () => {
 
             </div>
 
-            <div className='bg-blue-50 h-[500px] w-[600px] rounded-xl'>
+            <div className='bg-violet-100 shadow-xl md:h-[500px] w-full md:w-1/2 rounded-xl'>
                 <div className='grid grid-cols-1 mt-8 gap-3'>
                     <div className=' p-3 w-3/5 rounded-2xl mx-auto  bg-pink-100'><span className='font-semibold'>Andy</span> <br />Can you explain more about this Jhon?</div>
                     <div className='  p-3 w-3/5 rounded-2xl mx-auto bg-pink-100'><span className='font-semibold'>Jhonson</span> <br />Sure for this task we need to have custom icons and animation.Eva will help you.</div>

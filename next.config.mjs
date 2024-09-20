@@ -3,6 +3,12 @@ const nextConfig = {
     images: {
         domains: ['i.postimg.cc'],
       },
+    images : {
+        domains: [
+          
+            'i.postimg.cc',  // Add this line to allow images from i.postimg.cc
+          ],
+    },
 };
 
 export default nextConfig;
