@@ -1,13 +1,10 @@
 import React from 'react';
+import SignIn from '../components/SignIn/SignIn';
 
 const page = () => {
     return (
         <div>
-            <h2>This is my login page info!!</h2>
-            <form>
-                <input type="text" name="" id="" />
-            </form>
-            <p>yay</p>
+            <SignIn></SignIn>
         </div>
     );
 };
