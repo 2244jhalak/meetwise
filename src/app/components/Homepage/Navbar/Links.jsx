@@ -21,6 +21,10 @@ const Links = () => {
         {
             path : '/login',
             element : 'Login'
+        },
+        {
+            path : '/signup',
+            element : 'Signup'
         }
     ]
     // const session = true;
