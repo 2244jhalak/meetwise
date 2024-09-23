@@ -18,14 +18,7 @@ const Links = () => {
             path : '/about',
             element : 'About Us'
         },
-        {
-            path : '/login',
-            element : 'Login'
-        },
-        {
-            path : '/signup',
-            element : 'Signup'
-        }
+        
     ]
     // const session = true;
     // const isAdmin = true;
