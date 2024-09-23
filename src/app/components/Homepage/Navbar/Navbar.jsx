@@ -4,11 +4,15 @@ import Links from './Links';
 import { FaBars, FaWindowClose } from "react-icons/fa";
 import { useState } from "react";
 import { TbBrandMeetup } from "react-icons/tb";
+import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Navbar = () => {
     const [open,setOpen]=useState(false);
     const path = usePathname();
-    console.log(path);
+    const session = useSession();
+    console.log(session); 
     return (
         <div className='flex justify-between items-center'>
             <div onClick={()=>setOpen(!open)} className='container mx-auto p-5 lg:hidden'>
@@ -26,6 +30,27 @@ const Navbar = () => {
         
         
         <Links></Links>
+        {
+            session.data ?
+            <div className='flex items-center space-x-2'>
+                <Image
+      src={session?.data?.user?.image} 
+      width={50} 
+      height={50} 
+      alt='User Profile Picture' 
+      className='rounded-full'
+      title={session?.data?.user?.name}
+       // এটি ছবিকে গোলাকার করতে Tailwind CSS ক্লাস
+    />
+                <button className='btn btn-warning' onClick={()=>signOut()}>Logout</button>
+                
+
+            </div>
+            
+            
+            :
+            <Link href='/login' className='btn btn-primary'>Login</Link>
+        }
         </div>
             
             

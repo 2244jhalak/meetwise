@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Navbar from "./components/Homepage/Navbar/Navbar";
 import Footer from "./components/Shared/Footer";
+import AuthProvider from "./services/AuthProvider";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <AuthProvider>
         <div className="bg-[#f7ecff]">
           <div className="container mx-auto">
             <Navbar></Navbar>
@@ -32,6 +34,8 @@ export default function RootLayout({ children }) {
         </div>
         {children}
         <Footer />
+        </AuthProvider>
+        
       </body>
     </html>
   );
