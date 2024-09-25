@@ -24,7 +24,7 @@ const Navbar = () => {
         <div className='font-semibold flex items-center space-x-2'>
             <TbBrandMeetup className='text-[#6b579c] text-5xl'></TbBrandMeetup>
             
-            <h2 className='text-xl'>MeetWise</h2>
+            <h2 className='text-xl font-semibold'>MeetWise</h2>
             
         </div>
         <div className={`${open ?'top-16 block z-50 lg:bg-white md:bg-white bg-slate-200':'-top-72 text-black'} flex lg:flex-row flex-col px-2 py-8 absolute lg:static items-center rounded-b-lg ms-4 duration-1000 lg:gap-12 text-black`}>
