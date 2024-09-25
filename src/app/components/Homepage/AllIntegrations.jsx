@@ -1,35 +1,103 @@
 import Image from 'next/image';
 import React from 'react';
 import { FaVideo } from "react-icons/fa";
+import { useLanguage } from '../context/LanguageContext';
+
 
 const AllIntegrations = () => {
+    const { language } = useLanguage();
+
+    const translations = {
+        en: {
+            title: "All Integrations",
+            googleMeet: {
+                title: "Google Meet",
+                description: "Effortlessly integrate our AI-powered recording website with Google Meet for an enhanced meeting experience."
+            },
+            zoom: {
+                title: "Zoom",
+                description: "Transform your Zoom meetings with the integration of our AI-powered recording website. By seamlessly connecting our platform..."
+            },
+            microsoftTeams: {
+                title: "Microsoft Teams",
+                description: "Elevate your Microsoft Teams meetings with the integration of our AI-powered recording website. Connecting seamlessly with Microsoft Teams..."
+            }
+        },
+        es: {
+            title: "Todas las Integraciones",
+            googleMeet: {
+                title: "Google Meet",
+                description: "Integra sin esfuerzo nuestro sitio web de grabación impulsado por IA con Google Meet para una experiencia de reunión mejorada."
+            },
+            zoom: {
+                title: "Zoom",
+                description: "Transforma tus reuniones de Zoom con la integración de nuestro sitio web de grabación impulsado por IA..."
+            },
+            microsoftTeams: {
+                title: "Microsoft Teams",
+                description: "Eleva tus reuniones de Microsoft Teams con la integración de nuestro sitio web de grabación impulsado por IA..."
+            }
+        },
+        fr: {
+            title: "Toutes les Intégrations",
+            googleMeet: {
+                title: "Google Meet",
+                description: "Intégrez facilement notre site Web d'enregistrement alimenté par IA avec Google Meet pour une expérience de réunion améliorée."
+            },
+            zoom: {
+                title: "Zoom",
+                description: "Transformez vos réunions Zoom avec l'intégration de notre site Web d'enregistrement alimenté par IA..."
+            },
+            microsoftTeams: {
+                title: "Microsoft Teams",
+                description: "Améliorez vos réunions Microsoft Teams avec l'intégration de notre site Web d'enregistrement alimenté par IA..."
+            }
+        },
+        bn: {
+            title: "সমস্ত একীকরণ",
+            googleMeet: {
+                title: "গুগল মিট",
+                description: "গুগল মিটের সাথে আমাদের AI-চালিত রেকর্ডিং ওয়েবসাইটকে সহজেই একীভূত করুন একটি উন্নত বৈঠক অভিজ্ঞতার জন্য।"
+            },
+            zoom: {
+                title: "জুম",
+                description: "আমাদের AI-চালিত রেকর্ডিং ওয়েবসাইটের সাথে একীভূত হয়ে আপনার জুম বৈঠকগুলি রূপান্তর করুন। আমাদের প্ল্যাটফর্মের সাথে সহজেই সংযোগ স্থাপন..."
+            },
+            microsoftTeams: {
+                title: "মাইক্রোসফট টিমস",
+                description: "আমাদের AI-চালিত রেকর্ডিং ওয়েবসাইটের একীকরণের মাধ্যমে আপনার মাইক্রোসফট টিমস বৈঠকগুলি উন্নীত করুন।"
+            }
+        }
+    };
+
+    const { title, googleMeet, zoom, microsoftTeams } = translations[language];
+
     return (
         <div className='bg-fuchsia-50 md:py-16 md:px-28 p-5 text-center mx-auto'>
-            <h3 className='text-4xl font-bold mb-10'>All Integrations</h3>
+            <h3 className='text-4xl font-bold mb-10'>{title}</h3>
             <div className='md:flex justify-between gap-5 mx-auto'>
                 <div className='bg-white p-7 rounded-2xl w-96 text-start mt-5'>
                     <div className='rounded-full p-4 w-14 bg-white shadow-2xl'>
                         <FaVideo className='text-green-500 text-2xl mb-2' />
                     </div>
-                    <h3 className='text-xl my-2 font-bold'>Google Meet</h3>
-                    <p>Effortesly integrate our AI-powered recording website with google meet for an enhanced meeting experience</p>
+                    <h3 className='text-xl my-2 font-bold'>{googleMeet.title}</h3>
+                    <p>{googleMeet.description}</p>
                 </div>
                 <div className='bg-white p-7 rounded-2xl w-96 text-start mt-5'>
                     <div className='rounded-full p-4 w-14 bg-white shadow-2xl'>
                         <FaVideo className='text-blue-500 text-2xl mb-2' />
                     </div>
-                    <h3 className='text-xl my-2 font-bold'>Zoom</h3>
-                    <p>Transform your Zoom meetings with the integration of our AI-powered recording website. By seamlessly connecting our platform...</p>
+                    <h3 className='text-xl my-2 font-bold'>{zoom.title}</h3>
+                    <p>{zoom.description}</p>
                 </div>
                 <div className='bg-white p-7 rounded-2xl w-96 text-start mt-5'>
                     <div className='rounded-full p-4 w-14 bg-white shadow-2xl'>
                         <FaVideo className='text-red-500 text-2xl mb-2' />
                     </div>
-                    <h3 className='text-xl my-2 font-bold'>Microsoft Team</h3>
-                    <p>Elevate your Microsoct Teams meetings with the integration of our AI-powered recording website. Connecting seamlessly with Microsoft Teams...</p>
+                    <h3 className='text-xl my-2 font-bold'>{microsoftTeams.title}</h3>
+                    <p>{microsoftTeams.description}</p>
                 </div>
             </div>
-
         </div>
     );
 };

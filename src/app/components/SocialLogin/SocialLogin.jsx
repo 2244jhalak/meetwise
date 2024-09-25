@@ -14,7 +14,7 @@ const SocialLogin = () => {
 
     }
     if(session.status === 'authenticated'){
-        router.push('/')
+        router.push('/dashboard')
     }
     
     return (
