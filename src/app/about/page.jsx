@@ -8,15 +8,11 @@ import Footer from '../components/Shared/Footer';
 const page = () => {
     return (
         <div>
-            <div className="bg-[#f7ecff]">
-               <div className="container mx-auto">
-                  <Navbar></Navbar>
-               </div>
-            </div>
+            
             <AboutHeader></AboutHeader>
             <OurOffer></OurOffer>
             <ChooseUs></ChooseUs>
-            <Footer></Footer>
+            
         </div>
     );
 };
