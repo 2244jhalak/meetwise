@@ -50,7 +50,7 @@ const Carousel = () => {
                     {content[language].title.map((name, index) => (
                         <div key={index}>
                             <div>
-                                <Image
+                                {/* <Image
                                     src={`https://example.com/image${index + 1}.png`}
                                     alt={`Sample ${index + 1}`}
                                     layout="responsive"
@@ -58,7 +58,7 @@ const Carousel = () => {
                                     height={500}
                                     className="object-cover md:rounded-[50px] lg:rounded-[50px] rounded-2xl"
                                     style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 0% 100%)' }}
-                                />
+                                /> */}
                                 <div className='text-end md:-mt-20'>
                                     <h3 className='text-xl font-bold'>{name}</h3>
                                     <p className='text-gray-500 text-md'>{content[language].position[index]}</p>
