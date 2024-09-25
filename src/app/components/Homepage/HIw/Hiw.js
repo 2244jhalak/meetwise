@@ -17,17 +17,23 @@ const translations = {
             {
                 step: 'Step-1',
                 title: 'Create a Scheduling Link',
-                description: 'Connect your calendar and Calendly will help you create scheduling links and booking pages based on your availability.'
+                description: 'Connect your calendar and Calendly will help you create scheduling links and booking pages based on your availability.',
+                img:"/Hiw/appointment-booking-with-calendar.png",
+        
+
             },
             {
                 step: 'Step-2',
                 title: 'Team-based scheduling',
-                description: 'Booking links can be based on different event types – from 15-minute Zoom calls to 30-minute in-person meetings.'
+                description: 'Booking links can be based on different event types – from 15-minute Zoom calls to 30-minute in-person meetings.',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
             },
             {
                 step: 'Step-3',
                 title: 'Workflows and integrations',
-                description: 'Workflows and integrations connect Calendly to your process and other tools.'
+                description: 'Workflows and integrations connect Calendly to your process and other tools.',
+                img:"/Hiw/time-management-concept-illustration.png",
+
             }
         ],
     },
@@ -38,17 +44,20 @@ const translations = {
             {
                 step: 'ধাপ-১',
                 title: 'একটি সময়সূচী লিঙ্ক তৈরি করুন',
-                description: 'আপনার ক্যালেন্ডার সংযোগ করুন এবং ক্যালেন্ডি আপনাকে আপনার উপলব্ধতার ভিত্তিতে সময়সূচী লিঙ্ক এবং বুকিং পৃষ্ঠা তৈরি করতে সহায়তা করবে।'
+                description: 'আপনার ক্যালেন্ডার সংযোগ করুন এবং ক্যালেন্ডি আপনাকে আপনার উপলব্ধতার ভিত্তিতে সময়সূচী লিঙ্ক এবং বুকিং পৃষ্ঠা তৈরি করতে সহায়তা করবে।' ,
+                img:"/Hiw/appointment-booking-with-calendar.png",
             },
             {
                 step: 'ধাপ-২',
                 title: 'দল ভিত্তিক সময়সূচী',
-                description: 'বুকিং লিঙ্কগুলি বিভিন্ন ইভেন্টের ধরনের উপর ভিত্তি করে হতে পারে – ১৫ মিনিটের জুম কল থেকে ৩০ মিনিটের অফিস মিটিং।'
+                description: 'বুকিং লিঙ্কগুলি বিভিন্ন ইভেন্টের ধরনের উপর ভিত্তি করে হতে পারে – ১৫ মিনিটের জুম কল থেকে ৩০ মিনিটের অফিস মিটিং।',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
             },
             {
                 step: 'ধাপ-৩',
                 title: 'কর্মপ্রবাহ এবং ইন্টিগ্রেশন',
-                description: 'কর্মপ্রবাহ এবং ইন্টিগ্রেশন ক্যালেন্ডিকে আপনার প্রক্রিয়া এবং অন্যান্য সরঞ্জামের সাথে সংযুক্ত করে।'
+                description: 'কর্মপ্রবাহ এবং ইন্টিগ্রেশন ক্যালেন্ডিকে আপনার প্রক্রিয়া এবং অন্যান্য সরঞ্জামের সাথে সংযুক্ত করে।',
+                img:"/Hiw/time-management-concept-illustration.png",
             }
         ],
     },
@@ -59,17 +68,20 @@ const translations = {
             {
                 step: 'Étape-1',
                 title: 'Créer un lien de planification',
-                description: 'Connectez votre calendrier et Calendly vous aidera à créer des liens de planification et des pages de réservation en fonction de votre disponibilité.'
+                description: 'Connectez votre calendrier et Calendly vous aidera à créer des liens de planification et des pages de réservation en fonction de votre disponibilité.',
+                img:"/Hiw/appointment-booking-with-calendar.png",
             },
             {
                 step: 'Étape-2',
                 title: 'Planification en équipe',
-                description: 'Les liens de réservation peuvent être basés sur différents types d\'événements – des appels Zoom de 15 minutes aux réunions en personne de 30 minutes.'
+                description: 'Les liens de réservation peuvent être basés sur différents types d\'événements – des appels Zoom de 15 minutes aux réunions en personne de 30 minutes.',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
             },
             {
                 step: 'Étape-3',
                 title: 'Flux de travail et intégrations',
-                description: 'Les flux de travail et les intégrations connectent Calendly à votre processus et à d\'autres outils.'
+                description: 'Les flux de travail et les intégrations connectent Calendly à votre processus et à d\'autres outils.',
+                img:"/Hiw/time-management-concept-illustration.png",
             }
         ],
     },
@@ -80,17 +92,20 @@ const translations = {
             {
                 step: 'Paso-1',
                 title: 'Crear un enlace de programación',
-                description: 'Conecte su calendario y Calendly le ayudará a crear enlaces de programación y páginas de reserva según su disponibilidad.'
+                description: 'Conecte su calendario y Calendly le ayudará a crear enlaces de programación y páginas de reserva según su disponibilidad.',
+                img:"/Hiw/appointment-booking-with-calendar.png",
             },
             {
                 step: 'Paso-2',
                 title: 'Programación basada en equipo',
-                description: 'Los enlaces de reserva pueden basarse en diferentes tipos de eventos, desde llamadas de Zoom de 15 minutos hasta reuniones en persona de 30 minutos.'
+                description: 'Los enlaces de reserva pueden basarse en diferentes tipos de eventos, desde llamadas de Zoom de 15 minutos hasta reuniones en persona de 30 minutos.',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
             },
             {
                 step: 'Paso-3',
                 title: 'Flujos de trabajo e integraciones',
-                description: 'Los flujos de trabajo y las integraciones conectan Calendly a su proceso y a otras herramientas.'
+                description: 'Los flujos de trabajo y las integraciones conectan Calendly a su proceso y a otras herramientas.',
+                img:"/Hiw/time-management-concept-illustration.png",
             }
         ],
     },
@@ -167,6 +182,10 @@ const Hiw = () => {
                                             <button type="button" className="px-8 py-3 border transition-all duration-500 ease-in font-raleway border-violet-700 hover:bg-violet-900 hover:text-white font-semibold rounded-full dark:bg-gray-800 dark:text-gray-00">Learn More</button>
                                         </div>
                                     </div>
+                                    <div className="md:w-1/2 mt-4">
+                                        <Image className="object-cover w-full h-full" src={step.img} alt={step.title} layout="responsive" width={500} height={1000} />
+                                    </div>
+
                                     {/* <div className="md:w-1/2">
                                         <Image className="object-cover w-full h-full" src={`https://example.com/image-${index + 1}.png`} alt={step.title} layout="responsive" width={500} height={1000} />
                                     </div> */}
