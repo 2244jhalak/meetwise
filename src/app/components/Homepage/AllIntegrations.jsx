@@ -1,4 +1,4 @@
-import Image from 'next/image';
+
 import React from 'react';
 import { FaVideo } from "react-icons/fa";
 import { useLanguage } from '../context/LanguageContext';
