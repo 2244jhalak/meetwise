@@ -45,7 +45,7 @@ const Signup = () => {
         const image = imgbbData.data.url;
     
         // 3. MongoDB তে ছবি URL সহ ব্যবহারকারীর তথ্য পাঠানো
-        const response = await fetch("http://localhost:3000/signup/api", {
+        const response = await fetch("https://meetwise-one.vercel.app/signup/api", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
