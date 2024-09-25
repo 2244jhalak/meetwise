@@ -167,9 +167,9 @@ const Hiw = () => {
                                             <button type="button" className="px-8 py-3 border transition-all duration-500 ease-in font-raleway border-violet-700 hover:bg-violet-900 hover:text-white font-semibold rounded-full dark:bg-gray-800 dark:text-gray-00">Learn More</button>
                                         </div>
                                     </div>
-                                    <div className="md:w-1/2">
+                                    {/* <div className="md:w-1/2">
                                         <Image className="object-cover w-full h-full" src={`https://example.com/image-${index + 1}.png`} alt={step.title} layout="responsive" width={500} height={1000} />
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         ))}
