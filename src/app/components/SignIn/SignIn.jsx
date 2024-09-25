@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link';
-import { signIn } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 import React from 'react';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 
 const SignIn = () => {
     const router = useRouter();
+    const session = useSession();
     const handleLogin = async e => {
       e.preventDefault();
       const email = e.target.email.value;
@@ -17,10 +18,11 @@ const SignIn = () => {
       const res = await signIn("credentials", {
         email,
         password,
-        redirect: false
+        redirect:false
       });
 
-      if (res.status === 200) {
+      if (session?.status === "authenticated") {
+        
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -28,7 +30,8 @@ const SignIn = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        router.push("/");
+        router.push("/dashboard");
+        
       } else if (res.error) {
         Swal.fire({
           position: "top-end",

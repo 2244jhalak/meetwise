@@ -7,6 +7,7 @@ import { TbBrandMeetup } from "react-icons/tb";
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import LanguageSelector from '../../LanguageSelector';
 
 const Navbar = () => {
     const [open,setOpen]=useState(false);
@@ -30,9 +31,11 @@ const Navbar = () => {
         
         
         <Links></Links>
+        <LanguageSelector></LanguageSelector>
         {
             session.data ?
             <div className='flex items-center space-x-2'>
+                <Link href="/dashboard">Dashboard</Link>
                 <Image
       src={session?.data?.user?.image} 
       width={50} 
