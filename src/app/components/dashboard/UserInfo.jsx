@@ -23,7 +23,7 @@ const UserInfo = () => {
     } else {
       setFormattedDate('Invalid date');
     }
-  }, []);
+  }, [session?.data?.expires]);
 
     return (
         <div className='flex justify-center'>
