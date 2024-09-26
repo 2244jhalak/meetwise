@@ -105,9 +105,7 @@ const Signup = () => {
             <span className="label-text">Password</span>
           </label>
           <input type="text" name='password' placeholder="password" className="input input-bordered text-black" required />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-          </label>
+          
         </div>
         <div className="form-control mt-6">
           <button disabled={loading} className="btn btn-primary">
@@ -119,13 +117,12 @@ const Signup = () => {
         </div>
       </form>
       <div className='text-black text-center pb-5 space-y-2'>
-           <p className='text-xl font-semibold'>Login with</p>
+           
            <div className='flex flex-row items-center justify-center space-x-5'>
-            <div className='rounded-2xl p-2 bg-slate-400 cursor-pointer'>
+            <div className='rounded-2xl p-2 cursor-pointer'>
             <SocialLogin></SocialLogin>
             </div>
-            <div className='rounded-2xl p-2 bg-slate-400 cursor-pointer'><FaFacebook></FaFacebook></div>
-            <div className='rounded-2xl p-2 bg-slate-400 cursor-pointer'><FaGithub></FaGithub></div>
+            
            </div>
       </div>
       <div className='flex flex-row text-black px-8 py-5 space-x-1'>
