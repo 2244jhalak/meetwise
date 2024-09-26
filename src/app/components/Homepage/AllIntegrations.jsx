@@ -86,7 +86,7 @@ const AllIntegrations = () => {
     const { title, googleMeet, zoom, microsoftTeams } = translations[language];
 
     return (
-        <div className='bg-fuchsia-50 md:py-16 md:px-28 p-4 text-center mx-auto'>
+        <div className='bg-fuchsia-50 md:py-16 md:px-28 p-5 text-center mx-auto'>
             <div className='flex flex-col items-center justify-center mb-6'>
                 <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
                     <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-gray-800 lg:text-3xl dark:text-white">
