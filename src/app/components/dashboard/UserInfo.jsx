@@ -29,7 +29,7 @@ const UserInfo = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/profile/api`, {
+            const response = await fetch('http://localhost:3000/dashboard/profile/api', {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
