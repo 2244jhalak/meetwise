@@ -46,7 +46,7 @@ const Links = () => {
   ];
 
   return (
-    <div className='flex lg:flex-row flex-col'>
+    <div className='flex lg:flex-row flex-col items-start gap-4'>
       {links.map(link => (
         <NavLink key={link.element} className='pr-16' link={link}></NavLink>
       ))}
