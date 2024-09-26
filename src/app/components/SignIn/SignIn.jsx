@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from 'next/link';
 import { signIn, useSession } from "next-auth/react"
 import React from 'react';
-import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
+
 import { useRouter } from 'next/navigation';
-import SocialLogin from '../SocialLogin/SocialLogin';
+
 import Swal from 'sweetalert2';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const SignIn = () => {
     const router = useRouter();
@@ -87,11 +88,12 @@ const SignIn = () => {
                         </div>
                     </form>
                     <div className='text-black text-center pb-5 space-y-2'>
-                        <p className='text-xl font-semibold'>Login with</p>
+                        
                         <div className='flex flex-row items-center justify-center space-x-5'>
-                            <div className='rounded-2xl p-2 bg-slate-400 cursor-pointer'><SocialLogin /></div>
-                            <div className='rounded-2xl p-2 bg-slate-400 cursor-pointer'><FaFacebook /></div>
-                            <div className='rounded-2xl p-2 bg-slate-400 cursor-pointer'><FaGithub /></div>
+                            <div className='rounded-2xl p-2 cursor-pointer'>
+                                 <SocialLogin></SocialLogin>
+                            </div>
+                            
                         </div>
                     </div>
                     <div className='flex flex-row text-black px-8 py-5 space-x-1'>
