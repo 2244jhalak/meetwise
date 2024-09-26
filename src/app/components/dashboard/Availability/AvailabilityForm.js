@@ -1,11 +1,14 @@
 "use client";
-import React from 'react';
-import { useState } from 'react';
+
+
 import { useSession } from 'next-auth/react';
+import React, { useEffect, useState } from 'react';
 const AvailabilityForm = () => {
     const [startTime, setStartTime] = useState('');
+    const [selectedDays, setSelectedDays] = useState([]);
     const [endTime, setEndTime] = useState('');
     const session = useSession();
+    const [availability, setAvailability] = useState(null); 
       // Fake Data
   const availabilityData = {
    
@@ -18,26 +21,63 @@ const AvailabilityForm = () => {
     const formData = new FormData(e.target);
     const selectedDays = formData.getAll('days');
   
-    
-    const availability ={
-         name:session?.data?.user?.name,
-         email:session?.data?.user?.email,
-        startTime: startTime,
-        EndTime: endTime,
-      days:selectedDays,
+    const availability = {
+         name: session?.data?.user?.name,
+         email: session?.data?.user?.email,
+         startTime: startTime,
+         endTime: endTime,
+         days: selectedDays,
     };
+
     console.log('Submitted Availability:', availability);
-    //post
+
+    // Use PUT instead of POST
     const response = await fetch("/dashboard/availability/available", {
-      method: "POST",
+      method: "PUT",  // Change to PUT
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(availability),
     });
     
-    console.log(response)
+    console.log(response);
+};
+useEffect(() => {
+  const fetchAvailability = async () => {
+      const response = await fetch(`/dashboard/availability/available?email=${session?.data?.user?.email}`, {
+          method: "GET",
+          headers: {
+              "Content-Type": "application/json",
+          }
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setAvailability(result);
+
+        // Set default start and end times
+        setStartTime(result?.startTime || '');
+        setEndTime(result?.endTime || '');
+
+        // Set default selected days
+        setSelectedDays(result?.days || []);
+      }  else {
+          console.error('Error fetching availability');
+      }
   };
+
+  if (session?.data?.user?.email) {
+      fetchAvailability();  // Fetch availability based on logged-in user’s email
+  }
+}, [session?.data?.user?.email]);
+const handleDayChange = (day) => {
+  if (selectedDays.includes(day)) {
+    setSelectedDays(selectedDays.filter((d) => d !== day)); // Remove the day if already selected
+  } else {
+    setSelectedDays([...selectedDays, day]); // Add the day if not selected
+  }
+};
+
     return (
         <div className=" mx-auto mt-10 p-6 bg-[#F8ECFF] shadow-lg rounded-md h-[500px]">
     <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
@@ -62,6 +102,8 @@ const AvailabilityForm = () => {
             onChange={(e) => setStartTime(e.target.value)}
             className="border border-gray-300 p-2 rounded-md w-full"
             required
+          
+
           />
         </div>
 
@@ -91,6 +133,9 @@ const AvailabilityForm = () => {
                   name="days"
                   value={day}
                   className="h-4 w-4"
+                  checked={selectedDays.includes(day)}
+                  onChange={() => handleDayChange(day)}
+                  
                 />
                 <label htmlFor={day} className="text-gray-700 font-raleway">{day}</label>
               </div>
@@ -108,6 +153,14 @@ const AvailabilityForm = () => {
           </button>
         </div>
       </form>
+      {availability && (
+                <div>
+                    <h3>Your Availability:</h3>
+                    <p>Days: {availability.days.join(", ")}</p>
+                    <p>Start Time: {availability.startTime}</p>
+                    <p>End Time: {availability.endTime}</p>
+                </div>
+            )}
     </div>
     );
 };
