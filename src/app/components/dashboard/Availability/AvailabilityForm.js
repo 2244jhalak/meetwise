@@ -5,25 +5,38 @@ import { useSession } from 'next-auth/react';
 const AvailabilityForm = () => {
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
+    const session = useSession();
       // Fake Data
   const availabilityData = {
+   
    
     daysOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const selectedDays = formData.getAll('days');
   
     
-    const availability =[ {
+    const availability ={
+         name:session?.data?.user?.name,
+         email:session?.data?.user?.email,
         startTime: startTime,
         EndTime: endTime,
       days:selectedDays,
-    }];
+    };
     console.log('Submitted Availability:', availability);
-    // You can make an API call to save the availability data here.
+    //post
+    const response = await fetch("/dashboard/availability/available", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(availability),
+    });
+    
+    console.log(response)
   };
     return (
         <div className=" mx-auto mt-10 p-6 bg-[#F8ECFF] shadow-lg rounded-md h-[500px]">
