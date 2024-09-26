@@ -55,7 +55,7 @@ const AutoRecord = () => {
     const currentTexts = texts[language] || texts.en; // বর্তমান ভাষার টেক্সট নির্ধারণ করুন
 
     return (
-        <div className='flex my-12 flex-col container bg-[#F8ECFF] px-14 py-10 mx-auto md:flex-row md:justify-between gap-6'>
+        <div className='flex my-12 flex-col container bg-[#b9d5c3] px-14 py-10 mx-auto md:flex-row md:justify-between gap-6'>
             <div className='bg-pink-50 shadow-xl md:h-[500px] w-full md:w-1/2 rounded-xl'>
                 <div className='bg-gradient-to-r from-violet-500 to-fuchsia-500 flex justify-center items-center h-80' style={{
                     backgroundImage: `url('https://docs.daily.co/assets/prebuilt-hero.png')`,
