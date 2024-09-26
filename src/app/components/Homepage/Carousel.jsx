@@ -16,77 +16,168 @@ const Carousel = () => {
         arrows: false,
     };
 
-    
     const { language } = useLanguage();
 
     const content = {
         en: {
-            title: ["Sakura", "Alexa", "Sephra"],
-            position: ["CEO at Zoom", "CEO at Google Meet", "CEO at Microsoft Team"],
-            quote: "The accuracy of the transcriptions is impressive, and the ability to search through meetings."
+            heading: "Testimonials",
+            paragraph: "Our users’ feedback is the driving force behind everything we do. Here’s what they have to say about how our platform has made scheduling meetings easier and more efficient for their businesses.",
+            slides: [
+                {
+                    title: "Sakura",
+                    position: "CEO at Zoom",
+                    image: "/carousel/freepik-export-2024091804480677VZ.png",
+                    quote: "The accuracy of the transcriptions is impressive, and the ability to search through meetings.",
+                },
+                {
+                    title: "Alexa",
+                    position: "CEO at Google Meet",
+                    image: "/carousel/brunette-businesswoman-with-coffee.jpg",
+                    quote: "It's incredibly easy to schedule meetings and avoid conflicts.",
+                },
+                {
+                    title: "Sephra",
+                    position: "CEO at Microsoft Team",
+                    image: "/carousel/brunette-businesswoman-showing-her-tablet.jpg",
+                    quote: "The user experience is outstanding, allowing seamless communication.",
+                },
+            ],
         },
         bn: {
-            title: ["সাকুরা", "অ্যালেক্সা", "সেফরা"],
-            position: ["জুমের CEO", "গুগল মিটের CEO", "মাইক্রোসফট টিমের CEO"],
-            quote: "রেকর্ডিংয়ের সঠিকতা চমৎকার, এবং মিটিংগুলোর মধ্যে খোঁজার সক্ষমতা."
-        },
-        es: {
-            title: ["Sakura", "Alexa", "Sephra"],
-            position: ["CEO en Zoom", "CEO en Google Meet", "CEO en Microsoft Team"],
-            quote: "La precisión de las transcripciones es impresionante, y la capacidad de buscar en las reuniones."
+            heading: "প্রশংসাপত্র",
+            paragraph: "আমাদের ব্যবহারকারীদের প্রতিক্রিয়া আমাদের কাজের পেছনের মূল চালিকা শক্তি। তারা কীভাবে আমাদের প্ল্যাটফর্ম তাদের ব্যবসার জন্য মিটিং নির্ধারণ করা সহজ এবং আরও দক্ষ করে তুলেছে তা এখানে বলা হয়েছে।",
+            slides: [
+                {
+                    title: "সাকুরা",
+                    position: "জুম-এর সিইও",
+                    image: "/carousel/freepik-export-2024091804480677VZ.png",
+                    quote: "ট্রান্সক্রিপশনগুলির নির্ভুলতা চমৎকার এবং মিটিংগুলির মধ্যে অনুসন্ধান করার ক্ষমতা।",
+                },
+                {
+                    title: "আলেক্সা",
+                    position: "গুগল মিট-এর সিইও",
+                    image: "/carousel/brunette-businesswoman-with-coffee.jpg",
+                    quote: "মিটিংগুলি নির্ধারণ করা এবং দ্বন্দ্ব এড়ানো অবিশ্বাস্যভাবে সহজ।",
+                },
+                {
+                    title: "সেফ্রা",
+                    position: "মাইক্রোসফ্ট টিমের সিইও",
+                    image: "/carousel/brunette-businesswoman-showing-her-tablet.jpg",
+                    quote: "ব্যবহারকারীর অভিজ্ঞতা অসাধারণ, যা নিরবচ্ছিন্ন যোগাযোগকে সম্ভব করে।",
+                },
+            ],
         },
         fr: {
-            title: ["Sakura", "Alexa", "Sephra"],
-            position: ["PDG chez Zoom", "PDG chez Google Meet", "PDG chez Microsoft Team"],
-            quote: "La précision des transcriptions est impressionnante, et la capacité de rechercher dans les réunions."
-        }
+            heading: "Témoignages",
+            paragraph: "Les retours de nos utilisateurs sont la force motrice derrière tout ce que nous faisons. Voici ce qu'ils ont à dire sur la façon dont notre plateforme a facilité la planification des réunions et amélioré leur efficacité.",
+            slides: [
+                {
+                    title: "Sakura",
+                    position: "PDG de Zoom",
+                    image: "/carousel/freepik-export-2024091804480677VZ.png",
+                    quote: "La précision des transcriptions est impressionnante, et la capacité à rechercher dans les réunions.",
+                },
+                {
+                    title: "Alexa",
+                    position: "PDG de Google Meet",
+                    image: "/carousel/brunette-businesswoman-with-coffee.jpg",
+                    quote: "C'est incroyablement facile de programmer des réunions et d'éviter les conflits.",
+                },
+                {
+                    title: "Sephra",
+                    position: "PDG de Microsoft Team",
+                    image: "/carousel/brunette-businesswoman-showing-her-tablet.jpg",
+                    quote: "L'expérience utilisateur est exceptionnelle, permettant une communication fluide.",
+                },
+            ],
+        },
+        es: {
+            heading: "Testimonios",
+            paragraph: "Los comentarios de nuestros usuarios son la fuerza impulsora detrás de todo lo que hacemos. Aquí está lo que tienen que decir sobre cómo nuestra plataforma ha facilitado la programación de reuniones y mejorado la eficiencia de sus negocios.",
+            slides: [
+                {
+                    title: "Sakura",
+                    position: "CEO de Zoom",
+                    image: "/carousel/freepik-export-2024091804480677VZ.png",
+                    quote: "La precisión de las transcripciones es impresionante, y la capacidad de buscar en las reuniones.",
+                },
+                {
+                    title: "Alexa",
+                    position: "CEO de Google Meet",
+                    image: "/carousel/brunette-businesswoman-with-coffee.jpg",
+                    quote: "Es increíblemente fácil programar reuniones y evitar conflictos.",
+                },
+                {
+                    title: "Sephra",
+                    position: "CEO de Microsoft Team",
+                    image: "/carousel/brunette-businesswoman-showing-her-tablet.jpg",
+                    quote: "La experiencia del usuario es sobresaliente, permitiendo una comunicación fluida.",
+                },
+            ],
+        },
     };
 
+    const currentContent = content[language] || {};
+
     return (
-        <div className="relative md:p-14 p-5 bg-blue-50 z-10 flex justify-between items-center w-full">
-            {/* Image Section */}
-            <div className="relative w-1/2">
-                <Slider ref={sliderRef} {...settings}>
-                    {content[language].title.map((name, index) => (
-                        <div key={index}>
-                            <div>
-                                {/* <Image
-                                    src={`https://example.com/image${index + 1}.png`}
-                                    alt={`Sample ${index + 1}`}
-                                    layout="responsive"
-                                    width={500}
-                                    height={500}
-                                    className="object-cover md:rounded-[50px] lg:rounded-[50px] rounded-2xl"
-                                    style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 0% 100%)' }}
-                                /> */}
-                                <div className='text-end md:-mt-20'>
-                                    <h3 className='text-xl font-bold'>{name}</h3>
-                                    <p className='text-gray-500 text-md'>{content[language].position[index]}</p>
+        <div className='bg-blue-50  lg:p-14 p-5 '>
+            <div className='flex flex-col items-center justify-center '>
+                <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
+                    <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-gray-800 lg:text-3xl dark:text-white">
+                    {currentContent.heading || "Testimonials"}
+                    </h1>
+                    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-violet-700 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
+                </div>
+
+                <p className='text-lg font-raleway w-1/2 text-slate-500 mt-4 text-center my-8'>
+                    {currentContent.paragraph || "Our users’ feedback is the driving force behind everything we do. Here’s what they have to say about how our platform has made scheduling meetings easier and more efficient for their businesses."}
+                </p>
+            </div>
+            <div className="relative  flex justify-between items-center w-full">
+                {/* Image, Name, Position, and Quote in one slider */}
+                <div className="relative w-full">
+                    <Slider ref={sliderRef} {...settings}>
+                        {currentContent.slides?.map((slide, index) => (
+                            <div key={index} className="flex flex-col md:flex-row items-center justify-between">
+                                <div className="relative w-1/2">
+                                    <Image
+                                        src={slide.image}
+                                        alt={`Slide ${index + 1}`}
+                                        layout="responsive"
+                                        width={500}
+                                        height={500}
+                                        className="object-cover md:rounded-[50px] lg:rounded-[50px] rounded-2xl"
+                                        style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 0% 100%)' }}
+                                    />
+                                    <div className="text-end md:-mt-20">
+                                        <h3 className="text-xl font-bold">{slide.title}</h3>
+                                        <p className="text-gray-500 text-md">{slide.position}</p>
+                                    </div>
+                                </div>
+
+                                <div className='absolute bg-white p-4 shadow-lg lg:-mt-96 md:-mt-60 lg:ml-[450px] md:ml-[280px] ml-56 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36'>
+                                    <p className="lg:text-[38px] md:text-3xl text-[10px] font-bold inline-block leading-snug rounded-lg ">{slide.quote}</p>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </Slider>
-            </div>
+                        ))}
+                    </Slider>
+                </div>
 
-            <div className='absolute bg-white p-4 shadow-lg lg:-mt-48 md:-mt-36 lg:ml-[450px] md:ml-[280px] ml-56 space-y-2 rounded-lg mr-5 md:max-w-2xl max-w-36'>
-                <p className='lg:text-[38px] md:text-3xl text-lg font-bold inline-block leading-snug rounded-lg'>{content[language].quote}</p>
-            </div>
-
-            {/* Control Buttons */}
-            <div className="w-1/2 relative flex gap-3 md:justify-start md:items-start pl-5 lg:mt-96 md:mt-80 mt-40">
-                <button
-                    className="bg-gray-800 text-white p-2 px-4 rounded-full shadow-lg hover:bg-gray-600 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
-                    onClick={() => sliderRef.current.slickPrev()} // Go to previous slide
-                >
-                    <span className="text-2xl">&lt;</span>
-                </button>
-                <button
-                    className="bg-gray-800 text-white p-2 px-4 rounded-full shadow-lg hover:bg-gray-600 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
-                    onClick={() => sliderRef.current.slickNext()} // Go to next slide
-                >
-                    <span className="text-2xl">&gt;</span>
-                </button>
+                {/* Control Buttons */}
+                <div className="w-full relative flex lg:-ml-[550px] md:-ml-[400px] -ml-[170px] gap-3 md:justify-start md:items-start pl-5 lg:mt-96 md:mt-80 mt-40">
+                    <button
+                        className="bg-gray-800 text-white p-2 px-4 rounded-full shadow-lg hover:bg-gray-600 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        onClick={() => sliderRef.current.slickPrev()} // Go to previous slide
+                    >
+                        <span className="text-2xl">&lt;</span>
+                    </button>
+                    <button
+                        className="bg-gray-800 text-white p-2 px-4 rounded-full shadow-lg hover:bg-gray-600 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        onClick={() => sliderRef.current.slickNext()} // Go to next slide
+                    >
+                        <span className="text-2xl">&gt;</span>
+                    </button>
+                </div>
             </div>
         </div>
     );
