@@ -101,11 +101,11 @@ const handleDayChange = (day) => {
 };
 
     return (
-        <div className=" mx-auto mt-10 p-6 bg-[#fafaf9] shadow-lg rounded-md h-[700px]">
+        <div className=" mx-auto mt-10 p-6 bg-[#d0d8d9] shadow-lg rounded-md h-[700px]">
           
     <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
     <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-gray-800 lg:text-3xl dark:text-white">
-   Set Your Availability
+   Save Your Availability
     </h1>
     <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-700 w-[20%] hover:w-[50%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
   </div>
