@@ -97,7 +97,7 @@ const AllIntegrations = () => {
             </div>
             {/* <h3 className='text-4xl font-bold mb-10'>{title}</h3> */}
             <div className='md:flex justify-between gap-5 mx-auto'>
-                <div className='bg-white p-7 w-96 rounded-2xl shadow-2xl text-start mt-5'>
+                <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-2xl text-start mt-5'>
                     <div className='rounded-full p-3 w-16 bg-white shadow-xl'>
                         {/* <FaVideo className='text-green-500 text-2xl mb-2' /> */}
                         <Image src={googleMeet.image} alt="" width={1000} height={1000} />
@@ -105,7 +105,7 @@ const AllIntegrations = () => {
                     <h3 className='text-xl my-2 font-bold'>{googleMeet.title}</h3>
                     <p>{googleMeet.description}</p>
                 </div>
-                <div className='bg-white p-7 w-96 rounded-2xl shadow-2xl text-start mt-5'>
+                <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-2xl text-start mt-5'>
                     <div className='rounded-full p-3 w-16 bg-white shadow-xl'>
                         {/* <FaVideo className='text-blue-500 text-2xl mb-2' /> */}
                         <Image src={zoom.image} alt="" width={1000} height={1000} />
@@ -113,7 +113,7 @@ const AllIntegrations = () => {
                     <h3 className='text-xl my-2 font-bold'>{zoom.title}</h3>
                     <p>{zoom.description}</p>
                 </div>
-                <div className='bg-white p-7 w-96 rounded-2xl shadow-2xl text-start mt-5'>
+                <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-2xl text-start mt-5'>
                     <div className='rounded-full p-3 w-16 bg-white shadow-xl'>
                         {/* <FaVideo className='text-red-500 text-2xl mb-2' /> */}
                         <Image src={microsoftTeams.image} alt="" width={1000} height={1000} />
