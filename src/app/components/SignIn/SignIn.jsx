@@ -47,11 +47,11 @@ const SignIn = () => {
     }
 
     return (
-        <div>
-            <div className='flex flex-col md:flex-row-reverse '>
+        <div className="container mx-auto bg-gray-100 ">
+            <div className='flex flex-col gap-2 md:flex-row '>
                 {/* left side  */}
                 <div
-  className="w-4/5 min-h-screen bg-[url('/banner/bg-3.jpg')] bg-cover bg-center flex justify-center items-center"
+  className="md:w-4/5 min-h-screen bg-[url('/banner/bg-3.jpg')] bg-cover bg-center flex justify-center items-center"
 >
   <div className="w-2/3">
     <Image
@@ -65,7 +65,7 @@ const SignIn = () => {
 </div>
 
               {/* form */}
-            <div className="bg-gray-100 w-4/5 flex pt-5 flex-col items-center space-y-6 min-h-screen">
+            <div className="md:w-4/5 flex pt-5 flex-col items-center space-y-6 min-h-screen">
             <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
     <h1 className="text-2xl pb-3 font-extrabold text-center mx-auto text-gray-800 lg:text-3xl dark:text-white">
              Log In Now
@@ -112,7 +112,7 @@ const SignIn = () => {
                     </div>
                     <div className='flex flex-row text-black px-8 py-5 space-x-1'>
                         <p className="font-raleway font-bold">Create an account? Please</p>
-                        <Link href="/signup"><span className='underline text-green-500 font-raleway font-extrabold'>Signup</span></Link>
+                        <Link href="/signup"><span className='underline text-green-500 font-raleway   font-extrabold'>Signup</span></Link>
                     </div>
                 </div>
             </div>
