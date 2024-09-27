@@ -21,7 +21,7 @@ const Sidebar = () => {
     return (
         <>
             {/* Small Screen Navbar */}
-            <div className='bg-[#D6B0EC] text-gray-800 flex justify-between md:hidden'>
+            <div className='bg-[#F4F2DE] text-gray-800 flex justify-between md:hidden'>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
                         <Link href='/'>
@@ -44,15 +44,14 @@ const Sidebar = () => {
 
             {/* Sidebar */}
             <div
-                className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#D6B0EC] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
+                className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#F4F2DE] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
                     }  md:translate-x-0  transition duration-200 ease-in-out`}
             >
                 <div>
                     <div>
-                        <div className='w-full text-white hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-[#34D399] mx-auto'>
-                            <Link href='/'>
-                                Meetwise
-
+                        <div className='w-full text-white hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-[#F1D384] mx-auto'>
+                            <Link href='/' >
+                                <h1 className='text-[#183C4B] font-bold'>Meet <span className='text-green-600'>Wise</span></h1>
                             </Link>
                         </div>
                     </div>
@@ -98,7 +97,7 @@ const Sidebar = () => {
                     />
 
                     <button
-                        className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-[#7B61FF] hover:text-gray-700 transition-colors duration-300 transform'
+                        className='flex w-full items-center px-4 py-2 mt-5 text-black hover:bg-[#183C4B] hover:text-white transform transition-all duration-500 ease-in font-raleway'
                     >
                         <GrLogout className='w-5 h-5' />
 
