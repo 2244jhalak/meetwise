@@ -43,7 +43,7 @@ const Banner = () => {
   const { language } = useLanguage();
   
   return (
-    <div className="container mx-auto bg-[url('/banner/bg-6.jpg')] bg-cover bg-center"
+    <div className="container mx-auto bg-[#183c4b]"
    >
       <div className="container   mx-auto flex flex-col-reverse md:flex-row  items-center justify-between">
         {/* Left Side */}
