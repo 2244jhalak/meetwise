@@ -17,17 +17,23 @@ const translations = {
             {
                 step: 'Step-1',
                 title: 'Create a Scheduling Link',
-                description: 'Connect your calendar and Calendly will help you create scheduling links and booking pages based on your availability.'
+                description: 'Connect your calendar and Calendly will help you create scheduling links and booking pages based on your availability.',
+                img:"/Hiw/appointment-booking-with-calendar.png",
+        
+
             },
             {
                 step: 'Step-2',
                 title: 'Team-based scheduling',
-                description: 'Booking links can be based on different event types – from 15-minute Zoom calls to 30-minute in-person meetings.'
+                description: 'Booking links can be based on different event types – from 15-minute Zoom calls to 30-minute in-person meetings.',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
             },
             {
                 step: 'Step-3',
                 title: 'Workflows and integrations',
-                description: 'Workflows and integrations connect Calendly to your process and other tools.'
+                description: 'Workflows and integrations connect Calendly to your process and other tools.',
+                img:"/Hiw/time-management-concept-illustration.png",
+
             }
         ],
     },
@@ -38,17 +44,20 @@ const translations = {
             {
                 step: 'ধাপ-১',
                 title: 'একটি সময়সূচী লিঙ্ক তৈরি করুন',
-                description: 'আপনার ক্যালেন্ডার সংযোগ করুন এবং ক্যালেন্ডি আপনাকে আপনার উপলব্ধতার ভিত্তিতে সময়সূচী লিঙ্ক এবং বুকিং পৃষ্ঠা তৈরি করতে সহায়তা করবে।'
+                description: 'আপনার ক্যালেন্ডার সংযোগ করুন এবং ক্যালেন্ডি আপনাকে আপনার উপলব্ধতার ভিত্তিতে সময়সূচী লিঙ্ক এবং বুকিং পৃষ্ঠা তৈরি করতে সহায়তা করবে।' ,
+                img:"/Hiw/appointment-booking-with-calendar.png",
             },
             {
                 step: 'ধাপ-২',
                 title: 'দল ভিত্তিক সময়সূচী',
-                description: 'বুকিং লিঙ্কগুলি বিভিন্ন ইভেন্টের ধরনের উপর ভিত্তি করে হতে পারে – ১৫ মিনিটের জুম কল থেকে ৩০ মিনিটের অফিস মিটিং।'
+                description: 'বুকিং লিঙ্কগুলি বিভিন্ন ইভেন্টের ধরনের উপর ভিত্তি করে হতে পারে – ১৫ মিনিটের জুম কল থেকে ৩০ মিনিটের অফিস মিটিং।',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
             },
             {
                 step: 'ধাপ-৩',
                 title: 'কর্মপ্রবাহ এবং ইন্টিগ্রেশন',
-                description: 'কর্মপ্রবাহ এবং ইন্টিগ্রেশন ক্যালেন্ডিকে আপনার প্রক্রিয়া এবং অন্যান্য সরঞ্জামের সাথে সংযুক্ত করে।'
+                description: 'কর্মপ্রবাহ এবং ইন্টিগ্রেশন ক্যালেন্ডিকে আপনার প্রক্রিয়া এবং অন্যান্য সরঞ্জামের সাথে সংযুক্ত করে।',
+                img:"/Hiw/time-management-concept-illustration.png",
             }
         ],
     },
@@ -59,17 +68,20 @@ const translations = {
             {
                 step: 'Étape-1',
                 title: 'Créer un lien de planification',
-                description: 'Connectez votre calendrier et Calendly vous aidera à créer des liens de planification et des pages de réservation en fonction de votre disponibilité.'
+                description: 'Connectez votre calendrier et Calendly vous aidera à créer des liens de planification et des pages de réservation en fonction de votre disponibilité.',
+                img:"/Hiw/appointment-booking-with-calendar.png",
             },
             {
                 step: 'Étape-2',
                 title: 'Planification en équipe',
-                description: 'Les liens de réservation peuvent être basés sur différents types d\'événements – des appels Zoom de 15 minutes aux réunions en personne de 30 minutes.'
+                description: 'Les liens de réservation peuvent être basés sur différents types d\'événements – des appels Zoom de 15 minutes aux réunions en personne de 30 minutes.',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
             },
             {
                 step: 'Étape-3',
                 title: 'Flux de travail et intégrations',
-                description: 'Les flux de travail et les intégrations connectent Calendly à votre processus et à d\'autres outils.'
+                description: 'Les flux de travail et les intégrations connectent Calendly à votre processus et à d\'autres outils.',
+                img:"/Hiw/time-management-concept-illustration.png",
             }
         ],
     },
@@ -80,17 +92,20 @@ const translations = {
             {
                 step: 'Paso-1',
                 title: 'Crear un enlace de programación',
-                description: 'Conecte su calendario y Calendly le ayudará a crear enlaces de programación y páginas de reserva según su disponibilidad.'
+                description: 'Conecte su calendario y Calendly le ayudará a crear enlaces de programación y páginas de reserva según su disponibilidad.',
+                img:"/Hiw/appointment-booking-with-calendar.png",
             },
             {
                 step: 'Paso-2',
                 title: 'Programación basada en equipo',
-                description: 'Los enlaces de reserva pueden basarse en diferentes tipos de eventos, desde llamadas de Zoom de 15 minutos hasta reuniones en persona de 30 minutos.'
+                description: 'Los enlaces de reserva pueden basarse en diferentes tipos de eventos, desde llamadas de Zoom de 15 minutos hasta reuniones en persona de 30 minutos.',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
             },
             {
                 step: 'Paso-3',
                 title: 'Flujos de trabajo e integraciones',
-                description: 'Los flujos de trabajo y las integraciones conectan Calendly a su proceso y a otras herramientas.'
+                description: 'Los flujos de trabajo y las integraciones conectan Calendly a su proceso y a otras herramientas.',
+                img:"/Hiw/time-management-concept-illustration.png",
             }
         ],
     },
@@ -141,15 +156,15 @@ const Hiw = () => {
   }, []);
 
     return (
-        <div className='container mx-auto mt-10 bg-[#F8ECFF] px-14 py-10 rounded-lg' data-aos="fade-up">
-            <div className='mb-7 mx-auto text-center pb-7 flex flex-row items-center justify-between'>
-                <div className='relative font-raleway font-bold text-left text-5xl w-1/2'>
-                    <h1 className='mb-3 text-[#2A106B]'>{translations[language].title}</h1>
-                    <div className='absolute bottom-0 left-0 border-b-2 border-violet-700 w-[20%] hover:w-[50%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
+        <div className='container mx-auto pt-10 bg-green-50 p-4 md:px-14 py-10 rounded-lg' data-aos="fade-up">
+            <div className='mb-7 md:mx-auto text-center pb-7 flex md:flex-row flex-col items-center justify-between'>
+                <div className='relative font-raleway font-bold text-center md:text-left text-2xl md:text-5xl md:w-1/2'>
+                    <h1 className='mb-3 text-[#343F56]'>{translations[language].title}</h1>
+                    <div className='absolute bottom-0 left-[30%] md:left-0 border-b-2 border-green-700 w-[50%] md:w-[20%] md:hover:w-[50%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
                 </div>
-                <p className='text-lg font-raleway w-1/2 text-slate-500 mt-4 text-left'>{translations[language].description}</p>
+                <p className='text-lg font-raleway md:w-1/2 text-slate-500 mt-4 md:text-left text-center'>{translations[language].description}</p>
             </div>
-            <div data-aos="fade-up" className='grid md:grid-cols-1 grid-cols-1 lg:grid-cols-2 gap-5 lg:py-8 lg:px-8 bg-violet-100 rounded-xl shadow-xl border border-t-violet-700'>
+            <div data-aos="fade-up" className='grid md:grid-cols-1 grid-cols-1 lg:grid-cols-2 gap-5 lg:py-8 lg:px-8 bg-violet-100 rounded-xl shadow-xl border-2 border-t-[#154049]'>
                 <div className="overflow-hidden">
                     <Slider ref={sliderRef} {...settings} className="h-full">
                         {translations[language].steps.map((step, index) => (
@@ -157,16 +172,20 @@ const Hiw = () => {
                                 <div className="flex flex-col md:flex-row items-center">
                                     <div className="p-6 md:w-1/2">
                                         <div>
-                                            <span className="text-xs font-medium text-[#2A106B] uppercase dark:text-blue-400 font-raleway">{step.step}</span>
+                                            <span className="text-xs font-bold text-[#183c4b]  uppercase dark:text-blue-400 font-raleway">{step.step}</span>
                                             <a href="#" className="block mt-2 text-xl font-bold font-raleway text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabIndex="0" role="link">
                                                 {step.title}
                                             </a>
                                             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 font-raleway">{step.description}</p>
                                         </div>
                                         <div className="mt-4">
-                                            <button type="button" className="px-8 py-3 border transition-all duration-500 ease-in font-raleway border-violet-700 hover:bg-violet-900 hover:text-white font-semibold rounded-full dark:bg-gray-800 dark:text-gray-00">Learn More</button>
+                                            <button type="button" className="px-8 py-3 border transition-all duration-500 ease-in font-raleway border-[#89abba] hover:bg-[#183c4b] hover:text-white font-semibold rounded-full dark:bg-gray-800 dark:text-gray-00">Learn More</button>
                                         </div>
                                     </div>
+                                    <div className="md:w-1/2 mt-4">
+                                        <Image className="object-cover w-full h-full" src={step.img} alt={step.title} layout="responsive" width={500} height={1000} />
+                                    </div>
+
                                     {/* <div className="md:w-1/2">
                                         <Image className="object-cover w-full h-full" src={`https://example.com/image-${index + 1}.png`} alt={step.title} layout="responsive" width={500} height={1000} />
                                     </div> */}
