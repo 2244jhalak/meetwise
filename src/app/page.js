@@ -15,7 +15,7 @@ export default function Home() {
   
   return (
     <div className=" container mx-auto">
-      <div className="bg-[#8EA2A2] container mx-auto">
+      <div className="bg-[#F4F2DE] container mx-auto">
           <div className="">
             <Navbar></Navbar>
           </div>
