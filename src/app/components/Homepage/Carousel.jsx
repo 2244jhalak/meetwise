@@ -155,7 +155,7 @@ const Carousel = () => {
                                     </div>
                                 </div>
 
-                                <div className='absolute bg-white p-4 shadow-lg lg:-mt-96 md:-mt-60 lg:ml-[450px] md:ml-[280px] ml-56 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36'>
+                                <div className='absolute bg-white p-4 shadow-lg lg:-mt-96 md:-mt-60 -mt-60 lg:ml-[450px] md:ml-[280px] ml-52 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36'>
                                     <p className="lg:text-[38px] md:text-3xl text-[10px] font-bold inline-block leading-snug rounded-lg ">{slide.quote}</p>
                                 </div>
                             </div>
