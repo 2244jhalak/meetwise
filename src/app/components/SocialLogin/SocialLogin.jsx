@@ -1,10 +1,12 @@
 "use client"
 
+
+
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-import { FaGoogle } from 'react-icons/fa';
+
 
 const SocialLogin = () => {
     const router = useRouter();
@@ -19,7 +21,10 @@ const SocialLogin = () => {
     
     return (
         <div>
-            <button onClick={()=>handleSignIn("google")}><FaGoogle></FaGoogle></button>
+            <button className='flex flex-row' onClick={()=>handleSignIn("google")}>
+                
+                <p>Continue With Google</p>
+                </button>
         </div>
     );
 };

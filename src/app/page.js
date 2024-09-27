@@ -14,9 +14,9 @@ import Navbar from "./components/Homepage/Navbar/Navbar";
 export default function Home() {
   
   return (
-    <div>
-      <div className="bg-[#f7ecff]">
-          <div className="container mx-auto">
+    <div className=" container mx-auto">
+      <div className="bg-[#F4F2DE] container mx-auto">
+          <div className="">
             <Navbar></Navbar>
           </div>
       </div>
