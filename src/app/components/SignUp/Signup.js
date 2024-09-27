@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-
+import Image from "next/image";
 import { useState } from 'react';
 
 import { FaFacebook, FaGithub, FaFan } from 'react-icons/fa';
