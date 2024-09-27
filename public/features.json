@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "Feature_Name": "Calendar Integration",
+      "Details": "Seamlessly integrate with popular calendar services like Google Calendar and Outlook to automatically sync your meetings.",
+      "image": "https://help.timetastic.co.uk/hc/article_attachments/6696996001181"
+    },
+    {
+      "id": 2,
+      "Feature_Name": "Language Detector",
+      "Details": "Automatically detect the user's preferred language for a more personalized experience.",
+      "image": "https://lh3.googleusercontent.com/ah0h9uCXVUpApR1JKLBZRusTbOsqH6N013tvt_-8zk2Az3dAj5_CFhJSsa-CRS4XDQfOadXa7feDrIQmZ9_Rr7vj=s1280-w1280-h800"
+    },
+    {
+      "id": 3,
+      "Feature_Name": "Automated Meeting Links",
+      "Details": "Generate Zoom or Google Meet links automatically for scheduled meetings.",
+      "image": "https://catchbox.com/storage/cms_uploads/vuwagabiyuci/hybrid-meeting-with-automated-notes.png"
+    },
+    {
+      "id": 4,
+      "Feature_Name": "Updating Profile",
+      "Details": "Allow users to easily update their profile information, including personal details and preferences.",
+      "image": "https://i.ytimg.com/vi/XUXIqYwVT2w/maxresdefault.jpg"
+    },
+    {
+      "id": 5,
+      "Feature_Name": "Meeting Availability",
+      "Details": "Set and manage your availability to streamline the meeting scheduling process.",
+      "image": "https://cdn.prod.website-files.com/634681057b887c6f4830fae2/6367ddc8caac038181077241_6259f5b793ebb9c1a3fa8357_scheduling-meetings.png"
+    },
+    {
+      "id": 6,
+      "Feature_Name": "Selecting Meeting Type",
+      "Details": "Enable users to select different types of meetings such as one-on-one, group meetings, or webinars.",
+      "image": "https://midias-blog-mkt.s3.amazonaws.com/uploads/2023/08/Meeting-types.png"
+    }
+  ]
+  
