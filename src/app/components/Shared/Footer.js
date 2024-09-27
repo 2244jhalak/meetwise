@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import logo from "/public/logo/LOGO.png";
 import { useLanguage } from "../context/LanguageContext";
@@ -20,7 +20,8 @@ const Footer = () => {
       career: "Career",
       contact: "Contact us",
       blog: "Blog",
-      rights: "©MeetWise 2024 | Simplifying your online meeting experience. All rights reserved |",
+      rights:
+        "©MeetWise 2024 | Simplifying your online meeting experience. All rights reserved |",
     },
     bn: {
       tagline: "আপনার মিটিংগুলো সহজে নির্ধারণের পদ্ধতি।",
@@ -37,7 +38,8 @@ const Footer = () => {
       career: "ক্যারিয়ার",
       contact: "যোগাযোগ করুন",
       blog: "ব্লগ",
-      rights: "©MeetWise 2024 | আপনার অনলাইন মিটিং অভিজ্ঞতা সহজ করা। সমস্ত অধিকার সংরক্ষিত |",
+      rights:
+        "©MeetWise 2024 | আপনার অনলাইন মিটিং অভিজ্ঞতা সহজ করা। সমস্ত অধিকার সংরক্ষিত |",
     },
     es: {
       tagline: "Simplificando la forma en que programas reuniones.",
@@ -54,7 +56,8 @@ const Footer = () => {
       career: "Carrera",
       contact: "Contáctenos",
       blog: "Blog",
-      rights: "©MeetWise 2024 | Simplificando su experiencia de reunión en línea. Todos los derechos reservados |",
+      rights:
+        "©MeetWise 2024 | Simplificando su experiencia de reunión en línea. Todos los derechos reservados |",
     },
     fr: {
       tagline: "Simplifiant la manière dont vous planifiez des réunions.",
@@ -71,12 +74,11 @@ const Footer = () => {
       career: "Carrière",
       contact: "Contactez-nous",
       blog: "Blog",
-      rights: "©MeetWise 2024 | Simplifiant votre expérience de réunion en ligne. Tous droits réservés |",
+      rights:
+        "©MeetWise 2024 | Simplifiant votre expérience de réunion en ligne. Tous droits réservés |",
     },
   };
-  const {language} = useLanguage();  
-
-  
+  const { language } = useLanguage();
 
   return (
     <div className="bg-[#F8ECFF] ">
@@ -92,24 +94,30 @@ const Footer = () => {
           </h3>
         </div>
         {/* Right part */}
-        <div className="grid grid-cols-3 gap-2 md:gap-5 border flex-1 text-black text-center">
-          <div className="flex flex-col gap-3">
-            <h2 className="text-lg font-bold">{content[language].product}</h2>
-            <a href="/">{content[language].overview}</a>
-            <a href="/">{content[language].meetWiseAI}</a>
-            <a href="/">{content[language].integration}</a>
+        <div className="grid grid-cols-3 gap-2 md:gap-5 flex-1 text-black text-center">
+          <div className="flex flex-col gap-1 md:gap-3">
+            <h2 className="text-xs md:text-lg font-bold">
+              {content[language].product}
+            </h2>
+            <a href="/"> {content[language].overview}</a>
+            <a href="/"> {content[language].meetWiseAI}</a>
+            <a href="/"> {content[language].integration}</a>
           </div>
-          <div className="flex flex-col gap-3 border">
-            <h2 className="text-lg font-bold">{content[language].company}</h2>
-            <a href="/">{content[language].about}</a>
-            <a href="/">{content[language].mission}</a>
-            <a href="/">{content[language].pricing}</a>
+          <div className="flex flex-col gap-1 md:gap-3 ">
+            <h2 className="text-xs md:text-lg font-bold">
+              {content[language].company}
+            </h2>
+            <a href="/"> {content[language].about}</a>
+            <a href="/"> {content[language].mission}</a>
+            <a href="/"> {content[language].pricing}</a>
           </div>
-          <div className="flex flex-col gap-3 border">
-            <h2 className="text-lg font-bold">{content[language].resources}</h2>
-            <a href="/">{content[language].career}</a>
-            <a href="/">{content[language].contact}</a>
-            <a href="/">{content[language].blog}</a>
+          <div className="flex flex-col gap-1 md:gap-3 ">
+            <h2 className="text-xs md:text-lg font-bold">
+              {content[language].resources}
+            </h2>
+            <a href="/"> {content[language].career}</a>
+            <a href="/"> {content[language].contact}</a>
+            <a href="/"> {content[language].blog}</a>
           </div>
         </div>
       </div>
