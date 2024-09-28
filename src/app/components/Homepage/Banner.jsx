@@ -45,7 +45,7 @@ const Banner = () => {
   return (
     <div className="container mx-auto bg-[#183c4b]"
    >
-      <div className="container   mx-auto flex flex-col-reverse md:flex-row  items-center justify-between">
+      <div className="container mx-auto flex flex-col-reverse md:flex-row  items-center justify-between">
         {/* Left Side */}
         <div className="md:w-1/2 w-full text-center md:text-left p-5">
           <h1 className="text-4xl lg:text-7xl font-bold text-slate-100 mb-4">
