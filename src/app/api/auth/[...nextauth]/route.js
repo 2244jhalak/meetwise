@@ -8,7 +8,7 @@ const handler = NextAuth({
     secret: process.env.NEXTAUTH_SECRET,
     session: {
         strategy: 'jwt',
-        maxAge: 30 * 24 * 60 * 60,
+        maxAge: 30 * 24 * 60 * 60, // 30 days
     },
     providers: [
         CredentialsProvider({
@@ -36,12 +36,32 @@ const handler = NextAuth({
         GoogleProvider({
             clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
             clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
+            async profile(profile) {
+                const db = await connectDB();
+                const user = await db.collection('users').findOne({ email: profile.email });
+
+                if (!user) {
+                    // If the user doesn't exist, create a new user
+                    await db.collection('users').insertOne({
+                        name: profile.name,
+                        email: profile.email,
+                        image: profile.picture,
+                        // Add any other fields as necessary
+                    });
+                }
+                return {
+                    id: profile.sub, // Use the Google user ID
+                    name: profile.name,
+                    email: profile.email,
+                    image: profile.picture,
+                }; // Return the profile to be used in the session
+            },
         }),
     ],
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.id = user._id;
+                token.id = user.id; // Use the user ID from the profile
                 token.image = user.image;
                 token.name = user.name; // Save the name in the token
             }
@@ -52,6 +72,13 @@ const handler = NextAuth({
             session.user.image = token.image;
             session.user.name = token.name; // Include the name in the session
             return session;
+        },
+        async redirect({ url, baseUrl }) {
+            // Redirect to /dashboard after login
+            if (url === baseUrl) {
+                return `${baseUrl}/dashboard`;
+            }
+            return url;
         },
     },
     pages: {

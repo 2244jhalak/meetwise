@@ -17,12 +17,14 @@ const SocialLogin = () => {
 
     const handleSignIn = async (provider) => {
         const res = await signIn(provider, { redirect: false });
-        console.log(res);
         
         if (res?.error) {
             console.error("Login failed:", res.error);
-        } else if (res?.user) {
-            // যদি প্রয়োজন হয়, এখানে ব্যবহারকারী ডেটা সেভ করো
+        } else {
+            // If the sign-in was successful, this line ensures the session is updated
+            if (res?.ok) {
+                router.push('/dashboard'); // Redirect to dashboard
+            }
         }
     };
 
@@ -46,3 +48,4 @@ const SocialLogin = () => {
 };
 
 export default SocialLogin;
+
