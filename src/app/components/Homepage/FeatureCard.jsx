@@ -20,7 +20,7 @@ const FeatureCard = ({ data }) => {
                 // animate={{ opacity: 1 }}
                 // exit={{ opacity: 0 }}
                 // transition={{ duration: 0.5 }}
-                className="card card-compact  bg-violet-200 md:w-96 shadow-xl">
+                className="card card-compact  bg-violet-200 md:h-[400px] shadow-xl">
                 <figure>
                     <Image className='w-full h-full md:w-72 md:h-72'
                         src={data.image}  // Path to your image
