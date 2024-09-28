@@ -7,6 +7,7 @@ import {FaEye, FaEyeSlash} from 'react-icons/fa';
 import { FaFacebook, FaGithub, FaFan } from 'react-icons/fa';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
+import { signIn } from 'next-auth/react';
 
 const Signup = () => {
     const [loading, setLoading] = useState(false);
@@ -14,71 +15,87 @@ const Signup = () => {
     const [confirmshowpassword, setConfirmShowpassword] = useState(false)
     const router = useRouter();
    
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-    
-      const newUser = {
+   
+
+const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newUser = {
         name: e.target.name.value,
         email: e.target.email.value,
         password: e.target.password.value,
-        confirm: e.target.passwordM.value
-      };
-    
-      // Check if passwords match
-      if (newUser.password !== newUser.confirm) {
+        confirm: e.target.passwordM.value,
+    };
+
+    // Check if passwords match
+    if (newUser.password !== newUser.confirm) {
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Passwords do not match!',
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Passwords do not match!',
         });
         return; // Prevent form submission
-      }
+    }
 
-      const photo = e.target.photo.files[0];
-      
-      setLoading(true);
-    
-      // 1. ফাইল আপলোডের জন্য FormData তৈরি
-      const formData = new FormData();
-      formData.append("image", photo);
-      
-      // 2. imgbb API এর মাধ্যমে ছবি আপলোড করা
-      const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`, {
-        method: "POST",
-        body: formData,
-      });
-    
-      const imgbbData = await imgbbResponse.json();
-    
-      if (imgbbData.success) {
-        const image = imgbbData.data.url;
-        // 3. MongoDB তে ছবি URL সহ ব্যবহারকারীর তথ্য পাঠানো
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/signup/api`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ ...newUser, image }), // photoUrl যোগ করা
+    const photo = e.target.photo.files[0];
+
+    setLoading(true);
+
+    try {
+        // 1. Create FormData for file upload
+        const formData = new FormData();
+        formData.append("image", photo);
+
+        // 2. Upload image via imgbb API
+        const imgbbResponse = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`, {
+            method: "POST",
+            body: formData,
         });
-    
-        setLoading(false);
-        
+
+        const imgbbData = await imgbbResponse.json();
+
+        if (imgbbData.success) {
+            const image = imgbbData.data.url;
+
+            // 3. Send user info to MongoDB with photo URL
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/signup/api`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ ...newUser, image }),
+            });
+
+            if (response.ok) {
+                // Automatically sign in the user
+                await signIn('credentials', { email: newUser.email, password: newUser.password });
+                
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Successfully signed up!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                router.push("/dashboard"); // Redirect to home or desired page
+            } else {
+                throw new Error('Signup failed');
+            }
+        } else {
+            throw new Error('Photo upload failed');
+        }
+    } catch (error) {
         Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Successfully signed up!",
-          showConfirmButton: false,
-          timer: 1500
+            icon: 'error',
+            title: 'Error',
+            text: error.message,
         });
-    
-        if (response.status === 200) {
-          router.push("/login");
-        }       
-      } else {
-        alert("Photo upload failed");
-        setLoading(false);
-      }
-    };
+    } finally {
+        setLoading(false); // Ensure loading state is reset
+    }
+};
+
+  
     
     return (
         <div className='container mx-auto bg-gray-100 '>
