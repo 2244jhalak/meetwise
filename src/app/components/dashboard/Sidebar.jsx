@@ -5,7 +5,7 @@ import { BsHandbag } from "react-icons/bs";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { FcSettings } from "react-icons/fc"
 import { ImProfile } from "react-icons/im";
-
+import { MdOutlineCreateNewFolder } from "react-icons/md";
 import { AiOutlineBars } from 'react-icons/ai'
 import Link from "next/link";
 import NavigationDash from "./NavigationDash";
@@ -62,6 +62,17 @@ const Sidebar = () => {
                 </div>
 
                 <div>
+                    <div className="group font-raleway">
+                        <Link href={'/dashboard/createMeeting'}
+                            end
+                            className="flex w-full items-center px-4 py-2 mt-5 text-blue-500 hover:bg-blue-500 hover:text-white transform transition-all duration-500 ease-in font-raleway"
+                        >
+                            <MdOutlineCreateNewFolder className='w-5 h-5' />
+
+                            <span className='mx-4 font-medium text-blue-500 group-hover:text-white'>Create Meeting</span>
+                        </Link>
+                    </div>
+
                     <NavigationDash
                         label='Meeting Type'
                         address='/dashboard/meetingType'
