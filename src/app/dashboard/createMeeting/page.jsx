@@ -1,8 +1,11 @@
+import LeftPart from "@/app/components/CreateMeeting/LeftPart";
 
 const page = () => {
     return (
-        <div>
-            I am create meeting
+        <div className="">
+            {/* left part  */}
+            <LeftPart />
+            {/* right part */}
         </div>
     );
 };
