@@ -123,7 +123,7 @@ const Carousel = () => {
         <div className='bg-black/20  lg:p-14 p-5 '>
             <div className='flex flex-col items-center justify-center '>
                 <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
-                    <h1 className="text-2xl pb-3 font-bold text-center mx-auto text-gray-800 lg:text-5xl dark:text-white">
+                    <h1 className="text-3xl pb-3 font-bold text-center mx-auto text-gray-800 lg:text-5xl dark:text-white">
                     {currentContent.heading || "Testimonials"}
                     </h1>
                     <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-violet-700 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
@@ -155,7 +155,7 @@ const Carousel = () => {
                                     </div>
                                 </div>
 
-                                <div className='absolute bg-white p-4 shadow-lg lg:-mt-96 md:-mt-60 -mt-60 lg:ml-[450px] md:ml-[280px] ml-52 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36'>
+                                <div className='absolute bg-white p-4 shadow-lg lg:-mt-96 md:-mt-60 -mt-52 lg:ml-[450px] md:ml-[280px] ml-44 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36'>
                                     <p className="lg:text-[38px] md:text-3xl text-[10px] font-bold inline-block leading-snug rounded-lg ">{slide.quote}</p>
                                 </div>
                             </div>
