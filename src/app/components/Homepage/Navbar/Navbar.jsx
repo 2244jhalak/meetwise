@@ -67,10 +67,10 @@ const Navbar = () => {
                             className='rounded-full'
                             title={session?.data?.user?.name}
                         />
-                        <button className='btn btn-outline' onClick={() => signOut()}>{translations[language].logout}</button>
+                        <button className='btn  border border-slate-300 bg-[#28272B]  hover:bg-green-500  text-white' onClick={() => signOut()}>{translations[language].logout}</button>
                     </div>
                 ) : (
-                    <Link href='/login' className='btn bg-[#24ab53] hover:bg-[#218443] font-raleway text-white'>{translations[language].login}</Link>
+                    <Link href='/login' className='btn border border-slate-300 bg-[#28272B]   hover:bg-green-500  text-white'>{translations[language].login}</Link>
                 )}
             </div>
         </div>
