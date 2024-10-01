@@ -89,7 +89,7 @@ const AllIntegrations = () => {
         <div className='bg-black/20 md:py-16 md:px-28 p-5 text-center mx-auto'>
             <div className='flex flex-col items-center justify-center mb-6'>
                 <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
-                    <h1 className="text-2xl pb-3 font-bold text-center mx-auto text-gray-800 lg:text-5xl dark:text-white">
+                    <h1 className="text-3xl pb-3 font-bold text-center mx-auto text-gray-800 lg:text-5xl dark:text-white">
                         {title}
                     </h1>
                     <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-violet-700 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
