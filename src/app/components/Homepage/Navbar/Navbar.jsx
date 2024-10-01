@@ -49,11 +49,11 @@ const Navbar = () => {
             </div>
             <div className='font-semibold flex items-center space-x-2'>
                 
-                <h2 className='text-2xl md:text-4xl font-bold text-[#183c4b] font-raleway ml-6'>
+                <h2 className='text-2xl md:text-4xl font-bold text-slate-100 font-raleway ml-6'>
                     <i>Meet<span className='text-green-600'>Wise</span></i>
                 </h2>
             </div>
-            <div className={`${open ? 'top-16 block z-50 item-start font-bold font-raleway lg:bg-white md:bg-white bg-white' : '-top-72 gap-5 text-black'} flex lg:flex-row font-raleway font-bold flex-col px-2 py-4 absolute lg:static items-center rounded-b-lg ms-4 text-[13px]  duration-1000 lg:gap-10 text-black`}>
+            <div className={`${open ? 'top-16 block z-50 item-start font-bold font-raleway lg:bg-white md:bg-white bg-white' : '-top-72 gap-5 text-green-600'} flex lg:flex-row font-raleway font-bold flex-col px-2 py-4 absolute lg:static items-center rounded-b-lg ms-4 text-[13px]  duration-1000 lg:gap-10 text-black`}>
                 <Links />
                 <LanguageSelector />
                 {session.data ? (
