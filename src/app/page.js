@@ -14,8 +14,8 @@ import Navbar from "./components/Homepage/Navbar/Navbar";
 export default function Home() {
   
   return (
-    <div className=" container mx-auto">
-      <div className="bg-[#F4F2DE] container mx-auto">
+    <div className=" container mx-auto bg-[url('/banner/dr3.jpg')] bg-center min-h-screen">
+      <div className=" container mx-auto bg-white/10 backdrop-blur-md backdrop-opacity-70">
           <div className="">
             <Navbar></Navbar>
           </div>

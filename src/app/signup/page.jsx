@@ -3,7 +3,7 @@ import Signup from '../components/SignUp/Signup';
 
 const page = () => {
     return (
-        <div>
+        <div className=" container mx-auto bg-[url('/banner/dr3.jpg')] bg-center min-h-screen">
            <Signup></Signup>
         </div>
     );
