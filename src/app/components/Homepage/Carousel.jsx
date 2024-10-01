@@ -120,7 +120,7 @@ const Carousel = () => {
     const currentContent = content[language] || {};
 
     return (
-        <div className='bg-blue-50  lg:p-14 p-5 '>
+        <div className='bg-black/20  lg:p-14 p-5 '>
             <div className='flex flex-col items-center justify-center '>
                 <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
                     <h1 className="text-2xl pb-3 font-bold text-center mx-auto text-gray-800 lg:text-5xl dark:text-white">

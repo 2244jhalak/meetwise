@@ -86,7 +86,7 @@ const AllIntegrations = () => {
     const { title, googleMeet, zoom, microsoftTeams } = translations[language];
 
     return (
-        <div className='bg-blue-50 md:py-16 md:px-28 p-5 text-center mx-auto'>
+        <div className='bg-black/20 md:py-16 md:px-28 p-5 text-center mx-auto'>
             <div className='flex flex-col items-center justify-center mb-6'>
                 <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
                     <h1 className="text-2xl pb-3 font-bold text-center mx-auto text-gray-800 lg:text-5xl dark:text-white">
@@ -96,25 +96,25 @@ const AllIntegrations = () => {
                 </div>
             </div>
             {/* <h3 className='text-4xl font-bold mb-10'>{title}</h3> */}
-            <div className='md:flex justify-between gap-5 mx-auto'>
-                <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-2xl text-start mt-5'>
-                    <div className='rounded-full p-3 w-16 bg-white shadow-xl'>
+            <div className='md:flex justify-between gap-5 mx-auto '>
+                <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-2xl text-start mt-5 lg:hover:scale-105 animate__animated animate__zoomIn '>
+                    <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
                         {/* <FaVideo className='text-green-500 text-2xl mb-2' /> */}
                         <Image src={googleMeet.image} alt="" width={1000} height={1000} />
                     </div>
                     <h3 className='text-xl my-2 font-bold'>{googleMeet.title}</h3>
                     <p>{googleMeet.description}</p>
                 </div>
-                <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-2xl text-start mt-5'>
-                    <div className='rounded-full p-3 w-16 bg-white shadow-xl'>
+                <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-2xl text-start mt-5 lg:hover:scale-105 animate__animated animate__zoomIn'>
+                    <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
                         {/* <FaVideo className='text-blue-500 text-2xl mb-2' /> */}
                         <Image src={zoom.image} alt="" width={1000} height={1000} />
                     </div>
                     <h3 className='text-xl my-2 font-bold'>{zoom.title}</h3>
                     <p>{zoom.description}</p>
                 </div>
-                <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-2xl text-start mt-5'>
-                    <div className='rounded-full p-3 w-16 bg-white shadow-xl'>
+                <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-2xl text-start mt-5 lg:hover:scale-105 animate__animated animate__zoomIn'>
+                    <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
                         {/* <FaVideo className='text-red-500 text-2xl mb-2' /> */}
                         <Image src={microsoftTeams.image} alt="" width={1000} height={1000} />
                     </div>
