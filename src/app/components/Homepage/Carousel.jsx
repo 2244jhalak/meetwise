@@ -164,7 +164,7 @@ const Carousel = () => {
                 </div>
 
                 {/* Control Buttons */}
-                <div className="w-full relative flex lg:-ml-[550px] md:-ml-[400px] -ml-[170px] gap-3 md:justify-start md:items-start pl-5 lg:mt-96 md:mt-80 mt-40">
+                <div className="w-full relative flex lg:-ml-[550px] md:-ml-[380px] -ml-[170px] gap-3 md:justify-start md:items-start pl-5 lg:mt-96 md:mt-[305px] mt-40">
                     <button
                         className="bg-green-600 text-white p-2 px-4 rounded-full shadow-lg hover:bg-gray-600 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
                         onClick={() => sliderRef.current.slickPrev()} // Go to previous slide
