@@ -1,7 +1,7 @@
 
 const OurOffer = () => {
     return (
-        <div className=" container mx-auto md:p-7 shadow-xl  bg-[#F8ECFF] my-12">
+        <div className="  container mx-auto md:p-7 shadow-xl  bg-[#F8ECFF] my-12">
             <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4  border-b-2 border-black text-center mx-auto text-gray-800 lg:text-3xl dark:text-white">
                 What We Offer
             </h1>

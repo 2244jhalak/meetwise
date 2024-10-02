@@ -1,9 +1,11 @@
-import React from 'react';
+import Meeting_Tab from '@/app/components/dashboard/Scheduled_Meeting/Meeting_Tab';
 
 const page = () => {
+
+    
     return (
         <div>
-            i am scheduledMeeting
+            <Meeting_Tab/>
         </div>
     );
 };

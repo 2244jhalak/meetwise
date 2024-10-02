@@ -1,9 +1,11 @@
 
+import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import FeatureCard from './FeatureCard';
 
 
 const AutoRecord = () => {
-    const { language } = useLanguage(); 
+    const { language } = useLanguage();
 
     const texts = {
         en: {
@@ -54,41 +56,34 @@ const AutoRecord = () => {
 
     const currentTexts = texts[language] || texts.en; // বর্তমান ভাষার টেক্সট নির্ধারণ করুন
 
+    // data fetching for all features section
+    const [Data, setData] = useState([])
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // Fetch the JSON file from the public folder
+                const res = await fetch('/features.json');
+                const jsonData = await res.json();
+                setData(jsonData);
+                console.log(Data);
+            } catch (error) {
+                console.error('Error fetching JSON data:', error);
+            }
+        };
+
+        fetchData();
+    }, [Data]);
+
     return (
-        <div className='flex my-12 flex-col container bg-[#F8ECFF] px-14 py-10 mx-auto md:flex-row md:justify-between gap-6'>
-            <div className='bg-pink-50 shadow-xl md:h-[500px] w-full md:w-1/2 rounded-xl'>
-                <div className='bg-gradient-to-r from-violet-500 to-fuchsia-500 flex justify-center items-center h-80' style={{
-                    backgroundImage: `url('https://docs.daily.co/assets/prebuilt-hero.png')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                }}>
-                    <h1 className='text-red-500 font-semibold md:text-xl text-center'>{currentTexts.title}</h1>
-                </div>
+        <div className=' bg-green-50 p-4 md:px-14 py-10 container mx-auto'>
 
-                <div className='md:p-6 p-2'>
-                    <h1 className='text-2xl font-semibold'>{currentTexts.title}</h1>
-                    <p>{currentTexts.description}</p>
-                    <button className='btn mt-2 bg-blue-700 text-white px-3 py-1 rounded-3xl'>{currentTexts.buttonLearnMore}</button>
-                </div>
+            <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-black text-center mx-auto text-gray-800 lg:text-3xl md:w-1/4 dark:text-white">Our All Features</h1>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+                {
+                    Data.map(data => <FeatureCard data={data} key={data.id}></FeatureCard>)
+                }
             </div>
 
-            <div className='bg-violet-100 shadow-xl md:h-[500px] w-full md:w-1/2 rounded-xl'>
-                <div className='grid grid-cols-1 mt-8 gap-3'>
-                    <div className='p-3 w-3/5 rounded-2xl mx-auto bg-pink-100'>
-                        <span className='font-semibold'>Andy</span> <br />{currentTexts.userMessages.andy}
-                    </div>
-                    <div className='p-3 w-3/5 rounded-2xl mx-auto bg-pink-100'>
-                        <span className='font-semibold'>Johnson</span> <br />{currentTexts.userMessages.johnson}
-                    </div>
-                    <div className='opacity-50 p-3 w-3/5 rounded-2xl mx-auto bg-pink-100'>{currentTexts.userMessages.eva}</div>
-                </div>
-
-                <div className='p-8 md:mt-2'>
-                    <h1 className='text-2xl mt-1 font-semibold'>Transcription</h1>
-                    <p>{currentTexts.transcription}</p>
-                    <button className='btn mt-2 bg-blue-700 text-white px-3 py-1 rounded-3xl'>{currentTexts.buttonLearnMore}</button>
-                </div>
-            </div>
         </div>
     );
 };

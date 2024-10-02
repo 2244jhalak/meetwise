@@ -120,16 +120,16 @@ const Carousel = () => {
     const currentContent = content[language] || {};
 
     return (
-        <div className='bg-black/20  lg:p-14 p-5 '>
+        <div className='bg-black/30 backdrop-blur-md backdrop-opacity-70  lg:p-14 p-5 '>
             <div className='flex flex-col items-center justify-center '>
                 <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
-                    <h1 className="text-3xl pb-3 font-bold text-center mx-auto text-gray-800 lg:text-5xl dark:text-white">
+                    <h1 className="text-3xl pb-3 font-bold text-center mx-auto lg:text-5xl text-white">
                     {currentContent.heading || "Testimonials"}
                     </h1>
-                    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-violet-700 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
+                    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-600 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
                 </div>
 
-                <p className='text-lg font-raleway w-1/2 text-slate-500 mt-4 text-center my-8'>
+                <p className='text-lg font-raleway w-1/2 text-slate-400 mt-4 text-center my-8'>
                     {currentContent.paragraph || "Our users’ feedback is the driving force behind everything we do. Here’s what they have to say about how our platform has made scheduling meetings easier and more efficient for their businesses."}
                 </p>
             </div>
@@ -150,12 +150,12 @@ const Carousel = () => {
                                         style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 0% 100%)' }}
                                     />
                                     <div className="text-end md:-mt-20">
-                                        <h3 className="text-xl font-bold">{slide.title}</h3>
-                                        <p className="text-gray-500 text-md">{slide.position}</p>
+                                        <h3 className="text-xl text-white font-bold">{slide.title}</h3>
+                                        <p className="text-gray-400 text-md">{slide.position}</p>
                                     </div>
                                 </div>
 
-                                <div className='absolute bg-white p-4 shadow-lg lg:-mt-96 md:-mt-60 -mt-52 lg:ml-[450px] md:ml-[280px] ml-44 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36'>
+                                <div className='absolute bg-green-100 text-gray-700 p-4 shadow-lg lg:-mt-96 md:-mt-60 -mt-52 lg:ml-[450px] md:ml-[280px] ml-44 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36 shadow-green-900'>
                                     <p className="lg:text-[38px] md:text-3xl text-[10px] font-bold inline-block leading-snug rounded-lg ">{slide.quote}</p>
                                 </div>
                             </div>
@@ -166,13 +166,13 @@ const Carousel = () => {
                 {/* Control Buttons */}
                 <div className="w-full relative flex lg:-ml-[550px] md:-ml-[400px] -ml-[170px] gap-3 md:justify-start md:items-start pl-5 lg:mt-96 md:mt-80 mt-40">
                     <button
-                        className="bg-gray-800 text-white p-2 px-4 rounded-full shadow-lg hover:bg-gray-600 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        className="bg-green-600 text-white p-2 px-4 rounded-full shadow-lg hover:bg-gray-600 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
                         onClick={() => sliderRef.current.slickPrev()} // Go to previous slide
                     >
                         <span className="text-2xl">&lt;</span>
                     </button>
                     <button
-                        className="bg-gray-800 text-white p-2 px-4 rounded-full shadow-lg hover:bg-gray-600 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        className="bg-green-600 text-white p-2 px-4 rounded-full shadow-lg hover:bg-gray-600 transition-colors duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-400"
                         onClick={() => sliderRef.current.slickNext()} // Go to next slide
                     >
                         <span className="text-2xl">&gt;</span>
