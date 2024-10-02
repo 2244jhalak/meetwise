@@ -1,89 +1,89 @@
 import { connectDB } from "@/app/lib/connectDB";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google"
-// import GitHubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
 
 const handler = NextAuth({
-   secret: process.env.NEXTAUTH_SECRET,
-   session: {
-      strategy: 'jwt',
-      maxAge: 30 * 24 * 60 * 60,
-   },
-   providers: [
-      CredentialsProvider({
-         credentials: {
-            email: {},
-            password: {},
-         },
-         async authorize(credentials) {
-            const { email, password } = credentials;
-            if (!email || !password) {
-               return null;
+    secret: process.env.NEXTAUTH_SECRET,
+    session: {
+        strategy: 'jwt',
+        maxAge: 30 * 24 * 60 * 60, // 30 days
+    },
+    providers: [
+        CredentialsProvider({
+            credentials: {
+                email: {},
+                password: {},
+            },
+            async authorize(credentials) {
+                const { email, password } = credentials;
+                if (!email || !password) {
+                    return null;
+                }
+                const db = await connectDB();
+                const currentUser = await db.collection('users').findOne({ email });
+                if (!currentUser) {
+                    return null;
+                }
+                const passwordMatched = bcrypt.compareSync(password, currentUser.password);
+                if (!passwordMatched) {
+                    return null;
+                }
+                return currentUser;
+            },
+        }),
+        GoogleProvider({
+            clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+            clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
+            async profile(profile) {
+                const db = await connectDB();
+                const user = await db.collection('users').findOne({ email: profile.email });
+
+                if (!user) {
+                    // If the user doesn't exist, create a new user
+                    await db.collection('users').insertOne({
+                        name: profile.name,
+                        email: profile.email,
+                        image: profile.picture,
+                        // Add any other fields as necessary
+                    });
+                }
+                return {
+                    id: profile.sub, // Use the Google user ID
+                    name: profile.name,
+                    email: profile.email,
+                    image: profile.picture,
+                }; // Return the profile to be used in the session
+            },
+        }),
+    ],
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.id = user.id; // Use the user ID from the profile
+                token.image = user.image;
+                token.name = user.name; // Save the name in the token
             }
-            const db = await connectDB();
-            const currentUser = await db.collection('users').findOne({ email });
-            if (!currentUser) {
-               return null;
+            return token;
+        },
+        async session({ session, token }) {
+            session.user.id = token.id;
+            session.user.image = token.image;
+            session.user.name = token.name; // Include the name in the session
+            return session;
+        },
+        async redirect({ url, baseUrl }) {
+            // Redirect to /dashboard after login
+            if (url === baseUrl) {
+                return `${baseUrl}/dashboard`;
             }
-            const passwordMatched = bcrypt.compareSync(password, currentUser.password);
-            if (!passwordMatched) {
-               return null;
-            }
-            return currentUser;
-         },
-      }),
-      GoogleProvider({
-         clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-         clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET
-      }),
-      // GitHubProvider({
-      //    clientId: process.env.GITHUB_ID,
-      //    clientSecret: process.env.GITHUB_SECRET
-      // })
-   ],
-   callbacks: {
-      async jwt({ token, user }) {
-         // প্রথমবার লগইন করলে user এর তথ্য JWT টোকেনে যোগ করা হচ্ছে
-         if (user) {
-            token.id = user._id;
-            token.image = user.image; // ডাটাবেজ থেকে পাওয়া photoUrl যোগ করা হচ্ছে
-         }
-         return token;
-      },
-      async signIn({user,account}){
-         if(account.provider==='google'){
-            const {name,email,image} = user;
-            try {
-              const db = await connectDB();
-              const usersCollection = db.collection("users");
-              const userExist = await usersCollection.findOne({email});
-              if(!userExist){
-                const res = await usersCollection.insertOne(user);
-                return user;
-              }
-              else{
-               return user;
-              }
-            } catch (error) {
-               console.log(error);
-            }
-         }
-         else{
-            return user;
-         }
-      },
-      async session({ session, token }) {
-         // সেশন কাস্টমাইজ করা হচ্ছে, এখানে photoUrl যোগ করা হচ্ছে
-         session.user.id = token.id;
-         session.user.image = token.image; // JWT থেকে photoUrl সেশনে যোগ করা হচ্ছে
-         return session;
-      },
-   },
-   pages: {
-      signIn: '/login',
-   },
+            return url;
+        },
+    },
+    pages: {
+        signIn: '/login',
+    },
 });
 
 export { handler as GET, handler as POST };

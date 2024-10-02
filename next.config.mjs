@@ -5,13 +5,13 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'i.ibb.co', // imgbb image hosting
+        hostname: '**', // Allows images from any https domain
         port: '',
         pathname: '/**',
       },
       {
-        protocol: 'https',
-        hostname: 'lh3.googleusercontent.com', // Google profile images
+        protocol: 'http',
+        hostname: '**', // Allows images from any http domain
         port: '',
         pathname: '/**',
       },
@@ -20,4 +20,5 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
 

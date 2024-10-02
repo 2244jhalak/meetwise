@@ -9,7 +9,7 @@ const NavLink = ({link}) => {
     return (
         <div className=''>
             
-            <Link className={`mr-16 px-3 rounded-2xl py-1 m-auto ${link.path===path?'bg-[#6b579c] text-white':''}`} href={link.path}>{link.element}</Link>
+            <Link className={`mr-16 px-3 rounded-2xl py-2 m-auto ${link.path===path?'bg-[#6fd655] text-white':''}`} href={link.path}>{link.element}</Link>
         </div>
     );
 };

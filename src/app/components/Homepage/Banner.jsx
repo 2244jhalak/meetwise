@@ -1,65 +1,91 @@
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
-
+import animationData1 from '../../../../public/banner/animation-1.json';
+import animationData2 from '../../../../public/banner/animation-2.json';
+import animationData3 from '../../../../public/banner/animation-3.json';
+import LottieAnimation from "../Lottie/LottieAnimation";
+import Slider from 'react-slick'; 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const translations = {
   en: {
-    title: 'Elevate Your Meetings with AI-powered Recording',
-    description: 'With our advanced artificial intelligence technology, your meetings are not just recorded – they\'re transformed into valuable insights and productivity boosters.',
-    startButton: 'Start for Free',
-    demoButton: 'Watch Demo',
-    activeUsers: '10K+ Active users per month',
-    availableCountries: 'Available in over 23 countries',
+    title: 'Simplify Scheduling with Meetwise',
+    description: 'Meetwise takes the hassle out of scheduling by letting you book meetings with ease. Focus on what matters and leave the scheduling to us.',
+    startButton: 'Sign Up for Free',
+    demoButton: 'See How It Works',
+    activeUsers: '10M+ Active users worldwide',
+    availableCountries: 'Used in over 190 countries',
   },
   bn: {
-    title: 'এআই-সক্ষম রেকর্ডিংয়ের মাধ্যমে আপনার মিটিং উন্নত করুন',
-    description: 'আমাদের উন্নত কৃত্রিম বুদ্ধিমত্তা প্রযুক্তির সাথে, আপনার মিটিংগুলি শুধু রেকর্ড করা হয় না - এগুলি মূল্যবান অন্তর্দৃষ্টি এবং উৎপাদনশীলতার উত্থান হিসেবে রূপান্তরিত হয়।',
-    startButton: 'ফ্রি শুরু করুন',
-    demoButton: 'ডেমো দেখুন',
-    activeUsers: '১০K+ সক্রিয় ব্যবহারকারী প্রতি মাসে',
-    availableCountries: '২৩+ অনেক দেশে উপলব্ধ',
+    title: 'মিটওয়াইজ দিয়ে সময় নির্ধারণকে সহজ করুন',
+    description: 'মিটওয়াইজ আপনার সময় নির্ধারণের ঝামেলা দূর করে সহজে মিটিং বুক করার সুযোগ দেয়। গুরুত্বপূর্ণ কাজের উপর মনোনিবেশ করুন, সময় নির্ধারণ আমাদের উপর ছেড়ে দিন।',
+    startButton: 'ফ্রি সাইন আপ করুন',
+    demoButton: 'কিভাবে কাজ করে দেখুন',
+    activeUsers: '১০M+ সক্রিয় ব্যবহারকারী বিশ্বজুড়ে',
+    availableCountries: '১৯০+ দেশে ব্যবহৃত হচ্ছে',
   },
   fr: {
-    title: 'Améliorez vos réunions avec un enregistrement alimenté par l\'IA',
-    description: 'Avec notre technologie avancée d\'intelligence artificielle, vos réunions ne sont pas seulement enregistrées – elles sont transformées en précieuses informations et en leviers de productivité.',
-    startButton: 'Commencer gratuitement',
-    demoButton: 'Regarder la démo',
-    activeUsers: '10K+ utilisateurs actifs par mois',
-    availableCountries: 'Disponible dans plus de 23 pays',
+    title: 'Simplifiez la planification avec Meetwise',
+    description: 'Meetwise élimine les tracas de la planification en vous permettant de réserver des réunions facilement. Concentrez-vous sur l\'essentiel et laissez-nous gérer la planification.',
+    startButton: 'Inscrivez-vous gratuitement',
+    demoButton: 'Découvrez comment ça marche',
+    activeUsers: '10M+ utilisateurs actifs dans le monde',
+    availableCountries: 'Utilisé dans plus de 190 pays',
   },
   es: {
-    title: 'Eleva tus reuniones con grabación impulsada por IA',
-    description: 'Con nuestra avanzada tecnología de inteligencia artificial, tus reuniones no solo se graban, sino que se transforman en valiosos conocimientos y potenciadores de productividad.',
-    startButton: 'Comienza gratis',
-    demoButton: 'Ver demo',
-    activeUsers: '10K+ usuarios activos por mes',
-    availableCountries: 'Disponible en más de 23 países',
+    title: 'Simplifica la programación con Meetwise',
+    description: 'Meetwise elimina las complicaciones de la programación permitiéndote reservar reuniones con facilidad. Concéntrate en lo importante y deja la programación en nuestras manos.',
+    startButton: 'Regístrate gratis',
+    demoButton: 'Mira cómo funciona',
+    activeUsers: '10M+ usuarios activos en todo el mundo',
+    availableCountries: 'Utilizado en más de 190 países',
   },
-};
+  
+}
+
 
 const Banner = () => {
+  const settings = {
+    dots: false,  // প্যাগিনেশন ডটস অফ
+    infinite: true,  // ইনফিনিট লুপ অন
+    speed: 500,  // ট্রানজিশন স্পিড
+    slidesToShow: 1,  // একবারে এক স্লাইড
+    slidesToScroll: 1,  // একবারে এক স্লাইড স্ক্রল
+    autoplay: true,  // অটোপ্লে চালু
+    autoplaySpeed: 5000,  // ২ সেকেন্ড পর স্লাইড পরিবর্তন
+    arrows: false,  // নেভিগেশন এরো বন্ধ
+    vertical: true,  // y-axis বা উপরে থেকে নিচে স্লাইড
+    verticalSwiping: true,  // Vertical swipe সক্রিয়
+  }
   const { language } = useLanguage();
   
   return (
-    <div className="bg-[#F8ECFF] py-10">
-      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+    <div className="container mx-auto bg-white/10 backdrop-blur-md backdrop-opacity-70 py-10"
+   >
+      <div className="container   mx-auto flex flex-col-reverse md:flex-row  items-center justify-between">
         {/* Left Side */}
         <div className="md:w-1/2 w-full text-center md:text-left p-5">
-          <h1 className="text-4xl lg:text-7xl font-bold text-[#2A106B] mb-4">
+          <h1 className="text-4xl lg:text-7xl font-bold text-slate-100 mb-4">
             {translations[language].title}
           </h1>
-          <p className="text-lg font-normal leading-7 text-[#5E5961] mb-6">
+          <p className="text-lg font-normal leading-7 text-slate-200  mb-6">
             {translations[language].description}
           </p>
           <div className="flex justify-center md:justify-start gap-4 mb-6">
-            <button className="bg-[#331181] text-white px-6 py-3 rounded-md hover:bg-purple-700">
-              {translations[language].startButton}
-            </button>
-            <button className="bg-[#FFFFFF] border border-purple-600 text-[#827B85] px-6 py-3 rounded-md hover:bg-purple-600 hover:text-white">
-              {translations[language].demoButton}
-            </button>
+          <button
+  className="relative inline-block px-6 py-3 font-bold text-white rounded-full border border-transparent transition duration-300 ease-in-out overflow-hidden group"
+  style={{
+    background: 'linear-gradient(90deg, rgba(69,89,66,1) 0%, rgba(67,207,57,0.8241421568627451) 35%, rgba(117,154,162,1) 100%)',
+  }}
+>
+  <span className="relative z-10">{translations[language].startButton}</span>
+  <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-in-out transform rounded-full bg-transparent group-hover:translate-x-1 group-hover:translate-y-1"></span>
+</button>
+         
+          
           </div>
-          <div className="flex justify-center md:justify-start gap-8">
+          {/* <div className="flex justify-center md:justify-start gap-8">
             <div className="lg:text-4xl font-semibold">
               {translations[language].activeUsers}{" "}
               
@@ -67,36 +93,55 @@ const Banner = () => {
             <div className="text-4xl font-semibold">
               {translations[language].availableCountries}{" "}
               
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
 
         {/* Right Side */}
-        <div className="md:w-1/2 w-full p-14 flex flex-col items-center">
+        <div className="md:w-1/2 w-full p-5">
+          <Slider {...settings}>
+            <div className="flex-col flex items-center justify-center space-y-1">
+              <LottieAnimation animationData={animationData1} />
+              <div><h1 className="container mx-auto text-center font-bold font-raleway text-green-600">Meeting Made Simple</h1></div>
+          
+            </div>
+            <div className="flex-col flex items-center justify-center space-y-1">
+              <LottieAnimation animationData={animationData2} />
+              <div><h1 className="container mx-auto text-center font-bold font-raleway text-green-600">Schedule with Ease</h1></div>
+          
+            </div>
+            <div className="flex-col flex items-center justify-center space-y-1">
+              <LottieAnimation animationData={animationData3} />
+              <div><h1 className="container mx-auto text-center font-bold font-raleway text-green-600">Smart Time Management</h1></div>
+          
+            </div>
+          </Slider>
+        </div>
+        {/* <div className="md:w-1/2 w-full p-14 flex flex-col items-center ">
           <Image
-            src="/banner/meetwise-banner-1.jpg"
+            src="/banner/banner3.jpg"
             alt="Main Banner Image"
             width={600}
             height={400}
-            className="w-full h-auto mb-6 rounded-lg"
+            className="w-full h-auto mb-6 rounded-lg border border-white shadow-xl"
           />
           <div className="flex gap-4">
             <Image
-              src="/banner/meetwise-banner-1.jpg"
+              src="/banner/banner5.jpg"
               alt="Secondary Image 1"
               width={300}
               height={200}
-              className="w-1/2 h-auto rounded-lg"
+              className="w-1/2 h-auto rounded-lg border border-white shadow-xl"
             />
             <Image
-              src="/banner/meetwise-banner-1.jpg"
+              src="/banner/banner6.jpg"
               alt="Secondary Image 2"
               width={300}
               height={200}
-              className="w-1/2 h-auto rounded-lg"
+              className="w-1/2 h-auto rounded-lg border border-white shadow-xls"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
