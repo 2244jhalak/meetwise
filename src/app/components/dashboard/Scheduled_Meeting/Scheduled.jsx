@@ -14,7 +14,7 @@ const Scheduled = () => {
         const fetchUser = async () => {
             
                 try {
-                    const response = await fetch(`http://localhost:3000/dashboard/scheduledMeeting/api/${session?.data?.user?.email}`);
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/scheduledMeeting/api/${session?.data?.user?.email}`);
                     
                     
                     if (!response.ok) {
