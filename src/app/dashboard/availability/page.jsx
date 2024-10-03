@@ -1,11 +1,16 @@
 import AvailabilityForm from '@/app/components/dashboard/Availability/AvailabilityForm';
+import Sidebar from '@/app/components/dashboard/Sidebar';
 import React from 'react';
 
 const page = () => {
     return (
-        <div className='container mx-auto '>
+      <>
+      <Sidebar></Sidebar>
+      <div className='container mx-auto '>
           <AvailabilityForm></AvailabilityForm>
         </div>
+      </>
+        
     );
 };
 

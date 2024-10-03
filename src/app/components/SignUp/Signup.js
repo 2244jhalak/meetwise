@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import { useState } from 'react';
 import {FaEye, FaEyeSlash} from 'react-icons/fa';
-import { FaFacebook, FaGithub, FaFan } from 'react-icons/fa';
+import { FaFan } from 'react-icons/fa';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
 import { signIn } from 'next-auth/react';

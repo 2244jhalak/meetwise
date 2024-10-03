@@ -1,11 +1,16 @@
-import Meeting_Tab from '@/app/components/dashboard/Scheduled_Meeting/Meeting_Tab';
+
+import Scheduled from '@/app/components/dashboard/Scheduled_Meeting/Scheduled';
+import Sidebar from '@/app/components/dashboard/Sidebar';
 
 const page = () => {
 
     
     return (
         <div>
-            <Meeting_Tab/>
+            <Sidebar></Sidebar>
+            <div className='container mx-auto'>
+            <Scheduled></Scheduled>
+           </div>
         </div>
     );
 };
