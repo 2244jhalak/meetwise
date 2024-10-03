@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 
 const FeatureCard = ({ data }) => {
-    console.log(data);
+    
     return (
         <div>
             <motion.div

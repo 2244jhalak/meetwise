@@ -65,7 +65,7 @@ const AutoRecord = () => {
                 const res = await fetch('/features.json');
                 const jsonData = await res.json();
                 setData(jsonData);
-                console.log(Data);
+                
             } catch (error) {
                 console.error('Error fetching JSON data:', error);
             }
