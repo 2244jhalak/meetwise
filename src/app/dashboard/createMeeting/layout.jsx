@@ -1,11 +1,16 @@
-"use client";
-// import { FaUserCircle } from "react-icons/fa";
+"use client"
 
 
-const layout = ({ children }) => {
+
+import React from 'react';
+
+const layout = ({children}) => {
+    
+
     return (
         <div>
             {children}
+            
         </div>
     );
 };
