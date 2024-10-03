@@ -28,7 +28,7 @@ const TimeSlotPicker = ({ duration }) => {
           <button
             key={index}
             className="bg-white border border-blue-500 text-blue-500 p-2 rounded hover:text-black transition duration-200"
-            onClick={() => alert(`Selected Time Slot: ${slot}`)} 
+            // onClick={() => alert(`Selected Time Slot: ${slot}`)} 
           >
             {slot}
           </button>
