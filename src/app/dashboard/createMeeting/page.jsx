@@ -1,13 +1,10 @@
+import Create from '@/app/components/dashboard/createMeeting/Create';
 import React from 'react';
-
-
-import Sidebar from '../components/dashboard/Sidebar';
 
 const page = () => {
     return (
         <div>
-           <Sidebar></Sidebar>
-        
+            <Create></Create>
         </div>
     );
 };
