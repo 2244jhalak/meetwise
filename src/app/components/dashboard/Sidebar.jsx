@@ -1,7 +1,7 @@
 "use client";
 import { GrLogout } from 'react-icons/gr'
 import { CiClock2 } from "react-icons/ci";
-import { BsHandbag } from "react-icons/bs";
+import { BsHandbag, BsPlus } from "react-icons/bs";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { FcSettings } from "react-icons/fc"
 import { ImProfile } from "react-icons/im";
@@ -10,9 +10,15 @@ import { AiOutlineBars } from 'react-icons/ai'
 import Link from "next/link";
 import NavigationDash from "./NavigationDash";
 import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
+
+
 
 const Sidebar = () => {
     const [isActive, setActive] = useState(false);
+    const pathname = usePathname();
+    console.log(pathname);
 
     const handleToggle = () => {
         setActive(!isActive)
@@ -20,7 +26,9 @@ const Sidebar = () => {
 
     return (
         <>
-            {/* Small Screen Navbar */}
+            
+                
+                  {/* Small screen Navbar */}
             <div className='bg-[#F4F2DE] text-gray-800 flex justify-between md:hidden'>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
@@ -63,6 +71,11 @@ const Sidebar = () => {
 
                 <div>
                     <NavigationDash
+                        label='Create Meeting'
+                        address='/dashboard/createMeeting'
+                        icon={BsPlus}
+                    />
+                    <NavigationDash
                         label='Meeting Type'
                         address='/dashboard/meetingType'
                         icon={BsHandbag}
@@ -104,9 +117,11 @@ const Sidebar = () => {
                         <span className='mx-4 font-medium'>Logout</span>
                     </button>
                 </div>
-            </div>
+            </div> 
+            
         </>
+        
     )
-}
 
+}
 export default Sidebar;
