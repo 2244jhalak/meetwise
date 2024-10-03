@@ -6,13 +6,13 @@ const AboutHeader = () => {
             <div
                 className="hero h-[300px] md:h-[450px] rounded-sm"
                 style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),url('https://st.depositphotos.com/1038076/4908/i/450/depositphotos_49080337-stock-photo-about-us.jpg')`,
+                    // backgroundImage: `url('')`,
                     backgroundSize: 'cover',        // Ensure the image covers the container
                     backgroundPosition: 'center',   // Center the image
                     backgroundRepeat: 'no-repeat'
                 }}
             >
-                <div className="hero-overlay bg-opacity-70"></div>
+                <div className="hero-overlay bg-opacity-50"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="my-auto">
                         <h1 className=" text-4xl md:text-6xl w-full pt-20  text-white font-extrabold font-raleway mb-4" >About Us</h1>
