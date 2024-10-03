@@ -75,10 +75,10 @@ const AutoRecord = () => {
     }, [Data]);
 
     return (
-        <div className=' bg-green-50 p-4 md:px-14 py-10 container mx-auto'>
+        <div className=' bg-black/30 backdrop-blur-md backdrop-opacity-70 p-4 md:px-14 py-10 container mx-auto'>
 
-            <h1 className='font-semibold text-3xl text-center mb-6'>Our All Features</h1>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+            <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-orange-500 text-center mx-auto text-slate-100 lg:text-3xl md:w-1/4 dark:text-white">Our All Features</h1>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
                 {
                     Data.map(data => <FeatureCard data={data} key={data.id}></FeatureCard>)
                 }
