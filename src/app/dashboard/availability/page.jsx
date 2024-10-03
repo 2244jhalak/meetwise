@@ -5,9 +5,11 @@ import React from 'react';
 const page = () => {
     return (
       <>
-      <Sidebar></Sidebar>
-      <div className='container mx-auto '>
+      <div className='md:flex md:flex-row md:justify-between'>
+      <div className='md:w-1/4'><Sidebar></Sidebar></div>
+      <div className='container mx-auto md:w-3/4 p-4 '>
           <AvailabilityForm></AvailabilityForm>
+        </div>
         </div>
       </>
         
