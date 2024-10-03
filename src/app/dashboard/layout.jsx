@@ -4,7 +4,7 @@
 
 const layout = ({ children }) => {
     return (
-        <div>
+        <div >
             {children}
         </div>
     );
