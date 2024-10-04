@@ -25,7 +25,7 @@ export default function Home() {
       <AutoRecord></AutoRecord>
       <AllIntegrations></AllIntegrations>
       <Carousel></Carousel>
-      <TryMeet />
+ 
       
       <Footer></Footer>
     </div>

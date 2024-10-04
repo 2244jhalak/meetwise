@@ -5,7 +5,7 @@ import Sidebar from '../components/dashboard/Sidebar';
 
 const page = () => {
     return (
-        <div>
+        <div> 
            <Sidebar></Sidebar>
         
         </div>
