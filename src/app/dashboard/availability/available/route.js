@@ -1,5 +1,7 @@
 import { connectDB } from "@/app/lib/connectDB";
 
+
+
 // Handle PUT and GET requests
 export const PUT = async (request) => {
     try {
@@ -9,16 +11,42 @@ export const PUT = async (request) => {
         const available = await request.json();
         console.log("Received data for update:", available);
 
-        // Update the availability based on the email
         const filter = { email: available.email };
+
+        // Create an object to dynamically set all time-related fields
+        const updateTimes = {};
+        const unsetTimes = {};
+
+        for (const day in available.times) {
+            if (available.times[day].startTime && available.times[day].endTime) {
+                // If day is selected, add to update object
+                updateTimes[`times.${day}.startTime`] = available.times[day].startTime;
+                updateTimes[`times.${day}.endTime`] = available.times[day].endTime;
+            }
+        }
+
+        // Find all previously selected days from the database
+        const existingAvailability = await availabilityCollection.findOne(filter);
+        if (existingAvailability && existingAvailability.times) {
+            // Identify days that were removed and need to be unset
+            for (const day in existingAvailability.times) {
+                if (!available.times[day]) {
+                    unsetTimes[`times.${day}`] = ""; // Unset this day if it's no longer selected
+                }
+            }
+        }
+
         const update = {
             $set: {
                 name: available.name,
-                startTime: available.startTime,
-                endTime: available.endTime,
-                days: available.days,
+                email: available.email,
+                ...updateTimes  // Spread dynamically created time fields
             },
         };
+
+        if (Object.keys(unsetTimes).length > 0) {
+            update.$unset = unsetTimes; // Add unset for days that were removed
+        }
 
         const result = await availabilityCollection.updateOne(filter, update, { upsert: true });
         console.log("Update result:", result);
@@ -36,6 +64,8 @@ export const PUT = async (request) => {
         );
     }
 };
+
+
 
 export const GET = async (request) => {
     try {
