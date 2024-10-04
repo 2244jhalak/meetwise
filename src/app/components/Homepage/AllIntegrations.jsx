@@ -1,6 +1,5 @@
 // import Image from 'next/image';
 import React, { useEffect } from 'react';
-import { FaVideo } from "react-icons/fa";
 import { useLanguage } from '../context/LanguageContext';
 import Image from 'next/image';
 import AOS from 'aos';
@@ -107,7 +106,6 @@ const AllIntegrations = () => {
             <div className='md:flex justify-between gap-5 mx-auto '>
                 <div className='bg-green-100 p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-xl text-start mt-5  shadow-green-900'>
                     <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
-                        {/* <FaVideo className='text-green-500 text-2xl mb-2' /> */}
                         <Image src={googleMeet.image} alt="" width={1000} height={1000} />
                     </div>
                     <h3 className='text-xl my-2 font-bold'>{googleMeet.title}</h3>
