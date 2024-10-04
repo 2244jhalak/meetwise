@@ -69,7 +69,7 @@ const Sidebar = () => {
 
                 </div>
 
-                <div>
+                <div className='container mx-auto'>
                     <NavigationDash
                         label='Create Meeting'
                         address='/dashboard/createMeeting'

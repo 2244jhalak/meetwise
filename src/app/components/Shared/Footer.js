@@ -87,12 +87,12 @@ const Footer = () => {
           <Image className='w-[75px] bg-white rounded-full -mt-8 -mb-14' src={logo} alt="" />
           <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" className="fill-current">
           </svg>
-          <p className="text-2xl font-bold ">Meet <span className="text-green-500">Wise</span></p>
+          <p className="text-2xl font-bold text-gray-300">Meet <span className="text-green-500">Wise</span></p>
           <p>{content[language].tagline}</p>
         </aside>
         <nav className="flex">
           <nav>
-            <h6 className="footer-title">{content[language].product}</h6>
+            <h6 className="footer-title text-white">{content[language].product}</h6>
             <br />
             <a className="link link-hover" href="/"> {content[language].overview}</a>
             <br />
@@ -101,7 +101,7 @@ const Footer = () => {
             <a className="link link-hover" href="/"> {content[language].integration}</a>
           </nav>
           <nav className='ml-20'>
-            <h6 className="footer-title">{content[language].company}</h6>
+            <h6 className="footer-title text-white">{content[language].company}</h6>
             <br />
             <a className="link link-hover" href="/"> {content[language].about}</a>
             <br />
@@ -111,13 +111,13 @@ const Footer = () => {
           </nav>
         </nav>
         <nav className=''>
-          <h6 className="footer-title">{content[language].resources}</h6>
+          <h6 className="footer-title text-white">{content[language].resources}</h6>
           <a className="link link-hover" href="/"> {content[language].career}</a>
           <a className="link link-hover" href="/"> {content[language].contact}</a>
           <a className="link link-hover" href="/"> {content[language].blog}</a>
         </nav>
         <div className="space-y-3 text-gray-400">
-          <div className=" footer-title text-gray-400">Social media</div>
+          <div className=" footer-title text-white">Social media</div>
           <div className="flex justify-start space-x-3">
             <a rel="noopener noreferrer" href="#" title="Facebook" className="flex items-center p-1">
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-5 h-5 fill-current">
@@ -138,7 +138,7 @@ const Footer = () => {
         </div>
       </footer>
       <hr className="mx-36" />
-      <div className="py-6 p-14 text-sm text-center text-gray-500">{content[language].rights} {content[language].builtBy}</div>
+      <div className="py-6 p-14 text-sm text-center text-gray-400">{content[language].rights} {content[language].builtBy}</div>
     </div>
 
     // <div className="bg-[#F8ECFF] ">
