@@ -185,7 +185,7 @@ const AvailabilityForm = () => {
                 {/* Save Button */}
                 <div className="text-center mt-7 py-5">
                     <button type="submit" className="px-6 py-2 bg-green-700 text-white rounded-md hover:bg-green-900">
-                        Save Availability
+                        Save Availability 
                     </button>
                 </div>
             </form>
