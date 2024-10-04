@@ -2,11 +2,11 @@ import React from 'react';
 
 const ContactHeader = () => {
   return (
-    <div className='container mx-auto'>
+    <div className=' container mx-auto bg-white/10 backdrop-blur-md backdrop-opacity-70'>
       <div
         className="hero h-[300px] md:h-[450px] rounded-sm"
         style={{
-          backgroundImage: `url('/Contact/asethetic.jpg')`,
+          backgroundImage: `url('')`,
           backgroundSize: 'cover',        // Ensure the image covers the container
           backgroundPosition: 'center',   // Center the image
           backgroundRepeat: 'no-repeat'
