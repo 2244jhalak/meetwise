@@ -7,6 +7,7 @@ const page = () => {
     
     return (
         <div>
+            
             <Sidebar></Sidebar>
             <div className='container mx-auto'>
             <Scheduled></Scheduled>
