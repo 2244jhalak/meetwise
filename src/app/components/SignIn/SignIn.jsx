@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 
 import Swal from 'sweetalert2';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import LottieAnimation from "../Lottie/LottieAnimation";
+import Login from '../../../../public/banner/log.json';
 
 const SignIn = () => {
     const [showpassword, setShowpassword] = useState(false)
@@ -47,43 +49,35 @@ const SignIn = () => {
     }
 
     return (
-        <div className="container mx-auto bg-gray-100 ">
-            <div className='flex flex-col gap-2 md:flex-row '>
+        <div className="container mx-auto pb-5">
+            <div className='flex flex-col gap-2 md:flex-row items-center justify-center'>
                 {/* left side  */}
                 <div
-  className="md:w-4/5 min-h-screen bg-[url('/banner/bg-3.jpg')] bg-cover bg-center flex justify-center items-center"
+  className="md:w-4/5 min-h-screen md:pt-16 "
 >
-  <div className="w-2/3">
-    <Image
-      src="/banner/login-2.png"
-      alt="Main Banner Image"
-      width={800}
-      height={400}
-      className="w-full  h-auto object-contain"
-    />
-  </div>
+   <LottieAnimation animationData={Login}></LottieAnimation>
 </div>
 
               {/* form */}
             <div className="md:w-4/5 flex pt-5 flex-col items-center space-y-6 min-h-screen">
             <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
-    <h1 className="text-2xl pb-3 font-extrabold text-center mx-auto text-gray-800 lg:text-3xl dark:text-white">
+    <h1 className="text-2xl pb-3 font-extrabold text-center mx-auto text-white lg:text-3xl dark:text-white">
              Log In Now
     </h1>
-    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-700 w-[50%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
+    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-orange-600 w-[50%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
   </div>
              
-                <div className="card w-full bg-sky-50 max-w-sm shrink-0 shadow-2xl">
+                <div className="card w-full bg-white/10 backdrop-blur-md backdrop-opacity-70 border border-orange-200  max-w-sm shrink-0 shadow-2xl">
                     <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text font raleway font-bold text-lg">Email</span>
+                                <span className="label-text font raleway text-white font-bold text-lg">Email</span>
                             </label>
                             <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control relative ">
                             <label className="label">
-                                <span className="label-text font raleway font-bold text-lg">Password</span>
+                                <span className="label-text font raleway text-white font-bold text-lg">Password</span>
                             </label>
                             <input  type = {showpassword ? "text" : "password"} name="password" placeholder="password" className="input input-bordered " required />
                             <p onClick={() => setShowpassword(!showpassword)} className="absolute top-[44%] left-[82%] md:left-[85%]">
@@ -93,11 +87,11 @@ const SignIn = () => {
         }
         </p>   
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover font raleway font-bold text-lg">Forgot password?</a>
+                                <a href="#" className="label-text-alt link  text-white link-hover font raleway font-bold text-lg">Forgot password?</a>
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-[#23576e] hover:bg-[#1c4657] transition-all duration-500 ease-in text-white font raleway font-bold text-lg">Login</button>
+                            <button className="btn bg-green-700 hover:bg-green-900 transition-all duration-500 ease-in text-white font raleway font-bold text-lg">Login</button>
                         </div>
                     </form>
                     <div className='text-black text-left pb-5 space-y-2'>
@@ -111,8 +105,8 @@ const SignIn = () => {
                         </div>
                     </div>
                     <div className='flex flex-row text-black px-8 py-5 space-x-1'>
-                        <p className="font-raleway font-bold">Create an account? Please</p>
-                        <Link href="/signup"><span className='underline text-green-500 font-raleway   font-extrabold'>Signup</span></Link>
+                        <p className="font-raleway font-bold text-white ">Create an account? Please</p>
+                        <Link href="/signup"><span className='underline text-orange-600 font-raleway   font-extrabold'>Signup</span></Link>
                     </div>
                 </div>
             </div>
