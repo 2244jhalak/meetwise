@@ -7,18 +7,18 @@ import Footer from '../components/Shared/Footer';
 
 const page = () => {
     return (
-        <div className='bg-[#F8ECFF]'>
-        <div className="bg-[#f7ecff]">
-               <div className="container mx-auto">
-                  <Navbar></Navbar>
-               </div>
+        <div className=" container mx-auto bg-[url('/banner/dr3.jpg')] bg-center min-h-screen">
+        <div className=" container mx-auto bg-black/10 backdrop-blur-md backdrop-opacity-70">
+            <div className="container hero-overlay bg-opacity-50 mx-auto">
+              <Navbar></Navbar>
             </div>
-       <ContactHeader></ContactHeader>
+        </div>
+        <ContactHeader></ContactHeader>
        <Faq></Faq>
        <Form></Form>
-       <Footer></Footer>
-       
-        </div>
+        <Footer></Footer>
+      </div>
+      
     );
 };
 

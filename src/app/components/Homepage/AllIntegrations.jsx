@@ -1,12 +1,19 @@
 // import Image from 'next/image';
-import React from 'react';
-import { FaVideo } from "react-icons/fa";
+import React, { useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import Image from 'next/image';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AllIntegrations = () => {
     const { language } = useLanguage();
+
+    useEffect(() => {
+        AOS.init({
+          duration: 1500, // Duration of animations (optional)
+          once: false, // Whether animation should happen only once while scrolling down (optional)
+        });
+      }, []);
 
     const translations = {
         en: {
@@ -86,35 +93,34 @@ const AllIntegrations = () => {
     const { title, googleMeet, zoom, microsoftTeams } = translations[language];
 
     return (
-        <div className='bg-blue-50 md:py-16 md:px-28 p-5 text-center mx-auto'>
+        <div className='container border-2 border-r-0 border-l-0 border-b-0 border-t-orange-500 md:py-16 md:px-28 p-5 text-center mx-auto bg-black/30 backdrop-blur-md backdrop-opacity-70 rounded-t-xl shadow-t-xl mt-2' data-aos="fade-up">
             <div className='flex flex-col items-center justify-center mb-6'>
                 <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
-                    <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-gray-800 lg:text-3xl dark:text-white">
+                    <h1 className="text-3xl pb-3 font-bold text-center mx-auto lg:text-5xl text-white">
                         {title}
                     </h1>
-                    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-violet-700 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
+                    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-600 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
                 </div>
             </div>
             {/* <h3 className='text-4xl font-bold mb-10'>{title}</h3> */}
-            <div className='md:flex justify-between gap-5 mx-auto'>
-                <div className='bg-white p-7 w-96 rounded-2xl shadow-2xl text-start mt-5'>
-                    <div className='rounded-full p-3 w-16 bg-white shadow-xl'>
-                        {/* <FaVideo className='text-green-500 text-2xl mb-2' /> */}
+            <div className='md:flex justify-between gap-5 mx-auto '>
+                <div className='bg-green-100 p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-xl text-start mt-5  shadow-green-900'>
+                    <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
                         <Image src={googleMeet.image} alt="" width={1000} height={1000} />
                     </div>
                     <h3 className='text-xl my-2 font-bold'>{googleMeet.title}</h3>
                     <p>{googleMeet.description}</p>
                 </div>
-                <div className='bg-white p-7 w-96 rounded-2xl shadow-2xl text-start mt-5'>
-                    <div className='rounded-full p-3 w-16 bg-white shadow-xl'>
+                <div className='bg-green-100 p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-xl text-start mt-5  shadow-green-900'>
+                    <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
                         {/* <FaVideo className='text-blue-500 text-2xl mb-2' /> */}
                         <Image src={zoom.image} alt="" width={1000} height={1000} />
                     </div>
                     <h3 className='text-xl my-2 font-bold'>{zoom.title}</h3>
                     <p>{zoom.description}</p>
                 </div>
-                <div className='bg-white p-7 w-96 rounded-2xl shadow-2xl text-start mt-5'>
-                    <div className='rounded-full p-3 w-16 bg-white shadow-xl'>
+                <div className='bg-green-100 p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-xl text-start mt-5  shadow-green-900'>
+                    <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
                         {/* <FaVideo className='text-red-500 text-2xl mb-2' /> */}
                         <Image src={microsoftTeams.image} alt="" width={1000} height={1000} />
                     </div>
