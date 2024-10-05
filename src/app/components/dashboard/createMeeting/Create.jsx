@@ -76,7 +76,7 @@ const Create = () => {
           showConfirmButton: false,
           timer: 1500
         });
-        router.push('/dashboard/scheduledMeeting');
+        router.push('/dashboard/meetingType');
       }
   
       console.log(data, response.status);
