@@ -1,0 +1,11 @@
+/* Highlight start date with a green background */
+.highlight-start-date {
+    background-color: #4caf50 !important;
+    color: white !important;
+}
+
+/* Highlight end date with a blue background */
+.highlight-end-date {
+    background-color: #2196f3 !important;
+    color: white !important;
+}
