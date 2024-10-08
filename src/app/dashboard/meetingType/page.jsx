@@ -1,18 +1,44 @@
+"use client";
 
 import Scheduled from '@/app/components/dashboard/meetingType/Scheduled';
 import Sidebar from '@/app/components/dashboard/Sidebar';
-import React from 'react';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
 
-const page = () => {
-    return (
-        <div>
-           <Sidebar></Sidebar>
-           <div className='container mx-auto'>
-            <Scheduled></Scheduled>
-           </div>
+const Page = () => {
+    const { data: session, status } = useSession();
+    const router = useRouter();
+
+    useEffect(() => {
+        if (status === "unauthenticated") {
             
-        </div>
-    );
+            Swal.fire({
+                title: 'Unauthorized Access',
+                text: 'Please log in first to view this page.',
+                icon: 'warning',
+                confirmButtonText: 'Go to Login',
+            }).then(() => {
+                
+                router.push('/login');
+            });
+        }
+    }, [status, router]);
+
+    if (status === "authenticated") {
+        return (
+            <div className="flex">
+                <Sidebar />
+                <div className="container mx-auto p-4">
+                    <Scheduled />
+                </div>
+            </div>
+        );
+    }
+
+   
+    return null;
 };
 
-export default page;
+export default Page;
