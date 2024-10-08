@@ -5,7 +5,7 @@ import Sidebar from '@/app/components/dashboard/Sidebar';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';  
 
 const Page = () => {
     const { data: session, status } = useSession();
@@ -13,15 +13,15 @@ const Page = () => {
 
     useEffect(() => {
         if (status === "unauthenticated") {
-            const currentUrl = window.location.pathname; // Current page URL
+            
             Swal.fire({
                 title: 'Unauthorized Access',
                 text: 'Please log in first to view this page.',
                 icon: 'warning',
                 confirmButtonText: 'Go to Login',
             }).then(() => {
-                // Redirecting to login page with the current URL as a query parameter
-                router.push(`/login?redirect=${encodeURIComponent(currentUrl)}`);
+                
+                router.push('/login');
             });
         }
     }, [status, router]);
@@ -39,7 +39,8 @@ const Page = () => {
         );
     }
 
-    return null; 
+    
+    return null;
 };
 
 export default Page;
