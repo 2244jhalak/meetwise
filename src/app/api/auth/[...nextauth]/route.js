@@ -19,17 +19,21 @@ const handler = NextAuth({
             async authorize(credentials) {
                 const { email, password } = credentials;
                 if (!email || !password) {
-                    return null;
+                    throw new Error("Email and password are required.");
                 }
+
                 const db = await connectDB();
                 const currentUser = await db.collection('users').findOne({ email });
+
                 if (!currentUser) {
-                    return null;
+                    throw new Error("No user found with the given email.");
                 }
+
                 const passwordMatched = bcrypt.compareSync(password, currentUser.password);
                 if (!passwordMatched) {
-                    return null;
+                    throw new Error("Invalid password.");
                 }
+                
                 return currentUser;
             },
         }),
@@ -49,19 +53,20 @@ const handler = NextAuth({
                         // Add any other fields as necessary
                     });
                 }
+
                 return {
                     id: profile.sub, // Use the Google user ID
                     name: profile.name,
                     email: profile.email,
                     image: profile.picture,
-                }; // Return the profile to be used in the session
+                }; 
             },
         }),
     ],
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.id = user.id; // Use the user ID from the profile
+                token.id = user._id; // Use the user ID from the profile
                 token.image = user.image;
                 token.name = user.name; // Save the name in the token
             }
@@ -74,7 +79,6 @@ const handler = NextAuth({
             return session;
         },
         async redirect({ url, baseUrl }) {
-            // Redirect to /dashboard after login
             if (url === baseUrl) {
                 return `${baseUrl}/dashboard`;
             }
