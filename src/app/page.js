@@ -11,6 +11,7 @@ import Navbar from "./components/Homepage/Navbar/Navbar";
 
 
 
+
 export default function Home() {
   
   return (
@@ -25,7 +26,7 @@ export default function Home() {
       <AutoRecord></AutoRecord>
       <AllIntegrations></AllIntegrations>
       <Carousel></Carousel>
- 
+      
       
       <Footer></Footer>
     </div>

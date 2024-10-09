@@ -4,20 +4,22 @@ import { CiClock2 } from "react-icons/ci";
 import { BsHandbag, BsPlus } from "react-icons/bs";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { FcSettings } from "react-icons/fc"
-import { ImProfile } from "react-icons/im";
+import { ImProfile, ImUsers } from "react-icons/im";
 
 import { AiOutlineBars } from 'react-icons/ai'
 import Link from "next/link";
 import NavigationDash from "./NavigationDash";
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+
 import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 
 
 const Sidebar = () => {
     const [isActive, setActive] = useState(false);
     const pathname = usePathname();
+    const session = useSession();
     console.log(pathname);
 
     const handleToggle = () => {
@@ -101,8 +103,20 @@ const Sidebar = () => {
                 <div>
                     <hr />
 
+                    {/* Admin's Power */}
+                    {
+                        session?.data?.user?.role === "admin" ?
+                        <NavigationDash
+                        label='All Users'
+                        address='/dashboard/allUsers'
+                        icon={ImUsers}
+                        />
+                        :
+                        ""
+                    
+                    }
+                    
                     {/* Profile Menu */}
-
                     <NavigationDash
                         label='Profile'
                         address='/dashboard/profile'
