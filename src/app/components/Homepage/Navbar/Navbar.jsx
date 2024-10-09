@@ -41,7 +41,7 @@ const Navbar = () => {
     const { language } = useLanguage();
 
     return (
-        <div className='flex gap-32 items-start md:items-center'>
+        <div className='flex justify-between items-start md:items-center'>
             <div onClick={() => setOpen(!open)} className='container mx-auto p-5 lg:hidden '>
                 <p>
                     {open ? <FaWindowClose className='text-black' /> : <FaBars className='text-black' />}
