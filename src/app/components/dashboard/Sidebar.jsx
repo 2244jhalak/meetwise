@@ -15,7 +15,6 @@ import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 
-
 const Sidebar = () => {
     const [isActive, setActive] = useState(false);
     const pathname = usePathname();
@@ -28,9 +27,8 @@ const Sidebar = () => {
 
     return (
         <>
-            
-                
-                  {/* Small screen Navbar */}
+
+            {/* Small screen Navbar */}
             <div className='bg-[#F4F2DE] text-gray-800 flex justify-between md:hidden'>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
@@ -66,9 +64,8 @@ const Sidebar = () => {
                         </div>
                     </div>
 
+
                     {/* Nav Items */}
-
-
                 </div>
 
                 <div className='container mx-auto'>
@@ -77,6 +74,7 @@ const Sidebar = () => {
                         address='/dashboard/createMeeting'
                         icon={BsPlus}
                     />
+
                     <NavigationDash
                         label='Meeting Type'
                         address='/dashboard/meetingType'
@@ -106,16 +104,16 @@ const Sidebar = () => {
                     {/* Admin's Power */}
                     {
                         session?.data?.user?.role === "admin" ?
-                        <NavigationDash
-                        label='All Users'
-                        address='/dashboard/allUsers'
-                        icon={ImUsers}
-                        />
-                        :
-                        ""
-                    
+                            <NavigationDash
+                                label='All Users'
+                                address='/dashboard/allUsers'
+                                icon={ImUsers}
+                            />
+                            :
+                            ""
+
                     }
-                    
+
                     {/* Profile Menu */}
                     <NavigationDash
                         label='Profile'
@@ -131,10 +129,10 @@ const Sidebar = () => {
                         <span className='mx-4 font-medium'>Logout</span>
                     </button>
                 </div>
-            </div> 
-            
+            </div>
+
         </>
-        
+
     )
 
 }
