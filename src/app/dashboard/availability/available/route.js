@@ -40,6 +40,7 @@ export const PUT = async (request) => {
             $set: {
                 name: available.name,
                 email: available.email,
+                status:available,
                 ...updateTimes  // Spread dynamically created time fields
             },
         };
