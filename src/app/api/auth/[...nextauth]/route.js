@@ -33,7 +33,7 @@ const handler = NextAuth({
                 if (!passwordMatched) {
                     throw new Error("Invalid password.");
                 }
-                
+
                 return currentUser;
             },
         }),
@@ -50,7 +50,7 @@ const handler = NextAuth({
                         name: profile.name,
                         email: profile.email,
                         image: profile.picture,
-                        // Add any other fields as necessary
+                        role: 'user', // Default role when a user is created
                     });
                 }
 
@@ -59,6 +59,7 @@ const handler = NextAuth({
                     name: profile.name,
                     email: profile.email,
                     image: profile.picture,
+                    role: user ? user.role : 'user', // Set role
                 }; 
             },
         }),
@@ -66,16 +67,18 @@ const handler = NextAuth({
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.id = user._id; // Use the user ID from the profile
+                token.id = user._id;  // User ID
                 token.image = user.image;
-                token.name = user.name; // Save the name in the token
+                token.name = user.name;
+                token.role = user.role; // Add role to the token
             }
-            return token;
+            return token; // Return updated token
         },
         async session({ session, token }) {
             session.user.id = token.id;
             session.user.image = token.image;
-            session.user.name = token.name; // Include the name in the session
+            session.user.name = token.name;
+            session.user.role = token.role; // Add role to the session
             return session;
         },
         async redirect({ url, baseUrl }) {
@@ -91,3 +94,4 @@ const handler = NextAuth({
 });
 
 export { handler as GET, handler as POST };
+
