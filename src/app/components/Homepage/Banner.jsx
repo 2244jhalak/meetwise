@@ -1,4 +1,4 @@
-import Image from "next/image";
+"use client"
 import { useLanguage } from "../context/LanguageContext";
 import animationData1 from '../../../../public/banner/animation-1.json';
 import animationData2 from '../../../../public/banner/animation-2.json';
@@ -86,16 +86,7 @@ const Banner = () => {
 
 
           </div>
-          {/* <div className="flex justify-center md:justify-start gap-8">
-            <div className="lg:text-4xl font-semibold">
-              {translations[language].activeUsers}{" "}
-              
-            </div>
-            <div className="text-4xl font-semibold">
-              {translations[language].availableCountries}{" "}
-              
-            </div> */}
-          {/* </div> */}
+          
         </div>
 
         {/* Right Side */}
@@ -118,31 +109,7 @@ const Banner = () => {
             </div>
           </Slider>
         </div>
-        {/* <div className="md:w-1/2 w-full p-14 flex flex-col items-center ">
-          <Image
-            src="/banner/banner3.jpg"
-            alt="Main Banner Image"
-            width={600}
-            height={400}
-            className="w-full h-auto mb-6 rounded-lg border border-white shadow-xl"
-          />
-          <div className="flex gap-4">
-            <Image
-              src="/banner/banner5.jpg"
-              alt="Secondary Image 1"
-              width={300}
-              height={200}
-              className="w-1/2 h-auto rounded-lg border border-white shadow-xl"
-            />
-            <Image
-              src="/banner/banner6.jpg"
-              alt="Secondary Image 2"
-              width={300}
-              height={200}
-              className="w-1/2 h-auto rounded-lg border border-white shadow-xls"
-            />
-          </div>
-        </div> */}
+       
       </div>
     </div>
   );
