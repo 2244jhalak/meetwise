@@ -75,7 +75,7 @@ const Banner = () => {
           </p>
           <div className="flex justify-center md:justify-start gap-4 mb-6">
             <Link href='/login'
-              className="relative inline-block px-6 py-3 font-bold text-white rounded-full border border-transparent transition duration-300 ease-in-out overflow-hidden group"
+              className="relative btn inline-block px-6 py-3 font-bold text-white rounded-full border border-transparent transition duration-300 ease-in-out overflow-hidden group"
               style={{
                 background: 'linear-gradient(90deg, rgba(69,89,66,1) 0%, rgba(67,207,57,0.8241421568627451) 35%, rgba(117,154,162,1) 100%)',
               }}

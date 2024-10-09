@@ -4,20 +4,21 @@ import { CiClock2 } from "react-icons/ci";
 import { BsHandbag, BsPlus } from "react-icons/bs";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { FcSettings } from "react-icons/fc"
-import { ImProfile } from "react-icons/im";
-import { MdOutlineCreateNewFolder } from "react-icons/md";
+import { ImProfile, ImUsers } from "react-icons/im";
+
 import { AiOutlineBars } from 'react-icons/ai'
 import Link from "next/link";
 import NavigationDash from "./NavigationDash";
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { usePathname } from 'next/navigation';
 
+import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 
 const Sidebar = () => {
     const [isActive, setActive] = useState(false);
     const pathname = usePathname();
+    const session = useSession();
     console.log(pathname);
 
     const handleToggle = () => {
@@ -63,9 +64,8 @@ const Sidebar = () => {
                         </div>
                     </div>
 
+
                     {/* Nav Items */}
-
-
                 </div>
 
                 <div className='container mx-auto'>
@@ -74,53 +74,63 @@ const Sidebar = () => {
                         address='/dashboard/createMeeting'
                         icon={BsPlus}
                     />
-                    <div>
 
-                        <NavigationDash
-                            label='Meeting Type'
-                            address='/dashboard/meetingType'
-                            icon={BsHandbag}
-                        />
-                        <NavigationDash
-                            label='Scheduled Meeting'
-                            address='/dashboard/scheduledMeeting'
-                            icon={BsFillBagCheckFill}
-                        />
-                        <NavigationDash
-                            label='Availability'
-                            address='/dashboard/availability'
-                            icon={CiClock2}
-                        />
-                        <NavigationDash
-                            label='Settings'
-                            address='/dashboard/settings'
-                            icon={FcSettings}
-                        />
+                    <NavigationDash
+                        label='Meeting Type'
+                        address='/dashboard/meetingType'
+                        icon={BsHandbag}
+                    />
+                    <NavigationDash
+                        label='Scheduled Meeting'
+                        address='/dashboard/scheduledMeeting'
+                        icon={BsFillBagCheckFill}
+                    />
+                    <NavigationDash
+                        label='Availability'
+                        address='/dashboard/availability'
+                        icon={CiClock2}
+                    />
+                    <NavigationDash
+                        label='Settings'
+                        address='/dashboard/settings'
+                        icon={FcSettings}
+                    />
 
-                    </div>
-
-                    <div>
-                        <hr />
-
-                        {/* Profile Menu */}
-
-                        <NavigationDash
-                            label='Profile'
-                            address='/dashboard/profile'
-                            icon={ImProfile}
-                        />
-
-                        <button
-                            className='flex w-full items-center px-4 py-2 mt-5 text-black hover:bg-[#183C4B] hover:text-white transform transition-all duration-500 ease-in font-raleway'
-                        >
-                            <GrLogout className='w-5 h-5' />
-
-                            <span className='mx-4 font-medium'>Logout</span>
-                        </button>
-                    </div>
                 </div>
 
+                <div>
+                    <hr />
+
+                    {/* Admin's Power */}
+                    {
+                        session?.data?.user?.role === "admin" ?
+                            <NavigationDash
+                                label='All Users'
+                                address='/dashboard/allUsers'
+                                icon={ImUsers}
+                            />
+                            :
+                            ""
+
+                    }
+
+                    {/* Profile Menu */}
+                    <NavigationDash
+                        label='Profile'
+                        address='/dashboard/profile'
+                        icon={ImProfile}
+                    />
+
+                    <button
+                        className='flex w-full items-center px-4 py-2 mt-5 text-black hover:bg-[#183C4B] hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                    >
+                        <GrLogout className='w-5 h-5' />
+
+                        <span className='mx-4 font-medium'>Logout</span>
+                    </button>
+                </div>
             </div>
+
         </>
 
     )
