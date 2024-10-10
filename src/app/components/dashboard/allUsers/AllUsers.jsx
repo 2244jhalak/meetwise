@@ -53,7 +53,7 @@ const AllUsers = () => {
     
             const result = await response.json();
             console.log(result);
-            fetchUser()
+            fetchUser();
             
         } catch (error) {
             console.error('Error updating role:', error);
