@@ -16,6 +16,7 @@ import Notification from "./components/Notification";
 export default function Home() {
   
   return (
+    <div className="bg-[#4A4947]">
     <div className=" container mx-auto bg-[url('/banner/dr3.jpg')] bg-center min-h-screen">
       <div className="container mx-auto bg-white/10 backdrop-blur-md backdrop-opacity-70">
           <div className="">
@@ -35,6 +36,7 @@ export default function Home() {
       
       
       <Footer></Footer>
+    </div>
     </div>
   );
 }
