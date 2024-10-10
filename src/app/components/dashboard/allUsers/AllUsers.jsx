@@ -107,7 +107,7 @@ const AllUsers = () => {
                                             onClick={() => handleRoleUpdate(user._id)} // Call handleRoleUpdate with the user ID
                                         >
                                             { 
-                                            user.role ?
+                                            user.role === "admin" ?
                                                 <p className='font-semibold text-green-600 rounded-xl'>Admin</p>
                                                 :
                                                 <p className='font-semibold text-blue-600 rounded-xl'>User</p>
