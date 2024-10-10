@@ -1,0 +1,29 @@
+[
+  {
+    "work": "availability post request with these data",
+    "_id": "particular collection objectID",
+    "organizer": "email of meeting creator",
+    "availableStartTime": "Meeting Start Time",
+    "availableEndTime": "Meeting Ending time"
+  },
+  {
+    "work": "creating a meeting",
+    "meetingName": "a string value provided by the user ",
+    "meetingDuration": "15/20/30/45/60",
+    "location": "meeting location",
+    "meetingLink": "it can be created automatically or an existing link  can be added"
+  },
+  {
+    "work": "booking a meeting",
+    "title": "Meeting Name or Title",
+    "organizer": "email of meeting creator",
+    "meetingInformation": "any massage from organizer",
+    "participants": "email of who book the meeting",
+    "meetingNote": "any thing from the participants",
+    "startTime": "Meeting Start Time",
+    "endTime": "Meeting Ending time",
+    "duration": "it will come from the availability",
+    "meeting location": "Zoom / Meet / Location",
+    "status": "meeting status"
+  }
+]

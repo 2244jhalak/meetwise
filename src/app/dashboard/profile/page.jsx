@@ -30,7 +30,9 @@ const Page = () => {
         return (
             <div className="flex">
                 <Sidebar />
-                <UserInfo />
+                <div className="pl-[350px] mt-10">
+                    <UserInfo></UserInfo>
+                </div>
             </div>
         );
     }
