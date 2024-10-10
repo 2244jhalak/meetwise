@@ -27,7 +27,7 @@ const Page = () => {
 
     if (status === "authenticated") {
         return (
-            <div className="flex">
+            <div className=" bg-[#4A4947] flex">
                 <Sidebar />
                
             </div>
