@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';  
+import Notification from '../components/Notification';
 
 const DashboardPage = () => {
     const { data: session, status } = useSession();
@@ -42,6 +43,9 @@ const DashboardPage = () => {
                             width={1100}
                             height={600}
                         />
+                    </div>
+                    <div className="container mx-auto">
+                         <Notification></Notification>
                     </div>
                 </div>
             </div>
