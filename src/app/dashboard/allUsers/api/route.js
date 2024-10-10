@@ -12,13 +12,13 @@ export const GET = async () => {
             JSON.stringify({ message: "Users fetched successfully", data: users }),
             { 
                 status: 200,
-                headers: { 
-                    "Content-Type": "application/json",
-                    "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate", 
-                    "Pragma": "no-cache",
-                    "Expires": "0",
-                    "Surrogate-Control": "no-store"
-                }
+                // headers: { 
+                //     "Content-Type": "application/json",
+                //     "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate", 
+                //     "Pragma": "no-cache",
+                //     "Expires": "0",
+                //     "Surrogate-Control": "no-store"
+                // }
             }
         );
     } catch (error) {
@@ -27,13 +27,13 @@ export const GET = async () => {
             JSON.stringify({ message: "Something went wrong", error: error.message }),
             { 
                 status: 500,
-                headers: { 
-                    "Content-Type": "application/json",
-                    "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate", 
-                    "Pragma": "no-cache",
-                    "Expires": "0",
-                    "Surrogate-Control": "no-store"
-                }
+                // headers: { 
+                //     "Content-Type": "application/json",
+                //     "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate", 
+                //     "Pragma": "no-cache",
+                //     "Expires": "0",
+                //     "Surrogate-Control": "no-store"
+                // }
             }
         );
     }
