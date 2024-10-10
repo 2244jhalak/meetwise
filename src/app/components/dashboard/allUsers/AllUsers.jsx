@@ -11,9 +11,9 @@ const AllUsers = () => {
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/allUsers/api`, {
                 method: 'GET',
-                headers: {
-                    'Cache-Control': 'no-cache', // Ensure fresh data is fetched
-                },
+                // headers: {
+                //     'Cache-Control': 'no-cache', // Ensure fresh data is fetched
+                // },
             });
 
             if (!response.ok) {
@@ -47,7 +47,7 @@ const AllUsers = () => {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Cache-Control': 'no-cache',  // Ensure no cache is used for updating
+                    // 'Cache-Control': 'no-cache',  // Ensure no cache is used for updating
                 },
                 body: JSON.stringify({ role: 'admin' }), // Ensure you're sending the correct data
             });
