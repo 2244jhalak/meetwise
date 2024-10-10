@@ -116,16 +116,16 @@ const AvailabilityForm = () => {
   }, [session?.data?.user?.email]);
 
     return (
-        <div className="container mx-auto mt-10 p-6 bg-[#d0d8d9] shadow-lg rounded-md">
+        <div className="container mx-auto mt-10 p-6 text-white bg-[#4A4947] shadow-lg rounded-md">
            
-            <h1 className="text-2xl  font-semibold text-center text-gray-800">Save Your Availability</h1>
-            <div className="border border-green-900 text-center mx-auto container w-[90px] mb-5"></div>
+            <h1 className="text-2xl  font-semibold text-center ">Save Your Availability</h1>
+            <div className="border border-green-600 text-center mx-auto container w-[90px] mb-5"></div>
             <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* First Column: Days */}
-                    <div className="bg-blue-50  border border-green-500 px-5 py-5 rounded-lg shadow-lg">
-                        <label className="block text-gray-700 font-bold text-2xl font-raleway">Select Days</label>
-                        <div className="border border-green-900 w-[60px] mb-5"></div>
+                    <div className="bg-black  border border-green-500 px-5 py-5 rounded-lg shadow-lg">
+                        <label className="block text-green-600 font-bold text-2xl font-raleway">Select Days</label>
+                        <div className="border border-orange-600 w-[60px] mb-5"></div>
                         <div className="flex flex-col items-start  space-y-2">
                             {availabilityData.daysOfWeek.map((day, index) => (
                                 <div key={index} className="flex items-center gap-2 ">
@@ -134,45 +134,45 @@ const AvailabilityForm = () => {
                                         id={day}
                                         name="days"
                                         value={day}
-                                        className="h-4 w-4"
+                                        className="h-4 w-4 rounded-xl focus:ring-green-500 checked:bg-green-500"
                                         checked={selectedDays.includes(day)}
                                         onChange={() => handleDayChange(day)}
                                     />
-                                    <label htmlFor={day} className="text-gray-700 text-lg">{day}</label>
+                                    <label htmlFor={day} className=" text-lg ">{day}</label>
                                 </div>
                             ))}
                         </div>
                     </div>
 
                     {/* Second Column: Time Inputs */}
-                    <div className="bg-blue-50 px-5 border border-green-500 py-5 rounded-lg shadow-lg">
-                        <label className="block text-gray-700 font-bold text-2xl font-raleway">Set Time</label>
-                        <div className="border border-green-900 w-[60px] mb-5"></div>
+                    <div className="bg-black px-5 border border-orange-500 py-5 rounded-lg shadow-lg">
+                        <label className="block text-green-600 font-bold text-2xl font-raleway">Set Time</label>
+                        <div className="border border-orange-900 w-[60px] mb-5"></div>
                         <div className="max-h-80 overflow-y-auto">
                         {selectedDays.map((day) => (
                             <div key={day} className="mb-4">
-                                <h3 className="text-xl font-semibold mb-2">{day}</h3>
+                                <h3 className="text-xl font-semibold mb-2 text-orange-600">{day}</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Start Time */}
                                     <div className="mb-4">
-                                        <label className="block text-gray-700 pb-2 font-raleway">Start Time</label>
+                                        <label className="block  pb-2 font-raleway">Start Time</label>
                                         <input
                                             type="time"
                                             value={timeData[day]?.startTime || ''}
                                             onChange={(e) => handleTimeChange(day, 'startTime', e.target.value)}
-                                            className="border border-green-200 p-2 rounded-md w-full"
+                                            className="border border-green-200 text-black p-2 rounded-md w-full"
                                             required
                                         />
                                     </div>
 
                                     {/* End Time */}
                                     <div className="mb-4">
-                                        <label className="block text-gray-700 pb-2 font-raleway">End Time</label>
+                                        <label className="block  pb-2 font-raleway">End Time</label>
                                         <input
                                             type="time"
                                             value={timeData[day]?.endTime || ''}
                                             onChange={(e) => handleTimeChange(day, 'endTime', e.target.value)}
-                                            className="border border-green-200 p-2 rounded-md w-full"
+                                            className="border border-green-200 text-black p-2 rounded-md w-full"
                                             required
                                         />
                                     </div>
