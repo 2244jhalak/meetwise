@@ -1,16 +1,9 @@
-"use client"
-
-
-
 import React from 'react';
 
-const layout = ({ children }) => {
-
-
+const layout = ({children}) => {
     return (
         <div>
             {children}
-
         </div>
     );
 };

@@ -4,20 +4,21 @@ import { CiClock2 } from "react-icons/ci";
 import { BsHandbag, BsPlus } from "react-icons/bs";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { FcSettings } from "react-icons/fc"
-import { ImProfile } from "react-icons/im";
+import { ImProfile, ImUsers } from "react-icons/im";
 
 import { AiOutlineBars } from 'react-icons/ai'
 import Link from "next/link";
 import NavigationDash from "./NavigationDash";
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { usePathname } from 'next/navigation';
 
+import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 
 const Sidebar = () => {
     const [isActive, setActive] = useState(false);
     const pathname = usePathname();
+    const session = useSession();
     console.log(pathname);
 
     const handleToggle = () => {
@@ -26,9 +27,8 @@ const Sidebar = () => {
 
     return (
         <>
-            
-                
-                  {/* Small screen Navbar */}
+
+            {/* Small screen Navbar */}
             <div className='bg-[#F4F2DE] text-gray-800 flex justify-between md:hidden'>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
@@ -64,9 +64,8 @@ const Sidebar = () => {
                         </div>
                     </div>
 
+
                     {/* Nav Items */}
-
-
                 </div>
 
                 <div className='container mx-auto'>
@@ -75,6 +74,7 @@ const Sidebar = () => {
                         address='/dashboard/createMeeting'
                         icon={BsPlus}
                     />
+
                     <NavigationDash
                         label='Meeting Type'
                         address='/dashboard/meetingType'
@@ -101,8 +101,20 @@ const Sidebar = () => {
                 <div>
                     <hr />
 
-                    {/* Profile Menu */}
+                    {/* Admin's Power */}
+                    {
+                        session?.data?.user?.role === "admin" ?
+                            <NavigationDash
+                                label='All Users'
+                                address='/dashboard/allUsers'
+                                icon={ImUsers}
+                            />
+                            :
+                            ""
 
+                    }
+
+                    {/* Profile Menu */}
                     <NavigationDash
                         label='Profile'
                         address='/dashboard/profile'
@@ -117,10 +129,10 @@ const Sidebar = () => {
                         <span className='mx-4 font-medium'>Logout</span>
                     </button>
                 </div>
-            </div> 
-            
+            </div>
+
         </>
-        
+
     )
 
 }
