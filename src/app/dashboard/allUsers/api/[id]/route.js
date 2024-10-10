@@ -35,12 +35,21 @@ export const PATCH = async (req, { params }) => {
             );
         }
 
-        return new Response(JSON.stringify({ message: "Role updated successfully" }), { status: 200 });
+        return new Response(JSON.stringify({ message: "Role updated successfully" }), { 
+            status: 200,
+            headers: {
+                "Content-Type": "application/json",
+                "Cache-Control": "no-cache" // Disable caching
+            }
+        });
     } catch (error) {
         console.error('Error updating role:', error);
         return new Response(
             JSON.stringify({ message: "Something went wrong", error: error.message }),
-            { status: 500 }
+            { 
+                status: 500, 
+                headers: { "Content-Type": "application/json" } 
+            }
         );
     }
 };
