@@ -116,10 +116,10 @@ const AvailabilityForm = () => {
   }, [session?.data?.user?.email]);
 
     return (
-        <div className="container mx-auto mt-10 p-6 text-white bg-[#4A4947] shadow-lg rounded-md">
-           
-            <h1 className="text-2xl  font-semibold text-center ">Save Your Availability</h1>
-            <div className="border border-green-600 text-center mx-auto container w-[90px] mb-5"></div>
+        <div className="container mx-auto  p-6 text-white bg-[#4A4947] shadow-lg rounded-md">
+               <h1 className="text-2xl pb-3 font-bold  rounded-2xl  border-b-2 border-slate-200 text-center mx-auto text-slate-100 lg:text-3xl w-[500px] dark:text-white mb-6">Save Your Availability</h1>
+            {/* <h1 className="text-2xl  font-semibold text-center ">Save Your Availability</h1>
+            <div className="border border-green-600 text-center mx-auto container w-[90px] mb-5"></div> */}
             <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* First Column: Days */}
