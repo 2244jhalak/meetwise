@@ -4,6 +4,7 @@ import OurOffer from '../components/AboutUs/OurOffer';
 import ChooseUs from '../components/AboutUs/ChooseUs';
 import Navbar from '../components/Homepage/Navbar/Navbar';
 import Footer from '../components/Shared/Footer';
+import Notification from '../components/Notification';
 
 const page = () => {
     return (
@@ -12,6 +13,9 @@ const page = () => {
                <div className="container hero-overlay bg-opacity-50 mx-auto">
                   <Navbar></Navbar>
                </div>
+            </div>
+            <div className="container mx-auto">
+                 <Notification></Notification>
             </div>
             <AboutHeader></AboutHeader>
             <OurOffer></OurOffer>
