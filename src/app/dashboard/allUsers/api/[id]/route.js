@@ -38,22 +38,22 @@ export const PATCH = async (req, { params }) => {
         if (result.modifiedCount === 0) {
             return new Response(
                 JSON.stringify({ message: "User not found or role unchanged" }),
-                { status: 400 }
-                // headers: { "Cache-Control": "no-cache, no-store, must-revalidate" }
+                { status: 400 , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+                
             );
         }
 
         return new Response(
             JSON.stringify({ message: "Role updated successfully" }),
-            { status: 200 }
-            // , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" }
+            { status: 200 , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            
         );
     } catch (error) {
         console.error('Error updating role:', error);
         return new Response(
             JSON.stringify({ message: "Something went wrong", error: error.message }),
-            { status: 500 }
-            // , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" }
+            { status: 500 , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            
         );
     }
 };
