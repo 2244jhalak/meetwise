@@ -6,34 +6,37 @@ const AllUsers = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(null);
 
+    // Function to fetch users
     const fetchUser = async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/allUsers/api`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/allUsers/api`, {
+                method: 'GET',
+                headers: {
+                    'Cache-Control': 'no-cache', // Ensure fresh data is fetched
+                },
+            });
             
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            
+
             const usersData = await response.json();
             
-            // Check if your response has a `data` field
+            // Check if the response has a `data` field or if the users are directly in the response
             if (usersData.data) {
-                setUsers(usersData.data); // If users are inside a "data" field
+                setUsers(usersData.data);
             } else {
-                setUsers(usersData); // If users are directly in the response
+                setUsers(usersData);
             }
-            
+
             console.log(usersData);
         } catch (err) {
             setError(err.message);
         }
     };
 
-
     useEffect(() => {
-
         fetchUser();
-
     }, []);
 
     // Function to handle updating user role
@@ -43,24 +46,25 @@ const AllUsers = () => {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache',  // Ensure no cache is used for updating
                 },
                 body: JSON.stringify({ role: 'admin' }), // Ensure you're sending the correct data
             });
-    
+
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-    
+
             const result = await response.json();
             console.log(result);
+
+            // Fetch the updated user list again after the role update
             fetchUser();
             
         } catch (error) {
             console.error('Error updating role:', error);
         }
     };
-    
-    
 
     return (
         <div>
@@ -78,7 +82,7 @@ const AllUsers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
+                        {/* Map through users to create table rows */}
                         {
                             users.map(user => 
                                 <tr key={user._id}>
@@ -99,8 +103,7 @@ const AllUsers = () => {
                                     </td>
                                     <td>
                                         <button 
-                                            
-                                            onClick={() => handleRoleUpdate(user._id)} // Call makeAdmin with the user ID
+                                            onClick={() => handleRoleUpdate(user._id)} // Call handleRoleUpdate with the user ID
                                         >
                                             { 
                                             user.role?
@@ -122,4 +125,5 @@ const AllUsers = () => {
 };
 
 export default AllUsers;
+
 
