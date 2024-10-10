@@ -15,13 +15,13 @@ const AllUsers = () => {
                     'Cache-Control': 'no-cache', // Ensure fresh data is fetched
                 },
             });
-            
+
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
 
             const usersData = await response.json();
-            
+
             // Check if the response has a `data` field or if the users are directly in the response
             if (usersData.data) {
                 setUsers(usersData.data);
@@ -35,6 +35,7 @@ const AllUsers = () => {
         }
     };
 
+    // Fetch users when the component mounts
     useEffect(() => {
         fetchUser();
     }, []);
@@ -60,7 +61,7 @@ const AllUsers = () => {
 
             // Fetch the updated user list again after the role update
             fetchUser();
-            
+
         } catch (error) {
             console.error('Error updating role:', error);
         }
@@ -106,10 +107,10 @@ const AllUsers = () => {
                                             onClick={() => handleRoleUpdate(user._id)} // Call handleRoleUpdate with the user ID
                                         >
                                             { 
-                                            user.role?
-                                            <p className='font-semibold text-green-600 rounded-xl'>Admin</p>
-                                            :
-                                            <p className='font-semibold text-blue-600 rounded-xl'>User</p>
+                                            user.role ?
+                                                <p className='font-semibold text-green-600 rounded-xl'>Admin</p>
+                                                :
+                                                <p className='font-semibold text-blue-600 rounded-xl'>User</p>
                                             }
                                         </button>
                                     </td>
@@ -125,5 +126,6 @@ const AllUsers = () => {
 };
 
 export default AllUsers;
+
 
 
