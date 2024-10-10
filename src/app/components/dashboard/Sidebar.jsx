@@ -76,7 +76,7 @@ const Sidebar = () => {
                     />
 
                     <NavigationDash
-                        label='Meeting Type'
+                        label='Meeting Library'
                         address='/dashboard/meetingType'
                         icon={BsHandbag}
                     />
