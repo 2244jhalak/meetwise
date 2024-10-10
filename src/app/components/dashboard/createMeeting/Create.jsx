@@ -17,6 +17,7 @@ const Create = () => {
   const router = useRouter();
   const [ loading, setLoading ] = useState(false);
   const [eventName, setEventName] = useState("");
+  const [description, setDescription] = useState("");
   const [duration, setDuration] = useState('15 min');
   const [selected, setSelected] = useState('');
   const [url, setUrl] = useState('');
@@ -35,7 +36,7 @@ const Create = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!eventName || !selected || !url) {
+    if (!eventName || !description || !selected || !url) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -51,6 +52,7 @@ const Create = () => {
       name: session?.data?.user?.name,
       email: session?.data?.user?.email,
       eventName: eventName,
+      description:description,
       duration: duration,
       selected: selected,
       url: url,
@@ -89,9 +91,9 @@ const Create = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='flex lg:flex-row md:flex-col flex-col'>
+    <form onSubmit={handleSubmit} className=' text-white flex lg:flex-row md:flex-col flex-col'>
       <div className='lg:border-e-2 md:border-e-2 lg:w-1/3 md:w-full w-full min-h-screen'>
-        <div className='pt-5 space-y-3 pl-5'>
+        <div className='pt-5 space-y-3 pl-5 bg-black min-h-screen'>
           <Link className='flex items-center space-x-2 text-lg' href="/dashboard">
             <IoIosArrowBack /> <h4>Cancel</h4>
           </Link>
@@ -99,14 +101,22 @@ const Create = () => {
           
           <h4 className='font-semibold'>Event Name *</h4>
           <input
-            className='py-2 w-4/5 border-2 rounded-lg pl-5'
+            className='py-2 w-4/5 border-2 rounded-lg pl-5 text-black'
             type="text"
             placeholder='Name of your meeting event'
             value={eventName}
             onChange={(e) => setEventName(e.target.value)}
           />
+           <h4 className='font-semibold'>Short Description</h4>
+          <input
+            className='py-2 w-4/5 border-2 rounded-lg pl-5 text-black'
+            type="text"
+            placeholder='Short Description'
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
           <h4 className='font-semibold'>Duration *</h4>
-          <select value={duration} onChange={(e) => setDuration(e.target.value)} className="border rounded-md p-2">
+          <select value={duration} onChange={(e) => setDuration(e.target.value)} className="border rounded-md p-2 text-black">
             <option value="15 min">15 min</option>
             <option value="30 min">30 min</option>
             <option value="45 min">45 min</option>
@@ -128,30 +138,31 @@ const Create = () => {
               placeholder="Add URL"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              className='py-2 w-4/5 border-2 rounded-lg pl-5'
+              className='py-2 w-4/5 border-2 rounded-lg pl-5 text-black'
             />
           )}
 
-          <button disabled={loading} className='py-2 w-4/5 border-2 rounded-lg pl-5 btn bg-[#4E9BFF] text-white'>
+          <button disabled={loading} className='py-2 w-4/5 bordertext-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 text-white'>
           {loading ? <FaFan className='animate-spin'></FaFan> : "Create"}
           </button>
         </div>
       </div>
 
-      <div className="lg:w-full md:w-full w-full flex lg:flex-row md:flex-row flex-col lg:shadow-2xl md:shadow-2xl lg:m-5 pt-5 pl-5 lg:h-[500px] md:h-[500px] h-[500px] space-y-5">
+      <div className=" bg-black lg:w-full md:w-full w-full flex lg:flex-row md:flex-row flex-col lg:shadow-2xl md:shadow-2xl lg:m-5 pt-5 pl-5 lg:h-[500px] md:h-[500px] h-[500px] space-y-5">
         <div className='lg:w-2/6 md:w-2/6 w-full space-y-5'>
-          <h3 className="text-lg">MeetWise</h3>
-          <p>Business Name</p>
-          <h2 className='text-2xl font-semibold'>{eventName}</h2>
+          <h3 className="text-3xl font-extrabold font-raleway">Meet<span className="text-green-600">Wise</span></h3>
+        
+          <h2 className='text-2xl font-bold'>EventName: <span className='text-xl font-medium'> {eventName}</span></h2>
+          <h2 className='text-xl font-bold'>Description: <span className='text-base font-medium'>{description}</span> </h2>
           <div className='flex items-center space-x-2'>
             <FaClock />
-            <h2 className='font-semibold'>{duration}</h2>
+            <h2 className='font-semibold'>Meeting Duration:{duration}</h2>
           </div>
           <div className='flex items-center space-x-2'>
             <FaLocationArrow />
-            <p>{selected} Meeting</p>
+            <p className='font-raleway font-bold text-xl '>Type: <span className='font-medium text-base '>{selected} Meeting</span> </p>
           </div>
-          <p className='cursor-pointer text-blue-500'>{url}</p>
+          <p className='cursor-pointer text-xl text-white font-bold'>Meeting Url: <span className='text-blue-500 font-medium text-base'> {url}</span></p>
         </div>
         
         <div className='lg:w-4/6 md:w-4/6 w-full flex'>
