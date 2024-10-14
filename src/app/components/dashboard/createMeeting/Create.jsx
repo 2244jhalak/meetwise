@@ -305,7 +305,7 @@ console.log(create)
               />
             </div>
             <div className="ml-4">
-              <label className="block text-sm font-medium text-gray-700">End Time:</label>
+              <label className="block text-sm font-medium text-gray-500">End Time:</label>
               <input
                 type="time"
                 className="mt-1 block border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
