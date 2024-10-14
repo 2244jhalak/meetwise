@@ -1,4 +1,5 @@
 "use client";
+<<<<<<< HEAD
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +11,20 @@ import "react-date-range/dist/theme/default.css";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+=======
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { IoIosArrowBack } from 'react-icons/io';
+import { FaClock, FaFan, FaLocationArrow } from 'react-icons/fa';
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+import TimeSlotPicker from './TimeSlotPicker';  // Assuming you have TimeSlotPicker
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
+>>>>>>> e5d2339f9a5209c451956ad4f5e4baff2fae8e1d
 
 const Create = () => {
   const session = useSession();
@@ -29,6 +44,7 @@ const Create = () => {
       key: "selection",
     },
   ]);
+<<<<<<< HEAD
  // Time availability state
 
   // Function to generate date range between start and end date
@@ -42,6 +58,11 @@ const Create = () => {
     }
 
     return dates;
+=======
+
+  const handleSelect = (option) => {
+    setSelected(option);
+>>>>>>> e5d2339f9a5209c451956ad4f5e4baff2fae8e1d
   };
 
   // Update start and end time in the availability object
@@ -123,7 +144,11 @@ console.log(create)
     setLoading(true);
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/createMeeting/api`, {
+<<<<<<< HEAD
         method: "POST",
+=======
+        method: 'POST',
+>>>>>>> e5d2339f9a5209c451956ad4f5e4baff2fae8e1d
         headers: {
           "Content-Type": "application/json",
         },
@@ -143,8 +168,14 @@ console.log(create)
       }
 
       console.log(data, response.status);
+<<<<<<< HEAD
     } catch (error) {
       console.error("Error creating event:", error);
+=======
+
+    } catch (error) {
+      console.error('Error creating event:', error);
+>>>>>>> e5d2339f9a5209c451956ad4f5e4baff2fae8e1d
     } finally {
       setLoading(false);
     }
@@ -158,9 +189,15 @@ console.log(create)
           <Link className="flex items-center space-x-2 text-lg" href="/dashboard">
             <IoIosArrowBack /> <h4>Cancel</h4>
           </Link>
+<<<<<<< HEAD
           <h2 className="font-semibold text-2xl">Create New Event</h2>
 
           <h4 className="font-semibold">Event Name *</h4>
+=======
+          <h2 className='font-semibold text-2xl'>Create New Event</h2>
+
+          <h4 className='font-semibold'>Event Name *</h4>
+>>>>>>> e5d2339f9a5209c451956ad4f5e4baff2fae8e1d
           <input
             className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
             type="text"
@@ -168,8 +205,12 @@ console.log(create)
             value={eventName}
             onChange={(e) => setEventName(e.target.value)}
           />
+<<<<<<< HEAD
 
           <h4 className="font-semibold">Short Description</h4>
+=======
+          <h4 className='font-semibold'>Short Description</h4>
+>>>>>>> e5d2339f9a5209c451956ad4f5e4baff2fae8e1d
           <input
             className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
             type="text"
@@ -221,15 +262,21 @@ console.log(create)
             />
           )}
 
+<<<<<<< HEAD
           <button
             disabled={loading}
             className="py-2 w-4/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 text-white"
           >
             {loading ? <FaFan className="animate-spin"></FaFan> : "Create"}
+=======
+          <button disabled={loading} className='py-2 w-4/5 bordertext-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 text-white'>
+            {loading ? <FaFan className='animate-spin'></FaFan> : "Create"}
+>>>>>>> e5d2339f9a5209c451956ad4f5e4baff2fae8e1d
           </button>
         </div>
       </div>
 
+<<<<<<< HEAD
       <div className="bg-black lg:w-full md:w-full w-full grid grid-cols-3  gap-5 lg:shadow-2xl md:shadow-2xl lg:m-5 p-5 lg:h-[500px] md:h-[500px] h-[500px] mt-7">
         <div className=" w-full space-y-5">
           <h3 className="text-3xl font-extrabold font-raleway">
@@ -255,6 +302,40 @@ console.log(create)
           <p className="cursor-pointer text-xl text-white font-bold">
             Meeting Url: <span className="text-blue-500 font-medium text-base">{url}</span>
           </p>
+=======
+      <div className=" bg-black lg:w-full md:w-full w-full flex lg:flex-row md:flex-row flex-col lg:shadow-2xl md:shadow-2xl lg:m-5 pt-5 pl-5 lg:h-[500px] md:h-[500px] h-[500px] space-y-5">
+        <div className='lg:w-2/6 md:w-2/6 w-full space-y-5'>
+          <h3 className="text-3xl font-extrabold font-raleway">Meet<span className="text-green-600">Wise</span></h3>
+
+          <h2 className='text-2xl font-bold'>EventName: <span className='text-xl font-medium'> {eventName}</span></h2>
+          <h2 className='text-xl font-bold'>Description: <span className='text-base font-medium'>{description}</span> </h2>
+          <div className='flex items-center space-x-2'>
+            <FaClock />
+            <h2 className='font-semibold'>Meeting Duration:{duration}</h2>
+          </div>
+          <div className='flex items-center space-x-2'>
+            <FaLocationArrow />
+            <p className='font-raleway font-bold text-xl '>Type: <span className='font-medium text-base '>{selected} Meeting</span> </p>
+          </div>
+          <p className='cursor-pointer text-xl text-white font-bold'>Meeting Url: <span className='text-blue-500 font-medium text-base'> {url}</span></p>
+        </div>
+
+        <div className='lg:w-4/6 md:w-4/6 w-full flex'>
+          <div className='lg:flex-1 md:flex-1'>
+            <h2 className='font-semibold text-xl mb-4'>Select Date & Time</h2>
+
+            <DateRange
+              editableDateInputs={true}
+              onChange={item => setState([item.selection])}
+              moveRangeOnFirstSelection={false}
+              ranges={state}
+              minDate={new Date()}
+            />
+          </div>
+          {/* <button type="button" className="lg:flex-1 md:flex-1" onClick={(e) => e.preventDefault()}>
+            <TimeSlotPicker duration={duration} /> 
+          </button> */}
+>>>>>>> e5d2339f9a5209c451956ad4f5e4baff2fae8e1d
         </div>
 
         <div className="w-full overflow-auto">
