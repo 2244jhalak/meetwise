@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { IoIosArrowBack } from 'react-icons/io';
 import { FaClock, FaFan, FaLocationArrow } from 'react-icons/fa';
 import { DateRange } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; 
-import 'react-date-range/dist/theme/default.css'; 
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import TimeSlotPicker from './TimeSlotPicker';  // Assuming you have TimeSlotPicker
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 const Create = () => {
   const session = useSession();
   const router = useRouter();
-  const [ loading, setLoading ] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [eventName, setEventName] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState('15 min');
@@ -28,7 +28,7 @@ const Create = () => {
       key: 'selection'
     }
   ]);
-  
+
   const handleSelect = (option) => {
     setSelected(option);
   };
@@ -52,25 +52,25 @@ const Create = () => {
       name: session?.data?.user?.name,
       email: session?.data?.user?.email,
       eventName: eventName,
-      description:description,
+      description: description,
       duration: duration,
       selected: selected,
       url: url,
-      startDate: startDateLocal,  
+      startDate: startDateLocal,
       endDate: endDateLocal,
     };
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/createMeeting/api`, { 
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/createMeeting/api`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(create),
       });
-  
+
       const data = await response.json();
-      if(response.status === 200){
+      if (response.status === 200) {
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -80,12 +80,12 @@ const Create = () => {
         });
         router.push('/dashboard/meetingType');
       }
-  
+
       console.log(data, response.status);
-  
+
     } catch (error) {
       console.error('Error creating event:', error);
-    } finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -98,7 +98,7 @@ const Create = () => {
             <IoIosArrowBack /> <h4>Cancel</h4>
           </Link>
           <h2 className='font-semibold text-2xl'>Create New Event</h2>
-          
+
           <h4 className='font-semibold'>Event Name *</h4>
           <input
             className='py-2 w-4/5 border-2 rounded-lg pl-5 text-black'
@@ -107,7 +107,7 @@ const Create = () => {
             value={eventName}
             onChange={(e) => setEventName(e.target.value)}
           />
-           <h4 className='font-semibold'>Short Description</h4>
+          <h4 className='font-semibold'>Short Description</h4>
           <input
             className='py-2 w-4/5 border-2 rounded-lg pl-5 text-black'
             type="text"
@@ -143,7 +143,7 @@ const Create = () => {
           )}
 
           <button disabled={loading} className='py-2 w-4/5 bordertext-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 text-white'>
-          {loading ? <FaFan className='animate-spin'></FaFan> : "Create"}
+            {loading ? <FaFan className='animate-spin'></FaFan> : "Create"}
           </button>
         </div>
       </div>
@@ -151,7 +151,7 @@ const Create = () => {
       <div className=" bg-black lg:w-full md:w-full w-full flex lg:flex-row md:flex-row flex-col lg:shadow-2xl md:shadow-2xl lg:m-5 pt-5 pl-5 lg:h-[500px] md:h-[500px] h-[500px] space-y-5">
         <div className='lg:w-2/6 md:w-2/6 w-full space-y-5'>
           <h3 className="text-3xl font-extrabold font-raleway">Meet<span className="text-green-600">Wise</span></h3>
-        
+
           <h2 className='text-2xl font-bold'>EventName: <span className='text-xl font-medium'> {eventName}</span></h2>
           <h2 className='text-xl font-bold'>Description: <span className='text-base font-medium'>{description}</span> </h2>
           <div className='flex items-center space-x-2'>
@@ -164,7 +164,7 @@ const Create = () => {
           </div>
           <p className='cursor-pointer text-xl text-white font-bold'>Meeting Url: <span className='text-blue-500 font-medium text-base'> {url}</span></p>
         </div>
-        
+
         <div className='lg:w-4/6 md:w-4/6 w-full flex'>
           <div className='lg:flex-1 md:flex-1'>
             <h2 className='font-semibold text-xl mb-4'>Select Date & Time</h2>
@@ -174,12 +174,12 @@ const Create = () => {
               onChange={item => setState([item.selection])}
               moveRangeOnFirstSelection={false}
               ranges={state}
-              minDate={new Date()} 
+              minDate={new Date()}
             />
           </div>
-          <button type="button" className="lg:flex-1 md:flex-1" onClick={(e) => e.preventDefault()}>
+          {/* <button type="button" className="lg:flex-1 md:flex-1" onClick={(e) => e.preventDefault()}>
             <TimeSlotPicker duration={duration} /> 
-          </button>
+          </button> */}
         </div>
       </div>
     </form>
