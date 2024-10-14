@@ -144,6 +144,7 @@ const Carousel = () => {
                                         src={slide.image}
                                         alt={`Slide ${index + 1}`}
                                         layout="responsive"
+                                        loading="lazy"
                                         width={500}
                                         height={500}
                                         className="object-cover md:rounded-[50px] lg:rounded-[50px] rounded-2xl"

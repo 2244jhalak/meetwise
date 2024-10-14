@@ -27,6 +27,7 @@ const FeatureCard = ({ data }) => {
                         alt="Description of the image"  // Accessibility text
                         width={1000}  // Width of the image
                         height={1000} // Height of the image
+                        loading="lazy"
                     />
                 </figure>
                 <div className="card-body">
