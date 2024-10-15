@@ -9,7 +9,7 @@ const AllUsers = () => {
     // Function to fetch users
     const fetchUser = async () => {
         try {
-            const response = await fetch('/dashboard/allUsers/api', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api`, {
                 method: 'GET',
                 headers: {
                     'Cache-Control': 'no-cache', // Ensure fresh data is fetched
