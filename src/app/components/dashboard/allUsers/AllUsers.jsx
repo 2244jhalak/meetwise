@@ -9,7 +9,7 @@ const AllUsers = () => {
     // Function to fetch users
     const fetchUser = async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/allUsers/api`, {
+            const response = await fetch('/dashboard/allUsers/api', {
                 method: 'GET',
                 headers: {
                     'Cache-Control': 'no-cache', // Ensure fresh data is fetched
@@ -43,29 +43,32 @@ const AllUsers = () => {
     // Function to handle updating user role
     const handleRoleUpdate = async (userId) => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/allUsers/api/${userId}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api/${userId}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Cache-Control': 'no-cache',  // Ensure no cache is used for updating
+                    'Cache-Control': 'no-cache',
+                    // Add your authorization token if needed
+                    // 'Authorization': `Bearer ${yourToken}`,
                 },
-                body: JSON.stringify({ role: 'admin' }), // Ensure you're sending the correct data
+                body: JSON.stringify({ role: 'admin' }),
             });
-
+    
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                const errorResponse = await response.text(); // Get detailed error response
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorResponse}`);
             }
-
+    
             const result = await response.json();
             console.log(result);
-
+    
             // Fetch the updated user list again after the role update
             fetchUser();
-
         } catch (error) {
             console.error('Error updating role:', error);
         }
     };
+    
 
     return (
         <div>

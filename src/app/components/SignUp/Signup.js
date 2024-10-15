@@ -60,7 +60,7 @@ const handleSubmit = async (e) => {
             const image = imgbbData.data.url;
 
             // 3. Send user info to MongoDB with photo URL
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/signup/api`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/signup/api`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
