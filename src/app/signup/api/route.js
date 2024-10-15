@@ -1,29 +1,7 @@
 import { connectDB } from "@/app/lib/connectDB";
 import bcrypt from "bcrypt";
-import Cors from "cors";
-
-// CORS middleware সেটআপ করা
-const cors = Cors({
-    methods: ['POST', 'GET', 'HEAD'],
-    origin: process.env.NEXT_PUBLIC_CLIENT_URL || '*', // আপনার ক্লায়েন্ট URL দিন
-    optionsSuccessStatus: 200 // Legacy browser support
-});
-
-// Middleware চালানোর জন্য সাহায্যকারী ফাংশন
-const runMiddleware = (req, res, fn) => {
-    return new Promise((resolve, reject) => {
-        fn(req, res, result => {
-            if (result instanceof Error) {
-                return reject(result);
-            }
-            return resolve(result);
-        });
-    });
-};
 
 export const POST = async (request) => {
-    await runMiddleware(request, {}, cors); // CORS middleware চালানো
-
     const newUser = await request.json();
     try {
         const db = await connectDB();
