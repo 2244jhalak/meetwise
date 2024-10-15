@@ -55,7 +55,7 @@ const UserInfo = () => {
         }
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/profile/api`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/profile/api`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
