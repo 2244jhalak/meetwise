@@ -4,7 +4,7 @@ let db;
 export const connectDB = async () => {
     if (db) return db;
     try {
-        const uri = process.env.NEXT_JS_URI;
+        const uri = process.env.NEXT_PUBLIC_URI;
         console.log(uri);
         const client = new MongoClient(uri, {
             serverApi: {
