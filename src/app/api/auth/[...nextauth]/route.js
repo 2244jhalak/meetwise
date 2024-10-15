@@ -81,12 +81,7 @@ const handler = NextAuth({
             session.user.role = token.role; // Add role to the session
             return session;
         },
-        async redirect({ url, baseUrl }) {
-            if (url === baseUrl) {
-                return `${baseUrl}/dashboard`;
-            }
-            return url;
-        },
+        
     },
     pages: {
         signIn: '/login',

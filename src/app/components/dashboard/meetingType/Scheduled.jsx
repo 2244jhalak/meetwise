@@ -3,7 +3,9 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { FaClock, FaCopy, FaLocationArrow } from 'react-icons/fa';
+import { FaClock, FaCopy, FaEdit, FaLocationArrow } from 'react-icons/fa';
+import { RiDeleteBin6Fill } from "react-icons/ri";
+import Swal from 'sweetalert2';
 
 const Scheduled = () => {
     const [meeting, setMeeting] = useState([]);
@@ -11,19 +13,22 @@ const Scheduled = () => {
     const session = useSession();
     const router = useRouter(); // Router hook 
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/meetingType/api/${session?.data?.user?.email}`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const userData = await response.json();
-                setMeeting(userData);
-            } catch (err) {
-                setError(err.message);
+
+    
+    const fetchUser = async () => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/meetingType/api/${session?.data?.user?.email}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        };
+            const userData = await response.json();
+            setMeeting(userData);
+        } catch (err) {
+            setError(err.message);
+        }
+    };
+    
+    useEffect(() => {
 
         fetchUser();
     }, [session?.data?.user?.email]);
@@ -45,36 +50,111 @@ const Scheduled = () => {
         router.push(`/dashboard/meetingType/${id}`); // Navigates to the meeting details page using the ID
     };
 
+    const handleDeleteMeeting = async (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!',
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    // Check what ID is being sent
+                    console.log("Attempting to delete meeting with ID:", id);
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/meetingType/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                          'Content-Type': 'application/json',
+                        },
+                        // body: JSON.stringify(create),
+                      });
+                    // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/meetingType/${id}`, {
+                    //     method: 'DELETE',
+                    //     headers: {
+                    //         'Content-Type': 'application/json',
+                    //     },
+                    // });                
+    
+                    if (response.ok) {
+                        console.log("Meeting deleted successfully from server.");
+                        setMeeting(meeting.filter(meet => meet._id.toString() !== id));
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: 'The meeting has been deleted.',
+                            icon: 'success',
+                        });
+                        await fetchUser(); 
+                    } else {
+                        const errorData = await response.json();
+                        console.log("Failed to delete meeting:", errorData);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed to delete meeting',
+                            text: errorData.message || 'Unknown error',
+                            showConfirmButton: true,
+                        });
+                    }
+                } catch (error) {
+                    console.error("Error deleting meeting:", error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Failed to delete meeting',
+                        text: error.message || 'Unknown error',
+                        showConfirmButton: true,
+                    });
+                }
+            }
+        });
+    };    
+     
+
+
     return (
-        <div className='pl-[250px]'>
-            <h2 className='text-3xl mt-5'>Scheduled Meeting</h2>
-            <div className='grid grid-cols-3 gap-4 mt-5'>
+        <div className='container font-raleway mx-auto mt-10 p-6 text-white bg-[#4A4947] shadow-lg min-h-screen rounded-md'>
+            <h2 className='text-4xl font-bold mt-5 text-white text-center container mx-auto'>Your Meeting Library</h2>
+            <div className="border border-orange-600 rounded-xl text-center mx-auto container w-[110px] mb-2 mt-2"></div>
+            <p className='p-4 text-center mx-auto font-medium font-raleway text-lg'>View, manage, and share all your scheduled meetings in one place with quick access to copy meeting links</p>
+            <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-5 '>
                 {
                     meeting.map(meet => (
-                        <div className='rounded-lg p-8 shadow-2xl space-y-4' key={meet._id}>
-                            <h2 className='text-xl'>{meet.eventName}</h2>
-                            <div className='flex items-center justify-between'>
-                                <div className='flex items-center gap-2'>
-                                    <FaClock />
-                                    <p>{meet.duration}</p>
-                                </div>
-                                <div className='flex items-center gap-2'>
-                                    <FaLocationArrow />
-                                    <p>{meet.selected}</p>
-                                </div>
-                            </div>
-                            <hr />
-                            <div className='flex justify-between'>
-                                <div className='flex items-center gap-2 text-blue-500 cursor-pointer' onClick={() => handleCopyLink(meet._id)}>
-                                    <FaCopy />
-                                    <p>Copy Link</p>
-                                </div>
-                                <button 
-                                    className='text-blue-500 underline cursor-pointer'
-                                    onClick={() => handleViewDetails(meet._id)}
-                                >
-                                    View Details
+                        <div className='rounded-lg border border-green-500 bg-black text-white  shadow-2xl ' key={meet._id}>
+                            <div className='bg-green-700 w-full h-[43px] rounded-t-lg flex justify-between px-6 py-2'>
+                                <button className='text-xl'>
+                                    <FaEdit />
                                 </button>
+                                <button className='text-xl' onClick={() => handleDeleteMeeting(meet._id)}>
+                                    <RiDeleteBin6Fill />
+                                </button>
+                            </div>
+                            <div className='p-8 space-y-4'>
+                                <h2 className='text-xl font-bold '>Event Name:<span className=''>{meet.eventName}</span></h2>
+                                <h2 className='text-xl font-bold '>Description: <span className='text-base font-medium'>{meet.eventName}</span> </h2>
+                                <div className='flex items-center justify-between'>
+                                    <div className='flex items-center gap-2'>
+                                        <FaClock />
+                                        <p>{meet.duration}</p>
+                                    </div>
+                                    <div className='flex items-center gap-2'>
+                                        <FaLocationArrow />
+                                        <p>{meet.selected}</p>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div className='flex justify-between'>
+                                    <div className='flex items-center gap-2 text-green-600 cursor-pointer' onClick={() => handleCopyLink(meet._id)}>
+                                        <FaCopy />
+                                        <p>Copy Link</p>
+                                    </div>
+                                    <button
+                                        className='text-orange-500 underline cursor-pointer'
+                                        onClick={() => handleViewDetails(meet._id)}
+                                    >
+                                        View Details
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))
