@@ -122,7 +122,7 @@ const Create = () => {
 console.log(create)
     setLoading(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/createMeeting/api`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/createMeeting/api`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
