@@ -11,11 +11,12 @@ const Scheduled = () => {
     const [error, setError] = useState(null);
     const session = useSession();
     const router = useRouter(); // Router hook 
+    console.log(meeting);
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/meetingType/api/${session?.data?.user?.email}`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/meetingType/api/${session?.data?.user?.email}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -31,7 +32,7 @@ const Scheduled = () => {
 
     // Function to copy the meeting link
     const handleCopyLink = (id) => {
-        const link = `${process.env.NEXT_PUBLIC_API_URL}/dashboard/meetingType/${id}`; // Meeting URL with ID
+        const link = `${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/meetingType/${id}`; // Meeting URL with ID
         navigator.clipboard.writeText(link)
             .then(() => {
                 alert('Link copied to clipboard!');
