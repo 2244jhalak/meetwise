@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { IoIosArrowBack } from "react-icons/io";
@@ -21,6 +21,7 @@ const Create = () => {
   const [selected, setSelected] = useState("");
   const [url, setUrl] = useState("");
   const [availability, setAvailability] = useState({});
+  const [availableTimes, setAvailableTimes] = useState(null);
 
   const [state, setState] = useState([
     {
@@ -43,6 +44,38 @@ const Create = () => {
 
     return dates;
   };
+
+  useEffect(() => {
+    const fetchAvailability = async () => {
+      try {
+        const response = await fetch(`/dashboard/availability/available?email=${session?.data?.user?.email}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+
+          // Check if 'times' is defined in the result
+          if (result && result.times) {
+            setAvailableTimes(result?.times);
+          } else {
+            setAvailableTimes(null); // In case no availability is returned
+          }
+        } else {
+          console.error('Error fetching availability');
+        }
+      } catch (error) {
+        console.error('An error occurred while fetching availability:', error);
+      }
+    };
+
+    if (session?.data?.user?.email) {
+      fetchAvailability();
+    }
+  }, [session?.data?.user?.email]);
 
   // Update start and end time in the availability object
   // const handleTimeChange = (date, type, value) => {
@@ -89,7 +122,6 @@ const Create = () => {
       },
     }));
   };
-  console.log(availability)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -119,7 +151,6 @@ const Create = () => {
       endDate: endDateLocal,
       availability: availability, // Include availability object
     };
-    console.log(create)
     setLoading(true);
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/createMeeting/api`, {
@@ -142,13 +173,14 @@ const Create = () => {
         router.push("/dashboard/meetingType");
       }
 
-      console.log(data, response.status);
     } catch (error) {
       console.error("Error creating event:", error);
     } finally {
       setLoading(false);
     }
   };
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const availableDays = daysOfWeek.filter(day => availableTimes && availableTimes[day]);
 
 
   return (
@@ -255,6 +287,18 @@ const Create = () => {
           <p className="cursor-pointer text-xl text-white font-bold">
             Meeting Url: <span className="text-blue-500 font-medium text-base">{url}</span>
           </p>
+
+          {/* available times are here  */}
+          <div className='bg-white text-black w-full p-4 h-64 ml-3'>
+            {availableDays.map(day => <div key={day}>
+              <h2 className="text-lg md:text-xl lg:*:text-2xl">{day}</h2>
+              <div className='flex justify-between gap-1'>
+                <h3 className='border p-2'><span className='font-semibold'>Start Time</span>  {availableTimes[day]?.startTime} </h3>
+                <h3 className='border p-2'><span className='font-semibold'>End Time:</span> {availableTimes[day]?.endTime}</h3>
+              </div>
+            </div>)}
+          </div>
+
         </div>
 
         <div className="w-full overflow-auto">
