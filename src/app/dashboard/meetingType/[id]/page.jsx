@@ -1,3 +1,4 @@
+
 import MeetingDetails from '@/app/components/dashboard/meetingType/MeetingDetails';
 import React from 'react';
 
@@ -20,4 +21,3 @@ const Page = async ({ params }) => {
 };
 
 export default Page;
-

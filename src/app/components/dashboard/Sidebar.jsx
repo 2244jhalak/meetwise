@@ -113,6 +113,17 @@ const Sidebar = () => {
                             ""
 
                     }
+                    {
+                        session?.data?.user?.role === "admin" ?
+                            <NavigationDash
+                                label='All Meetings'
+                                address='/dashboard/allMeetings'
+                                icon={ImUsers}
+                            />
+                            :
+                            ""
+
+                    }
 
                     {/* Profile Menu */}
                     <NavigationDash
