@@ -48,7 +48,7 @@ const Create = () => {
   useEffect(() => {
     const fetchAvailability = async () => {
       try {
-        const response = await fetch(`/dashboard/availability/available?email=${session?.data?.user?.email}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/availability/available?email=${session?.data?.user?.email}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
