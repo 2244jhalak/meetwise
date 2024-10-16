@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { IoIosArrowBack } from 'react-icons/io';
@@ -21,6 +21,7 @@ const Create = () => {
   const [duration, setDuration] = useState('15 min');
   const [selected, setSelected] = useState('');
   const [url, setUrl] = useState('');
+  const [availableTimes, setAvailableTimes] = useState(null);
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -28,6 +29,38 @@ const Create = () => {
       key: 'selection'
     }
   ]);
+  console.log(availableTimes);
+  useEffect(() => {
+    const fetchAvailability = async () => {
+      try {
+        const response = await fetch(`/dashboard/availability/available?email=${session?.data?.user?.email}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+
+          // Check if 'times' is defined in the result
+          if (result && result.times) {
+            setAvailableTimes(result?.times);
+          } else {
+            setAvailableTimes(null); // In case no availability is returned
+          }
+        } else {
+          console.error('Error fetching availability');
+        }
+      } catch (error) {
+        console.error('An error occurred while fetching availability:', error);
+      }
+    };
+
+    if (session?.data?.user?.email) {
+      fetchAvailability();
+    }
+  }, [session?.data?.user?.email]);
 
   const handleSelect = (option) => {
     setSelected(option);
@@ -89,6 +122,10 @@ const Create = () => {
       setLoading(false);
     }
   };
+
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const availableDays = daysOfWeek.filter(day => availableTimes && availableTimes[day]);
+  console.log(availableDays);
 
   return (
     <form onSubmit={handleSubmit} className=' text-white flex lg:flex-row md:flex-col flex-col'>
@@ -163,6 +200,16 @@ const Create = () => {
             <p className='font-raleway font-bold text-xl '>Type: <span className='font-medium text-base '>{selected} Meeting</span> </p>
           </div>
           <p className='cursor-pointer text-xl text-white font-bold'>Meeting Url: <span className='text-blue-500 font-medium text-base'> {url}</span></p>
+          {/* avaiable times are here  */}
+          <div className='bg-white text-black w-full p-4 h-64 ml-3'>
+            {availableDays.map(day => <div key={day}>
+              <h2 className="text-lg md:text-xl lg:*:text-2xl">{day}</h2>
+              <div className='flex justify-between gap-1'>
+                <h3 className='border p-2'><span className='font-semibold'>Start Time</span>  {availableTimes[day]?.startTime} </h3>
+                <h3 className='border p-2'><span className='font-semibold'>End Time:</span> {availableTimes[day]?.endTime}</h3>
+              </div>
+            </div>)}
+          </div>
         </div>
 
         <div className='lg:w-4/6 md:w-4/6 w-full flex'>
