@@ -3,7 +3,8 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { FaClock, FaCopy, FaLocationArrow } from 'react-icons/fa';
+import { FaClock, FaCopy, FaLocationArrow, FaTrash } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 const Scheduled = () => {
     const [meeting, setMeeting] = useState([]);
@@ -40,6 +41,43 @@ const Scheduled = () => {
             });
     };
 
+    // Function to delete a meeting
+    const handleDeleteMeeting = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/meetingType/apis/${id}`, {
+                    method: 'DELETE',
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message === "Meeting deleted successfully") {
+                        Swal.fire('Deleted!', 'Your meeting has been deleted.', 'success');
+                        
+                        // Reload the page after a short delay (2 seconds)
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1000); // 2000 milliseconds = 2 seconds
+                    } else {
+                        Swal.fire('Error!', data.message || 'There was a problem deleting the meeting.', 'error');
+                    }
+                })
+                .catch(err => {
+                    console.error('Failed to delete the meeting', err);
+                    Swal.fire('Error!', 'There was a problem deleting the meeting.', 'error');
+                });
+            }
+        });
+    };
+    
+
     // Function to navigate to the details page
     const handleViewDetails = (id) => {
         router.push(`/dashboard/meetingType/${id}`); // Navigates to the meeting details page using the ID
@@ -53,7 +91,11 @@ const Scheduled = () => {
             <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-5 '>
                 {
                     meeting.map(meet => (
-                        <div className='rounded-lg border border-green-500 bg-black text-white  shadow-2xl ' key={meet._id}>
+                        <div className='rounded-lg relative border border-green-500 bg-black text-white  shadow-2xl ' key={meet._id}>
+                            <FaTrash 
+                                className='absolute top-2 right-2 cursor-pointer' 
+                                onClick={() => handleDeleteMeeting(meet._id)} 
+                            />
                             <div className='bg-green-700 w-full h-[30px] rounded-t-lg'></div>
                             <div className='p-8 space-y-4'>
                             <h2 className='text-xl font-bold '>Event Name:<span className=''>{meet.eventName}</span></h2>
@@ -91,3 +133,4 @@ const Scheduled = () => {
 };
 
 export default Scheduled;
+

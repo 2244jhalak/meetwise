@@ -1,6 +1,8 @@
-"use client";
+"use client"
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import { FaTrash } from 'react-icons/fa';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
@@ -21,15 +23,7 @@ const AllUsers = () => {
             }
 
             const usersData = await response.json();
-
-            // Check if the response has a `data` field or if the users are directly in the response
-            if (usersData.data) {
-                setUsers(usersData.data);
-            } else {
-                setUsers(usersData);
-            }
-
-            console.log(usersData);
+            setUsers(usersData.data || usersData);
         } catch (err) {
             setError(err.message);
         }
@@ -40,31 +34,58 @@ const AllUsers = () => {
         fetchUser();
     }, []);
 
-    // Function to handle updating user role
-    const handleRoleUpdate = async (userId) => {
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/allUsers/api/${userId}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Cache-Control': 'no-cache',  // Ensure no cache is used for updating
-                },
-                body: JSON.stringify({ role: 'admin' }), // Ensure you're sending the correct data
+    // Function to handle user deletion
+    const handleDeleteUser = async (userId, userRole) => {
+        // Check if the user is an admin
+        if (userRole === "admin") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Admins cannot be deleted!',
             });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const result = await response.json();
-            console.log(result);
-
-            // Fetch the updated user list again after the role update
-            fetchUser();
-
-        } catch (error) {
-            console.error('Error updating role:', error);
+            return; // Prevent further execution
         }
+
+        // Confirm deletion with SweetAlert
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api/${userId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Cache-Control': 'no-cache',
+                        },
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        Swal.fire(
+                            'Deleted!',
+                            'User has been deleted.',
+                            'success'
+                        );
+                        fetchUser(); // Fetch updated user list
+                    } else {
+                        Swal.fire(
+                            'Error!',
+                            data.message || 'Failed to delete user.',
+                            'error'
+                        );
+                    }
+                } catch (error) {
+                    Swal.fire('Error!', 'Something went wrong.', 'error');
+                }
+            }
+        });
     };
 
     return (
@@ -79,7 +100,7 @@ const AllUsers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th></th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,7 +112,7 @@ const AllUsers = () => {
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle h-12 w-12">
-                                                    <Image src={user.image} alt='' height={50} width={50}></Image>
+                                                    <Image width={50} height={50} src={user.image} alt='' />
                                                 </div>  
                                             </div>
                                             <div>
@@ -104,6 +125,7 @@ const AllUsers = () => {
                                     </td>
                                     <td>
                                         <button 
+                                            disabled={user?.role==="admin"}
                                             onClick={() => handleRoleUpdate(user._id)} // Call handleRoleUpdate with the user ID
                                         >
                                             { 
@@ -113,6 +135,12 @@ const AllUsers = () => {
                                                 <p className='font-semibold text-blue-600 rounded-xl'>User</p>
                                             }
                                         </button>
+                                    </td>
+                                    <td>
+                                        <FaTrash 
+                                            className="cursor-pointer text-red-500"
+                                            onClick={() => handleDeleteUser(user._id, user.role)} // Pass user ID and role to the function
+                                        />
                                     </td>
                                 </tr>
                             )
@@ -126,6 +154,4 @@ const AllUsers = () => {
 };
 
 export default AllUsers;
-
-
 
