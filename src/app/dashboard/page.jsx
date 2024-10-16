@@ -33,7 +33,9 @@ const DashboardPage = () => {
                 <Sidebar />
                 <div className="flex-1 p-6">
                     <h2 className="text-center font-semibold text-3xl text-blue-600">
-                        Welcome to Dashboard
+                        Welcome to {
+                            session?.user?.role === "admin" ? "Admin's dashboard":`${session?.user?.name}'s dashboard`
+                        }
                     </h2>
                     <div className="flex justify-center mt-4">
                         <Image
