@@ -14,7 +14,7 @@ const Scheduled = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/meetingType/api/${session?.data?.user?.email}`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/meetingType/api/${session?.data?.user?.email}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
