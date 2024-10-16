@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { IoIosArrowBack } from "react-icons/io";
@@ -21,6 +21,7 @@ const Create = () => {
   const [selected, setSelected] = useState("");
   const [url, setUrl] = useState("");
   const [availability, setAvailability] = useState({});
+  const [availableTimes, setAvailableTimes] = useState(null);
 
   const [state, setState] = useState([
     {
@@ -29,7 +30,7 @@ const Create = () => {
       key: "selection",
     },
   ]);
- // Time availability state
+  // Time availability state
 
   // Function to generate date range between start and end date
   const generateDateRange = (start, end) => {
@@ -43,6 +44,38 @@ const Create = () => {
 
     return dates;
   };
+
+  useEffect(() => {
+    const fetchAvailability = async () => {
+      try {
+        const response = await fetch(`/dashboard/availability/available?email=${session?.data?.user?.email}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+
+          // Check if 'times' is defined in the result
+          if (result && result.times) {
+            setAvailableTimes(result?.times);
+          } else {
+            setAvailableTimes(null); // In case no availability is returned
+          }
+        } else {
+          console.error('Error fetching availability');
+        }
+      } catch (error) {
+        console.error('An error occurred while fetching availability:', error);
+      }
+    };
+
+    if (session?.data?.user?.email) {
+      fetchAvailability();
+    }
+  }, [session?.data?.user?.email]);
 
   // Update start and end time in the availability object
   // const handleTimeChange = (date, type, value) => {
@@ -60,26 +93,26 @@ const Create = () => {
     if (!eventName || !description || !selected || !url || !availability || Object.keys(availability).length === 0) {
       return false;
     }
-  
+
     // Check if each date in availability has a valid startTime and endTime
     for (const date in availability) {
       const { startTime, endTime } = availability[date];
-      
+
       // Check if startTime and endTime are defined and are valid
       if (!startTime || !endTime || !isValidTime(startTime) || !isValidTime(endTime)) {
         return false;
       }
     }
-  
+
     return true;
   };
-  
+
   // Helper function to validate time format (you can customize this based on your needs)
   const isValidTime = (time) => {
     // Example: Check if time is a valid string (you can modify this based on your time format)
     return typeof time === 'string' && time.trim() !== '';
   };
-  
+
   const handleTimeChange = (date, timeType, value) => {
     setAvailability((prevAvailability) => ({
       ...prevAvailability,
@@ -89,7 +122,6 @@ const Create = () => {
       },
     }));
   };
-  console.log(availability)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -119,7 +151,6 @@ const Create = () => {
       endDate: endDateLocal,
       availability: availability, // Include availability object
     };
-console.log(create)
     setLoading(true);
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/createMeeting/api`, {
@@ -142,13 +173,14 @@ console.log(create)
         router.push("/dashboard/meetingType");
       }
 
-      console.log(data, response.status);
     } catch (error) {
       console.error("Error creating event:", error);
     } finally {
       setLoading(false);
     }
   };
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const availableDays = daysOfWeek.filter(day => availableTimes && availableTimes[day]);
 
 
   return (
@@ -255,73 +287,85 @@ console.log(create)
           <p className="cursor-pointer text-xl text-white font-bold">
             Meeting Url: <span className="text-blue-500 font-medium text-base">{url}</span>
           </p>
+
+          {/* available times are here  */}
+          <div className='bg-white text-black w-full p-4 h-64 ml-3'>
+            {availableDays.map(day => <div key={day}>
+              <h2 className="text-lg md:text-xl lg:*:text-2xl">{day}</h2>
+              <div className='flex justify-between gap-1'>
+                <h3 className='border p-2'><span className='font-semibold'>Start Time</span>  {availableTimes[day]?.startTime} </h3>
+                <h3 className='border p-2'><span className='font-semibold'>End Time:</span> {availableTimes[day]?.endTime}</h3>
+              </div>
+            </div>)}
+          </div>
+
         </div>
 
         <div className="w-full overflow-auto">
-  <div className="lg:flex-1 md:flex-1 p-4 rounded-lg bg-white text-black ">
-    <h2 className="font-semibold text-xl mb-4">Select Date & Time</h2>
+          <div className="lg:flex-1 md:flex-1 p-4 rounded-lg bg-white text-black ">
+            <h2 className="font-semibold text-xl mb-4">Select Date & Time</h2>
 
-    <div className="w-full border border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
-      <div className="min-w-full "> {/* Enable horizontal scrolling */}
-        <DateRange
-          editableDateInputs={true}
-          onChange={(item) => setState([item.selection])}
-          moveRangeOnFirstSelection={false}
-          ranges={state}
-          minDate={new Date()}
-          className="w-full" 
-          rangeColors={["green"]}// Ensure it takes full width of the parent
-        />
-      </div>
-    </div>
-  </div>
-</div>
+            <div className="w-full border border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
+              <div className="min-w-full "> {/* Enable horizontal scrolling */}
+                <DateRange
+                  editableDateInputs={true}
+                  onChange={(item) => setState([item.selection])}
+                  moveRangeOnFirstSelection={false}
+                  ranges={state}
+                  minDate={new Date()}
+                  className="w-full"
+                  rangeColors={["green"]}// Ensure it takes full width of the parent
+                />
+              </div>
+            </div>
+          </div>
+        </div>
 
 
         <div className="max-w-72 mx-auto  p-4  bg-white text-black rounded-lg shadow-lg">
-        <h3 className="mt-4 text-lg font-semibold">All Dates in Selected Range:</h3>
-  <div className="mt-4">
-    {/* <p className="text-lg">
+          <h3 className="mt-4 text-lg font-semibold">All Dates in Selected Range:</h3>
+          <div className="mt-4">
+            {/* <p className="text-lg">
       Start Date: {new Date(state[0].startDate).toLocaleDateString("en-GB")}
     </p>
     <p className="text-lg">
       End Date: {state[0].endDate ? new Date(state[0].endDate).toLocaleDateString("en-GB") : "N/A"}
     </p> */}
-{state[0].endDate && (
-  <>
-    <div className="max-h-72 border font-raleway border-green-700 overflow-y-auto mt-5 pb-4">
-      <ul className="list-disc ml-6 ">
-        {generateDateRange(state[0].startDate, state[0].endDate).map((date, index) => (
-          <li key={index} className="flex items-center justify-between mt-5 ">
-            <span className="font-extrabold"> Date:{date}</span>
-            <div className="ml-4">
-              <label className="block text-sm font-medium text-gray-700">Start Time:</label>
-              <input
-                type="time"
-                className="mt-1 block border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                value={availability[date]?.startTime || ""}
-                onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
-                required
-              />
-            </div>
-            <div className="ml-4">
-              <label className="block text-sm font-medium text-gray-700">End Time:</label>
-              <input
-                type="time"
-                className="mt-1 block border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                value={availability[date]?.endTime || ""}
-                onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
-              />
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </>
-)}
+            {state[0].endDate && (
+              <>
+                <div className="max-h-72 border font-raleway border-green-700 overflow-y-auto mt-5 pb-4">
+                  <ul className="list-disc ml-6 ">
+                    {generateDateRange(state[0].startDate, state[0].endDate).map((date, index) => (
+                      <li key={index} className="flex items-center justify-between mt-5 ">
+                        <span className="font-extrabold"> Date:{date}</span>
+                        <div className="ml-4">
+                          <label className="block text-sm font-medium text-gray-700">Start Time:</label>
+                          <input
+                            type="time"
+                            className="mt-1 block border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                            value={availability[date]?.startTime || ""}
+                            onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div className="ml-4">
+                          <label className="block text-sm font-medium text-gray-700">End Time:</label>
+                          <input
+                            type="time"
+                            className="mt-1 block border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                            value={availability[date]?.endTime || ""}
+                            onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
+                          />
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
+            )}
 
-  </div>
-</div>
+          </div>
+        </div>
       </div>
     </form>
   );

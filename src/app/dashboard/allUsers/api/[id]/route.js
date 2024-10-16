@@ -1,8 +1,7 @@
 import { connectDB } from "@/app/lib/connectDB";
 import { ObjectId } from "mongodb";
 
-
-
+// PATCH for updating user role
 export const PATCH = async (req, { params }) => {
     const { id } = params; // Extract the user ID from the URL
     const { role } = await req.json(); // Extract role from request body
@@ -39,21 +38,60 @@ export const PATCH = async (req, { params }) => {
             return new Response(
                 JSON.stringify({ message: "User not found or role unchanged" }),
                 { status: 400 , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
-                
             );
         }
 
         return new Response(
             JSON.stringify({ message: "Role updated successfully" }),
             { status: 200 , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
-            
         );
     } catch (error) {
         console.error('Error updating role:', error);
         return new Response(
             JSON.stringify({ message: "Something went wrong", error: error.message }),
             { status: 500 , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
-            
         );
     }
 };
+
+// DELETE method to delete a user
+export const DELETE = async (req, { params }) => {
+    const { id } = params; // Extract user ID from URL
+
+    // Validate ObjectId format
+    if (!ObjectId.isValid(id)) {
+        return new Response(
+            JSON.stringify({ message: "Invalid user ID format" }),
+            { status: 400, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+        );
+    }
+
+    let userId = new ObjectId(id); // Convert string ID to ObjectId
+
+    try {
+        const db = await connectDB();
+        const userCollection = db.collection("users");
+
+        // Delete user
+        const result = await userCollection.deleteOne({ _id: userId });
+
+        if (result.deletedCount === 0) {
+            return new Response(
+                JSON.stringify({ message: "User not found" }),
+                { status: 404, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            );
+        }
+
+        return new Response(
+            JSON.stringify({ message: "User deleted successfully" }),
+            { status: 200, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+        );
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        return new Response(
+            JSON.stringify({ message: "Something went wrong", error: error.message }),
+            { status: 500, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+        );
+    }
+};
+
