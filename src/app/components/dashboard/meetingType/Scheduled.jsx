@@ -13,22 +13,19 @@ const Scheduled = () => {
     const session = useSession();
     const router = useRouter(); // Router hook 
 
-
-    
-    const fetchUser = async () => {
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/meetingType/api/${session?.data?.user?.email}`);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const userData = await response.json();
-            setMeeting(userData);
-        } catch (err) {
-            setError(err.message);
-        }
-    };
-    
     useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/meetingType/api/${session?.data?.user?.email}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const userData = await response.json();
+                setMeeting(userData);
+            } catch (err) {
+                setError(err.message);
+            }
+        };
 
         fetchUser();
     }, [session?.data?.user?.email]);
@@ -86,7 +83,7 @@ const Scheduled = () => {
                             text: 'The meeting has been deleted.',
                             icon: 'success',
                         });
-                        await fetchUser(); 
+                        // await fetchUser(); 
                     } else {
                         const errorData = await response.json();
                         console.log("Failed to delete meeting:", errorData);

@@ -1,5 +1,4 @@
 import { connectDB } from "@/app/lib/connectDB";
-const { ObjectId } = require('mongodb'); 
 
 
 export const GET = async (request, { params }) => {
