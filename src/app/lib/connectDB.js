@@ -7,13 +7,15 @@ export const connectDB = async () => {
     const uri = process.env.NEXT_PUBLIC_URI;
     console.log(uri);
     const client = new MongoClient(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
       serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
         deprecationErrors: true,
       },
     });
-
+    
     // Connect to the MongoDB server
     await client.connect();
 
