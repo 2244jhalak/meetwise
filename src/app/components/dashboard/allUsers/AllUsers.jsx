@@ -34,6 +34,32 @@ const AllUsers = () => {
         fetchUser();
     }, []);
 
+    const handleRoleUpdate = async (userId) => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api/${userId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache',
+                },
+                body: JSON.stringify({ role: 'admin' }),
+            });
+    
+            if (!response.ok) {
+                const errorResponse = await response.text();
+                throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorResponse}`);
+            }
+    
+            const result = await response.json();
+            console.log(result);
+    
+            // Fetch the updated user list again after the role update
+            fetchUser();
+        } catch (error) {
+            console.error('Error updating role:', error);
+        }
+    };
+
     // Function to handle user deletion
     const handleDeleteUser = async (userId, userRole) => {
         // Check if the user is an admin

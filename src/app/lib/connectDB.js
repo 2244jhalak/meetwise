@@ -4,16 +4,17 @@ let db;
 export const connectDB = async () => {
   if (db) return db;
   try {
-    const uri = process.env.NEXT_PUBLIC_URI;
+    const uri = `mongodb+srv://${process.env.NEXT_PUBLIC_DB_USER}:${process.env.NEXT_PUBLIC_DB_PASS}@cluster0.d7w0w.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
     console.log(uri);
     const client = new MongoClient(uri, {
+      
       serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
         deprecationErrors: true,
       },
     });
-
+    
     // Connect to the MongoDB server
     await client.connect();
 
