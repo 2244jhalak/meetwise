@@ -119,6 +119,7 @@ const Create = () => {
       [date]: {
         ...prevAvailability[date],
         [timeType]: value,
+        bookedTimes: prevAvailability[date]?.bookedTimes ?? [], // Ensure bookedTimes is null if not present
       },
     }));
   };
