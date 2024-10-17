@@ -100,7 +100,7 @@ const MeetingDetails = ({ meetingDetails }) => {
         {selectedDate ? (
           <p>{`You have selected: ${selectedDate.toLocaleDateString('en-GB')}`}</p> // Use 'en-GB' for DD/MM/YYYY format
         ) : (
-          <p>No date selected.</p>
+          <p>No Available date selected</p>
         )}
 
         <div className='max-h-40 overflow-y-auto mt-2'>
