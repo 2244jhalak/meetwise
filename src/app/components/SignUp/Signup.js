@@ -25,6 +25,7 @@ const Signup = () => {
       email: e.target.email.value,
       password: e.target.password.value,
       confirm: e.target.passwordM.value,
+      role:"user"
     };
 
     // Check if passwords match
