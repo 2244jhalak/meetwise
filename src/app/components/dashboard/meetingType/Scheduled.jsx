@@ -5,9 +5,12 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { FaClock, FaCopy, FaLocationArrow, FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { FaSearch } from 'react-icons/fa'; // Import the FaSearch icon
 
 const Scheduled = () => {
-    const [meeting, setMeeting] = useState([]);
+    const [meeting, setMeeting] = useState([]); // All meetings state
+    const [filteredMeetings, setFilteredMeetings] = useState([]); // Filtered meetings state
+    const [searchTerm, setSearchTerm] = useState(''); // Search term state
     const [error, setError] = useState(null);
     const session = useSession();
     const router = useRouter(); // Router hook 
@@ -22,6 +25,7 @@ const Scheduled = () => {
                 }
                 const userData = await response.json();
                 setMeeting(userData);
+                setFilteredMeetings(userData); // Set filtered meetings as default
             } catch (err) {
                 setError(err.message);
             }
@@ -77,11 +81,22 @@ const Scheduled = () => {
             }
         });
     };
-    
 
     // Function to navigate to the details page
     const handleViewDetails = (id) => {
         router.push(`/dashboard/meetingType/${id}`); // Navigates to the meeting details page using the ID
+    };
+
+    // Function to handle search input
+    const handleSearch = (event) => {
+        const searchValue = event.target.value.toLowerCase();
+        setSearchTerm(searchValue);
+
+        // Filter meetings based on search term
+        const filtered = meeting.filter((meet) =>
+            meet.eventName.toLowerCase().includes(searchValue)
+        );
+        setFilteredMeetings(filtered);
     };
 
     return (
@@ -89,10 +104,30 @@ const Scheduled = () => {
             <h2 className='text-4xl font-bold mt-5 text-white text-center container mx-auto'>Your Meeting Library</h2>
             <div className="border border-orange-600 rounded-xl text-center mx-auto container w-[110px] mb-2 mt-2"></div>
             <p className='p-4 text-center mx-auto font-medium font-raleway text-lg'>View, manage, and share all your scheduled meetings in one place with quick access to copy meeting links</p>
+            
+            {/* Search bar */}
+          
+
+<div className='text-center my-6'>
+    <div className="relative w-1/2 mx-auto">
+        <input
+            type="text"
+            placeholder="Search meetings by name..."
+            value={searchTerm}
+            onChange={handleSearch}
+            className="p-3 pl-10 rounded-full w-full bg-black text-white border border-gray-600"
+        />
+        <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+            <FaSearch className="text-gray-400" size={20} /> {/* Search icon from react-icons */}
+        </div>
+    </div>
+</div>
+
+
             <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-5 '>
                 {
-                    meeting.map(meet => (
-                        <div className='rounded-lg relative border border-green-500 bg-black text-white  shadow-2xl ' key={meet._id}>
+                    filteredMeetings.map(meet => (
+                        <div className='rounded-lg relative border border-green-500 bg-black text-white shadow-2xl ' key={meet._id}>
                             <FaTrash 
                                 className='absolute top-2 right-2 cursor-pointer' 
                                 onClick={() => handleDeleteMeeting(meet._id)} 
@@ -134,4 +169,3 @@ const Scheduled = () => {
 };
 
 export default Scheduled;
-
