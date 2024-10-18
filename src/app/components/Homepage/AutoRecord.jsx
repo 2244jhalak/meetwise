@@ -1,12 +1,10 @@
-
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import FeatureCard from './FeatureCard';
 
-
 const AutoRecord = () => {
     const { language } = useLanguage();
-
+    
     const texts = {
         en: {
             title: "Automatic Recording",
