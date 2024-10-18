@@ -33,9 +33,14 @@ const AllUsers = () => {
         }
     };
 
-    // Fetch users when the component mounts
+    // Fetch users when the component mounts and set up polling
     useEffect(() => {
-        fetchUser();
+        fetchUser(); // Initial fetch
+
+        // Polling to keep data updated every 5 seconds
+        const interval = setInterval(fetchUser, 5000); // 5000 milliseconds = 5 seconds
+
+        return () => clearInterval(interval); // Cleanup interval on component unmount
     }, []);
 
     const handleRoleUpdate = async (userId) => {
