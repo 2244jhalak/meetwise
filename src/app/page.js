@@ -17,7 +17,7 @@ import TimeZoneSelector from "./components/Homepage/Timezone";
 export default function Home() {
 
   // const eventTime = "2024-10-16 15:26"; // Example event time in "Asia/Dhaka" time zone
-  const eventTime =new Date(); // Example event time in "Asia/Dhaka" time zone
+  // const eventTime =new Date(); // Example event time in "Asia/Dhaka" time zone
 
 
   return (
@@ -32,9 +32,9 @@ export default function Home() {
       <AutoRecord></AutoRecord>
       <AllIntegrations></AllIntegrations>
       <Carousel></Carousel>
-      <div className="bg-orange-200">
+      {/* <div className="bg-orange-200">
         <TimeZoneSelector eventTime={eventTime}></TimeZoneSelector>
-      </div>
+      </div> */}
       <Footer></Footer>
     </div>
   );

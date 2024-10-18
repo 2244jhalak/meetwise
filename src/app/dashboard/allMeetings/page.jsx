@@ -1,11 +1,11 @@
 "use client";
 
-import Scheduled from '@/app/components/dashboard/meetingType/Scheduled';
+import AllMeetings from '@/app/components/dashboard/allMeetings/AllMeetings';
 import Sidebar from '@/app/components/dashboard/Sidebar';
 import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';  
 
 const Page = () => {
     const { data: session, status } = useSession();
@@ -29,18 +29,17 @@ const Page = () => {
     if (status === "authenticated") {
         return (
             <div className=' bg-[#4A4947] md:flex md:flex-row md:justify-between'>
-            <div className='md:w-1/4'>
-                <Sidebar />
+                <div className='md:w-1/4'>
+                    <Sidebar />
+                </div>
+                <div className='container mx-auto md:w-4/4 p-4'>
+                    <AllMeetings></AllMeetings>
+                </div>
             </div>
-            <div className='container mx-auto md:w-4/4 p-2'>
-            <Scheduled />
-            </div>
-        </div>
-           
         );
     }
 
-   
+    
     return null;
 };
 

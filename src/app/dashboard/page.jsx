@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';  
+import Notification from '../components/Notification';
 
 const DashboardPage = () => {
     const { data: session, status } = useSession();
@@ -32,7 +33,9 @@ const DashboardPage = () => {
                 <Sidebar />
                 <div className="flex-1 p-6">
                     <h2 className="text-center font-semibold text-3xl text-blue-600">
-                        Welcome to Dashboard
+                        Welcome to {
+                            session?.user?.role === "admin" ? "Admin's dashboard":`${session?.user?.name}'s dashboard`
+                        }
                     </h2>
                     <div className="flex justify-center mt-4">
                         <Image
@@ -42,6 +45,9 @@ const DashboardPage = () => {
                             width={1100}
                             height={600}
                         />
+                    </div>
+                    <div className="container mx-auto">
+                         <Notification></Notification>
                     </div>
                 </div>
             </div>

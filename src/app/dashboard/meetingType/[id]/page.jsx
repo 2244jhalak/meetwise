@@ -1,3 +1,4 @@
+
 import MeetingDetails from '@/app/components/dashboard/meetingType/MeetingDetails';
 import React from 'react';
 
@@ -5,7 +6,7 @@ const Page = async ({ params }) => {
     const { id } = params; // Get the dynamic id from URL
 
     // Fetch meeting details based on the id
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/createMeeting/api/${id}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/createMeeting/api/${id}`);
     if (!res.ok) {
         throw new Error('Failed to fetch meeting details');
     }
@@ -20,4 +21,3 @@ const Page = async ({ params }) => {
 };
 
 export default Page;
-

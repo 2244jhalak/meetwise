@@ -25,7 +25,7 @@ const TimeZoneSelector = ({ eventTime }) => {
 
   // Function to convert event time to the selected time zone
   const convertEventTime = (time, timezone) => {
-    const eventMoment = moment.tz(time, "Asia/Dhaka"); // assuming event time is in Dhaka time
+    const eventMoment = moment.tz(time,Intl.DateTimeFormat().resolvedOptions().timeZone); // assuming event time is in Dhaka time
     const userLocalTime = eventMoment.clone().tz(timezone);
     setConvertedTime(userLocalTime.format('YYYY-MM-DD HH:mm'));
   };

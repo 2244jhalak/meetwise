@@ -1,7 +1,7 @@
 "use client"
 import { usePathname } from 'next/navigation';
 import Links from './Links';
-import { FaBars, FaWindowClose } from "react-icons/fa";
+import { FaBars, FaBell, FaWindowClose } from "react-icons/fa";
 import { useState } from "react";
 import { TbBrandMeetup } from "react-icons/tb";
 import { signOut, useSession } from 'next-auth/react';
@@ -53,11 +53,12 @@ const Navbar = () => {
                     <i>Meet<span className='text-green-600'>Wise</span></i>
                 </h2>
             </div>
-            <div className={`${open ? 'top-16 block z-50 item-start font-bold font-raleway lg:bg-white md:bg-white bg-white' : '-top-72 gap-5 text-green-600'} flex lg:flex-row font-raleway font-bold flex-col px-2 py-4 absolute lg:static items-center rounded-b-lg ms-4 text-[13px]  duration-1000 lg:gap-10 text-black`}>
+            <div className={`${open ? 'top-16 block z-50 item-start font-bold font-raleway lg:bg-white md:bg-white bg-white' : '-top-72 gap-5 text-green-600'} flex lg:flex-row font-raleway font-bold flex-col px-2 py-4 absolute lg:static items-center rounded-b-lg ms-4 text-[13px]  duration-1000 lg:gap-5 text-black`}>
                 <Links />
                 <LanguageSelector />
                 {session.data ? (
                     <div className='flex items-center space-x-2'>
+                        <FaBell></FaBell>
                         <Link href="/dashboard">{translations[language].dashboard}</Link>
                         <Image
                             src={session?.data?.user?.image}
