@@ -16,7 +16,7 @@ const AllUsers = () => {
             const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api`, {
                 method: 'GET',
                 headers: {
-                    'Cache-Control': 'no-cache', // Ensure fresh data is fetched
+                    'Cache-Control': 'no-store', // Ensure fresh data is fetched
                 },
             });
 
@@ -45,7 +45,7 @@ const AllUsers = () => {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Cache-Control': 'no-cache',
+                    'Cache-Control': 'no-store',
                 },
                 body: JSON.stringify({ role: 'admin' }),
             });
@@ -59,7 +59,7 @@ const AllUsers = () => {
             console.log(result);
 
             // Fetch the updated user list again after the role update
-            fetchUser();
+            await fetchUser();
         } catch (error) {
             console.error('Error updating role:', error);
         } finally {
@@ -95,7 +95,7 @@ const AllUsers = () => {
                     const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api/${userId}`, {
                         method: 'DELETE',
                         headers: {
-                            'Cache-Control': 'no-cache',
+                            'Cache-Control': 'no-store',
                         },
                     });
 
@@ -107,7 +107,7 @@ const AllUsers = () => {
                             'User has been deleted.',
                             'success'
                         );
-                        fetchUser(); // Fetch updated user list
+                        await fetchUser(); // Fetch updated user list
                     } else {
                         Swal.fire(
                             'Error!',
@@ -129,7 +129,7 @@ const AllUsers = () => {
             <h2 className='text-3xl font-semibold'>Total Users: {users.length}</h2>
             
             {/* Loading State */}
-            {loading && <p>Loading...</p>}
+           
 
             {/* All Users */}
             <div className="overflow-x-auto">
@@ -143,6 +143,12 @@ const AllUsers = () => {
                             <th>Actions</th>
                         </tr>
                     </thead>
+                    {
+                    loading && 
+                    <p className='flex justify-center mt-10'>
+                        <span className="loading loading-ring loading-lg"></span>
+                    </p>
+                    }
                     <tbody>
                         {/* Map through users to create table rows */}
                         {
