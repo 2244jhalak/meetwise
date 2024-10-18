@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
@@ -7,9 +7,11 @@ import Swal from 'sweetalert2'; // Import SweetAlert2
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false); // New state for loading
 
     // Function to fetch users
     const fetchUser = async () => {
+        setLoading(true); // Start loading before fetch
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api`, {
                 method: 'GET',
@@ -26,6 +28,8 @@ const AllUsers = () => {
             setUsers(usersData.data || usersData);
         } catch (err) {
             setError(err.message);
+        } finally {
+            setLoading(false); // Stop loading after fetch
         }
     };
 
@@ -35,6 +39,7 @@ const AllUsers = () => {
     }, []);
 
     const handleRoleUpdate = async (userId) => {
+        setLoading(true); // Start loading before role update
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api/${userId}`, {
                 method: 'PATCH',
@@ -44,19 +49,21 @@ const AllUsers = () => {
                 },
                 body: JSON.stringify({ role: 'admin' }),
             });
-    
+
             if (!response.ok) {
                 const errorResponse = await response.text();
                 throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorResponse}`);
             }
-    
+
             const result = await response.json();
             console.log(result);
-    
+
             // Fetch the updated user list again after the role update
             fetchUser();
         } catch (error) {
             console.error('Error updating role:', error);
+        } finally {
+            setLoading(false); // Stop loading after role update
         }
     };
 
@@ -83,6 +90,7 @@ const AllUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then(async (result) => {
             if (result.isConfirmed) {
+                setLoading(true); // Start loading before delete
                 try {
                     const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api/${userId}`, {
                         method: 'DELETE',
@@ -109,6 +117,8 @@ const AllUsers = () => {
                     }
                 } catch (error) {
                     Swal.fire('Error!', 'Something went wrong.', 'error');
+                } finally {
+                    setLoading(false); // Stop loading after delete
                 }
             }
         });
@@ -117,6 +127,10 @@ const AllUsers = () => {
     return (
         <div>
             <h2 className='text-3xl font-semibold'>Total Users: {users.length}</h2>
+            
+            {/* Loading State */}
+            {loading && <p>Loading...</p>}
+
             {/* All Users */}
             <div className="overflow-x-auto">
                 <table className="table">
@@ -180,4 +194,5 @@ const AllUsers = () => {
 };
 
 export default AllUsers;
+
 
