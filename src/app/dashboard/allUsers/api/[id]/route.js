@@ -10,7 +10,7 @@ export const PATCH = async (req, { params }) => {
     if (!id || !role) {
         return new Response(
             JSON.stringify({ message: "ID and role are required" }),
-            { status: 400, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            { status: 400, headers: { 'Cache-Control': 'no-store' } }
         );
     }
 
@@ -18,7 +18,7 @@ export const PATCH = async (req, { params }) => {
     if (!ObjectId.isValid(id)) {
         return new Response(
             JSON.stringify({ message: "Invalid user ID format" }),
-            { status: 400, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            { status: 400, headers: { 'Cache-Control': 'no-store' } }
         );
     }
 
@@ -37,19 +37,19 @@ export const PATCH = async (req, { params }) => {
         if (result.modifiedCount === 0) {
             return new Response(
                 JSON.stringify({ message: "User not found or role unchanged" }),
-                { status: 400 , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+                { status: 400 , headers: { 'Cache-Control': 'no-store' } }
             );
         }
 
         return new Response(
             JSON.stringify({ message: "Role updated successfully" }),
-            { status: 200 , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            { status: 200 , headers: { 'Cache-Control': 'no-store' } }
         );
     } catch (error) {
         console.error('Error updating role:', error);
         return new Response(
             JSON.stringify({ message: "Something went wrong", error: error.message }),
-            { status: 500 , headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            { status: 500 , headers: { 'Cache-Control': 'no-store' } }
         );
     }
 };
@@ -62,7 +62,7 @@ export const DELETE = async (req, { params }) => {
     if (!ObjectId.isValid(id)) {
         return new Response(
             JSON.stringify({ message: "Invalid user ID format" }),
-            { status: 400, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            { status: 400, headers: { 'Cache-Control': 'no-store' } }
         );
     }
 
@@ -78,19 +78,19 @@ export const DELETE = async (req, { params }) => {
         if (result.deletedCount === 0) {
             return new Response(
                 JSON.stringify({ message: "User not found" }),
-                { status: 404, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+                { status: 404, headers: { 'Cache-Control': 'no-store' } }
             );
         }
 
         return new Response(
             JSON.stringify({ message: "User deleted successfully" }),
-            { status: 200, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            { status: 200, headers: { 'Cache-Control': 'no-store' } }
         );
     } catch (error) {
         console.error('Error deleting user:', error);
         return new Response(
             JSON.stringify({ message: "Something went wrong", error: error.message }),
-            { status: 500, headers: { "Cache-Control": "no-cache, no-store, must-revalidate" } }
+            { status: 500, headers: { 'Cache-Control': 'no-store' } }
         );
     }
 };
