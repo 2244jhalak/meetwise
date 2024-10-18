@@ -1,5 +1,6 @@
 import { connectDB } from "@/app/lib/connectDB";
-
+export const dynamic = 'force-dynamic'; 
+export const revalidate = 1;
 
 export const GET = async () => {
     try {
@@ -14,10 +15,7 @@ export const GET = async () => {
                 status: 200,
                 headers: { 
                     "Content-Type": "application/json",
-                    "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate", 
-                    "Pragma": "no-cache",
-                    "Expires": "0",
-                    "Surrogate-Control": "no-store"
+                    'Cache-Control': 'no-store'
                 }
             }
         );
@@ -29,10 +27,7 @@ export const GET = async () => {
                 status: 500,
                 headers: { 
                     "Content-Type": "application/json",
-                    "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate", 
-                    "Pragma": "no-cache",
-                    "Expires": "0",
-                    "Surrogate-Control": "no-store"
+                    'Cache-Control': 'no-store'
                 }
             }
         );
