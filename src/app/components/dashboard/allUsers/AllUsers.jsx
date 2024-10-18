@@ -16,7 +16,7 @@ const AllUsers = () => {
             const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api`, {
                 method: 'GET',
                 headers: {
-                    'Cache-Control': 'no-cache', // Ensure fresh data is fetched
+                    'Cache-Control': 'no-store', // Ensure fresh data is fetched
                 },
             });
 
@@ -45,7 +45,7 @@ const AllUsers = () => {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Cache-Control': 'no-cache',
+                    'Cache-Control': 'no-store',
                 },
                 body: JSON.stringify({ role: 'admin' }),
             });
@@ -95,7 +95,7 @@ const AllUsers = () => {
                     const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/allUsers/api/${userId}`, {
                         method: 'DELETE',
                         headers: {
-                            'Cache-Control': 'no-cache',
+                            'Cache-Control': 'no-store',
                         },
                     });
 
