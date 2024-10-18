@@ -59,7 +59,7 @@ const AllUsers = () => {
             console.log(result);
 
             // Fetch the updated user list again after the role update
-            fetchUser();
+            await fetchUser();
         } catch (error) {
             console.error('Error updating role:', error);
         } finally {
@@ -107,7 +107,7 @@ const AllUsers = () => {
                             'User has been deleted.',
                             'success'
                         );
-                        fetchUser(); // Fetch updated user list
+                        await fetchUser(); // Fetch updated user list
                     } else {
                         Swal.fire(
                             'Error!',

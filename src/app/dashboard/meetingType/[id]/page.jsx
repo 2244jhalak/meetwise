@@ -13,8 +13,10 @@ const Page = async ({ params }) => {
     const meetingDetails = await res.json();
 
     return (
-        <div>
-            <h1>Meeting Type</h1>
+        <div className='bg-black min-h-screen'>
+             <h2 className='text-4xl font-bold pt-3 text-white text-center container mx-auto'>📅 Simplified Meeting Booking</h2>
+            <div className="border border-orange-600 rounded-xl text-center mx-auto container w-[200px] mb-2 mt-2"></div>
+            <p className='p-2 pb-3 text-center mx-auto font-medium font-raleway text-xl text-gray-300'>Enjoy a stress-free meeting booking experience.</p>
             <MeetingDetails meetingDetails={meetingDetails} />
         </div>
     );
