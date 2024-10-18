@@ -4,12 +4,12 @@ import { connectDB } from "@/app/lib/connectDB";
 export const GET = async () => {
     try {
         const db = await connectDB();
-        const userCollection = db.collection("users");
-        const users = await userCollection.find().toArray(); // Fetch all users
+        const meetingCollection = db.collection("meeting");
+        const meteting = await meetingCollection.find().toArray(); // Fetch all users
 
         // Return JSON response with no-cache headers
         return new Response(
-            JSON.stringify({ message: "Users fetched successfully", data: users }),
+            JSON.stringify({ message: "Meetings fetched successfully", data: meteting }),
             { 
                 status: 200,
                 headers: { 
