@@ -136,8 +136,8 @@ const MeetingDetails = ({ meetingDetails }) => {
   };
  console.log(availableTimes)
   return (
-    <div className="flex flex-col md:flex-row gap-8 items-center p-4">
-      <div className="bg-white shadow-md rounded-lg p-4 w-full md:w-1/3 mb-4 h-full">
+    <div className="flex flex-col md:flex-row gap-8 items-start p-4 font-raleway">
+      <div className="bg-green-50 border-4 border-l-orange-500 border-r-orange-500 shadow-lg rounded-lg p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
         <h2 className="text-2xl font-semibold mb-4">Meeting Details</h2>
         {meetingDetails ? (
           <div className="space-y-2">
@@ -155,8 +155,8 @@ const MeetingDetails = ({ meetingDetails }) => {
         )}
       </div>
 
-      <div className="bg-white shadow-md rounded-lg p-4 w-full md:w-1/3 mb-4 h-full">
-        <h2 className="text-lg font-bold mb-4">Meeting Calendar</h2>
+      <div className="bg-green-50 border-4 border-l-blue-500 border-r-blue-500 shadow-lg rounded-lg p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h2 className="text-2xl font-bold mb-4">Select Your Date 📅</h2>
         <Calendar
           tileContent={tileContent}
           tileDisabled={tileDisabled} 
@@ -165,8 +165,8 @@ const MeetingDetails = ({ meetingDetails }) => {
         />
       </div>
 
-      <div className="bg-white shadow-md rounded-lg p-4 w-full md:w-1/3 mb-4 h-full">
-        <h3 className="text-lg font-bold mb-4">Selected Time:</h3>
+      <div className="bg-orange-50 border-4 border-l-green-500 border-r-green-500 shadow-lg rounded-lg p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h3 className="text-lg font-bold mb-4">Select Your Time ⏰ :</h3>
         {selectedDate ? (
           <p>{`You have selected: ${selectedDate.toLocaleDateString('en-GB')}`}</p>
         ) : (
