@@ -129,7 +129,7 @@ const AllUsers = () => {
             <h2 className='text-3xl font-semibold'>Total Users: {users.length}</h2>
             
             {/* Loading State */}
-            {loading && <p>Loading...</p>}
+           
 
             {/* All Users */}
             <div className="overflow-x-auto">
@@ -143,6 +143,12 @@ const AllUsers = () => {
                             <th>Actions</th>
                         </tr>
                     </thead>
+                    {
+                    loading && 
+                    <p className='text-center mt-10'>
+                        <span className="loading loading-ring loading-lg"></span>
+                    </p>
+                    }
                     <tbody>
                         {/* Map through users to create table rows */}
                         {
