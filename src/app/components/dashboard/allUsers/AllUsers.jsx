@@ -145,7 +145,7 @@ const AllUsers = () => {
                     </thead>
                     {
                     loading && 
-                    <p className='text-center mt-10'>
+                    <p className='flex justify-center mt-10'>
                         <span className="loading loading-ring loading-lg"></span>
                     </p>
                     }
