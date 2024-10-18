@@ -1,6 +1,7 @@
 import { connectDB } from "@/app/lib/connectDB";
 import { ObjectId } from "mongodb";
-
+export const dynamic = 'force-dynamic'; 
+export const revalidate = 1;
 // PATCH for updating user role
 export const PATCH = async (req, { params }) => {
     const { id } = params; // Extract the user ID from the URL
