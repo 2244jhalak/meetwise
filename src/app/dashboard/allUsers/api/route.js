@@ -1,5 +1,6 @@
 import { connectDB } from "@/app/lib/connectDB";
-
+export const dynamic = 'force-dynamic'; 
+export const revalidate = 1;
 
 export const GET = async () => {
     try {
