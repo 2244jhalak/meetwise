@@ -223,7 +223,7 @@ const Create = () => {
             <option value="60 min">60 min</option>
           </select>
 
-          <div className="flex mb-4">
+          <div className="flex pb-4">
             <button type="button" onClick={() => setSelected("Zoom")}>
               <Image
                 src="https://i.ibb.co/mHdB8Lw/Zoom-Logo-PNG-Images-removebg-preview-2.png"
@@ -262,8 +262,8 @@ const Create = () => {
           </button>
         </div>
       </div>
-
-      <div className="bg-black lg:w-full md:w-full w-full grid grid-cols-3  gap-5 lg:shadow-2xl md:shadow-2xl lg:m-5 p-5 lg:h-[500px] md:h-[500px] h-[500px] mt-7">
+ <div className="bg-black lg:w-full md:w-full w-full  lg:shadow-2xl md:shadow-2xl lg:m-5 p-5  min-h-screen mt-7">
+ <div className=" grid grid-cols-3  gap-5 ">
         <div className=" w-full space-y-5">
           <h3 className="text-3xl font-extrabold font-raleway">
             Meet<span className="text-green-600">Wise</span>
@@ -289,22 +289,13 @@ const Create = () => {
             Meeting Url: <span className="text-blue-500 font-medium text-base">{url}</span>
           </p>
 
-          {/* available times are here  */}
-          <div className='bg-white text-black w-full p-4 h-64 ml-3'>
-            {availableDays.map(day => <div key={day}>
-              <h2 className="text-lg md:text-xl lg:*:text-2xl">{day}</h2>
-              <div className='flex justify-between gap-1'>
-                <h3 className='border p-2'><span className='font-semibold'>Start Time</span>  {availableTimes[day]?.startTime} </h3>
-                <h3 className='border p-2'><span className='font-semibold'>End Time:</span> {availableTimes[day]?.endTime}</h3>
-              </div>
-            </div>)}
-          </div>
+          
 
         </div>
 
         <div className="w-full overflow-auto">
-          <div className="lg:flex-1 md:flex-1 p-4 rounded-lg bg-white text-black ">
-            <h2 className="font-semibold text-xl mb-4">Select Date & Time</h2>
+          <div className="lg:flex-1 md:flex-1 p-4 rounded-lg bg-orange-50 text-black h-[450px] ">
+            <h2 className="font-semibold text-xl mb-4">Set Date</h2>
 
             <div className="w-full border border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
               <div className="min-w-full "> {/* Enable horizontal scrolling */}
@@ -323,8 +314,8 @@ const Create = () => {
         </div>
 
 
-        <div className="max-w-72 mx-auto  p-4  bg-white text-black rounded-lg shadow-lg">
-          <h3 className="mt-4 text-lg font-semibold">All Dates in Selected Range:</h3>
+        <div className="max-w-72 mx-auto  p-4  bg-orange-50 text-black rounded-lg shadow-lg h-[450px]">
+          <h3 className="mt-4 text-lg font-semibold">Set Time :</h3>
           <div className="mt-4">
             {/* <p className="text-lg">
       Start Date: {new Date(state[0].startDate).toLocaleDateString("en-GB")}
@@ -368,6 +359,28 @@ const Create = () => {
           </div>
         </div>
       </div>
+      <div className='bg-black text-white w-full p-6 pt-2'>
+  <h1 className='text-3xl font-bold text-center mb-6'>See Your Available Times</h1>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {availableDays.map(day => (
+      <div
+        className="bg-gray-800 p-4 rounded-lg shadow-md hover:bg-gray-700 transition duration-300 flex flex-col justify-center items-start gap-2"
+        key={day}
+      >
+        <h2 className="text-lg md:text-xl lg:text-2xl font-semibold">{day}</h2>
+        <p className="text-sm md:text-base">
+          <span className="font-bold">Start Time:</span> {availableTimes[day]?.startTime}
+        </p>
+        <p className="text-sm md:text-base">
+          <span className="font-bold">End Time:</span> {availableTimes[day]?.endTime}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
+
+ </div>
+    
     </form>
   );
 };
