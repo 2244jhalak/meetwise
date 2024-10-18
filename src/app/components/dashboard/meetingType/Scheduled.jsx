@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { FaClock, FaCopy, FaLocationArrow, FaTrash } from 'react-icons/fa';
+import { FaTrash, FaCopy, FaLocationArrow, FaClock, FaShare } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { FaSearch } from 'react-icons/fa'; // Import the FaSearch icon
 
@@ -45,6 +45,26 @@ const Scheduled = () => {
                 console.error('Failed to copy the link', err);
             });
     };
+//  share details
+const handleShareMeeting = (meet) => {
+    const shareData = {
+        title: meet.eventName,
+        text: meet.description,
+        url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/meetingType/${meet._id}`
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData)
+            .then(() => {
+                console.log('Meeting shared successfully');
+            })
+            .catch((err) => {
+                console.error('Error sharing meeting', err);
+            });
+    } else {
+        alert('Your browser does not support sharing via this method.');
+    }
+};
 
     // Function to delete a meeting
     const handleDeleteMeeting = (id) => {
@@ -124,46 +144,55 @@ const Scheduled = () => {
 </div>
 
 
-            <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-5 '>
-                {
-                    filteredMeetings.map(meet => (
-                        <div className='rounded-lg relative border border-green-500 bg-black text-white shadow-2xl ' key={meet._id}>
-                            <FaTrash 
-                                className='absolute top-2 right-2 cursor-pointer' 
-                                onClick={() => handleDeleteMeeting(meet._id)} 
-                            />
-                            <div className='bg-green-700 w-full h-[30px] rounded-t-lg'></div>
-                            <div className='p-8 space-y-4'>
-                                <h2 className='text-xl font-bold '>Event Name:<span className=''>{meet.eventName}</span></h2>
-                                <h2 className='text-xl font-bold '>Description: <span className='text-base font-medium'>{meet.eventName}</span> </h2>
-                                <div className='flex items-center justify-between'>
-                                    <div className='flex items-center gap-2'>
-                                        <FaClock />
-                                        <p>{meet.duration}</p>
-                                    </div>
-                                    <div className='flex items-center gap-2'>
-                                        <FaLocationArrow />
-                                        <p>{meet.selected}</p>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div className='flex justify-between'>
-                                    <div className='flex items-center gap-2 text-green-600 cursor-pointer' onClick={() => handleCopyLink(meet._id)}>
-                                        <FaCopy />
-                                        <p>Copy Link</p>
-                                    </div>
-                                    <button
-                                        className='text-orange-500 underline cursor-pointer'
-                                        onClick={() => handleViewDetails(meet._id)}
-                                    >
-                                        View Details
-                                    </button>
-                                </div>
-                            </div>
+
+
+<div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-5 '>
+    {
+        filteredMeetings.map(meet => (
+            <div className='rounded-lg relative border border-green-500 bg-black text-white shadow-2xl ' key={meet._id}>
+                {/* Delete Icon */}
+                <FaTrash 
+                    className='absolute top-2 left-2 cursor-pointer' 
+                    onClick={() => handleDeleteMeeting(meet._id)} 
+                />
+                {/* Share Icon */}
+                <FaShare 
+                    className='absolute top-2 right-2 cursor-pointer' 
+                    onClick={() => handleShareMeeting(meet)} 
+                />
+                <div className='bg-green-700 w-full h-[30px] rounded-t-lg'></div>
+                <div className='p-8 space-y-4'>
+                    <h2 className='text-xl font-bold '>Event :<span className=''> {meet.eventName}</span></h2>
+                    <h2 className='text-xl font-bold '>Description: <span className='text-base font-medium'>{meet.description}</span> </h2>
+                    <div className='flex items-center justify-between'>
+                        <div className='flex items-center gap-2'>
+                            <FaClock />
+                            <p>{meet.duration}</p>
                         </div>
-                    ))
-                }
+                        <div className='flex items-center gap-2'>
+                            <FaLocationArrow />
+                            <p>{meet.selected}</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div className='flex justify-between'>
+                        <div className='flex items-center gap-2 text-green-600 cursor-pointer' onClick={() => handleCopyLink(meet._id)}>
+                            <FaCopy />
+                            <p>Copy Link</p>
+                        </div>
+                        <button
+                            className='text-orange-500 underline cursor-pointer'
+                            onClick={() => handleViewDetails(meet._id)}
+                        >
+                            View Details
+                        </button>
+                    </div>
+                </div>
             </div>
+        ))
+    }
+</div>
+
         </div>
     );
 };
