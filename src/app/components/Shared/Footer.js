@@ -302,7 +302,7 @@ const Footer = () => {
           
           <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" className="fill-current">
           </svg>
-          <p className="text-2xl font-bold text-gray-300">Meet <span className="text-green-500">Wise</span></p>
+          <p className="text-3xl font-bold text-gray-300">Meet <span className="text-green-500">Wise</span></p>
           <p>{content[language].tagline}</p>
         </aside>
         <nav className="flex">
