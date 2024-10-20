@@ -8,6 +8,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import LottieAnimation from "../Lottie/LottieAnimation";
 import Login from '../../../../public/banner/log.json';
 import Link from "next/link";
+export const dynamic = 'force-dynamic';
 
 const SignIn = () => {
     const [showpassword, setShowpassword] = useState(false);

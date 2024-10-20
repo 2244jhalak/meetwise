@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import { signIn } from "next-auth/react";
 import LottieAnimation from "../Lottie/LottieAnimation";
 import signup from "../../../../public/banner/signup.json";
+export const dynamic = 'force-dynamic';
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);
