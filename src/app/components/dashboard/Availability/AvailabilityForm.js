@@ -83,6 +83,7 @@ const AvailabilityForm = () => {
 
     useEffect(() => {
       const fetchAvailability = async () => {
+        if (!session?.data?.user?.email) return;
           try {
               const response = await fetch(`/dashboard/availability/available?email=${session?.data?.user?.email}`, {
                   method: "GET",
