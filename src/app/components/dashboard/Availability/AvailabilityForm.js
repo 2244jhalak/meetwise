@@ -48,7 +48,7 @@ const AvailabilityForm = () => {
       console.log('Submitted Availability:', availability); // Check if the object looks correct
   
       try {
-          const response = await fetch('/dashboard/availability/available', {
+          const response = await fetch("/dashboard/availability/available", {
               method: "PUT",
               headers: {
                   "Content-Type": "application/json",
@@ -83,7 +83,6 @@ const AvailabilityForm = () => {
 
     useEffect(() => {
       const fetchAvailability = async () => {
-        if (!session?.data?.user?.email) return;
           try {
               const response = await fetch(`/dashboard/availability/available?email=${session?.data?.user?.email}`, {
                   method: "GET",
