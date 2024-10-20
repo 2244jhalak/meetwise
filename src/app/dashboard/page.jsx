@@ -5,9 +5,10 @@ import Sidebar from '../components/dashboard/Sidebar';
 
 import Notification from '../components/Notification';
 import PrivateRoute from '../services/PrivateRoute';
+import { useSession } from 'next-auth/react';
 
 const DashboardPage = () => {
-    
+    const { data: session } = useSession();
         return (
             <PrivateRoute>
                 <div className="bg-blue-100 min-h-screen flex">
