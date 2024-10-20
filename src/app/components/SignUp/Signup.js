@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -16,6 +16,9 @@ const Signup = () => {
   const [showpassword, setShowpassword] = useState(false);
   const [confirmshowpassword, setConfirmShowpassword] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+   
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,7 +90,7 @@ const Signup = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          router.push("/dashboard"); // Redirect to home or desired page
+          router.push(callbackUrl)// Redirect to home or desired page
         } else {
           throw new Error("Signup failed");
         }
