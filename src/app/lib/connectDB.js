@@ -11,7 +11,7 @@ export const connectDB = async () => {
   if (db) return db; // Return existing connection
 
   try {
-    const uri = `mongodb+srv://${process.env.NEXT_PUBLIC_DB_USER}:${process.env.NEXT_PUBLIC_DB_PASS}@cluster0.d7w0w.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+    const uri = process.env.NEXT_PUBLIC_URI;
     console.log("MongoDB URI:", uri); // Log the connection URI
 
     const client = new MongoClient(uri, {
