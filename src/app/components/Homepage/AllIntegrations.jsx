@@ -102,7 +102,6 @@ const AllIntegrations = () => {
                     <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-600 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
                 </div>
             </div>
-            {/* <h3 className='text-4xl font-bold mb-10'>{title}</h3> */}
             <div className='md:flex justify-between gap-5 mx-auto '>
                 <div className='bg-green-100 p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-xl text-start mt-5  shadow-green-900'>
                     <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
@@ -113,7 +112,6 @@ const AllIntegrations = () => {
                 </div>
                 <div className='bg-green-100 p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-xl text-start mt-5  shadow-green-900'>
                     <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
-                        {/* <FaVideo className='text-blue-500 text-2xl mb-2' /> */}
                         <Image src={zoom.image} alt="" width={1000} height={1000} />
                     </div>
                     <h3 className='text-xl my-2 font-bold'>{zoom.title}</h3>
@@ -121,7 +119,6 @@ const AllIntegrations = () => {
                 </div>
                 <div className='bg-green-100 p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-xl text-start mt-5  shadow-green-900'>
                     <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
-                        {/* <FaVideo className='text-red-500 text-2xl mb-2' /> */}
                         <Image src={microsoftTeams.image} alt="" width={1000} height={1000} />
                     </div>
                     <h3 className='text-xl my-2 font-bold'>{microsoftTeams.title}</h3>
