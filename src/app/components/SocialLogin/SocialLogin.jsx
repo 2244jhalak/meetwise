@@ -2,18 +2,20 @@
 
 import Image from "next/image";
 import { signIn, useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useEffect } from 'react';
 
 const SocialLogin = () => {
     const router = useRouter();
     const { data: session, status } = useSession();
-
+    const searchParams = useSearchParams();
+   
+    const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
     useEffect(() => {
         if (status === 'authenticated') {
-            router.push('/dashboard');
+            router.push(callbackUrl);
         }
-    }, [status, router]);
+    }, [status, router,callbackUrl]);
 
     const handleSignIn = async (provider) => {
         const res = await signIn(provider, { redirect: false });
@@ -23,7 +25,7 @@ const SocialLogin = () => {
         } else {
             // If the sign-in was successful, this line ensures the session is updated
             if (res?.ok) {
-                router.push('/dashboard'); // Redirect to dashboard
+                router.push('/'); // Redirect to dashboard
             }
         }
     };

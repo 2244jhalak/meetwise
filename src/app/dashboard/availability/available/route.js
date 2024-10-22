@@ -1,4 +1,5 @@
 import { connectDB } from "@/app/lib/connectDB";
+export const dynamic = 'force-dynamic';
 
 // Handle PUT and GET requests
 export const PUT = async (request) => {

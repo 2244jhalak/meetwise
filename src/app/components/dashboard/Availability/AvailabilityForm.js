@@ -2,6 +2,7 @@
 import Swal from 'sweetalert2'; 
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
+export const dynamic = 'force-dynamic';
 
 const AvailabilityForm = () => {
     const [selectedDays, setSelectedDays] = useState([]);
