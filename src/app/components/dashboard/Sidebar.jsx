@@ -13,6 +13,7 @@ import { useState } from 'react';
 
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import { IoMdAnalytics } from 'react-icons/io';
 
 
 const Sidebar = () => {
@@ -89,6 +90,11 @@ const Sidebar = () => {
                         label='Availability'
                         address='/dashboard/availability'
                         icon={CiClock2}
+                    />
+                    <NavigationDash
+                        label='Meeting Analytics'
+                        address='/dashboard/meetingAnalytics'
+                        icon={IoMdAnalytics}
                     />
                     <NavigationDash
                         label='Settings'
