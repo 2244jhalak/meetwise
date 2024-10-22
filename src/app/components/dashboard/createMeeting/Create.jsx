@@ -260,9 +260,9 @@ const Create = () => {
           )}
 
            {/* anam added part */}
-           <div className="bg-orange-100 md:w-[300px] text-black">
+           {/* <div className="bg-orange-100 md:w-[300px] text-black">
             <TimeZoneSelector eventTime={eventTime}></TimeZoneSelector>
-          </div>
+          </div> */}
 
           <button
             disabled={loading}
