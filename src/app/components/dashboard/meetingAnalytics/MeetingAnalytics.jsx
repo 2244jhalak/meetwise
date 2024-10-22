@@ -78,13 +78,13 @@ const MeetingAnalytics = () => {
 
             {/* Chart Section */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
-                <div className="bg-[#3B3A39] p-4 rounded-lg shadow-md flex-1 min-w-[300px] h-[560px]">
+                <div className="bg-[#3B3A39] p-4 rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
                     <h3 className="text-xl font-bold text-center">Meetings Over Time</h3>
                     <Bar 
                         data={getMeetingsOverTimeData()} 
                         options={{
                             responsive: true,
-                            maintainAspectRatio: false,
+                            maintainAspectRatio: true, // Maintain the aspect ratio so height doesn't increase
                             plugins: {
                                 legend: {
                                     display: true,
@@ -104,17 +104,16 @@ const MeetingAnalytics = () => {
                                 },
                             },
                         }} 
-                        height={80} // Reduced height for a smaller chart
                     />
                 </div>
 
-                <div className="bg-[#3B3A39] p-4 rounded-lg shadow-md flex-1 min-w-[300px] h-[560px]">
+                <div className="bg-[#3B3A39] p-4 rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
                     <h3 className="text-xl font-bold text-center">Meeting Type Distribution</h3>
                     <Pie 
                         data={getMeetingTypeDistributionData()} 
                         options={{
                             responsive: true,
-                            maintainAspectRatio: false,
+                            maintainAspectRatio: true, // Maintain the aspect ratio so height doesn't increase
                             plugins: {
                                 legend: {
                                     display: true,
@@ -122,7 +121,6 @@ const MeetingAnalytics = () => {
                                 },
                             },
                         }} 
-                        height={80} // Reduced height for a smaller chart
                     />
                 </div>
             </div>
