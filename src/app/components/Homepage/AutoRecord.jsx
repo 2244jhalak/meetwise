@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import FeatureCard from './FeatureCard';
