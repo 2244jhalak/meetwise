@@ -10,6 +10,7 @@ import "react-date-range/dist/theme/default.css";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
+import TimeZoneSelector from "../../Homepage/Timezone";
 
 const Create = () => {
   const session = useSession();
@@ -31,6 +32,10 @@ const Create = () => {
     },
   ]);
   // Time availability state
+
+  // Time zone setting
+  const eventTime = new Date(); // Example event time in "Asia/Dhaka" time zone
+
 
   // Function to generate date range between start and end date
   const generateDateRange = (start, end) => {
@@ -254,12 +259,18 @@ const Create = () => {
             />
           )}
 
+           {/* anam added part */}
+           {/* <div className="bg-orange-100 md:w-[300px] text-black">
+            <TimeZoneSelector eventTime={eventTime}></TimeZoneSelector>
+          </div> */}
+
           <button
             disabled={loading}
             className="py-2 w-4/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 text-white"
           >
             {loading ? <FaFan className="animate-spin"></FaFan> : "Create"}
           </button>
+         
         </div>
       </div>
       <div className="bg-black lg:w-full md:w-full w-full  lg:shadow-2xl md:shadow-2xl lg:m-5 p-5  min-h-screen mt-7">
