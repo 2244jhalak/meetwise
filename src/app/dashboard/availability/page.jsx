@@ -9,6 +9,7 @@ const Page = () => {
     
         return (
             <PrivateRoute>
+            <div className=' bg-[#4A4947] min-h-screen md:flex md:flex-row md:justify-between'>
                 <div className=' bg-[#4A4947] md:flex md:flex-row md:justify-between'>
                 <div className='md:w-1/4'>
                     <Sidebar />
@@ -16,6 +17,7 @@ const Page = () => {
                 <div className='container mx-auto md:w-3/4 p-4'>
                     <AvailabilityForm />
                 </div>
+            </div>
             </div>
             </PrivateRoute>
         );

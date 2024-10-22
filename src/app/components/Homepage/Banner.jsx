@@ -47,6 +47,7 @@ const translations = {
 
 
 const Banner = () => {
+  console.log('time zone',Intl.DateTimeFormat().resolvedOptions().timeZone);
   const settings = {
     dots: false,  // প্যাগিনেশন ডটস অফ
     infinite: true,  // ইনফিনিট লুপ অন
