@@ -126,8 +126,8 @@ const MeetingDetails = ({ meetingDetails }) => {
           authorEmail: meetingDetails.email, // Author email
           duration: meetingDetails.duration, // Duration time
           selectedDate: formattedDate, // Selected date
-          name: `Meetwise`,
-          email: `meetwise789@gmail.com`,// Replace with the actual user's email
+          name: session?.data?.user?.name,
+          email: session?.data?.user?.email,/// Replace with the actual user's email
           bookedTimeSlot: timeToBook, // Booked time slot
           meetingLocation: meetingDetails.selected,
           url: meetingDetails.url,
