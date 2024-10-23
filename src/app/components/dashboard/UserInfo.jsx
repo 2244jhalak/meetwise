@@ -1,20 +1,26 @@
 "use client";
-import { useSession, signIn, getSession, signOut } from 'next-auth/react';
+
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
+import { FaEnvelope, FaVoicemail } from 'react-icons/fa';
+
 
 const UserInfo = () => {
     const { data: session } = useSession();
     const [formattedDate, setFormattedDate] = useState('');
     const [name, setName] = useState(session?.user?.name || '');
+    const [title,setTitle] = useState(session?.user?.title || '');
+    const [description,setDescription] = useState(session?.user?.description || '');
     const [image, setImage] = useState(session?.user?.image || '');
-    const [imageFile, setImageFile] = useState(null); // New state for image file
+    const [imageFile, setImageFile] = useState(null); // State for image file
+
     console.log(session);
 
     useEffect(() => {
         const dateStr = session?.expires;
         const date = new Date(dateStr);
-
+        
         if (!isNaN(date.getTime())) {
             const hours = date.getUTCHours() % 12 || 12;
             const minutes = String(date.getUTCMinutes()).padStart(2, '0');
@@ -26,6 +32,15 @@ const UserInfo = () => {
             setFormattedDate('Invalid date');
         }
     }, [session?.expires]);
+
+    // Function to handle image preview
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImageFile(file);
+            setImage(URL.createObjectURL(file)); // Preview the selected image
+        }
+    };
 
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -55,21 +70,23 @@ const UserInfo = () => {
         }
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/dashboard/profile/api`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/profile/api/${session?.user?.email}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, image: uploadedImageUrl, email: session?.user?.email }),
+                body: JSON.stringify({ name,title,description, image: uploadedImageUrl, email: session?.user?.email }),
             });
             if (response.ok) {
-                alert('User info updated successfully');
+                
 
-                // Manually refresh session
-                const updatedSession = await getSession();
-                setName(updatedSession.user.name);
-                setImage(updatedSession.user.image);
-                signOut({ callbackUrl: '/login' });
+                if (response.ok) {
+                    alert('User info updated successfully');
+                    window.location.reload()
+                   
+                    
+                   
+                }
             } else {
                 alert('Failed to update user info');
             }
@@ -79,23 +96,34 @@ const UserInfo = () => {
     };
 
     return (
-        <div className='flex justify-center'>
-            <div className="flex flex-col">
-                <div className="stat">
-                    <div className="stat-figure text-secondary">
-                        <div className="avatar online">
-                            <div className="w-16 rounded-full">
-                                <Image alt='' src={session?.user?.image} height={50} width={50}></Image>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="text-3xl">{session?.user?.name}</div>
-                    <div className="stat-title">{session?.user?.email}</div>
-                    <div className="stat-desc text-secondary">Session Expires : {formattedDate}</div>
+        <div className='flex justify-center gap-5'>
+          <div className='w-96 border-2 h-fit space-y-2 rounded-t-lg shadow-xl py-5'>
+            <div className='flex justify-center'>
+            <div className="avatar">
+                <div className="w-24 rounded-full">
+                  <Image src={image} alt='' width={50} height={50}></Image>
                 </div>
-
-                {/* Update Form */}
-                <form onSubmit={handleUpdate} className="mt-4">
+            </div>
+            
+            </div>
+            <div className="text-2xl flex justify-center">
+                <h4>{name}</h4>
+            </div>
+            <div className="text-xl flex justify-center">
+                <h5>{title}</h5>
+            </div>
+            <div className="text-xl ps-5">
+                <h6>{description}</h6>
+            </div>
+            <div className='ps-5 flex gap-2 items-center pt-5'>
+                <FaEnvelope></FaEnvelope>
+                <p>{session?.user?.email}</p>
+            </div>
+          </div>
+          {/* Update Profile */}
+          <div className='w-96 border-2 h-fit space-y-2 rounded-t-lg shadow-xl py-5'>
+               <div className='ps-8'>
+               <form onSubmit={handleUpdate} className="mt-4">
                     <input
                         type="text"
                         value={name}
@@ -103,19 +131,35 @@ const UserInfo = () => {
                         placeholder="Update name"
                         className="input input-bordered w-full max-w-xs mb-2"
                     />
-                    
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Update title"
+                        className="input input-bordered w-full max-w-xs mb-2"
+                    />
+                    <textarea
+                        type="text"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="Update description"
+                        className="input input-bordered w-full max-w-xs mb-2"
+                    />
+
                     <input
                         type="file"
                         accept="image/*"
-                        onChange={(e) => setImageFile(e.target.files[0])}
-                        
+                        onChange={handleImageChange} // Call the image preview handler
                         className="file-input file-input-bordered text-black"
                     />
-                    
+
+                    <div className='flex justify-end me-7 mt-2'>
                     <button type="submit" className="btn btn-primary">Update Info</button>
+                    </div>
                 </form>
-            </div>
-        </div>
+               </div>
+          </div>
+       </div>    
     );
 };
 
