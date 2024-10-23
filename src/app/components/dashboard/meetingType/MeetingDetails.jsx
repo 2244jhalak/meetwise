@@ -93,32 +93,8 @@ const MeetingDetails = ({ meetingDetails }) => {
         }).then(() => {
 
 
-          // send mail to author 
-          // emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_MEETING_CREATOR_TEMPLATE_ID, schedulingData, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
-          //   .then(res => {
-          //     if (res.status) {
-          //       Swal.fire({
-          //         title: "Good job!",
-          //         text: "You clicked the button!",
-          //         icon: "success"
-          //       });
-          //     }
-          //   })
-
-          // send email to user 
-          // emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_MEETING_BOOKING_TEMPLATE_ID, schedulingData, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY)
-          //   .then(res => {
-          //     if (res.status) {
-          //       Swal.fire({
-          //         title: "Good job!",
-          //         text: "You clicked the button!",
-          //         icon: "success"
-          //       });
-          //     }
-          //   })
-
           // Reload the window after the user confirms the SweetAlert
-          window.location.reload();
+          // window.location.reload();
         });
 
         const schedulingData = {
@@ -126,8 +102,8 @@ const MeetingDetails = ({ meetingDetails }) => {
           authorEmail: meetingDetails.email, // Author email
           duration: meetingDetails.duration, // Duration time
           selectedDate: formattedDate, // Selected date
-          name: `Meetwise`,
-          email: `meetwise789@gmail.com`,// Replace with the actual user's email
+          name: session?.data?.user?.name,
+          email: session?.data?.user?.email,/// Replace with the actual user's email
           bookedTimeSlot: timeToBook, // Booked time slot
           meetingLocation: meetingDetails.selected,
           url: meetingDetails.url,
@@ -151,6 +127,26 @@ const MeetingDetails = ({ meetingDetails }) => {
           });
         } else {
           throw new Error('Failed to send email notifications.');
+        }
+
+        const bookingResponse = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/meetingType/apiBooking`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(schedulingData),
+        });
+
+        // const bookingResponseData = await bookingResponse.json();
+
+        if (bookingResponse.status === 200) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your meeting has been created",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
 
       } catch (error) {

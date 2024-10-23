@@ -80,6 +80,20 @@ const handler = NextAuth({
             session.user.image = token.image;
             session.user.name = token.name;
             session.user.role = token.role; // Add role to the session
+            const db = await connectDB();
+            const currentUser = await db.collection('users').findOne({ email: token.email });
+
+            if (currentUser) {
+                // Update session with the latest user information
+                session.user.name = currentUser.name;
+                session.user.image = currentUser.image;
+                session.user.role = currentUser.role; // Update role if changed
+                session.user.title = currentUser.title; 
+                session.user.description = currentUser.description; 
+                // Add any other fields you want to update
+            }
+
+            console.log('Updated session:', currentUser.name); // Log the updated session
             return session;
         },
         
