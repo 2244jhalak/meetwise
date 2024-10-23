@@ -13,6 +13,7 @@ import { useState } from 'react';
 
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import { IoMdAnalytics } from 'react-icons/io';
 
 
 const Sidebar = () => {
@@ -29,7 +30,7 @@ const Sidebar = () => {
         <>
 
             {/* Small screen Navbar */}
-            <div className='bg-[#F4F2DE] text-gray-800 flex justify-between md:hidden'>
+            <div className=' bg-black text-white flex justify-between md:hidden '>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
                         <Link href='/'>
@@ -46,20 +47,20 @@ const Sidebar = () => {
                 </div>
 
                 <button onClick={handleToggle}>
-                    <AiOutlineBars className='h-5 w-5' />
+                    <AiOutlineBars className='h-5 mr-3 w-5' />
                 </button>
             </div>
 
             {/* Sidebar */}
             <div
-                className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#F4F2DE] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
+                className={`z-30 lg:z-10 md:fixed flex flex-col justify-between overflow-x-hidden text-white bg-black w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
                     }  md:translate-x-0  transition duration-200 ease-in-out`}
             >
                 <div>
                     <div>
-                        <div className='w-full text-white hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-[#F1D384] mx-auto'>
+                        <div className='w-full text-2xl text-white hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center card glass mx-auto'>
                             <Link href='/' >
-                                <h1 className='text-[#183C4B] font-bold'>Meet <span className='text-green-600'>Wise</span></h1>
+                                <h1 className='text-white font-extrabold'>Meet<span className='text-green-600'>Wise</span></h1>
                             </Link>
                         </div>
                     </div>
@@ -68,7 +69,7 @@ const Sidebar = () => {
                     {/* Nav Items */}
                 </div>
 
-                <div className='container mx-auto'>
+                <div className='container mx-auto text-white '>
                     <NavigationDash
                         label='Create Meeting'
                         address='/dashboard/createMeeting'
@@ -89,6 +90,11 @@ const Sidebar = () => {
                         label='Availability'
                         address='/dashboard/availability'
                         icon={CiClock2}
+                    />
+                    <NavigationDash
+                        label='Meeting Analytics'
+                        address='/dashboard/meetingAnalytics'
+                        icon={IoMdAnalytics}
                     />
                     <NavigationDash
                         label='Settings'
@@ -133,7 +139,7 @@ const Sidebar = () => {
                     />
 
                     <button
-                        className='flex w-full items-center px-4 py-2 mt-5 text-black hover:bg-[#183C4B] hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                        className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
                     >
                         <GrLogout className='w-5 h-5' />
 
