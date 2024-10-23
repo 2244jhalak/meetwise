@@ -91,15 +91,15 @@ const Banner = () => {
         </div>
 
         {/* Right Side */}
-        <div className="md:w-1/2 w-full p-5">
+        <div className="md:w-1/2 w-full p-5  ">
           <Slider {...settings}>
-            <div className="flex-col flex items-center justify-center space-y-1">
-              <LottieAnimation animationData={animationData1} />
+            <div className="flex-col flex items-center justify-center space-y-1 h-full">
+              <LottieAnimation  animationData={animationData1} />
               <div><h1 className="container mx-auto text-center font-bold font-raleway text-green-600">Meeting Made Simple</h1></div>
 
             </div>
-            <div className="flex-col flex items-center justify-center space-y-1">
-              <LottieAnimation animationData={animationData2} />
+            <div className="flex-col flex items-center justify-center space-y-1 h-full">
+              <LottieAnimation  animationData={animationData2} />
               <div><h1 className="container mx-auto text-center font-bold font-raleway text-green-600">Schedule with Ease</h1></div>
 
             </div>

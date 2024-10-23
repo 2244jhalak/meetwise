@@ -9,6 +9,7 @@ import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Homepage/Navbar/Navbar";
 import Timezone from "./components/Homepage/Timezone";
 import TimeZoneSelector from "./components/Homepage/Timezone";
+import Partners from "./components/Homepage/Partners/Partners";
 
 
 
@@ -28,6 +29,7 @@ export default function Home() {
         </div>
       </div>
       <Banner />
+      <Partners></Partners>
       <Hiw></Hiw>
       <AutoRecord></AutoRecord>
       <AllIntegrations></AllIntegrations>
