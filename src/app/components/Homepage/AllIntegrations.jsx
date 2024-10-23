@@ -93,7 +93,7 @@ const AllIntegrations = () => {
     const { title, googleMeet, zoom, microsoftTeams } = translations[language];
 
     return (
-        <div className='container border-2 border-r-0 border-l-0 border-b-0 border-t-orange-500 md:py-16 md:px-28 p-5 text-center mx-auto bg-black/30 backdrop-blur-md backdrop-opacity-70 rounded-t-xl shadow-t-xl mt-2 dark:text-black' data-aos="fade-up">
+        <div className='container border-2 border-r-0 border-l-0 border-b-0 border-t-green-500 md:py-16 md:px-28 p-5 text-center mx-auto bg-black/30 backdrop-blur-md backdrop-opacity-70 rounded-t-xl shadow-t-xl mt-2 dark:text-black' data-aos="fade-up">
             <div className='flex flex-col items-center justify-center mb-6'>
                 <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
                     <h1 className="text-3xl pb-3 font-bold text-center mx-auto lg:text-5xl text-white">
