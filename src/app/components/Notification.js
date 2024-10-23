@@ -1,4 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client"
+
 import { useState, useEffect } from 'react';
 
 const Notification = () => {
@@ -25,6 +27,7 @@ const Notification = () => {
   return (
     <div className="fixed bottom-5 right-10 bg-yellow-300 z-50 text-black border border-yellow-600 p-4 rounded-lg shadow-lg">
       <p className="font-semibold">You are currently offline. Please check your internet connection.</p>
+   
     </div>
   );
 };

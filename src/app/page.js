@@ -7,6 +7,10 @@ import AllIntegrations from "./components/Homepage/AllIntegrations";
 import Carousel from "./components/Homepage/Carousel";
 import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Homepage/Navbar/Navbar";
+
+import Notification from "./components/Notification";
+import { useEffect } from "react";
+
 import Timezone from "./components/Homepage/Timezone";
 import TimeZoneSelector from "./components/Homepage/Timezone";
 import Partners from "./components/Homepage/Partners/Partners";
@@ -15,10 +19,24 @@ import Partners from "./components/Homepage/Partners/Partners";
 
 
 
+
 export default function Home() {
+
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      }).catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+    }
+  }, []);
+  
+
 
   // const eventTime = "2024-10-16 15:26"; // Example event time in "Asia/Dhaka" time zone
   // const eventTime =new Date(); // Example event time in "Asia/Dhaka" time zone
+
 
 
   return (
