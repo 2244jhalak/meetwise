@@ -8,7 +8,7 @@ const page = () => {
         <PrivateRoute>
             <div className='bg-slate-950 min-h-screen text-gray-400'>
                 <Sidebar></Sidebar>
-                <div className='px-5 py-10'>
+                <div className='pl-[270px] px-5 py-10'>
                     <AllUsers></AllUsers>
                 </div>
             </div>
