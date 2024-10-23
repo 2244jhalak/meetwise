@@ -8,12 +8,22 @@ import Carousel from "./components/Homepage/Carousel";
 import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Homepage/Navbar/Navbar";
 import Notification from "./components/Notification";
+import { useEffect } from "react";
 
 
 
 
 
 export default function Home() {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      }).catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+    }
+  }, []);
   
   return (
     <div className="bg-[#4A4947]">
