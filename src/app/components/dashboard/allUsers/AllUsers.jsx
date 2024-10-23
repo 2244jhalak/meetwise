@@ -126,7 +126,7 @@ const AllUsers = () => {
 
     return (
         <div>
-            <h2 className='text-3xl font-semibold'>Total Users: {users.length}</h2>
+            <h2 className='text-3xl text-white font-semibold'>Total Users: {users.length}</h2>
             
             {/* Loading State */}
            
@@ -135,7 +135,7 @@ const AllUsers = () => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead>
+                    <thead className='text-gray-500'>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
