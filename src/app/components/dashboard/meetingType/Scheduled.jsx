@@ -120,7 +120,7 @@ const handleShareMeeting = (meet) => {
     };
 
     return (
-        <div className='container font-raleway mx-auto mt-10 p-6 text-white bg-[#4A4947] shadow-lg min-h-screen rounded-md'>
+        <div className='container font-raleway mx-auto mt-10 p-6 text-white bg-slate-950 shadow-lg min-h-screen rounded-md'>
             <h2 className='text-4xl font-bold mt-5 text-white text-center container mx-auto'>Your Meeting Library</h2>
             <div className="border border-orange-600 rounded-xl text-center mx-auto container w-[110px] mb-2 mt-2"></div>
             <p className='p-4 text-center mx-auto font-medium font-raleway text-lg'>View, manage, and share all your scheduled meetings in one place with quick access to copy meeting links</p>
