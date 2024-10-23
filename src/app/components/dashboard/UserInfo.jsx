@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { FaEnvelope, FaVoicemail } from 'react-icons/fa';
+import { FaEnvelope } from 'react-icons/fa';
 
 
 const UserInfo = () => {
