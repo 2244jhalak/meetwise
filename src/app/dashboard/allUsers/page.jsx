@@ -6,12 +6,12 @@ import React from 'react';
 const page = () => {
     return (
         <PrivateRoute>
-            <div>
-            <Sidebar></Sidebar>
-            <div className='pl-[270px] mt-10'>
-                <AllUsers></AllUsers>
+            <div className='bg-slate-950 min-h-screen text-gray-400'>
+                <Sidebar></Sidebar>
+                <div className='px-5 py-10'>
+                    <AllUsers></AllUsers>
+                </div>
             </div>
-        </div>
         </PrivateRoute>
     );
 };
