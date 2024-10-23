@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
@@ -11,6 +12,9 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import TimeZoneSelector from "../../Homepage/Timezone";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Create = () => {
   const session = useSession();
@@ -31,6 +35,18 @@ const Create = () => {
       key: "selection",
     },
   ]);
+  const settings = {
+    dots: false,          // Pagination bullets
+    infinite: true,      // Infinite loop
+    speed: 500,          // Speed of transition
+    slidesToShow: 1,     // One slide at a time
+    slidesToScroll: 1,   // Scroll one slide at a time
+    arrows: true,        // Next/Prev arrows
+    centerMode: true,    // Center the slide
+    centerPadding: "0",
+    swipe: false,
+      // No extra padding on the sides
+  };
   // Time availability state
 
   // Time zone setting
@@ -190,14 +206,44 @@ const Create = () => {
 
 
   return (
-    <form onSubmit={handleSubmit} className="text-white flex lg:flex-row md:flex-col flex-col">
-      <div className="lg:border-e-2 md:border-e-2 lg:w-1/3 md:w-full w-full min-h-screen">
-        <div className="pt-5 space-y-3 pl-5 bg-black min-h-screen">
-          <Link className="flex items-center space-x-2 text-lg" href="/dashboard">
-            <IoIosArrowBack /> <h4>Cancel</h4>
+    <div className="container mx-auto">
+       <div className="text-left ">
+      <Link className="flex items-center space-x-1 text-base" href="/dashboard">
+            <IoIosArrowBack  className="text-white "/><h4 className="text-white">Cancel</h4>
           </Link>
-          <h2 className="font-semibold text-2xl">Create New Event</h2>
+      </div>
+    
+    <form onSubmit={handleSubmit} className="text-white font-raleway">
+     
+    <div className=" w-full relative p-5 min-h-screen  flex justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/banner/sided-view-hand-typing-keyboard.jpg')"}}>
+    <div className="absolute inset-0 bg-black opacity-50 h-full w-full"></div>
+   
+  {/* Cards or other content */}
+  <div className="relative w-full p-5 min-h-screen flex justify-center">
+ 
+      <div className="lg:w-2/3 md:w-3/4 sm:w-full items-center"> 
+      {/* Set width for slider container */}
+      <div className="container mx-auto md:w-2/3 space-y-3 mb-5">
+     
+    <h2 className="font-semibold text-4xl text-center mb-2">Schedule Your Meeting</h2>
+    
+  
+    <div className="border-b-2  border-green-500 w-1/3 mx-auto mb-2"></div>
+    
+    {/* <p className="text-center text-gray-200 ">Just fill out the required fields, select your preferred platform, and you're all set!</p> */}
 
+  </div>
+        <Slider {...settings}>
+   
+       
+       {/* 1st */}
+       <div className="pt-5 container mx-auto p-4 card glass bg-black opacity-95  min-h-[500px] border border-orange-600">
+        
+         <div className="container mx-auto md:w-2/3  space-y-3 ">
+         <h4 className="font-bold text-2xl text-center text-green-500"><span className="text-white">Step 1:</span> Event Details</h4>
+         <div className="flex justify-center mb-5">
+  <div className="border-b rounded-lg border-orange-500 w-1/3"></div> {/* Orange border */}
+</div>
           <h4 className="font-semibold">Event Name *</h4>
           <input
             className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
@@ -207,7 +253,7 @@ const Create = () => {
             onChange={(e) => setEventName(e.target.value)}
           />
 
-          <h4 className="font-semibold">Short Description</h4>
+          <h4 className="font-semibold">Short Description *</h4>
           <input
             className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
             type="text"
@@ -220,14 +266,23 @@ const Create = () => {
           <select
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
-            className="border rounded-md p-2 text-black"
+           className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
           >
             <option value="15 min">15 min</option>
             <option value="30 min">30 min</option>
             <option value="45 min">45 min</option>
             <option value="60 min">60 min</option>
           </select>
-
+          <h4 className="font-semibold">Select Type Add Url*</h4>
+          {selected && (
+            <input
+              type="text"
+              placeholder={`Add ${selected} url `}
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
+            />
+          )}
           <div className="flex pb-4">
             <button type="button" onClick={() => setSelected("Zoom")}>
               <Image
@@ -245,89 +300,52 @@ const Create = () => {
                 width={100}
               />
             </button>
+            </div>
           </div>
 
-          {selected && <p className="text-lg">Selected: {selected}</p>}
+     
 
-          {selected && (
-            <input
-              type="text"
-              placeholder="Add URL"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
-            />
-          )}
+       
 
            {/* anam added part */}
            {/* <div className="bg-orange-100 md:w-[300px] text-black">
             <TimeZoneSelector eventTime={eventTime}></TimeZoneSelector>
           </div> */}
 
-          <button
-            disabled={loading}
-            className="py-2 w-4/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 text-white"
-          >
-            {loading ? <FaFan className="animate-spin"></FaFan> : "Create"}
-          </button>
+         
          
         </div>
-      </div>
-      <div className="bg-black lg:w-full md:w-full w-full  lg:shadow-2xl md:shadow-2xl lg:m-5 p-5  min-h-screen mt-7">
-        <div className=" grid grid-cols-3  gap-5 ">
-          <div className=" w-full space-y-5">
-            <h3 className="text-3xl font-extrabold font-raleway">
-              Meet<span className="text-green-600">Wise</span>
-            </h3>
 
-            <h2 className="text-2xl font-bold">
-              Event Name: <span className="text-xl font-medium">{eventName}</span>
-            </h2>
-            <h2 className="text-xl font-bold">
-              Description: <span className="text-base font-medium">{description}</span>
-            </h2>
-            <div className="flex items-center space-x-2">
-              <FaClock />
-              <h2 className="font-semibold">Meeting Duration: {duration}</h2>
-            </div>
-            <div className="flex items-center space-x-2">
-              <FaLocationArrow />
-              <p className="font-raleway font-bold text-xl">
-                Type: <span className="font-medium text-base">{selected} Meeting</span>
-              </p>
-            </div>
-            <p className="cursor-pointer text-xl text-white font-bold">
-              Meeting Url: <span className="text-blue-500 font-medium text-base">{url}</span>
-            </p>
-
-
-
-          </div>
-
-          <div className="w-full overflow-auto">
-            <div className="lg:flex-1 md:flex-1 p-4 rounded-lg bg-orange-50 text-black h-[450px] ">
-              <h2 className="font-semibold text-xl mb-4">Set Date</h2>
-
-              <div className="w-full border border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
-                <div className="min-w-full "> {/* Enable horizontal scrolling */}
+{/* 2nd */}
+          <div className="w-full overflow-auto card glass min-h-[450px]">
+            <div className="lg:flex-1 md:flex-1 p-4 rounded-lg  text-black  ">
+            <h4 className="font-bold text-2xl text-center text-green-500"><span className="text-white">Step 2:</span> Set Date</h4>
+         <div className="flex justify-center mb-5 mt-1">
+  <div className="border-b rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+</div>
+              <div className="container mx-auto lg:w-2/3  space-y-3  border  border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
+                <div className="w-full custom-datepicker-container "> {/* Enable horizontal scrolling */}
                   <DateRange
                     editableDateInputs={true}
                     onChange={(item) => setState([item.selection])}
                     moveRangeOnFirstSelection={false}
                     ranges={state}
                     minDate={new Date()}
-                    className="w-full"
+                    className="w-full justify-center"
                     rangeColors={["green"]}// Ensure it takes full width of the parent
                   />
                 </div>
               </div>
             </div>
           </div>
+{/* 3rd */}
 
-
-          <div className="max-w-72 mx-auto  p-4  bg-orange-50 text-black rounded-lg shadow-lg h-[450px]">
-            <h3 className="mt-4 text-lg font-semibold">Set Time :</h3>
-            <div className="mt-4">
+          <div className="w-full mx-auto  p-4  card glass  text-black rounded-lg shadow-lg h-[450px]">
+          <h4 className="font-bold text-2xl text-center text-green-500"><span className="text-white">Step 3: </span>Set Time</h4>
+         <div className="flex justify-center mb-5 mt-1">
+  <div className="border-b rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+</div>
+            <div className="mt-4 container mx-auto lg:w-2/3">
               {/* <p className="text-lg">
       Start Date: {new Date(state[0].startDate).toLocaleDateString("en-GB")}
     </p>
@@ -336,41 +354,64 @@ const Create = () => {
     </p> */}
               {state[0].endDate && (
                 <>
-                  <div className="max-h-72 border font-raleway border-green-700 overflow-y-auto mt-5 pb-4">
+                  <div className="max-h-72 text-white z-20 font-raleway  overflow-y-auto mt-5 pb-4">
                     <ul className="list-disc ml-6 ">
                       {generateDateRange(state[0].startDate, state[0].endDate).map((date, index) => (
-                        <li key={index} className="flex items-center justify-between mt-5 ">
-                          <span className="font-extrabold"> Date:{date}</span>
-                          <div className="ml-4">
-                            <label className="block text-sm font-medium text-gray-700">Start Time:</label>
+                        <li key={index} className="flex flex-col items-start mt-5 ">
+                            <div className="flex items-center">
+                {/* Circle bullet point */}
+                <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                <span className="font-extrabold text-xl text-green-500">{date}</span>
+              </div>
+              <div className="flex flex-row items-center mt-2 mb-2 justify-around">
+              <div className="ml-4 w-full">
+                            <label className="block text-sm font-medium text-white">Start Time:</label>
                             <input
                               type="time"
-                              className="mt-1 block border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                              className="mt-1  block border w-full border-green-600 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-green-200"
                               value={availability[date]?.startTime || ""}
                               onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
                               required
                             />
                           </div>
                           <div className="ml-4">
-                            <label className="block text-sm font-medium text-gray-700">End Time:</label>
+                            <label className="block text-sm font-medium text-white">End Time:</label>
                             <input
-                              type="time"
-                              className="mt-1 block border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                              type="time" 
+                              className="mt-1  block border w-full border-green-600 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-green-200"
+
                               value={availability[date]?.endTime || ""}
                               onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
                             />
                           </div>
+              </div>
+                          
                         </li>
                       ))}
                     </ul>
                   </div>
                 </>
               )}
-
+            
             </div>
+            <div className="text-center mt-6 justify-center ">
+          <button
+            disabled={loading}
+            className="py-2 w-3/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 hover:bg-green-800 text-white"
+          >
+            {loading ? <FaFan className="animate-spin"></FaFan> : "Create"}
+          </button>
           </div>
-        </div>
-        <div className='bg-black text-white w-full p-6 pt-2'>
+          </div>
+          </Slider>
+         
+     
+</div>
+      </div>
+      </div>
+
+  {/* availability */}
+  <div className='bg-black text-white w-full p-6 pt-2'>
           <h1 className='text-3xl font-bold text-center mb-6'>See Your Available Times</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {availableDays.map(day => (
@@ -389,10 +430,8 @@ const Create = () => {
             ))}
           </div>
         </div>
-
-      </div>
-
     </form>
+    </div>
   );
 };
 
