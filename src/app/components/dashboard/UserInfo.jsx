@@ -111,7 +111,7 @@ const UserInfo = () => {
 
     return (
         <div>
-            <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-orange-600 text-center mx-auto text-gray-200 lg:text-3xl dark:text-white my-4">
+            <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-orange-600 text-center lg:mx-auto text-gray-200 lg:text-3xl dark:text-white my-4 md:mx-auto mx-6">
                 My Profile
             </h1>
             <div className='flex flex-col md:flex-row justify-center gap-10 p-6 text-white '>
