@@ -6,7 +6,7 @@ import React from 'react';
 const page = () => {
     return (
         <PrivateRoute>
-            <div className='bg-slate-950 text-gray-400'>
+            <div className='bg-slate-950 text-gray-400 py-10'>
                 <Sidebar></Sidebar>
                 <div className='pl-[270px]'>
                     <AllUsers></AllUsers>
