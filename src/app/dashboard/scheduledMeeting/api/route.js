@@ -4,6 +4,7 @@ export const GET = async (req) => {
   try {
     const url = new URL(req.url); // Create a URL object from req.url
     const searchParams = new URLSearchParams(url.search);
+    const mail = searchParams.get("mail");
     const sortingType = searchParams.get("sortingType");
     const formattedDate = searchParams.get("formattedDate");
     const formattedTime = searchParams.get("formattedTime");
@@ -22,11 +23,14 @@ export const GET = async (req) => {
 
     const db = await connectDB();
     const bookingCollection = db.collection("booking");
-    const result = await bookingCollection.find().toArray();
+    const AllResult = await bookingCollection.find().toArray();
 
     const [day, month, year] = formattedDate.split("/");
     const targetDate = new Date(`${year}-${month}-${day}T${formattedTime}:00`);
     let filteredResults;
+
+    // filter the mail by author email
+    const result = AllResult.filter((booking) => booking.authorEmail === mail);
 
     if (sortingType === "-1") {
       filteredResults = result.filter((booking) => {
