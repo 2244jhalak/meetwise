@@ -191,27 +191,27 @@ const MeetingDetails = ({ meetingDetails }) => {
   };
   console.log(availableTimes)
   return (
-    <div className="flex flex-col md:flex-row gap-8 items-start p-4 font-raleway">
-      <div className="bg-green-50 border-4 border-l-orange-500 border-r-orange-500 shadow-lg rounded-lg p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h2 className="text-2xl font-semibold mb-4">Meeting Details</h2>
+    <div className="flex flex-col shadow-lg  backdrop-opacity-70 rounded-lg  md:flex-row gap-8 items-start p-4 font-raleway">
+      <div className="border-t-0 text-slate-50 card glass border-b-0  border-l-0 border-2 border-dashed border-r-orange-500  border-t-orange-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h2 className="text-2xl font-bold mb-4 text-orange-500">Meeting Details 📋</h2>
         {meetingDetails ? (
-          <div className="space-y-2">
-            <p><strong>Name:</strong> {meetingDetails.name}</p>
-            <p><strong>Email:</strong> {meetingDetails.email}</p>
-            <p><strong>Event Name:</strong> {meetingDetails.eventName}</p>
-            <p><strong>Duration:</strong> {meetingDetails.duration} minutes</p>
-            <p><strong>Type:</strong> {meetingDetails.selected}</p>
-            <p><strong>URL:</strong> <a href={meetingDetails.url} className="text-blue-500 underline">{meetingDetails.url}</a></p>
-            <p><strong>Start Date:</strong> {meetingDetails.startDate}</p>
-            <p><strong>End Date:</strong> {meetingDetails.endDate}</p>
+          <div className="space-y-2 ">
+            <p><strong>Name:</strong><span className='text-slate-300'> {meetingDetails.name}</span></p>
+            <p><strong>Email:</strong><span className='text-slate-300'> {meetingDetails.email}</span></p>
+            <p><strong>Event Name:</strong><span className='text-slate-300'> {meetingDetails.eventName}</span></p>
+            <p><strong>Duration:</strong><span className='text-slate-300'> {meetingDetails.duration} minutes</span></p>
+            <p><strong>Type:</strong><span className='text-slate-300'> {meetingDetails.selected}</span></p>
+            <p><strong>URL:</strong> <a href={meetingDetails.url} className="text-blue-500 underline"><span className='text-slate-300'> {meetingDetails.url}</span></a></p>
+            <p><strong>Start Date:</strong><span className='text-slate-300'> {meetingDetails.startDate}</span></p>
+            <p><strong>End Date:</strong><span className='text-slate-300'> {meetingDetails.endDate}</span></p>
           </div>
         ) : (
           <p>No meeting details available.</p>
         )}
       </div>
 
-      <div className="bg-green-50 border-4 border-l-blue-500 border-r-blue-500 shadow-lg rounded-lg p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h2 className="text-2xl font-bold mb-4">Select Your Date 📅</h2>
+      <div className=" border-t-0 card glass text-slate-50 border-l-0 border-b-0 border-2 border-dashed border-r-blue-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h2 className="text-2xl font-bold mb-4 text-blue-500">Select Your Date 📅</h2>
         <Calendar
           tileContent={tileContent}
           tileDisabled={tileDisabled}
@@ -220,8 +220,8 @@ const MeetingDetails = ({ meetingDetails }) => {
         />
       </div>
 
-      <div className="bg-orange-50 border-4 border-l-green-500 border-r-green-500 shadow-lg rounded-lg p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h3 className="text-lg font-bold mb-4">Select Your Time ⏰ :</h3>
+      <div className=" border-t-0 border-l-0  text-slate-50 card glass border-b-0 border-2 border-dashed border-l-green-500 border-r-green-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h3 className="text-2xl font-bold mb-4 text-green-500">Select Your Time ⏰ :</h3>
         {selectedDate ? (
           <p>{`You have selected: ${selectedDate.toLocaleDateString('en-GB')}`}</p>
         ) : (
