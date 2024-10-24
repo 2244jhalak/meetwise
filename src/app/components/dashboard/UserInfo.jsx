@@ -114,7 +114,7 @@ const UserInfo = () => {
             <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-orange-600 text-center lg:mx-auto text-gray-200 lg:text-3xl dark:text-white my-4 md:mx-auto mx-6">
                 My Profile
             </h1>
-            <div className=' text-white w-full lg:w-[700px] md:w-96 border-2 border-gray-700 rounded-lg shadow-lg bg-slate-800 p-6 mx-auto'>
+            <div className=' text-white w-full lg:w-[700px] md:w-96 border-2 border-gray-700 rounded-lg shadow-lg glass p-6 mx-auto'>
                 <h3 className='text-center text-2xl font-semibold text-gray-200 mb-2'>Update Profile</h3>
                 <div className="border border-orange-600 rounded-xl text-center mx-auto my-2 w-24"></div>
 
