@@ -35,16 +35,15 @@ const Create = () => {
       key: "selection",
     },
   ]);
+  
   const settings = {
-    dots: false,          // Pagination bullets
-    infinite: true,      // Infinite loop
-    speed: 500,          // Speed of transition
-    slidesToShow: 1,     // One slide at a time
-    slidesToScroll: 1,   // Scroll one slide at a time
-    arrows: true,        // Next/Prev arrows
-    centerMode: true,    // Center the slide
-    centerPadding: "0",
+    dots: true,
+    infinite: true,
+    speed: 500,
+    arrow:true,
+   
     swipe: false,
+   
       // No extra padding on the sides
   };
   // Time availability state
@@ -215,7 +214,7 @@ const Create = () => {
     
     <form onSubmit={handleSubmit} className="text-white font-raleway">
      
-    <div className=" w-full relative p-5 min-h-screen  flex justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/banner/sided-view-hand-typing-keyboard.jpg')"}}>
+    <div className=" w-full relative p-5 min-h-screen  flex justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/banner/banner6.jpg')"}}>
     <div className="absolute inset-0 bg-black opacity-50 h-full w-full"></div>
    
   {/* Cards or other content */}
@@ -317,7 +316,7 @@ const Create = () => {
         </div>
 
 {/* 2nd */}
-          <div className="w-full overflow-auto card glass min-h-[450px]">
+          <div className="w-full overflow-auto card glass bg-black opacity-95 min-h-[450px]">
             <div className="lg:flex-1 md:flex-1 p-4 rounded-lg  text-black  ">
             <h4 className="font-bold text-2xl text-center text-green-500"><span className="text-white">Step 2:</span> Set Date</h4>
          <div className="flex justify-center mb-5 mt-1">
@@ -340,78 +339,102 @@ const Create = () => {
           </div>
 {/* 3rd */}
 
-          <div className="w-full mx-auto  p-4  card glass  text-black rounded-lg shadow-lg h-[450px]">
-          <h4 className="font-bold text-2xl text-center text-green-500"><span className="text-white">Step 3: </span>Set Time</h4>
-         <div className="flex justify-center mb-5 mt-1">
-  <div className="border-b rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
-</div>
-            <div className="mt-4 container mx-auto lg:w-2/3">
-              {/* <p className="text-lg">
-      Start Date: {new Date(state[0].startDate).toLocaleDateString("en-GB")}
-    </p>
-    <p className="text-lg">
-      End Date: {state[0].endDate ? new Date(state[0].endDate).toLocaleDateString("en-GB") : "N/A"}
-    </p> */}
-              {state[0].endDate && (
-                <>
-                  <div className="max-h-72 text-white z-20 font-raleway  overflow-y-auto mt-5 pb-4">
-                    <ul className="list-disc ml-6 ">
-                      {generateDateRange(state[0].startDate, state[0].endDate).map((date, index) => (
-                        <li key={index} className="flex flex-col items-start mt-5 ">
-                            <div className="flex items-center">
-                {/* Circle bullet point */}
-                <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
-                <span className="font-extrabold text-xl text-green-500">{date}</span>
-              </div>
-              <div className="flex flex-row items-center mt-2 mb-2 justify-around">
-              <div className="ml-4 w-full">
-                            <label className="block text-sm font-medium text-white">Start Time:</label>
-                            <input
-                              type="time"
-                              className="mt-1  block border w-full border-green-600 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-green-200"
-                              value={availability[date]?.startTime || ""}
-                              onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
-                              required
-                            />
-                          </div>
-                          <div className="ml-4">
-                            <label className="block text-sm font-medium text-white">End Time:</label>
-                            <input
-                              type="time" 
-                              className="mt-1  block border w-full border-green-600 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-green-200"
-
-                              value={availability[date]?.endTime || ""}
-                              onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
-                            />
-                          </div>
-              </div>
-                          
-                        </li>
-                      ))}
-                    </ul>
+<div className="w-full mx-auto p-4 card glass bg-black opacity-95 text-white rounded-lg shadow-lg h-[500px]">
+  <h4 className="font-bold text-2xl text-center text-green-500">
+    <span className="text-white">Step 3: </span>See Your Availability &Set Time
+  </h4>
+  <div className="flex justify-center mb-5 mt-1">
+    <div className="border-b-2 rounded-lg border-orange-500 w-2/5"></div> {/* Orange border */}
+  </div>
+  <div className="mt-4 container mx-auto flex flex-row items-start gap-6">
+    {/* Set Time Section */}
+    <div className="flex-1">
+      <h2 className="text-lg md:text-xl lg:text-xl font-semibold pl-4">Set Time</h2>
+      <div className="flex justify-start  mt-1 pl-4">
+    <div className="border-b rounded-lg border-orange-600 w-1/5 "></div> {/* Orange border */}
+  </div>
+      <div className="">
+        {state[0].endDate && (
+          <div className="max-h-72 text-white z-20 font-raleway overflow-y-auto mt-2 pb-4">
+            <ul className="list-disc ml-4">
+              {generateDateRange(state[0].startDate, state[0].endDate).map((date, index) => (
+                <li key={index} className="flex flex-col items-start mt-5">
+                  <div className="flex items-center">
+                    {/* Circle bullet point */}
+                    <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                    <span className="font-extrabold text-xl text-slate-50">{date}</span>
                   </div>
-                </>
-              )}
-            
+                  <div className="flex flex-row items-center mt-2 mb-2 justify-around">
+                    <div className="ml-4 w-full">
+                      <label className="block text-sm font-medium text-white">Start Time:</label>
+                      <input
+                        type="time"
+                        className="mt-1 block text-black border w-full border-green-600 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-green-200"
+                        value={availability[date]?.startTime || ""}
+                        onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="ml-4">
+                      <label className="block text-sm font-medium text-white">End Time:</label>
+                      <input
+                        type="time"
+                        className="mt-1 block text-black border w-full border-green-600 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-green-200"
+                        value={availability[date]?.endTime || ""}
+                        onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+      <div className="text-left mt-6 pl-4">
+        <button
+          disabled={loading}
+          className="py-2 w-3/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 hover:bg-green-800 text-white"
+        >
+          {loading ? <FaFan className="animate-spin" /> : "Create"}
+        </button>
+      </div>
+    </div>
+
+    {/* Availability Section */}
+    <div className="flex-1">
+      <h2 className="text-lg md:text-xl lg:text-xl font-semibold">See Your Availability</h2>
+      <div className="flex justify-start mb-5 mt-1">
+    <div className="border-b rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+  </div>
+      <div className="overflow-y-auto h-72">
+        <div className="grid grid-cols-1  gap-4">
+          {availableDays.map(day => (
+            <div
+              className="bg-green-800 p-4 rounded-lg shadow-md hover:bg-gray-700 transition duration-300 flex flex-col justify-center items-start gap-2"
+              key={day}
+            >
+              <h2 className="text-lg md:text-xl lg:text-xl font-semibold">{day}</h2>
+              <p className="text-sm md:text-base">
+                <span className="font-bold">Available:</span> {availableTimes[day]?.startTime} - {availableTimes[day]?.endTime}
+              </p>
             </div>
-            <div className="text-center mt-6 justify-center ">
-          <button
-            disabled={loading}
-            className="py-2 w-3/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 hover:bg-green-800 text-white"
-          >
-            {loading ? <FaFan className="animate-spin"></FaFan> : "Create"}
-          </button>
-          </div>
-          </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
           </Slider>
          
-     
+         
 </div>
       </div>
       </div>
 
   {/* availability */}
-  <div className='bg-black text-white w-full p-6 pt-2'>
+  {/* <div className='bg-black text-white w-full p-6 pt-2'>
           <h1 className='text-3xl font-bold text-center mb-6'>See Your Available Times</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {availableDays.map(day => (
@@ -429,7 +452,7 @@ const Create = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
     </form>
     </div>
   );
