@@ -15,7 +15,7 @@ import TimeZoneSelector from "../../Homepage/Timezone";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import 'animate.css';
 const Create = () => {
   const session = useSession();
   const router = useRouter();
@@ -214,9 +214,9 @@ const Create = () => {
           </Link>
       </div>
     
-    <form onSubmit={handleSubmit} className="text-white font-raleway">
+    <form onSubmit={handleSubmit} className="text-white font-raleway ">
      
-    <div className=" w-full relative p-5 min-h-screen  flex justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/banner/banner6.jpg')"}}>
+    <div className=" w-full relative p-5 min-h-screen  flex justify-center bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/banner/female-florist-using-laptop-work.jpg')"}}>
     <div className="absolute inset-0 bg-black opacity-50 h-full w-full"></div>
    
   {/* Cards or other content */}
@@ -224,26 +224,26 @@ const Create = () => {
  
       <div className="lg:w-2/3 md:w-3/4 sm:w-full items-center"> 
       {/* Set width for slider container */}
-      <div className="container mx-auto md:w-2/3  mb-5">
+      <div className="container mx-auto md:w-2/3  mb-5 animate__animated animate__zoomIn">
      
-    <h2 className="font-semibold text-4xl text-center"> Simply Schedule Your Meeting</h2>
+    <h2 className="font-semibold text-4xl text-center "> Simply Schedule Your Meeting</h2>
     
   
     <div className="border-b-2  border-green-500 w-1/3 mx-auto mb-2"></div>
     
-    <p className="text-center text-gray-100 mt-2 ">Fill out the fields, pick your platform, and you're all set!</p>
+    {/* <p className="text-center text-gray-100 mt-2 ">Fill out the fields, pick your platform, and you're all set!</p> */}
 
   </div>
-        <Slider {...settings}>
+        <Slider className="animate__animated animate__zoomIn" {...settings}>
    
        
        {/* 1st */}
-       <div className="pt-5 container mx-auto p-4 card glass bg-black opacity-95  min-h-[500px] border border-orange-600">
+       <div className="pt-5 container mx-auto p-4 card glass bg-black opacity-90  min-h-[500px] border border-orange-600">
         
          <div className="container mx-auto md:w-2/3  space-y-3 ">
          <h4 className="font-bold text-2xl text-center text-green-500"><span className="text-white">Step 1:</span> Event Details</h4>
          <div className="flex justify-center mb-5">
-  <div className="border-b rounded-lg border-orange-500 w-1/3"></div> {/* Orange border */}
+  <div className="border-b-2 rounded-lg border-orange-500 w-1/3"></div> {/* Orange border */}
 </div>
           <h4 className="font-semibold">Event Name *</h4>
           <input
@@ -318,11 +318,11 @@ const Create = () => {
         </div>
 
 {/* 2nd */}
-          <div className="w-full overflow-auto card glass bg-black opacity-95 min-h-[450px]">
+          <div className="w-full overflow-auto card glass bg-black opacity-90 min-h-[450px]">
             <div className="lg:flex-1 md:flex-1 p-4 rounded-lg  text-black  ">
             <h4 className="font-bold text-2xl text-center text-green-500"><span className="text-white">Step 2:</span> Set Date</h4>
          <div className="flex justify-center mb-5 mt-1">
-  <div className="border-b rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+  <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
 </div>
               <div className="container mx-auto lg:w-2/3  space-y-3  border  border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
                 <div className="w-full custom-datepicker-container "> {/* Enable horizontal scrolling */}
@@ -341,9 +341,9 @@ const Create = () => {
           </div>
 {/* 3rd */}
 
-<div className="w-full mx-auto p-4 card glass bg-black opacity-95 text-white rounded-lg shadow-lg h-[500px]">
+<div className="w-full mx-auto p-4 card glass bg-black opacity-90 text-white rounded-lg shadow-lg h-[500px]">
   <h4 className="font-bold text-2xl text-center text-green-500">
-    <span className="text-white">Step 3: </span>See Your Availability &Set Time
+    <span className="text-white">Step 3: </span>See Your Availability & Set Time
   </h4>
   <div className="flex justify-center mb-5 mt-1">
     <div className="border-b-2 rounded-lg border-orange-500 w-2/5"></div> {/* Orange border */}
@@ -424,6 +424,12 @@ const Create = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className=" mt-5">
+      <Link className=" font-raleway text-lg" href="/dashboard/availability">
+      <h1>Update Your <span className="text-orange-500 font-extrabold"> Availability</span> with Ease.</h1>
+          </Link>
+     
       </div>
     </div>
   </div>
