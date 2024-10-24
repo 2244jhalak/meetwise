@@ -23,6 +23,7 @@ const Page = () => {
                     <AllMeetings></AllMeetings>
                 </div>
             </div>
+                 </div>
                 </AdminRoute>
             </PrivateRoute>
         );
