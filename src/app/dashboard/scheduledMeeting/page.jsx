@@ -9,13 +9,14 @@ const Page = () => {
 
     return (
         <PrivateRoute>
-            <div className=" bg-[#4A4947] flex">
-                <Sidebar />
-                <div className='ml-72 min-h-screen'>
-                    <h3 className='font-bold text-2xl text-white my-6'>All Upcoming and Expired Meeting Shown Here</h3>
-                    <CustomTabs></CustomTabs>
+            <div className="bg-slate-950 min-h-screen md:flex md:flex-row md:justify-between">
+                <div className='md:w-1/4'>
+                    <Sidebar />
                 </div>
-
+                <div className='md:ml-72 min-h-screen'>
+                    <h3 className='container mx-auto md:w-4/4 p-2'>All Upcoming and Expired Meeting Shown Here</h3>
+                    <CustomTabs />
+                </div>
             </div>
         </PrivateRoute>
     );
