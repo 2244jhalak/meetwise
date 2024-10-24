@@ -64,7 +64,7 @@ const Banner = () => {
   const { language } = useLanguage();
   const session = useSession();
   return (
-    <div className="container mx-auto bg-white/10 backdrop-blur-md backdrop-opacity-70 py-10"
+    <div className="container mx-auto bg-white/10  py-10 lg:pt-0 md:pt-20 pt-32" style={{ zIndex: 10 }}
     >
       <div className="container mx-auto flex flex-col-reverse md:flex-row  items-center justify-between">
         {/* Left Side */}
@@ -99,7 +99,7 @@ const Banner = () => {
         </div>
 
         {/* Right Side */}
-        <div className="md:w-1/2 w-full p-5  ">
+        <div className="md:w-1/2 w-full p-5 ">
           <Slider {...settings}>
             <div className="flex-col flex items-center justify-center space-y-1 h-full">
               <LottieAnimation  animationData={animationData1} />
