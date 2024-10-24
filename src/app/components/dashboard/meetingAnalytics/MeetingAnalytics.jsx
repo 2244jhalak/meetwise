@@ -35,7 +35,7 @@ const MeetingAnalytics = () => {
     const getMeetingsOverTimeData = () => {
         const meetingCounts = {};
         filteredMeetings.forEach(meet => {
-            const date = new Date(meet.date).toLocaleDateString();
+            const date = new Date(meet.createDate).toLocaleDateString();
             meetingCounts[date] = (meetingCounts[date] || 0) + 1;
         });
 
@@ -72,13 +72,13 @@ const MeetingAnalytics = () => {
     };
 
     return (
-        <div className='container font-raleway mx-auto mt-6 p-4 text-white shadow-lg rounded-md'>
+        <div className='container font-raleway mx-auto p-4 text-white shadow-lg rounded-md'>
             <h2 className='text-3xl font-bold text-center'>Your Meeting Analytics</h2>
             <div className="border border-orange-600 rounded-xl text-center mx-auto mb-2 mt-2 w-24"></div>
 
             {/* Chart Section */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
-                <div className="bg-slate-800 p-4 rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+                <div className="glass p-4 rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
                     <h3 className="text-xl font-bold text-center">Meetings Over Time</h3>
                     <Bar 
                         data={getMeetingsOverTimeData()} 
@@ -107,7 +107,7 @@ const MeetingAnalytics = () => {
                     />
                 </div>
 
-                <div className="bg-slate-800 p-4 rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
+                <div className="glass p-4 rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
                     <h3 className="text-xl font-bold text-center">Meeting Type Distribution</h3>
                     <Pie 
                         data={getMeetingTypeDistributionData()} 
