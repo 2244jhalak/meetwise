@@ -3,15 +3,18 @@
 
 import { useEffect, useState } from "react";
 import BookingTableRow from "./BookingTableRow";
+import { useSession } from "next-auth/react";
 
 const ExpireTab = () => {
     const sortingType = '-1';
-    const [meetings, setMeetings] = useState([])
+    const [meetings, setMeetings] = useState([]);
+    const session = useSession();
+    const mail = session?.data?.user?.email;
     const today = new Date();
     const formattedDate = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
     const formattedTime = `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2, '0')}`;
 
-    const sortData = { sortingType, formattedDate, formattedTime };
+    const sortData = { mail, sortingType, formattedDate, formattedTime };
 
     useEffect(() => {
         const fetchBookingData = async () => {
@@ -35,7 +38,7 @@ const ExpireTab = () => {
             }
         };
         fetchBookingData();
-    }, [formattedDate, formattedTime, sortingType]);
+    }, [formattedDate, formattedTime, sortingType, mail]);
 
     return (
 
