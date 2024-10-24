@@ -1,6 +1,8 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import ExpireTab from './ExpireTab';
+import UpComingTab from './UpComingTab';
 
 const CustomTabs = () => {
     return (
@@ -10,11 +12,14 @@ const CustomTabs = () => {
                 <Tab>Upcoming</Tab>
             </TabList>
 
+            {/* expire tab here  */}
             <TabPanel>
-                <h2>Any content 1</h2>
+                <ExpireTab />
             </TabPanel>
+
+            {/* upcoming tab here  */}
             <TabPanel>
-                <h2>Any content 2</h2>
+                <UpComingTab />
             </TabPanel>
         </Tabs>
     );
