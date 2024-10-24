@@ -9,6 +9,7 @@ const ExpireTab = () => {
     const formattedTime = `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2, '0')}`;
 
     const sortData = { sortingType, formattedDate, formattedTime };
+
     useEffect(() => {
         const fetchBookingData = async () => {
             const queryParams = new URLSearchParams(sortData);
@@ -16,15 +17,22 @@ const ExpireTab = () => {
                 const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/scheduledMeeting/api?${queryParams.toString()}`, {
                     method: 'GET',
                     headers: {
-                        'Cache-Control': 'no-cache', // Ensure fresh data is fetched
+                        'Cache-Control': 'no-cache',
                     },
                 });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
                 const data = await response.json();
                 console.log('Fetched data:', data);
-            } catch { }
-        }
+            } catch (error) {
+                console.error('Fetch error:', error);
+            }
+        };
         fetchBookingData();
-    }, [formattedDate, formattedTime, sortingType])
+    }, [formattedDate, formattedTime, sortingType]);
 
     return (
         <div>
