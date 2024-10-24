@@ -240,7 +240,7 @@ const MeetingDetails = ({ meetingDetails }) => {
       </div>
 
       <div className=" border-t-0 border-l-0  text-slate-50 card glass border-b-0 border-2 border-dashed border-l-green-500 border-r-green-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h3 className="text-2xl font-bold mb-4 text-green-500">Select Your Time ⏰ :</h3>
+        <h3 className="text-2xl font-bold mb-4 text-green-500">Select Your Time ⏰ </h3>
         {selectedDate ? (
           <p>{`You have selected: ${selectedDate.toLocaleDateString('en-GB')}`}</p>
         ) : (
