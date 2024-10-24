@@ -9,7 +9,7 @@ const Page = () => {
 
     return (
         <PrivateRoute>
-            <div className=" bg-[url('/about/copper-icosahedron-pattern-black.jpg')] bg-center min-h-screen md:flex md:flex-row md:justify-between ">
+            <div className=" bg-slate-950 bg-center min-h-screen md:flex md:flex-row md:justify-between ">
                 <div className='md:w-1/4'>
                     <Sidebar />
                 </div>
