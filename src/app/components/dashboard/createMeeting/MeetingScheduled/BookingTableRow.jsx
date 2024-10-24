@@ -5,7 +5,7 @@ const BookingTableRow = ({ meeting }) => {
         <tr>
             {/* meeting name  */}
             <td className="px-4 py-4 text-sm font-medium whitespace-nowrap">
-                <h2 className="font-medium text-gray-800 dark:text-white ">Meeting Name</h2>
+                <h2 className="font-medium text-gray-800 dark:text-white ">{meeting?.meetingName || "Meeting Name"}</h2>
             </td>
             {/* user  */}
             <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
