@@ -1,7 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 
 const UpComingTab = () => {
     const sortingType = '1';
     const today = new Date();
+    const [meeting, setMeeting] = useState([]);
     const formattedDate = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
     const formattedTime = `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2, '0')}`;
 
@@ -23,7 +26,7 @@ const UpComingTab = () => {
                 }
 
                 const data = await response.json();
-                console.log('Fetched data:', data);
+                setMeeting(data);
             } catch (error) {
                 console.error('Fetch error:', error);
             }

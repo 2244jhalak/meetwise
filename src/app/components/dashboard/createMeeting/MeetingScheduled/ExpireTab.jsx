@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ExpireTab = () => {
     const sortingType = '-1';
+    const [meeting, setMeeting] = useState([])
     const today = new Date();
     const formattedDate = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
     const formattedTime = `${today.getHours().toString().padStart(2, '0')}:${today.getMinutes().toString().padStart(2, '0')}`;
@@ -26,7 +28,7 @@ const ExpireTab = () => {
                 }
 
                 const data = await response.json();
-                console.log('Fetched data:', data);
+                setMeeting(data);
             } catch (error) {
                 console.error('Fetch error:', error);
             }
