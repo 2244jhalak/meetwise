@@ -85,11 +85,11 @@ const ChooseUs = () => {
     const t = translations[language]; // Get translations for the selected language
 
     return (
-        <div className="container mx-auto md:my-12 backdrop-blur-md backdrop-opacity-70" data-aos="fade-up">
-            <h2 className="text-2xl pb-3 font-semibold rounded-2xl border-b-2 border-orange-500 text-center mx-auto text-gray-200 lg:text-3xl md:w-1/2 dark:text-white">
+        <div className="container mx-auto md:my-12 backdrop-blur-md backdrop-opacity-70 px-4" data-aos="fade-up">
+            <h2 className="text-2xl pb-3 font-semibold rounded-2xl border-b-2 border-orange-500 text-center mx-auto text-gray-200 lg:text-3xl md:w-1/2 dark:text-white px-8">
                 {t.title}
             </h2>
-            <div className="flex flex-col md:gap-4 md:flex-row mx-8 mt-10 justify-between">
+            <div className="flex flex-col md:gap-4 md:flex-row mx-4 mt-10 justify-between">
                 {/* Left side */}
                 <section className="md:text-xl md:w-1/2 shadow-xl bg-green-50/90 p-2 md:p-4 border-r-2 border-blue-800 rounded-2xl my-5" data-aos="fade-right">
                     <article className="my-2 md:my-4 px-5">
