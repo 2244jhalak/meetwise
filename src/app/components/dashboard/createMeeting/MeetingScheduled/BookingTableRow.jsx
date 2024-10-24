@@ -1,6 +1,5 @@
 
 const BookingTableRow = ({ meeting }) => {
-    console.log(meeting);
     return (
         <tr>
             {/* meeting name  */}
