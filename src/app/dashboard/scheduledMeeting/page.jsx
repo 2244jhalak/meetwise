@@ -11,7 +11,7 @@ const Page = () => {
         <PrivateRoute>
             <div className=" bg-[#4A4947] flex">
                 <Sidebar />
-                <div className='mx-auto min-h-screen'>
+                <div className='ml-72 min-h-screen'>
                     <h3 className='font-bold text-2xl text-white my-6'>All Upcoming and Expired Meeting Shown Here</h3>
                     <CustomTabs></CustomTabs>
                 </div>
