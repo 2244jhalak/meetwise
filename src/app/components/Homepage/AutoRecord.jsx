@@ -58,22 +58,22 @@ const AutoRecord = () => {
     const currentTexts = texts[language] || texts.en; // বর্তমান ভাষার টেক্সট নির্ধারণ করুন
 
     // data fetching for all features section
-    const [Data, setData] = useState([])
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                // Fetch the JSON file from the public folder
-                const res = await fetch('/features.json');
-                const jsonData = await res.json();
-                setData(jsonData);
+    // const [Data, setData] = useState([])
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             // Fetch the JSON file from the public folder
+    //             const res = await fetch('/features.json');
+    //             const jsonData = await res.json();
+    //             setData(jsonData);
 
-            } catch (error) {
-                console.error('Error fetching JSON data:', error);
-            }
-        };
+    //         } catch (error) {
+    //             console.error('Error fetching JSON data:', error);
+    //         }
+    //     };
 
-        fetchData();
-    }, [Data]);
+    //     fetchData();
+    // }, [Data]);
 
     return (
         <div className=' bg-black/30 backdrop-blur-md backdrop-opacity-70 p-4 md:px-14 py-10 container mx-auto'>
