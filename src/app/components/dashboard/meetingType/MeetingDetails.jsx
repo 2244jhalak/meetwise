@@ -107,6 +107,7 @@ const MeetingDetails = ({ meetingDetails }) => {
           bookedTimeSlot: timeToBook, // Booked time slot
           meetingLocation: meetingDetails.selected,
           url: meetingDetails.url,
+          meetingName: meetingDetails?.eventName,
         };
         //send email notification code here
 
