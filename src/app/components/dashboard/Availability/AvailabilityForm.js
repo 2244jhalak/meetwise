@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 export const dynamic = 'force-dynamic';
-
+import 'animate.css';
 const AvailabilityForm = () => {
     const [selectedDays, setSelectedDays] = useState([]);
     const [timeData, setTimeData] = useState({});
@@ -117,14 +117,14 @@ const AvailabilityForm = () => {
   }, [session?.data?.user?.email]);
 
     return (
-        <div className="container mx-auto  p-6 text-white bg-[#4A4947] shadow-lg rounded-md">
+        <div className="container mx-auto  p-6 text-white bg-slate-950 shadow-lg rounded-md">
                <h1 className="text-2xl pb-3 font-bold  rounded-2xl  border-b-2 border-slate-200 text-center mx-auto text-slate-100 lg:text-3xl w-[500px] dark:text-white mb-6">Save Your Availability</h1>
             {/* <h1 className="text-2xl  font-semibold text-center ">Save Your Availability</h1>
             <div className="border border-green-600 text-center mx-auto container w-[90px] mb-5"></div> */}
             <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* First Column: Days */}
-                    <div className="bg-black  border border-green-500 px-5 py-5 rounded-lg shadow-lg">
+                    <div className="bg-black  border border-green-500 px-5 py-5 rounded-lg shadow-lg animate__animated animate__flipInY">
                         <label className="block text-green-600 font-bold text-2xl font-raleway">Select Days</label>
                         <div className="border border-orange-600 w-[60px] mb-5"></div>
                         <div className="flex flex-col items-start  space-y-2">
@@ -146,7 +146,7 @@ const AvailabilityForm = () => {
                     </div>
 
                     {/* Second Column: Time Inputs */}
-                    <div className="bg-black px-5 border border-orange-500 py-5 rounded-lg shadow-lg">
+                    <div className="bg-black px-5 border border-orange-500 py-5 rounded-lg shadow-lg animate__animated animate__flipInY">
                         <label className="block text-green-600 font-bold text-2xl font-raleway">Set Time</label>
                         <div className="border border-orange-900 w-[60px] mb-5"></div>
                         <div className="max-h-80 overflow-y-auto">

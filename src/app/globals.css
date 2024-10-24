@@ -28,6 +28,36 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+.custom-datepicker-container .rdrCalendarWrapper{
+  background-color: rgb(239, 245, 244);
+}
+.custom-datepicker-container .rdrCalendarWrapper .rdrMonths {
+  display: flex;
+ align-items: center;
+font-family: "Roboto", sans-serif;
+font-weight: bold;
+background-color: rgb(239, 245, 244);
+font-size: 16px;
+}
+.custom-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* Width */
+  height: 50px; /* Height */
+  background-color: #007bff; /* Background color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 50%; /* Circle shape */
+  cursor: pointer; /* Pointer cursor */
+  font-size: 20px; /* Font size */
+  transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.custom-arrow:hover {
+  background-color: #0056b3; /* Hover background color */
+}
+
 
 @layer utilities {
   .text-balance {
