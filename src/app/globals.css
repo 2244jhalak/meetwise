@@ -28,6 +28,65 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+.custom-datepicker-container .rdrCalendarWrapper{
+  background-color: rgb(239, 245, 244);
+}
+.custom-datepicker-container .rdrCalendarWrapper .rdrMonths {
+  display: flex;
+ align-items: center;
+font-family: "Roboto", sans-serif;
+font-weight: bold;
+background-color: rgb(239, 245, 244);
+font-size: 16px;
+}
+.custom-date-container .react-calendar{
+background-color: #0a0a0a;
+color: rgb(99, 173, 202); 
+border-bottom-left-radius: 15px; /* Adjust the value as needed */
+border-bottom-right-radius: 15px; /* Adjust the value as needed */
+overflow: hidden;
+}
+
+.custom-date-container .react-calendar__tile:disabled {
+  background-color: #282323;  /* Background color for disabled tiles */
+  color: gray;  /* Text color for disabled tiles */
+ 
+}
+
+.custom-date-container .react-calendar__tile:active {
+  background-color: #0a9444 !important;  /* Ensure this style takes precedence */
+  color: white !important;
+}
+
+/* Style the disabled tiles */
+
+.custom-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px; /* Width */
+  height: 50px; /* Height */
+  background-color: #007bff; /* Background color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 50%; /* Circle shape */
+  cursor: pointer; /* Pointer cursor */
+  font-size: 20px; /* Font size */
+  transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.custom-arrow:hover {
+  background-color: #0056b3; /* Hover background color */
+}
+/* Make the bottom bar rounded and add a small dot above it */
+.custom-full {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: relative; /* Allows the dot to be placed absolutely relative to this element */
+}
+
+
+
 
 @layer utilities {
   .text-balance {
