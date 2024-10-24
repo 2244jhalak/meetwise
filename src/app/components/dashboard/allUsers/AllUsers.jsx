@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2'; // Import SweetAlert2
-
+import 'animate.css';
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(null);
@@ -125,9 +125,9 @@ const AllUsers = () => {
     };
 
     return (
-        <div>
-            <h2 className='text-3xl text-white font-semibold'>Total Users: {users.length}</h2>
-            
+        <div className='container mx-auto p-6 font-raleway text-white bg-slate-950 shadow-lg rounded-md'>
+             <h1 className="text-2xl pb-3 font-bold  rounded-2xl  border-b-2 border-slate-200 text-center mx-auto text-slate-100 lg:text-3xl w-[500px] dark:text-white mb-7">User Management</h1>
+             <h2 className='text-3xl text-white font-semibold mt-5 mb-5'>User Overview: <span className="text-orange-500 font-bold">Total Users</span>- {users.length}</h2>
             {/* Loading State */}
            
 
@@ -135,8 +135,8 @@ const AllUsers = () => {
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
-                    <thead className='text-gray-500'>
-                        <tr>
+                    <thead>
+                        <tr className='text-slate-300'>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
@@ -157,7 +157,7 @@ const AllUsers = () => {
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
-                                                <div className="mask mask-squircle h-12 w-12">
+                                                <div className="mask mask-squircle h-12 w-12 animate__animated animate__flipInY">
                                                     <Image width={50} height={50} src={user.image} alt='' />
                                                 </div>  
                                             </div>
@@ -167,7 +167,7 @@ const AllUsers = () => {
                                         </div>
                                     </td>
                                     <td>
-                                        <span className="badge badge-ghost badge-sm">{user.email}</span>
+                                        <span className="text-[#F94C10]">{user.email}</span>
                                     </td>
                                     <td>
                                         <button 

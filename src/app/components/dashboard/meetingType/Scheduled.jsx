@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 import { FaTrash, FaCopy, FaLocationArrow, FaClock, FaShare } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { FaSearch } from 'react-icons/fa'; // Import the FaSearch icon
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
 const Scheduled = () => {
     const [meeting, setMeeting] = useState([]); // All meetings state
@@ -14,8 +16,13 @@ const Scheduled = () => {
     const [error, setError] = useState(null);
     const session = useSession();
     const router = useRouter(); // Router hook 
-    console.log(meeting);
-
+    // console.log(meeting);
+    useEffect(() => {
+        AOS.init({
+          duration: 2000, // Duration of animations (optional)
+          once: false, // Whether animation should happen only once while scrolling down (optional)
+        });
+      }, []);
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -146,10 +153,10 @@ const handleShareMeeting = (meet) => {
 
 
 
-<div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-5 '>
+<div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-5 ' >
     {
         filteredMeetings.map(meet => (
-            <div className='rounded-lg relative border border-green-500 bg-black text-white shadow-2xl ' key={meet._id}>
+            <div className='rounded-lg relative border border-green-500 bg-black text-white shadow-2xl 'data-aos="fade-up" key={meet._id}>
                 {/* Delete Icon */}
                 <FaTrash 
                     className='absolute top-2 left-2 cursor-pointer' 
