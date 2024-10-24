@@ -4,15 +4,15 @@ import { CiClock2 } from "react-icons/ci";
 import { BsHandbag, BsPlus } from "react-icons/bs";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { FcSettings } from "react-icons/fc"
-import { ImProfile, ImUsers } from "react-icons/im";
+import { ImFilePdf, ImProfile, ImUsers } from "react-icons/im";
 
 import { AiOutlineBars } from 'react-icons/ai'
 import Link from "next/link";
 import NavigationDash from "./NavigationDash";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { IoMdAnalytics } from 'react-icons/io';
 
 
@@ -21,7 +21,34 @@ const Sidebar = () => {
     const pathname = usePathname();
     const session = useSession();
     console.log(pathname);
+    const [admin,setAdmin] = useState(true);
+    const [user,setUser] = useState(false);
+    const checkActiveRoute = (route) => {
+        return pathname === route ? 'bg-green-600 text-white' : '';
+      };
 
+    useEffect(() => {
+        const storedRole = localStorage.getItem('role');
+        if (storedRole === 'admin') {
+            setAdmin(true);
+            setUser(false);
+        } else if (storedRole === 'user') {
+            setUser(true);
+            setAdmin(false);
+        }
+    }, []);
+
+
+    const handleAdmin = () =>{
+        setAdmin(true);
+        setUser(false);
+        localStorage.setItem('role', 'admin');
+    }
+    const handleUser = () =>{
+        setUser(true);
+        setAdmin(false);
+        localStorage.setItem('role', 'user');
+    }
     const handleToggle = () => {
         setActive(!isActive)
     }
@@ -68,39 +95,52 @@ const Sidebar = () => {
 
                     {/* Nav Items */}
                 </div>
-
-                <div className='container mx-auto text-white '>
+                {
+                    session?.data?.user?.role==="admin"?
+                    
+                        <div className='flex ps-14 py-10 fixed '>
+                     <div className="">
+                        <button onClick={handleAdmin} className={`${admin?"text-white bg-green-600 rounded-l-3xl p-2":"disabled"}`}>Admin</button>
+                        <button onClick={handleUser} className={`${user?"text-white bg-green-600 rounded-r-3xl p-2":"disabled"}`}>User</button>
+                     </div>
+                    
+                    </div>
+                    :
+                    <>
+                    <div className='container mx-auto text-white '>
                     <NavigationDash
                         label='Create Meeting'
                         address='/dashboard/createMeeting'
                         icon={BsPlus}
+                        className={checkActiveRoute('/dashboard/createMeeting')}
                     />
 
                     <NavigationDash
                         label='Meeting Library'
                         address='/dashboard/meetingType'
                         icon={BsHandbag}
+                        className={checkActiveRoute('/dashboard/meetingType')}
+                        
                     />
                     <NavigationDash
                         label='Scheduled Meeting'
                         address='/dashboard/scheduledMeeting'
                         icon={BsFillBagCheckFill}
+                        className={checkActiveRoute('/dashboard/scheduledMeeting')}
                     />
                     <NavigationDash
                         label='Availability'
                         address='/dashboard/availability'
                         icon={CiClock2}
+                        className={checkActiveRoute('/dashboard/availability')}
                     />
                     <NavigationDash
                         label='Meeting Analytics'
                         address='/dashboard/meetingAnalytics'
                         icon={IoMdAnalytics}
+                        className={checkActiveRoute('/dashboard/meetingAnalytics')}
                     />
-                    <NavigationDash
-                        label='Settings'
-                        address='/dashboard/settings'
-                        icon={FcSettings}
-                    />
+                    
 
                 </div>
 
@@ -108,12 +148,68 @@ const Sidebar = () => {
                     <hr />
 
                     {/* Admin's Power */}
+                    
+                        {
+                        session?.data?.user?.role === "admin" ?
+                            <NavigationDash
+                                label='All Users'
+                                address='/dashboard/allUsers'
+                                icon={ImUsers}
+                                className={checkActiveRoute('/dashboard/allUsers')}
+                            />
+                            :
+                            ""
+
+                    }
+                       
+                        {
+                        session?.data?.user?.role === "admin" ?
+                            <NavigationDash
+                                label='All Meetings'
+                                address='/dashboard/allMeetings'
+                                icon={ImFilePdf}
+                                className={checkActiveRoute('/dashboard/allMeetings')}
+                            />
+                            :
+                            ""
+
+                    }
+                        
+                             {/* Profile Menu */}
+                    <NavigationDash
+                        label='Profile'
+                        address='/dashboard/profile'
+                        icon={ImProfile}
+                        className={checkActiveRoute('/dashboard/profile')}
+                    />
+                        
+                        <button
+                        onClick={()=>signOut()}
+                        className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                    >
+                        <GrLogout className='w-5 h-5' />
+
+                        <span className='mx-4 font-medium'>Logout</span>
+                    </button>
+                    
+                    
+                    </div>
+                </>
+
+                }
+                {
+                    admin?
+                    <>
+                    
+
+                    
                     {
                         session?.data?.user?.role === "admin" ?
                             <NavigationDash
                                 label='All Users'
                                 address='/dashboard/allUsers'
                                 icon={ImUsers}
+                                className={checkActiveRoute('/dashboard/allUsers')}
                             />
                             :
                             ""
@@ -121,24 +217,101 @@ const Sidebar = () => {
                     }
                     {
                         session?.data?.user?.role === "admin" ?
-                            <NavigationDash
+                             <NavigationDash
                                 label='All Meetings'
                                 address='/dashboard/allMeetings'
-                                icon={ImUsers}
+                                icon={ImFilePdf}
+                                className={checkActiveRoute('/dashboard/allMeetings')}
                             />
+                            :
+                            ""
+
+                    }
+                    {
+                        session?.data?.user?.role === "admin" ?
+                        <NavigationDash
+                        label='Profile'
+                        address='/dashboard/profile'
+                        icon={ImProfile}
+                        className={checkActiveRoute('/dashboard/profile')}
+                    />
+                            :
+                            ""
+
+                    }
+                    {
+                        session?.data?.user?.role === "admin" ?
+                        <button
+                        onClick={()=>signOut()}
+                        className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                    >
+                        <GrLogout className='w-5 h-5' />
+
+                        <span className='mx-4 font-medium'>Logout</span>
+                    </button>
                             :
                             ""
 
                     }
 
                     {/* Profile Menu */}
+                   
+                
+                
+                    </>
+                    :
+                    <>
+                    <div className='container mx-auto text-white '>
+                    <NavigationDash
+                        label='Create Meeting'
+                        address='/dashboard/createMeeting'
+                        icon={BsPlus}
+                        className={checkActiveRoute('/dashboard/createMeeting')}
+                    />
+
+                    <NavigationDash
+                        label='Meeting Library'
+                        address='/dashboard/meetingType'
+                        icon={BsHandbag}
+                        className={checkActiveRoute('/dashboard/meetingType')}
+                    />
+                    <NavigationDash
+                        label='Scheduled Meeting'
+                        address='/dashboard/scheduledMeeting'
+                        icon={BsFillBagCheckFill}
+                        className={checkActiveRoute('/dashboard/scheduledMeeting')}
+                    />
+                    <NavigationDash
+                        label='Availability'
+                        address='/dashboard/availability'
+                        icon={CiClock2}
+                        className={checkActiveRoute('/dashboard/availability')}
+                    />
+                    <NavigationDash
+                        label='Meeting Analytics'
+                        address='/dashboard/meetingAnalytics'
+                        icon={IoMdAnalytics}
+                        className={checkActiveRoute('/dashboard/meetingAnalytics')}
+                    />
+                    
+
+                </div>
+
+                <div>
+                    <hr />
+
+                    
+
+                    {/* Profile Menu */}
                     <NavigationDash
                         label='Profile'
                         address='/dashboard/profile'
                         icon={ImProfile}
+                        className={checkActiveRoute('/dashboard/profile')}
                     />
 
                     <button
+                        onClick={()=>signOut()}
                         className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
                     >
                         <GrLogout className='w-5 h-5' />
@@ -146,6 +319,11 @@ const Sidebar = () => {
                         <span className='mx-4 font-medium'>Logout</span>
                     </button>
                 </div>
+                    </>
+                }
+                
+
+                
             </div>
 
         </>
