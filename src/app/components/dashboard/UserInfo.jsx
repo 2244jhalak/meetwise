@@ -3,15 +3,16 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { FaEnvelope } from 'react-icons/fa';
+import { FaEdit, FaEnvelope } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 
 const UserInfo = () => {
     const { data: session } = useSession();
     const [formattedDate, setFormattedDate] = useState('');
     const [name, setName] = useState(session?.user?.name || '');
-    const [title,setTitle] = useState(session?.user?.title || '');
-    const [description,setDescription] = useState(session?.user?.description || '');
+    const [title, setTitle] = useState(session?.user?.title || '');
+    const [description, setDescription] = useState(session?.user?.description || '');
     const [image, setImage] = useState(session?.user?.image || '');
     const [imageFile, setImageFile] = useState(null); // State for image file
 
@@ -20,7 +21,7 @@ const UserInfo = () => {
     useEffect(() => {
         const dateStr = session?.expires;
         const date = new Date(dateStr);
-        
+
         if (!isNaN(date.getTime())) {
             const hours = date.getUTCHours() % 12 || 12;
             const minutes = String(date.getUTCMinutes()).padStart(2, '0');
@@ -75,20 +76,33 @@ const UserInfo = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name,title,description, image: uploadedImageUrl, email: session?.user?.email }),
+                body: JSON.stringify({ name, title, description, image: uploadedImageUrl, email: session?.user?.email }),
             });
             if (response.ok) {
-                
+
 
                 if (response.ok) {
-                    alert('User info updated successfully');
-                    window.location.reload()
-                   
-                    
-                   
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "User info updated successfully",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
+                    // alert('User info updated successfully');
+                    // window.location.reload()
+
+
+
                 }
             } else {
-                alert('Failed to update user info');
+                // alert('Failed to update user info');
+                Swal.fire({
+                    title: 'Error!',
+                    text: error.message,
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                });
             }
         } catch (error) {
             console.error('Error updating user info:', error);
@@ -96,70 +110,140 @@ const UserInfo = () => {
     };
 
     return (
-        <div className='flex justify-center gap-5'>
-          <div className='w-96 border-2 h-fit space-y-2 rounded-t-lg shadow-xl py-5'>
-            <div className='flex justify-center'>
-            <div className="avatar">
-                <div className="w-24 rounded-full">
-                  <Image src={image} alt='' width={50} height={50}></Image>
+        <div>
+            <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-orange-600 text-center lg:mx-auto text-gray-200 lg:text-3xl dark:text-white my-4 md:mx-auto mx-6">
+                My Profile
+            </h1>
+            <div className='flex flex-col md:flex-row justify-center gap-10 p-6 text-white '>
+                {/* Profile Card */}
+                <div className="w-full md:w-96 border-2 border-gray-700 rounded-lg shadow-lg bg-slate-950 ">
+                    <div className='flex flex-col items-center py-6'>
+                        <div className="avatar">
+                            <div className="w-24 h-24 rounded-full border-4 border-gray-700 overflow-hidden">
+                                <Image src={image} alt='' width={96} height={96} className='object-cover'></Image>
+                            </div>
+                        </div>
+                        <div className="text-2xl mt-4 font-semibold text-gray-200">
+                            <h4>{name}</h4>
+                        </div>
+                        <div className="text-lg text-gray-400">
+                            <h5>{title}</h5>
+                        </div>
+                        <div className="text-sm text-center mt-4 px-6 text-gray-300">
+                            <h6>{description}</h6>
+                        </div>
+                        <div className='flex items-center mt-6'>
+                            <FaEnvelope className='text-gray-400 mr-2' />
+                            <p className='text-gray-300'>{session?.user?.email}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Update Profile Form */}
+                <div className='w-full md:w-96 border-2 border-gray-700 rounded-lg shadow-lg bg-slate-950 p-6'>
+                    <h3 className='text-center text-2xl font-semibold text-gray-200 mb-6'>Update Profile</h3>
+                    <form onSubmit={handleUpdate} className="space-y-4">
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Update name"
+                            className="input input-bordered w-full bg-slate-900 text-gray-300 border-gray-700 focus:border-blue-500 focus:bg-slate-900"
+                        />
+                        <input
+                            type="text"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            placeholder="Update title"
+                            className="input input-bordered w-full bg-slate-900 text-gray-300 border-gray-700 focus:border-blue-500 focus:bg-slate-900"
+                        />
+                        <textarea
+                            type="text"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="Update description"
+                            className="input input-bordered w-full bg-slate-900 text-gray-300 border-gray-700 focus:border-blue-500 focus:bg-slate-900"
+                        />
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                            className="file-input file-input-bordered text-gray-300 bg-slate-900 border-gray-700 hover:bg-slate-700"
+                        />
+                        <div className='flex justify-end'>
+                            <button type="submit" className="btn btn-primary bg-orange-600 hover:bg-orange-700 border-0 px-6 py-2 mt-4">
+                                <FaEdit /> Update Info
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            
-            </div>
-            <div className="text-2xl flex justify-center">
-                <h4>{name}</h4>
-            </div>
-            <div className="text-xl flex justify-center">
-                <h5>{title}</h5>
-            </div>
-            <div className="text-xl ps-5">
-                <h6>{description}</h6>
-            </div>
-            <div className='ps-5 flex gap-2 items-center pt-5'>
-                <FaEnvelope></FaEnvelope>
-                <p>{session?.user?.email}</p>
-            </div>
-          </div>
-          {/* Update Profile */}
-          <div className='w-96 border-2 h-fit space-y-2 rounded-t-lg shadow-xl py-5'>
-               <div className='ps-8'>
-               <form onSubmit={handleUpdate} className="mt-4">
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Update name"
-                        className="input input-bordered w-full max-w-xs mb-2"
-                    />
-                    <input
-                        type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        placeholder="Update title"
-                        className="input input-bordered w-full max-w-xs mb-2"
-                    />
-                    <textarea
-                        type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Update description"
-                        className="input input-bordered w-full max-w-xs mb-2"
-                    />
+        </div>
 
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageChange} // Call the image preview handler
-                        className="file-input file-input-bordered text-black"
-                    />
+        //     <div className='flex justify-center gap-5'>
+        //       <div className='w-96 border-2 h-fit space-y-2 rounded-t-lg shadow-xl py-5'>
+        //         <div className='flex justify-center'>
+        //         <div className="avatar">
+        //             <div className="w-24 rounded-full">
+        //               <Image src={image} alt='' width={50} height={50}></Image>
+        //             </div>
+        //         </div>
 
-                    <div className='flex justify-end me-7 mt-2'>
-                    <button type="submit" className="btn btn-primary">Update Info</button>
-                    </div>
-                </form>
-               </div>
-          </div>
-       </div>    
+        //         </div>
+        //         <div className="text-2xl flex justify-center">
+        //             <h4>{name}</h4>
+        //         </div>
+        //         <div className="text-xl flex justify-center">
+        //             <h5>{title}</h5>
+        //         </div>
+        //         <div className="text-xl ps-5">
+        //             <h6>{description}</h6>
+        //         </div>
+        //         <div className='ps-5 flex gap-2 items-center pt-5'>
+        //             <FaEnvelope></FaEnvelope>
+        //             <p>{session?.user?.email}</p>
+        //         </div>
+        //       </div>
+        //       {/* Update Profile */}
+        //       <div className='w-96 border-2 h-fit space-y-2 rounded-t-lg shadow-xl py-5'>
+        //            <div className='ps-8'>
+        //            <form onSubmit={handleUpdate} className="mt-4">
+        //                 <input
+        //                     type="text"
+        //                     value={name}
+        //                     onChange={(e) => setName(e.target.value)}
+        //                     placeholder="Update name"
+        //                     className="input input-bordered w-full max-w-xs mb-2"
+        //                 />
+        //                 <input
+        //                     type="text"
+        //                     value={title}
+        //                     onChange={(e) => setTitle(e.target.value)}
+        //                     placeholder="Update title"
+        //                     className="input input-bordered w-full max-w-xs mb-2"
+        //                 />
+        //                 <textarea
+        //                     type="text"
+        //                     value={description}
+        //                     onChange={(e) => setDescription(e.target.value)}
+        //                     placeholder="Update description"
+        //                     className="input input-bordered w-full max-w-xs mb-2"
+        //                 />
+
+        //                 <input
+        //                     type="file"
+        //                     accept="image/*"
+        //                     onChange={handleImageChange} // Call the image preview handler
+        //                     className="file-input file-input-bordered text-black"
+        //                 />
+
+        //                 <div className='flex justify-end me-7 mt-2'>
+        //                 <button type="submit" className="btn btn-primary">Update Info</button>
+        //                 </div>
+        //             </form>
+        //            </div>
+        //       </div>
+        //    </div>    
     );
 };
 
