@@ -39,6 +39,27 @@ font-weight: bold;
 background-color: rgb(239, 245, 244);
 font-size: 16px;
 }
+.custom-date-container .react-calendar{
+background-color: #0a0a0a;
+color: rgb(99, 173, 202); 
+border-bottom-left-radius: 15px; /* Adjust the value as needed */
+border-bottom-right-radius: 15px; /* Adjust the value as needed */
+overflow: hidden;
+}
+
+.custom-date-container .react-calendar__tile:disabled {
+  background-color: #282323;  /* Background color for disabled tiles */
+  color: gray;  /* Text color for disabled tiles */
+ 
+}
+
+.custom-date-container .react-calendar__tile:active {
+  background-color: #0a9444 !important;  /* Ensure this style takes precedence */
+  color: white !important;
+}
+
+/* Style the disabled tiles */
+
 .custom-arrow {
   display: flex;
   align-items: center;
@@ -57,6 +78,14 @@ font-size: 16px;
 .custom-arrow:hover {
   background-color: #0056b3; /* Hover background color */
 }
+/* Make the bottom bar rounded and add a small dot above it */
+.custom-full {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: relative; /* Allows the dot to be placed absolutely relative to this element */
+}
+
+
 
 
 @layer utilities {
