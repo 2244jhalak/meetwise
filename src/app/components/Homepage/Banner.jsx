@@ -8,6 +8,7 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const translations = {
   en: {
@@ -61,11 +62,11 @@ const Banner = () => {
     verticalSwiping: true,  // Vertical swipe সক্রিয়
   }
   const { language } = useLanguage();
-
+  const session = useSession();
   return (
     <div className="container mx-auto bg-white/10 backdrop-blur-md backdrop-opacity-70 py-10"
     >
-      <div className="container   mx-auto flex flex-col-reverse md:flex-row  items-center justify-between">
+      <div className="container mx-auto flex flex-col-reverse md:flex-row  items-center justify-between">
         {/* Left Side */}
         <div className="md:w-1/2 w-full text-center md:text-left p-5">
           <h1 className="text-4xl lg:text-7xl font-bold text-slate-100 mb-4">
@@ -75,7 +76,12 @@ const Banner = () => {
             {translations[language].description}
           </p>
           <div className="flex justify-center md:justify-start gap-4 mb-6">
-            <Link href='/login'
+            {
+              session?.data?.user?
+              
+            ""
+            :
+              <Link href='/signup'
               className="relative btn inline-block px-6 py-3 font-bold text-white rounded-full border border-transparent transition duration-300 ease-in-out overflow-hidden group"
               style={{
                 background: 'linear-gradient(90deg, rgba(69,89,66,1) 0%, rgba(67,207,57,0.8241421568627451) 35%, rgba(117,154,162,1) 100%)',
@@ -84,6 +90,8 @@ const Banner = () => {
               <span className="relative z-10">{translations[language].startButton}</span>
               <span className="absolute inset-0 w-full h-full transition-all duration-300 ease-in-out transform rounded-full bg-transparent group-hover:translate-x-1 group-hover:translate-y-1"></span>
             </Link>
+            
+            }
 
 
           </div>

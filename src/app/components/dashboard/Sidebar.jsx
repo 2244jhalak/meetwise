@@ -12,7 +12,7 @@ import NavigationDash from "./NavigationDash";
 import { useState } from 'react';
 
 import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { IoMdAnalytics } from 'react-icons/io';
 
 
@@ -21,7 +21,16 @@ const Sidebar = () => {
     const pathname = usePathname();
     const session = useSession();
     console.log(pathname);
-
+    const [admin,setAdmin] = useState(true);
+    const [user,setUser] = useState(false);
+    const handleAdmin = () =>{
+        setAdmin(true);
+        setUser(false);
+    }
+    const handleUser = () =>{
+        setUser(true);
+        setAdmin(false);
+    }
     const handleToggle = () => {
         setActive(!isActive)
     }
@@ -68,8 +77,19 @@ const Sidebar = () => {
 
                     {/* Nav Items */}
                 </div>
-
-                <div className='container mx-auto text-white '>
+                {
+                    session?.data?.user?.role==="admin"?
+                    
+                        <div className='flex ps-14 pt-10 fixed '>
+                     <div className="">
+                        <button onClick={handleAdmin} className={`${admin?"text-white bg-green-600 rounded-l-3xl p-2":"disabled"}`}>Admin</button>
+                        <button onClick={handleUser} className={`${user?"text-white bg-green-600 rounded-r-3xl p-2":"disabled"}`}>User</button>
+                     </div>
+                    
+                    </div>
+                    :
+                    <>
+                    <div className='container mx-auto text-white '>
                     <NavigationDash
                         label='Create Meeting'
                         address='/dashboard/createMeeting'
@@ -96,11 +116,7 @@ const Sidebar = () => {
                         address='/dashboard/meetingAnalytics'
                         icon={IoMdAnalytics}
                     />
-                    <NavigationDash
-                        label='Settings'
-                        address='/dashboard/settings'
-                        icon={FcSettings}
-                    />
+                    
 
                 </div>
 
@@ -139,6 +155,7 @@ const Sidebar = () => {
                     />
 
                     <button
+                        onClick={()=>signOut()}
                         className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
                     >
                         <GrLogout className='w-5 h-5' />
@@ -146,6 +163,127 @@ const Sidebar = () => {
                         <span className='mx-4 font-medium'>Logout</span>
                     </button>
                 </div>
+                </>
+
+                }
+                {
+                    admin?
+                    <>
+                    
+
+                    
+                    {
+                        session?.data?.user?.role === "admin" ?
+                            <NavigationDash
+                                label='All Users'
+                                address='/dashboard/allUsers'
+                                icon={ImUsers}
+                            />
+                            :
+                            ""
+
+                    }
+                    {
+                        session?.data?.user?.role === "admin" ?
+                            <NavigationDash
+                                label='All Meetings'
+                                address='/dashboard/allMeetings'
+                                icon={ImUsers}
+                            />
+                            :
+                            ""
+
+                    }
+                    {
+                        session?.data?.user?.role === "admin" ?
+                        <NavigationDash
+                        label='Profile'
+                        address='/dashboard/profile'
+                        icon={ImProfile}
+                    />
+                            :
+                            ""
+
+                    }
+                    {
+                        session?.data?.user?.role === "admin" ?
+                        <button
+                        onClick={()=>signOut()}
+                        className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                    >
+                        <GrLogout className='w-5 h-5' />
+
+                        <span className='mx-4 font-medium'>Logout</span>
+                    </button>
+                            :
+                            ""
+
+                    }
+
+                    {/* Profile Menu */}
+                   
+                
+                
+                    </>
+                    :
+                    <>
+                    <div className='container mx-auto text-white '>
+                    <NavigationDash
+                        label='Create Meeting'
+                        address='/dashboard/createMeeting'
+                        icon={BsPlus}
+                    />
+
+                    <NavigationDash
+                        label='Meeting Library'
+                        address='/dashboard/meetingType'
+                        icon={BsHandbag}
+                    />
+                    <NavigationDash
+                        label='Scheduled Meeting'
+                        address='/dashboard/scheduledMeeting'
+                        icon={BsFillBagCheckFill}
+                    />
+                    <NavigationDash
+                        label='Availability'
+                        address='/dashboard/availability'
+                        icon={CiClock2}
+                    />
+                    <NavigationDash
+                        label='Meeting Analytics'
+                        address='/dashboard/meetingAnalytics'
+                        icon={IoMdAnalytics}
+                    />
+                    
+
+                </div>
+
+                <div>
+                    <hr />
+
+                    
+
+                    {/* Profile Menu */}
+                    <NavigationDash
+                        label='Profile'
+                        address='/dashboard/profile'
+                        icon={ImProfile}
+                    />
+
+                    <button
+                        onClick={()=>signOut()}
+                        className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                    >
+                        <GrLogout className='w-5 h-5' />
+
+                        <span className='mx-4 font-medium'>Logout</span>
+                    </button>
+                </div>
+                    </>
+                }
+                
+
+                
             </div>
 
         </>
