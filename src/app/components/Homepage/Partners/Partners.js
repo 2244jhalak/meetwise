@@ -2,11 +2,32 @@
 import React from 'react';
 import Marquee from 'react-fast-marquee'; // Import Marquee for scrolling
 import Image from 'next/image'; // Import Image component from Next.js
+import { useLanguage } from '../../context/LanguageContext';
+
+const translations = {
+    en: {
+      title: 'Our Trusted Partners',
+    },
+    bn: {
+      title: 'আমাদের বিশ্বস্ত অংশীদার',
+      
+    },
+    fr: {
+      title: 'Nos partenaires de confiance',
+      
+    },
+    es: {
+      title: 'Nuestros socios de confianza',
+      
+    },
+  
+  }
 
 const Partners = () => {
+    const {language} = useLanguage();
     return (
         <div className='container mx-auto bg-black/60 backdrop-blur-md backdrop-opacity-70 py-10'>
-            <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-slate-100 lg:text-3xl md:w-1/4 dark:text-white">Our Trusted Partners</h1>
+            <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-slate-100 lg:text-3xl md:w-1/4 dark:text-white">{translations[language].title}</h1>
          
             {/* Gradient background with transparency on the edges */}
             <div className="relative overflow-hidden">
