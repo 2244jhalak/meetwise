@@ -9,7 +9,7 @@ import Welcome from '../components/dashboard/welcomePannel/Welcome';
 const DashboardPage = () => {
     const { data: session } = useSession();
         return (  <PrivateRoute>
-            <div className=' bg-slate-950 md:flex md:flex-row md:justify-between'>
+            <div className=' bg-slate-950 min-h-screen md:flex md:flex-row md:justify-between'>
            <div className='md:w-1/4'>
                <Sidebar />
            </div>
