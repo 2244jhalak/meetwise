@@ -90,6 +90,11 @@ const MeetingDetails = ({ meetingDetails }) => {
           text: 'You successfully booked the meeting! 🎉',
           icon: 'success',
           confirmButtonText: 'OK',
+          background: "#000000",  // Black background
+          color: "#F8FAFC",       // Slate-50 text color
+          customClass: {
+            popup: 'bg-black text-slate-50',
+          },
         }).then(() => {
 
 
@@ -107,6 +112,7 @@ const MeetingDetails = ({ meetingDetails }) => {
           bookedTimeSlot: timeToBook, // Booked time slot
           meetingLocation: meetingDetails.selected,
           url: meetingDetails.url,
+          meetingName: meetingDetails?.eventName,
         };
         //send email notification code here
 
@@ -118,10 +124,15 @@ const MeetingDetails = ({ meetingDetails }) => {
         if (emailToAuthor.status === 200 && emailToUser.status === 200) {
           // Show success message with SweetAlert
           Swal.fire({
-            title: 'Congratulations!',
-            text: 'You successfully booked the meeting! 🎉',
+            title: 'Check Your Mail Please',
+       
             icon: 'success',
             confirmButtonText: 'OK',
+            background: "#000000",  // Black background
+            color: "#F8FAFC",       // Slate-50 text color
+            customClass: {
+              popup: 'bg-black text-slate-50',
+            },
           }).then(() => {
             window.location.reload(); // Reload the window after success
           });
@@ -146,6 +157,11 @@ const MeetingDetails = ({ meetingDetails }) => {
             title: "Your meeting has been created",
             showConfirmButton: false,
             timer: 1500,
+            background: "#000000",  // Black background
+            color: "#F8FAFC",       // Slate-50 text color
+            customClass: {
+              popup: 'bg-black text-slate-50',
+            },
           });
         }
 
@@ -175,10 +191,10 @@ const MeetingDetails = ({ meetingDetails }) => {
 
     return (
       <div
-        className={`w-full h-full flex items-center justify-center ${isSelected ? 'bg-red-500' : isInRange ? 'bg-green-500' : ''}`}
-        onClick={() => handleDateSelect(date)}
-      >
-      </div>
+      className={`custom-full h-[6px] mb-0 flex items-center justify-center relative ${isSelected ? 'bg-red-500' : isInRange ? 'bg-green-500' : ''}`}
+      onClick={() => handleDateSelect(date)}
+    >
+    </div>
     );
   };
 
@@ -191,37 +207,40 @@ const MeetingDetails = ({ meetingDetails }) => {
   };
   console.log(availableTimes)
   return (
-    <div className="flex flex-col md:flex-row gap-8 items-start p-4 font-raleway">
-      <div className="bg-green-50 border-4 border-l-orange-500 border-r-orange-500 shadow-lg rounded-lg p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h2 className="text-2xl font-semibold mb-4">Meeting Details</h2>
+    <div className="flex flex-col shadow-lg  backdrop-opacity-70 rounded-lg  md:flex-row gap-8 items-start p-4 font-raleway">
+      <div className="border-t-0 text-slate-50 card glass border-b-0  border-l-0 border-2 border-dashed border-r-orange-500  border-t-orange-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h2 className="text-2xl font-bold mb-4 text-orange-500">Meeting Details 📋</h2>
         {meetingDetails ? (
-          <div className="space-y-2">
-            <p><strong>Name:</strong> {meetingDetails.name}</p>
-            <p><strong>Email:</strong> {meetingDetails.email}</p>
-            <p><strong>Event Name:</strong> {meetingDetails.eventName}</p>
-            <p><strong>Duration:</strong> {meetingDetails.duration} minutes</p>
-            <p><strong>Type:</strong> {meetingDetails.selected}</p>
-            <p><strong>URL:</strong> <a href={meetingDetails.url} className="text-blue-500 underline">{meetingDetails.url}</a></p>
-            <p><strong>Start Date:</strong> {meetingDetails.startDate}</p>
-            <p><strong>End Date:</strong> {meetingDetails.endDate}</p>
+          <div className="space-y-2 ">
+            <p><strong>Name:</strong><span className='text-slate-300'> {meetingDetails.name}</span></p>
+            <p><strong>Email:</strong><span className='text-slate-300'> {meetingDetails.email}</span></p>
+            <p><strong>Event Name:</strong><span className='text-slate-300'> {meetingDetails.eventName}</span></p>
+            <p><strong>Duration:</strong><span className='text-slate-300'> {meetingDetails.duration} minutes</span></p>
+            <p><strong>Type:</strong><span className='text-slate-300'> {meetingDetails.selected}</span></p>
+            <p><strong>URL:</strong> <a href={meetingDetails.url} className="text-blue-500 underline"><span className='text-slate-300'> {meetingDetails.url}</span></a></p>
+            <p><strong>Start Date:</strong><span className='text-slate-300'> {meetingDetails.startDate}</span></p>
+            <p><strong>End Date:</strong><span className='text-slate-300'> {meetingDetails.endDate}</span></p>
           </div>
         ) : (
           <p>No meeting details available.</p>
         )}
       </div>
 
-      <div className="bg-green-50 border-4 border-l-blue-500 border-r-blue-500 shadow-lg rounded-lg p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h2 className="text-2xl font-bold mb-4">Select Your Date 📅</h2>
+      <div className=" border-t-0 card glass font-raleway border-l-0 border-b-0 border-2 border-dashed border-r-blue-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h2 className="text-2xl font-bold mb-4 text-slate-50">Select Your Date 📅</h2>
+        <div className='custom-date-container'>
         <Calendar
           tileContent={tileContent}
           tileDisabled={tileDisabled}
-          className="mt-2 bg-green-200"
+          className="mt-2 bg-black rounded-xl"
           rangeColors={["green"]}
         />
+        </div>
+        
       </div>
 
-      <div className="bg-orange-50 border-4 border-l-green-500 border-r-green-500 shadow-lg rounded-lg p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h3 className="text-lg font-bold mb-4">Select Your Time ⏰ :</h3>
+      <div className=" border-t-0 border-l-0  text-slate-50 card glass border-b-0 border-2 border-dashed border-l-green-500 border-r-green-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h3 className="text-2xl font-bold mb-4 text-green-500">Select Your Time ⏰ </h3>
         {selectedDate ? (
           <p>{`You have selected: ${selectedDate.toLocaleDateString('en-GB')}`}</p>
         ) : (
