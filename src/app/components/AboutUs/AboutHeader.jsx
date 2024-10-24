@@ -25,17 +25,17 @@ const AboutHeader = () => {
     const { language } = useLanguage(); // Access the selected language
 
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto px-4 bg-black/10'>
             <div
-                className="hero h-[300px] md:h-[450px] rounded-sm"
+                className="hero md:h-[300px] lg::h-[450px] h-[350px] rounded-sm bg-black/10"
                 style={{
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
                 }}
             >
-                <div className="hero-overlay bg-opacity-50"></div>
-                <div className="hero-content text-center text-neutral-content">
+                <div className=" bg-opacity-50"></div>
+                <div className=" text-center text-neutral-content">
                     <div className="my-auto">
                         {/* Use optional chaining to prevent errors */}
                         <h1 className="text-4xl md:text-6xl w-full pt-20 text-white font-extrabold font-raleway mb-4">
