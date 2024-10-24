@@ -217,7 +217,7 @@ const Sidebar = () => {
                     }
                     {
                         session?.data?.user?.role === "admin" ?
-                            <NavigationDash
+                             <NavigationDash
                                 label='All Meetings'
                                 address='/dashboard/allMeetings'
                                 icon={ImFilePdf}
