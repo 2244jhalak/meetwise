@@ -110,39 +110,39 @@ const UserInfo = () => {
     };
 
     return (
-        <div>
+        <div className='px-3'>
             <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-orange-600 text-center lg:mx-auto text-gray-200 lg:text-3xl dark:text-white my-4 md:mx-auto mx-6">
                 My Profile
             </h1>
-            <div className='flex flex-col md:flex-row justify-center gap-10 p-6 text-white '>
-                {/* Profile Card */}
-                <div className="w-full md:w-96 border-2 border-gray-700 rounded-lg shadow-lg bg-slate-950 ">
-                    <div className='flex flex-col items-center py-6'>
-                        <div className="avatar">
-                            <div className="w-24 h-24 rounded-full border-4 border-gray-700 overflow-hidden">
-                                <Image src={image} alt='' width={96} height={96} className='object-cover'></Image>
-                            </div>
-                        </div>
-                        <div className="text-2xl mt-4 font-semibold text-gray-200">
-                            <h4>{name}</h4>
-                        </div>
-                        <div className="text-lg text-gray-400">
-                            <h5>{title}</h5>
-                        </div>
-                        <div className="text-sm text-center mt-4 px-6 text-gray-300">
-                            <h6>{description}</h6>
-                        </div>
-                        <div className='flex items-center mt-6'>
-                            <FaEnvelope className='text-gray-400 mr-2' />
-                            <p className='text-gray-300'>{session?.user?.email}</p>
-                        </div>
-                    </div>
-                </div>
+            <div className=' text-white w-full lg:w-[700px] md:w-96 border-2 border-gray-700 rounded-lg shadow-lg bg-slate-800 p-6 mx-auto'>
+                <h3 className='text-center text-2xl font-semibold text-gray-200 mb-2'>Update Profile</h3>
+                <div className="border border-orange-600 rounded-xl text-center mx-auto my-2 w-24"></div>
 
                 {/* Update Profile Form */}
-                <div className='w-full md:w-96 border-2 border-gray-700 rounded-lg shadow-lg bg-slate-950 p-6'>
-                    <h3 className='text-center text-2xl font-semibold text-gray-200 mb-6'>Update Profile</h3>
-                    <form onSubmit={handleUpdate} className="space-y-4">
+                <div className='lg:flex  justify-between'>
+                    <div className='mt-8 mx-auto'>
+                        <div className='flex flex-col items-center'>
+                            <div className="avatar">
+                                <div className="w-24 h-24 rounded-full border-4 border-gray-700 overflow-hidden">
+                                    <Image src={image} alt='' width={96} height={96} className='object-cover'></Image>
+                                </div>
+                            </div>
+                            <div className="text-2xl mt-2 font-semibold text-orange-600">
+                                <h4>{name}</h4>
+                            </div>
+                            <div className="text-lg text-gray-400">
+                                <h5>{title}</h5>
+                            </div>
+                            <div className="text-sm text-center mt-2 px-6 text-gray-300">
+                                <h6>{description}</h6>
+                            </div>
+                            <div className='flex items-center mt-6'>
+                                <FaEnvelope className='text-orange-400 mr-2' />
+                                <p className='text-orange-400'>{session?.user?.email}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form onSubmit={handleUpdate} className="space-y-4 w-80 mt-8 mx-auto">
                         <input
                             type="text"
                             value={name}

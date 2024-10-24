@@ -173,6 +173,7 @@ const Create = () => {
       startDate: startDateLocal,
       endDate: endDateLocal,
       availability: availability, // Include availability object
+      createDate: new Date(),
     };
     setLoading(true);
     try {

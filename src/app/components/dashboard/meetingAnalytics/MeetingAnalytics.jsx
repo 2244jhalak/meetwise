@@ -35,7 +35,7 @@ const MeetingAnalytics = () => {
     const getMeetingsOverTimeData = () => {
         const meetingCounts = {};
         filteredMeetings.forEach(meet => {
-            const date = new Date(meet.date).toLocaleDateString();
+            const date = new Date(meet.createDate).toLocaleDateString();
             meetingCounts[date] = (meetingCounts[date] || 0) + 1;
         });
 
