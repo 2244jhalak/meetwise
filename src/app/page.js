@@ -9,10 +9,7 @@ import Footer from "./components/Shared/Footer";
 import Navbar from "./components/Homepage/Navbar/Navbar";
 
 import Notification from "./components/Notification";
-import { useEffect } from "react";
 
-import Timezone from "./components/Homepage/Timezone";
-import TimeZoneSelector from "./components/Homepage/Timezone";
 import Partners from "./components/Homepage/Partners/Partners";
 
 
@@ -22,15 +19,15 @@ import Partners from "./components/Homepage/Partners/Partners";
 
 export default function Home() {
 
-  useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').then(registration => {
-        console.log('Service Worker registered with scope:', registration.scope);
-      }).catch(error => {
-        console.error('Service Worker registration failed:', error);
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if ('serviceWorker' in navigator) {
+  //     navigator.serviceWorker.register('/sw.js').then(registration => {
+  //       console.log('Service Worker registered with scope:', registration.scope);
+  //     }).catch(error => {
+  //       console.error('Service Worker registration failed:', error);
+  //     });
+  //   }
+  // }, []);
   
 
 
@@ -46,6 +43,7 @@ export default function Home() {
           <Navbar></Navbar>
         </div>
       </div>
+      <Notification></Notification>
       <Banner />
       <Partners></Partners>
       <Hiw></Hiw>
