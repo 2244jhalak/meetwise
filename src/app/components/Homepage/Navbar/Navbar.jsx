@@ -42,8 +42,8 @@ const Navbar = () => {
     const { language } = useLanguage();
 
     return (
-        <div className='flex justify-between items-start md:items-center backdrop-blur-md backdrop-opacity-70'>
-            <div onClick={() => setOpen(!open)} className='container mx-auto p-5 lg:hidden '>
+        <div className='flex justify-between items-start md:items-center bg-black/10 backdrop-blur-md backdrop-opacity-70'>
+            <div onClick={() => setOpen(!open)} className='container mx-auto    lg:hidden '>
                 <p>
                     {open ? <FaWindowClose className='text-white' /> : <FaBars className='text-white' />}
                 </p>
@@ -54,7 +54,7 @@ const Navbar = () => {
                     <i>Meet<span className='text-green-600'>Wise</span></i>
                 </h2>
             </div>
-            <div className={`${open ? 'top-16 z-50 block item-start font-bold font-raleway lg:bg-white md:bg-white bg-white' : '-top-72 gap-5 text-green-600'} flex lg:flex-row font-raleway font-bold flex-col px-2 py-4 absolute lg:static items-center rounded-b-lg ms-4 text-[13px] z-50  duration-1000 lg:gap-5 text-black`} style={{ zIndex: 1000 }}>
+            <div className={`${open ? 'top-16 z-10 lg:z-0 md:z-20 lg:bg-black  bg-white p-4 rounded-lg shadow-md block item-start font-bold font-raleway  ' : '-top-72  gap-5 text-green-600'} flex  lg:flex-row font-raleway font-bold flex-col px-2 py-4 absolute lg:static items-center rounded-b-lg ms-4 text-[13px] z-50  duration-1000 lg:gap-5 text-black`} style={{ zIndex: 1000 }}>
                 <Links />
                 <LanguageSelector />
                 {session.data ? (
