@@ -64,18 +64,18 @@ const Banner = () => {
   const { language } = useLanguage();
   const session = useSession();
   return (
-    <div className="container mx-auto bg-white/10  py-10 lg:pt-0 md:pt-20 pt-32" style={{ zIndex: 10 }}
+    <div className="container lg:h-full h-[400px] pt-7 mx-auto bg-black/10 lg:backdrop-blur-md lg:backdrop-opacity-70 lg:pt-0  " style={{ zIndex: 10 }}
     >
-      <div className="container mx-auto flex flex-col-reverse md:flex-row  items-center justify-between">
+      <div className="container mx-auto flex flex-col-reverse lg:flex-row  items-center justify-between">
         {/* Left Side */}
-        <div className="md:w-1/2 w-full text-center md:text-left p-5">
+        <div className="lg:w-1/2 w-full text-center lg:text-left p-5">
           <h1 className="text-4xl lg:text-7xl font-bold text-slate-100 mb-4">
             {translations[language].title}
           </h1>
-          <p className="text-lg font-normal leading-7 text-slate-200  mb-6">
+          <p className="text-lg  font-normal leading-7 text-slate-200  mb-6">
             {translations[language].description}
           </p>
-          <div className="flex justify-center md:justify-start gap-4 mb-6">
+          <div className="flex justify-center lg:justify-start gap-4 mb-6">
             {
               session?.data?.user?
               
@@ -99,7 +99,7 @@ const Banner = () => {
         </div>
 
         {/* Right Side */}
-        <div className="md:w-1/2 w-full p-5 ">
+        <div className="lg:w-1/2 w-full p-5  hidden lg:block">
           <Slider {...settings}>
             <div className="flex-col flex items-center justify-center space-y-1 h-full">
               <LottieAnimation  animationData={animationData1} />
