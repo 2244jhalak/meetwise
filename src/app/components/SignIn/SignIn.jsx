@@ -51,13 +51,13 @@ const SignIn = () => {
 
     return (
         <div className="container mx-auto pb-5">
-            <div className='flex flex-col gap-2 md:flex-row items-center justify-center'>
+            <div className='flex flex-col-reverse gap-2 lg:flex-row items-center justify-center'>
                 {/* Left side */}
-                <div className="md:w-4/5 min-h-screen md:pt-16">
+                <div className="lg:w-4/5 lg:min-h-screen md:pt-16">
                     <LottieAnimation animationData={Login}></LottieAnimation>
                 </div>
                 {/* Form */}
-                <div className="md:w-4/5 flex pt-5 flex-col items-center space-y-6 min-h-screen">
+                <div className="lg:w-4/5 flex pt-5 flex-col items-center space-y-6 lg:min-h-screen">
                     <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
                         <h1 className="text-2xl pb-3 font-extrabold text-center mx-auto text-white lg:text-3xl dark:text-white">
                             Log In Now
