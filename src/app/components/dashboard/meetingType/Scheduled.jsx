@@ -45,12 +45,24 @@ const Scheduled = () => {
     const handleCopyLink = (id) => {
         const link = `${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/meetingType/${id}`; // Meeting URL with ID
         navigator.clipboard.writeText(link)
-            .then(() => {
-                alert('Link copied to clipboard!');
-            })
-            .catch((err) => {
-                console.error('Failed to copy the link', err);
+        .then(() => {
+            Swal.fire({
+                title: 'Success!',
+                text: ' Copied Meeting Link successfully.',
+                icon: 'success',
+                background: "#000000",  // Black background
+                color: "#F8FAFC" // টেক্সটের কালার কাস্টমাইজ করতে পারেন
             });
+        })
+        .catch((err) => {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error sharing the meeting. Please try again.',
+                icon: 'error',
+                background: "#000000",  // Black background
+                color: "#F8FAFC" // টেক্সটের রঙ
+            });
+            console.error('Error copied meeting', err);})
     };
 //  share details
 const handleShareMeeting = (meet) => {
@@ -82,7 +94,9 @@ const handleShareMeeting = (meet) => {
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, delete it!',
+            background: "#000000",  // Black background
+           color: "#F8FAFC"
         }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/dashboard/meetingType/apis/${id}`, {
@@ -91,7 +105,13 @@ const handleShareMeeting = (meet) => {
                 .then(response => response.json())
                 .then(data => {
                     if (data.message === "Meeting deleted successfully") {
-                        Swal.fire('Deleted!', 'Your meeting has been deleted.', 'success');
+                        Swal.fire({
+                            title: 'Deleted!',
+                            text: 'Your meeting has been deleted.',
+                            icon: 'success',
+                           background: "#000000",  // Black background
+                           color: "#F8FAFC"
+                          });
                         
                         // Reload the page after a short delay (2 seconds)
                         setTimeout(() => {
