@@ -37,7 +37,7 @@ const Create = () => {
   // Time zone setting
   const eventTime = new Date(); // Example event time in "Asia/Dhaka" time zone
 
-  
+
 
   // Function to generate date range between start and end date
   const generateDateRange = (start, end) => {
@@ -127,70 +127,70 @@ const Create = () => {
     const newHours = String(date.getHours()).padStart(2, '0');
     const newMinutes = String(date.getMinutes()).padStart(2, '0');
     return `${newHours}:${newMinutes}`;
-};
+  };
 
-const handleTimeChange = (date, timeType, value) => {
+  const handleTimeChange = (date, timeType, value) => {
     setAvailability((prevAvailability) => {
-        const updatedAvailability = {
-            ...prevAvailability,
-            [date]: {   
-                ...prevAvailability[date],
-                [timeType]: value,
-                bookedTimes: prevAvailability[date]?.bookedTimes,
-            },
-        };
+      const updatedAvailability = {
+        ...prevAvailability,
+        [date]: {
+          ...prevAvailability[date],
+          [timeType]: value,
+          bookedTimes: prevAvailability[date]?.bookedTimes,
+        },
+      };
 
-        // If startTime is changed, update endTime based on default duration
-        if (timeType === 'startTime') {
-            const defaultDuration = parseInt(duration, 10); // Assuming duration is in minutes
-            if (!isNaN(defaultDuration)) {
-                const minEndTime = addMinutesToTime(value, defaultDuration);
-                updatedAvailability[date].endTime = minEndTime; // Set endTime based on duration
-            }
+      // If startTime is changed, update endTime based on default duration
+      if (timeType === 'startTime') {
+        const defaultDuration = parseInt(duration, 10); // Assuming duration is in minutes
+        if (!isNaN(defaultDuration)) {
+          const minEndTime = addMinutesToTime(value, defaultDuration);
+          updatedAvailability[date].endTime = minEndTime; // Set endTime based on duration
+        }
+      }
+
+      // If endTime is changed, check if it meets the requirements
+      if (timeType === 'endTime') {
+        const startTime = updatedAvailability[date].startTime;
+
+        const startDateTime = new Date(`1970-01-01T${startTime}:00`);
+        const endDateTime = new Date(`1970-01-01T${value}:00`);
+
+        // If endTime is before startTime
+        if (endDateTime <= startDateTime) {
+          Swal.fire({
+            title: 'Invalid Time',
+            text: 'End time cannot be before start time!',
+            icon: 'error',
+            confirmButtonText: 'OK',
+            background: "#000000",  // Black background
+            color: "#F8FAFC",
+          });
+          return prevAvailability; // Return previous state to prevent change
         }
 
-        // If endTime is changed, check if it meets the requirements
-        if (timeType === 'endTime') {
-            const startTime = updatedAvailability[date].startTime;
+        // Calculate expected end time based on default duration
+        const defaultDuration = parseInt(duration, 10);
+        const expectedEndTime = addMinutesToTime(startTime, defaultDuration);
+        const expectedEndDateTime = new Date(`1970-01-01T${expectedEndTime}:00`);
 
-            const startDateTime = new Date(`1970-01-01T${startTime}:00`);
-            const endDateTime = new Date(`1970-01-01T${value}:00`);
-
-            // If endTime is before startTime
-            if (endDateTime <= startDateTime) {
-                Swal.fire({
-                    title: 'Invalid Time',
-                    text: 'End time cannot be before start time!',
-                    icon: 'error',
-                    confirmButtonText: 'OK',
-                    background: "#000000",  // Black background
-                    color: "#F8FAFC",  
-                });
-                return prevAvailability; // Return previous state to prevent change
-            }
-
-            // Calculate expected end time based on default duration
-            const defaultDuration = parseInt(duration, 10);
-            const expectedEndTime = addMinutesToTime(startTime, defaultDuration);
-            const expectedEndDateTime = new Date(`1970-01-01T${expectedEndTime}:00`);
-
-            // Check if the endTime is less than the expected end time
-            if (endDateTime < expectedEndDateTime) {
-                Swal.fire({
-                    title: 'Duration Mismatch',
-                    text: 'End time must be at least the duration from the start time!',
-                    icon: 'warning',
-                    confirmButtonText: 'OK',
-                    background: "#000000",  // Black background
-                    color: "#F8FAFC",  
-                });
-                return prevAvailability; // Return previous state to prevent change
-            }
+        // Check if the endTime is less than the expected end time
+        if (endDateTime < expectedEndDateTime) {
+          Swal.fire({
+            title: 'Duration Mismatch',
+            text: 'End time must be at least the duration from the start time!',
+            icon: 'warning',
+            confirmButtonText: 'OK',
+            background: "#000000",  // Black background
+            color: "#F8FAFC",
+          });
+          return prevAvailability; // Return previous state to prevent change
         }
+      }
 
-        return updatedAvailability;
+      return updatedAvailability;
     });
-};
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -259,231 +259,231 @@ const handleTimeChange = (date, timeType, value) => {
 
   return (
     <div className="container mx-auto">
-    <div className="text-left bg-black ">
-      <Link className="flex items-center space-x-1 text-base" href="/dashboard">
-        <IoIosArrowBack className="text-white " /><h4 className="text-white">Cancel</h4>
-      </Link>
-    </div>
+      <div className="text-left bg-black ">
+        <Link className="flex items-center space-x-1 text-base" href="/dashboard">
+          <IoIosArrowBack className="text-white " /><h4 className="text-white">Cancel</h4>
+        </Link>
+      </div>
 
-    <form onSubmit={handleSubmit} className="text-white flex lg:flex-row md:flex-col-reverse flex-col-reverse gap-2">
-      <div className=" lg:w-1/3 md:w-full w-full min-h-screen">
-        <div className="pt-5 space-y-3 pl-5  min-h-screen">
-          
-          <h2 className="font-semibold text-2xl">Create New Event</h2>
+      <form onSubmit={handleSubmit} className="text-white flex lg:flex-row md:flex-col-reverse flex-col-reverse gap-2">
+        <div className=" lg:w-1/3 md:w-full w-full min-h-screen">
+          <div className="pt-5 space-y-3 pl-5  min-h-screen">
 
-          <h4 className="font-semibold">Event Name *</h4>
-          <input
-            className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
-            type="text"
-            placeholder="Name of your meeting event"
-            value={eventName}
-            onChange={(e) => setEventName(e.target.value)}
-          />
+            <h2 className="font-semibold text-2xl">Create New Event</h2>
 
-          <h4 className="font-semibold">Short Description</h4>
-          <input
-            className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
-            type="text"
-            placeholder="Short Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-
-          <h4 className="font-semibold">Duration *</h4>
-          <select
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
-            className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black mb-2"
-          >
-            <option value="15 min">15 min</option>
-            <option value="30 min">30 min</option>
-            <option value="45 min">45 min</option>
-            <option value="60 min">60 min</option>
-          </select>
-          
-          <h4 className="font-semibold">Select Type Add Url*</h4>
-
-          {selected && (
+            <h4 className="font-semibold">Event Name *</h4>
             <input
+              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black dark:text-white"
               type="text"
-              placeholder={`Add ${selected} url `}
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
+              placeholder="Name of your meeting event"
+              value={eventName}
+              onChange={(e) => setEventName(e.target.value)}
             />
-          )}
-          <div className="flex pb-4">
-            <button type="button" onClick={() => setSelected("Zoom")}>
-              <Image
-                src="https://i.ibb.co/mHdB8Lw/Zoom-Logo-PNG-Images-removebg-preview-2.png"
-                width={100}
-                height={100}
-                alt="Zoom"
+
+            <h4 className="font-semibold">Short Description</h4>
+            <input
+              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black dark:text-white"
+              type="text"
+              placeholder="Short Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+
+            <h4 className="font-semibold">Duration *</h4>
+            <select
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
+              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black dark:text-white mb-2"
+            >
+              <option value="15 min">15 min</option>
+              <option value="30 min">30 min</option>
+              <option value="45 min">45 min</option>
+              <option value="60 min">60 min</option>
+            </select>
+
+            <h4 className="font-semibold">Select Type Add Url*</h4>
+
+            {selected && (
+              <input
+                type="text"
+                placeholder={`Add ${selected} url `}
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black dark:text-white"
               />
-            </button>
-            <button type="button" onClick={() => setSelected("Meet")}>
-              <Image
-                src="https://i.ibb.co/pKVJTTX/Google-Meet-Logo-wine-removebg-preview.png"
-                alt="Meet"
-                height={100}
-                width={100}
-              />
-            </button>
-          </div>
+            )}
+            <div className="flex pb-4">
+              <button type="button" onClick={() => setSelected("Zoom")}>
+                <Image
+                  src="https://i.ibb.co/mHdB8Lw/Zoom-Logo-PNG-Images-removebg-preview-2.png"
+                  width={100}
+                  height={100}
+                  alt="Zoom"
+                />
+              </button>
+              <button type="button" onClick={() => setSelected("Meet")}>
+                <Image
+                  src="https://i.ibb.co/pKVJTTX/Google-Meet-Logo-wine-removebg-preview.png"
+                  alt="Meet"
+                  height={100}
+                  width={100}
+                />
+              </button>
+            </div>
 
-         
 
-     
 
-           {/* anam added part */}
-           {/* <div className="bg-orange-100 md:w-[300px] text-black">
+
+
+            {/* anam added part */}
+            {/* <div className="bg-orange-100 md:w-[300px] text-black">
             <TimeZoneSelector eventTime={eventTime}></TimeZoneSelector>
           </div> */}
 
-          <button
-            disabled={loading}
-            className="py-2 w-4/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 hover:bg-green-900 text-white"
-          >
-            {loading ? <FaFan className="animate-spin"></FaFan> : "Create"}
-          </button>
-         
-        </div>
-      </div>
-      <div className="bg-black lg:w-full md:w-full w-full  lg:shadow-2xl md:shadow-2xl  px-5  min-h-screen ">
-      <div className="container mx-auto md:w-2/3  mb-5 animate__animated animate__zoomIn">
+            <button
+              disabled={loading}
+              className="py-2 w-4/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 hover:bg-green-900 text-white"
+            >
+              {loading ? <FaFan className="animate-spin"></FaFan> : "Create"}
+            </button>
 
-<h2 className="font-semibold text-4xl text-center "> Simply Schedule Your Meeting</h2>
-
-
-<div className="border-b-2  border-green-500 w-1/3 mx-auto mb-2"></div>
-
-{/* <p className="text-center text-gray-100 mt-2 ">Fill out the fields, pick your platform, and you're all set!</p> */}
-
-</div>
-
-        <div className="  pt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5 ">
-         <div>
-         <div className="w-full mx-auto p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px] animate__animated animate__flipInY">
-                      <h2 className="text-lg md:text-xl lg:text-xl font-semibold">See Your Availability 🔍</h2>
-                      <div className="flex justify-start mb-5 mt-1">
-                        <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
-                      </div>
-                      <div className="overflow-y-auto h-72">
-                        <div className="grid grid-cols-1  gap-4">
-                          {availableDays.map(day => (
-                            <div
-                              className="bg-green-800 p-4 rounded-lg shadow-md hover:bg-gray-700 transition duration-300 flex flex-col justify-center items-start gap-2"
-                              key={day}
-                            >
-                              <h2 className="text-lg md:text-xl lg:text-xl font-semibold">{day}</h2>
-                              <p className="text-sm md:text-base">
-                                <span className="font-bold">Available:</span> {availableTimes[day]?.startTime} - {availableTimes[day]?.endTime}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <div className=" mt-5">
-                        <Link className=" font-raleway text-lg" href="/dashboard/availability">
-                          <h1>Update Your <span className="text-orange-500 font-extrabold"> Availability</span> with Ease ✨.</h1>
-                        </Link>
-
-                      </div>
-                    </div>
-         </div>
- <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px]">
- <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Date 📅 </h2>
-                      <div className="flex justify-start mb-5 mt-1">
-                        <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
-                      </div>
- <div className="w-full overflow-auto">
-            
-             
-
-              <div className="w-full border bg-black text-slate-50 border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
-                <div className="min-w-full  custom-datepicker-container "> {/* Enable horizontal scrolling */}
-                  <DateRange
-                    editableDateInputs={true}
-                    onChange={(item) => setState([item.selection])}
-                    moveRangeOnFirstSelection={false}
-                    ranges={state}
-                    minDate={new Date()}
-                    className="w-full"
-                    rangeColors={["green"]}// Ensure it takes full width of the parent
-                  />
-                
-              </div>
-            </div>
           </div>
- </div>
-         
+        </div>
+        <div className="bg-black lg:w-full md:w-full w-full  lg:shadow-2xl md:shadow-2xl  px-5  min-h-screen ">
+          <div className="container mx-auto md:w-2/3  mb-5 animate__animated animate__zoomIn">
+
+            <h2 className="font-semibold text-4xl text-center "> Simply Schedule Your Meeting</h2>
 
 
-          <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px]">
-          <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Time ⏳</h2>
-                      <div className="flex justify-start mb-2 mt-1">
-                        <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+            <div className="border-b-2  border-green-500 w-1/3 mx-auto mb-2"></div>
+
+            {/* <p className="text-center text-gray-100 mt-2 ">Fill out the fields, pick your platform, and you're all set!</p> */}
+
+          </div>
+
+          <div className="  pt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5 ">
+            <div>
+              <div className="w-full mx-auto p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px] animate__animated animate__flipInY">
+                <h2 className="text-lg md:text-xl lg:text-xl font-semibold">See Your Availability 🔍</h2>
+                <div className="flex justify-start mb-5 mt-1">
+                  <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+                </div>
+                <div className="overflow-y-auto h-72">
+                  <div className="grid grid-cols-1  gap-4">
+                    {availableDays.map(day => (
+                      <div
+                        className="bg-green-800 p-4 rounded-lg shadow-md hover:bg-gray-700 transition duration-300 flex flex-col justify-center items-start gap-2"
+                        key={day}
+                      >
+                        <h2 className="text-lg md:text-xl lg:text-xl font-semibold">{day}</h2>
+                        <p className="text-sm md:text-base">
+                          <span className="font-bold">Available:</span> {availableTimes[day]?.startTime} - {availableTimes[day]?.endTime}
+                        </p>
                       </div>
-                 
-                  <div className=" container mx-auto flex flex-row items-start gap-6">
-                    {/* Set Time Section */}
-                    <div className="flex-1">
-                  
-                      <div className="">
-                      {state[0].endDate && (
-                <>
-                  <div className="max-h-72  font-raleway overflow-y-auto mt-5 pb-4">
-                    <ul className="list-disc ml-3 ">
-                      {generateDateRange(state[0].startDate, state[0].endDate).map((date, index) => (
-                        <li key={index}  className="flex flex-col items-start mt-2">
-                          <div className="flex items-center">
-                                    {/* Circle bullet point */}
-                                    <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
-                                    <span className="font-extrabold text-xl text-slate-50">{date}</span> {/* Show date with day */}
-                                  </div>
-                                  <div className="flex flex-row items-center mt-2 mb-2 justify-start ml-2">
-                          <div className="">
-                            <label className="block text-sm font-medium text-white">Start Time:</label>
-                            <input
-                              type="time"
-                              className="mt-1 w-3/4 block border text-black  border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                              value={availability[date]?.startTime || ""}
-                              onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
-                              required
-                            />
-                          </div>
-                          <div className=" ">
-                            <label className="block text-sm font-medium text-white">End Time:</label>
-                            <input
-                              type="time"
-                              className="mt-1 block border w-3/4 text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
-                              value={availability[date]?.endTime || ""}
-                              onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
-                            />
-                          </div>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </>
-              )}
-
-                      </div>
-                     
-                    </div>
-
-                    {/* Availability Section */}
-                 
+                    ))}
                   </div>
                 </div>
+                <div className=" mt-5">
+                  <Link className=" font-raleway text-lg" href="/dashboard/availability">
+                    <h1>Update Your <span className="text-orange-500 font-extrabold"> Availability</span> with Ease ✨.</h1>
+                  </Link>
+
+                </div>
+              </div>
+            </div>
+            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px]">
+              <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Date 📅 </h2>
+              <div className="flex justify-start mb-5 mt-1">
+                <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+              </div>
+              <div className="w-full overflow-auto">
+
+
+
+                <div className="w-full border bg-black text-slate-50 border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
+                  <div className="min-w-full  custom-datepicker-container "> {/* Enable horizontal scrolling */}
+                    <DateRange
+                      editableDateInputs={true}
+                      onChange={(item) => setState([item.selection])}
+                      moveRangeOnFirstSelection={false}
+                      ranges={state}
+                      minDate={new Date()}
+                      className="w-full"
+                      rangeColors={["green"]}// Ensure it takes full width of the parent
+                    />
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px]">
+              <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Time ⏳</h2>
+              <div className="flex justify-start mb-2 mt-1">
+                <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+              </div>
+
+              <div className=" container mx-auto flex flex-row items-start gap-6">
+                {/* Set Time Section */}
+                <div className="flex-1">
+
+                  <div className="">
+                    {state[0].endDate && (
+                      <>
+                        <div className="max-h-72  font-raleway overflow-y-auto mt-5 pb-4">
+                          <ul className="list-disc ml-3 ">
+                            {generateDateRange(state[0].startDate, state[0].endDate).map((date, index) => (
+                              <li key={index} className="flex flex-col items-start mt-2">
+                                <div className="flex items-center">
+                                  {/* Circle bullet point */}
+                                  <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                                  <span className="font-extrabold text-xl text-slate-50">{date}</span> {/* Show date with day */}
+                                </div>
+                                <div className="flex flex-row items-center mt-2 mb-2 justify-start ml-2">
+                                  <div className="">
+                                    <label className="block text-sm font-medium text-white">Start Time:</label>
+                                    <input
+                                      type="time"
+                                      className="mt-1 w-3/4 block border text-black dark:text-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                                      value={availability[date]?.startTime || ""}
+                                      onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
+                                      required
+                                    />
+                                  </div>
+                                  <div className=" ">
+                                    <label className="block text-sm font-medium text-white">End Time:</label>
+                                    <input
+                                      type="time"
+                                      className="mt-1 block border w-3/4 text-black dark:text-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                                      value={availability[date]?.endTime || ""}
+                                      onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
+                                    />
+                                  </div>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </>
+                    )}
+
+                  </div>
+
+                </div>
+
+                {/* Availability Section */}
+
+              </div>
+            </div>
+
+          </div>
+
 
         </div>
-      
 
-      </div>
-
-    </form>
+      </form>
     </div>
   );
 };

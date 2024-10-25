@@ -1,5 +1,6 @@
 
 const BookingTableRow = ({ meeting }) => {
+    console.log(meeting?.url);
     return (
         <tr>
             {/* meeting name  */}
@@ -29,7 +30,8 @@ const BookingTableRow = ({ meeting }) => {
 
 
             <td className="px-4 py-4 text-sm whitespace-nowrap">
-                <a target="_blank" className="link w-2/3 h-1.5">{meeting?.url}</a>
+                <a target="_blank"
+                    rel="noopener noreferrer" href={meeting?.url} className="link w-2/3 h-1.5">link</a>
             </td>
 
             <td className="px-4 py-4 text-sm whitespace-nowrap">
