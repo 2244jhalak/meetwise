@@ -25,9 +25,9 @@ const ContactHeader = () => {
   const { language } = useLanguage(); // Get current language from context
 
   return (
-    <div className='container mx-auto bg-black/10 backdrop-blur-md backdrop-opacity-70'>
+    <div className='container mx-auto bg-black/10 '>
       <div
-        className="hero h-[300px] md:h-[500px] rounded-sm"
+        className="hero h-[300px] lg:h-[350px] rounded-sm"
         style={{
           backgroundImage: `url('')`, // Add your image URL here
           backgroundSize: 'cover',
@@ -35,13 +35,13 @@ const ContactHeader = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="hero-overlay bg-opacity-50"></div>
-        <div className="hero-content text-center text-neutral-content">
+        <div className=" bg-opacity-50"></div>
+        <div className="px-4 text-center text-neutral-content">
           <div className="my-auto">
             <h1 className="text-4xl md:text-6xl w-full pt-7 text-white font-extrabold font-raleway mb-4">
               {translations[language].title} {/* Dynamic title based on language */}
             </h1>
-            <p className="mt-2 md:mt-5 text-base md:text-xl w-full text-gray-200 font-raleway md:mb-4">
+            <p className="mt-2 md:mt-5 text-base md:text-xl w-full text-gray-200 p-4 font-raleway md:mb-4">
               {translations[language].description} {/* Dynamic description based on language */}
             </p>
           </div>

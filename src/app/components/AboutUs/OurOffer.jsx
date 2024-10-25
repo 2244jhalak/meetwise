@@ -65,7 +65,7 @@ const OurOffer = () => {
     const t = translations[language]; // Get translations for the selected language
 
     return (
-        <div className="text-gray-200 container mx-auto md:p-7 shadow-xl hero-overlay bg-opacity-50 md:my-28 my-10 backdrop-blur-md backdrop-opacity-70" data-aos="fade-up">
+        <div className="text-gray-200 container mx-auto md:p-7 shadow-xl hero-overlay bg-opacity-50 md:my-28 my-10 backdrop-blur-md backdrop-opacity-70 px-4" data-aos="fade-up">
             <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-green-500 text-center mx-auto text-gray-200 lg:text-3xl dark:text-white">
                 {t.title}
             </h1>
