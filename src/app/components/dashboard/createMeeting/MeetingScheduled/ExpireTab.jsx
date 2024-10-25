@@ -44,33 +44,33 @@ const ExpireTab = () => {
 
 
         <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead class="bg-gray-50 dark:bg-gray-800">
+        <table class="min-w-full divide-y rounded-xl divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-500 dark:bg-gray-800 font-raleway ">
                 <tr>
-                    <th scope="col" class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <th scope="col" class="py-3.5 px-4 font-semibold text-xs text-left rtl:text-right text-slate-50 dark:text-gray-400">
                         Meeting Name
                     </th>
-                    <th scope="col" class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <th scope="col" class="px-12 py-3.5 font-semibold text-xs  text-left rtl:text-right text-slate-50 dark:text-gray-400">
                         User Name
                     </th>
-                    <th scope="col" class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <th scope="col" class="px-12 py-3.5 font-semibold text-xs  text-left rtl:text-right text-slate-50 dark:text-gray-400">
                         User Email
                     </th>
-                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <th scope="col" class="px-4 py-3.5 font-semibold text-xs  text-left rtl:text-right text-slate-50 dark:text-gray-400">
                         Location
                     </th>
-                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <th scope="col" class="px-4 py-3.5 font-semibold text-xs  text-left rtl:text-right text-slate-50 dark:text-gray-400">
                         Link
                     </th>
-                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <th scope="col" class="px-4 py-3.5 font-semibold text-xs  text-left rtl:text-right text-slate-50 dark:text-gray-400">
                         Date
                     </th>
-                    <th scope="col" class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <th scope="col" class="px-4 py-3.5 font-semibold text-xs  text-left rtl:text-right text-slate-50 dark:text-gray-400">
                         Time
                     </th>
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+            <tbody class=" bg-gray-400  font-bold divide-y text-slate-950 divide-gray-500 dark:divide-gray-700 dark:bg-gray-900">
                 {
                     meetings.map(meeting => <BookingTableRow key={meeting._id} meeting={meeting} />)
                 }
