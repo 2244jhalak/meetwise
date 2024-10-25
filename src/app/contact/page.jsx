@@ -8,7 +8,7 @@ import Notification from '../components/Notification';
 
 const page = () => {
     return (
-        <div className=" container mx-auto bg-[url('/banner/dr3.jpg')] bg-center min-h-screen">
+        <div className=" container mx-auto bg-[url('/about/5052197.jpg')] bg-center min-h-screen">
         <div className=" container mx-auto bg-black/10 backdrop-blur-md backdrop-opacity-70">
             <div className="container hero-overlay bg-opacity-50 mx-auto">
               <Navbar></Navbar>

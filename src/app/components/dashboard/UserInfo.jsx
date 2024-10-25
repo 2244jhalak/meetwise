@@ -90,7 +90,7 @@ const UserInfo = () => {
                         timer: 1500,
                     });
                     // alert('User info updated successfully');
-                    // window.location.reload()
+                    window.location.reload();
 
 
 
