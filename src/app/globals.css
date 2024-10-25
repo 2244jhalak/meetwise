@@ -29,15 +29,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 .custom-datepicker-container .rdrCalendarWrapper{
-  background-color: rgb(239, 245, 244);
+  background-color: black;
+  color: white;
 }
-.custom-datepicker-container .rdrCalendarWrapper .rdrMonths {
-  display: flex;
- align-items: center;
-font-family: "Roboto", sans-serif;
-font-weight: bold;
-background-color: rgb(239, 245, 244);
-font-size: 16px;
+.custom-datepicker-container .rdrDateDisplayWrapper {
+  background-color: rgb(51, 52, 55);
+
+}
+.custom-datepicker-container .rdrMonth {
+  width: 100%;
+}
+
+.custom-datepicker-container .rdrDayDisabled {
+  background-color: rgb(74, 72, 72);
 }
 .custom-date-container .react-calendar{
 background-color: #0a0a0a;
