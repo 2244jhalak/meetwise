@@ -88,14 +88,14 @@ const SignIn = () => {
                                 <button className="btn bg-green-700 hover:bg-green-900 transition-all duration-500 ease-in text-white font raleway font-bold text-lg">Login</button>
                             </div>
                         </form>
-                        <div className='text-black text-left pb-5 space-y-2'>
+                        <div className='text-black text-left pb-3'>
                             <div className='flex flex-row items-center justify-center space-x-5'>
                                 <div className='rounded-2xl p-2 cursor-pointer'>
                                     <SocialLogin />
                                 </div>
                             </div>
                         </div>
-                        <div className='flex flex-row text-black px-8 py-5 space-x-1'>
+                        <div className='flex flex-row text-black px-8 py-2 space-x-1'>
                             <p className="font-raleway font-bold text-white">Create an account? Please</p>
                             <Link href="/signup"><span className='underline text-orange-600 font-raleway font-extrabold'>Signup</span></Link>
                         </div>
