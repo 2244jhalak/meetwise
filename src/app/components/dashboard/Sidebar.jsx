@@ -107,95 +107,96 @@ const Sidebar = () => {
 
                         </div>
                         :
-                        <>
-                            <div className='container mx-auto text-white '>
-                                <NavigationDash
-                                    label='Create Meeting'
-                                    address='/dashboard/createMeeting'
-                                    icon={BsPlus}
-                                    className={checkActiveRoute('/dashboard/createMeeting')}
-                                />
+                        <></>
+                    // <>
+                    //     <div className='container mx-auto text-white '>
+                    //         <NavigationDash
+                    //             label='Create Meeting'
+                    //             address='/dashboard/createMeeting'
+                    //             icon={BsPlus}
+                    //             className={checkActiveRoute('/dashboard/createMeeting')}
+                    //         />
 
-                                <NavigationDash
-                                    label='Meeting Library'
-                                    address='/dashboard/meetingType'
-                                    icon={BsHandbag}
-                                    className={checkActiveRoute('/dashboard/meetingType')}
+                    //         <NavigationDash
+                    //             label='Meeting Library'
+                    //             address='/dashboard/meetingType'
+                    //             icon={BsHandbag}
+                    //             className={checkActiveRoute('/dashboard/meetingType')}
 
-                                />
-                                <NavigationDash
-                                    label='Scheduled Meeting'
-                                    address='/dashboard/scheduledMeeting'
-                                    icon={BsFillBagCheckFill}
-                                    className={checkActiveRoute('/dashboard/scheduledMeeting')}
-                                />
-                                <NavigationDash
-                                    label='Availability'
-                                    address='/dashboard/availability'
-                                    icon={CiClock2}
-                                    className={checkActiveRoute('/dashboard/availability')}
-                                />
-                                <NavigationDash
-                                    label='Meeting Analytics'
-                                    address='/dashboard/meetingAnalytics'
-                                    icon={IoMdAnalytics}
-                                    className={checkActiveRoute('/dashboard/meetingAnalytics')}
-                                />
-
-
-                            </div>
-
-                            <div>
-                                <hr />
-
-                                {/* Admin's Power */}
-
-                                {
-                                    session?.data?.user?.role === "admin" ?
-                                        <NavigationDash
-                                            label='All Users'
-                                            address='/dashboard/allUsers'
-                                            icon={ImUsers}
-                                            className={checkActiveRoute('/dashboard/allUsers')}
-                                        />
-                                        :
-                                        ""
-
-                                }
-
-                                {
-                                    session?.data?.user?.role === "admin" ?
-                                        <NavigationDash
-                                            label='All Meetings'
-                                            address='/dashboard/allMeetings'
-                                            icon={ImFilePdf}
-                                            className={checkActiveRoute('/dashboard/allMeetings')}
-                                        />
-                                        :
-                                        ""
-
-                                }
-
-                                {/* Profile Menu */}
-                                <NavigationDash
-                                    label='Profile'
-                                    address='/dashboard/profile'
-                                    icon={ImProfile}
-                                    className={checkActiveRoute('/dashboard/profile')}
-                                />
-
-                                <button
-                                    onClick={() => signOut()}
-                                    className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
-                                >
-                                    <GrLogout className='w-5 h-5' />
-
-                                    <span className='mx-4 font-medium'>Logout</span>
-                                </button>
+                    //         />
+                    //         <NavigationDash
+                    //             label='Scheduled Meeting'
+                    //             address='/dashboard/scheduledMeeting'
+                    //             icon={BsFillBagCheckFill}
+                    //             className={checkActiveRoute('/dashboard/scheduledMeeting')}
+                    //         />
+                    //         <NavigationDash
+                    //             label='Availability'
+                    //             address='/dashboard/availability'
+                    //             icon={CiClock2}
+                    //             className={checkActiveRoute('/dashboard/availability')}
+                    //         />
+                    //         <NavigationDash
+                    //             label='Meeting Analytics'
+                    //             address='/dashboard/meetingAnalytics'
+                    //             icon={IoMdAnalytics}
+                    //             className={checkActiveRoute('/dashboard/meetingAnalytics')}
+                    //         />
 
 
-                            </div>
-                        </>
+                    //     </div>
+
+                    //     <div>
+                    //         <hr />
+
+                    //         {/* Admin's Power */}
+
+                    //         {
+                    //             session?.data?.user?.role === "admin" ?
+                    //                 <NavigationDash
+                    //                     label='All Users'
+                    //                     address='/dashboard/allUsers'
+                    //                     icon={ImUsers}
+                    //                     className={checkActiveRoute('/dashboard/allUsers')}
+                    //                 />
+                    //                 :
+                    //                 ""
+
+                    //         }
+
+                    //         {
+                    //             session?.data?.user?.role === "admin" ?
+                    //                 <NavigationDash
+                    //                     label='All Meetings'
+                    //                     address='/dashboard/allMeetings'
+                    //                     icon={ImFilePdf}
+                    //                     className={checkActiveRoute('/dashboard/allMeetings')}
+                    //                 />
+                    //                 :
+                    //                 ""
+
+                    //         }
+
+                    //         {/* Profile Menu */}
+                    //         <NavigationDash
+                    //             label='Profile'
+                    //             address='/dashboard/profile'
+                    //             icon={ImProfile}
+                    //             className={checkActiveRoute('/dashboard/profile')}
+                    //         />
+
+                    //         <button
+                    //             onClick={() => signOut()}
+                    //             className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                    //         >
+                    //             <GrLogout className='w-5 h-5' />
+
+                    //             <span className='mx-4 font-medium'>Logout</span>
+                    //         </button>
+
+
+                    //     </div>
+                    // </>
 
                 }
                 {
@@ -242,6 +243,7 @@ const Sidebar = () => {
 
                         </>
                         :
+
                         // if user is not admin but normal user
                         <>
                             <div className='container mx-auto text-white '>
