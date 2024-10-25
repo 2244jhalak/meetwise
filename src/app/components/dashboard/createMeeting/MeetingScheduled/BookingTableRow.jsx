@@ -22,7 +22,6 @@ const BookingTableRow = ({ meeting }) => {
             <td className="px-4 py-4 text-sm text-slate-950 whitespace-nowrap">
                 <div>
                     <h4 className=" dark:text-gray-200">{meeting?.meetingLocation}</h4>
-
                 </div>
             </td>
 
