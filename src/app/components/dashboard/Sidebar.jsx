@@ -203,20 +203,22 @@ const Sidebar = () => {
                     admin ?
                         //  if usr is admin 
                         <>
-                            <div className='container mx-auto text-white '>
-                                <NavigationDash
-                                    label='All Users'
-                                    address='/dashboard/allUsers'
-                                    icon={ImUsers}
-                                    className={checkActiveRoute('/dashboard/allUsers')}
-                                />
-                                <NavigationDash
-                                    label='All Meetings'
-                                    address='/dashboard/allMeetings'
-                                    icon={ImFilePdf}
-                                    className={checkActiveRoute('/dashboard/allMeetings')}
-                                />
-                            </div>
+                            {session?.data?.user?.role === "admin" ?
+                                <div className='container mx-auto text-white '>
+                                    <NavigationDash
+                                        label='All Users'
+                                        address='/dashboard/allUsers'
+                                        icon={ImUsers}
+                                        className={checkActiveRoute('/dashboard/allUsers')}
+                                    />
+                                    <NavigationDash
+                                        label='All Meetings'
+                                        address='/dashboard/allMeetings'
+                                        icon={ImFilePdf}
+                                        className={checkActiveRoute('/dashboard/allMeetings')}
+                                    />
+                                </div> : <></>
+                            }
 
                             <div>
                                 <hr />
