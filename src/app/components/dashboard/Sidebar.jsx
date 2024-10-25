@@ -21,11 +21,11 @@ const Sidebar = () => {
     const pathname = usePathname();
     const session = useSession();
     console.log(pathname);
-    const [admin,setAdmin] = useState(true);
-    const [user,setUser] = useState(false);
+    const [admin, setAdmin] = useState(true);
+    const [user, setUser] = useState(false);
     const checkActiveRoute = (route) => {
         return pathname === route ? 'bg-green-600 text-white' : '';
-      };
+    };
 
     useEffect(() => {
         const storedRole = localStorage.getItem('role');
@@ -39,12 +39,12 @@ const Sidebar = () => {
     }, []);
 
 
-    const handleAdmin = () =>{
+    const handleAdmin = () => {
         setAdmin(true);
         setUser(false);
         localStorage.setItem('role', 'admin');
     }
-    const handleUser = () =>{
+    const handleUser = () => {
         setUser(true);
         setAdmin(false);
         localStorage.setItem('role', 'user');
@@ -96,234 +96,215 @@ const Sidebar = () => {
                     {/* Nav Items */}
                 </div>
                 {
-                    session?.data?.user?.role==="admin"?
-                    
-                        <div className='flex ps-14 py-10 fixed '>
-                     <div className="">
-                        <button onClick={handleAdmin} className={`${admin?"text-white bg-green-600 rounded-l-3xl p-2":"disabled"}`}>Admin</button>
-                        <button onClick={handleUser} className={`${user?"text-white bg-green-600 rounded-r-3xl p-2":"disabled"}`}>User</button>
-                     </div>
-                    
-                    </div>
-                    :
-                    <>
-                    <div className='container mx-auto text-white '>
-                    <NavigationDash
-                        label='Create Meeting'
-                        address='/dashboard/createMeeting'
-                        icon={BsPlus}
-                        className={checkActiveRoute('/dashboard/createMeeting')}
-                    />
+                    // if there is admin login 
+                    session?.data?.user?.role === "admin" ?
 
-                    <NavigationDash
-                        label='Meeting Library'
-                        address='/dashboard/meetingType'
-                        icon={BsHandbag}
-                        className={checkActiveRoute('/dashboard/meetingType')}
-                        
-                    />
-                    <NavigationDash
-                        label='Scheduled Meeting'
-                        address='/dashboard/scheduledMeeting'
-                        icon={BsFillBagCheckFill}
-                        className={checkActiveRoute('/dashboard/scheduledMeeting')}
-                    />
-                    <NavigationDash
-                        label='Availability'
-                        address='/dashboard/availability'
-                        icon={CiClock2}
-                        className={checkActiveRoute('/dashboard/availability')}
-                    />
-                    <NavigationDash
-                        label='Meeting Analytics'
-                        address='/dashboard/meetingAnalytics'
-                        icon={IoMdAnalytics}
-                        className={checkActiveRoute('/dashboard/meetingAnalytics')}
-                    />
-                    
+                        <div className='flex ps-14 py-10 fixed'>
+                            <div className="">
+                                <button onClick={handleAdmin} className={`${admin ? "text-white bg-green-600 rounded-l-3xl p-2" : "disabled"}`}>Admin</button>
+                                <button onClick={handleUser} className={`${user ? "text-white bg-green-600 rounded-r-3xl p-2" : "disabled"}`}>User</button>
+                            </div>
 
-                </div>
+                        </div>
+                        :
+                        <>
+                            <div className='container mx-auto text-white '>
+                                <NavigationDash
+                                    label='Create Meeting'
+                                    address='/dashboard/createMeeting'
+                                    icon={BsPlus}
+                                    className={checkActiveRoute('/dashboard/createMeeting')}
+                                />
 
-                <div>
-                    <hr />
+                                <NavigationDash
+                                    label='Meeting Library'
+                                    address='/dashboard/meetingType'
+                                    icon={BsHandbag}
+                                    className={checkActiveRoute('/dashboard/meetingType')}
 
-                    {/* Admin's Power */}
-                    
-                        {
-                        session?.data?.user?.role === "admin" ?
-                            <NavigationDash
-                                label='All Users'
-                                address='/dashboard/allUsers'
-                                icon={ImUsers}
-                                className={checkActiveRoute('/dashboard/allUsers')}
-                            />
-                            :
-                            ""
+                                />
+                                <NavigationDash
+                                    label='Scheduled Meeting'
+                                    address='/dashboard/scheduledMeeting'
+                                    icon={BsFillBagCheckFill}
+                                    className={checkActiveRoute('/dashboard/scheduledMeeting')}
+                                />
+                                <NavigationDash
+                                    label='Availability'
+                                    address='/dashboard/availability'
+                                    icon={CiClock2}
+                                    className={checkActiveRoute('/dashboard/availability')}
+                                />
+                                <NavigationDash
+                                    label='Meeting Analytics'
+                                    address='/dashboard/meetingAnalytics'
+                                    icon={IoMdAnalytics}
+                                    className={checkActiveRoute('/dashboard/meetingAnalytics')}
+                                />
 
-                    }
-                       
-                        {
-                        session?.data?.user?.role === "admin" ?
-                            <NavigationDash
-                                label='All Meetings'
-                                address='/dashboard/allMeetings'
-                                icon={ImFilePdf}
-                                className={checkActiveRoute('/dashboard/allMeetings')}
-                            />
-                            :
-                            ""
 
-                    }
-                        
-                             {/* Profile Menu */}
-                    <NavigationDash
-                        label='Profile'
-                        address='/dashboard/profile'
-                        icon={ImProfile}
-                        className={checkActiveRoute('/dashboard/profile')}
-                    />
-                        
-                        <button
-                        onClick={()=>signOut()}
-                        className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
-                    >
-                        <GrLogout className='w-5 h-5' />
+                            </div>
 
-                        <span className='mx-4 font-medium'>Logout</span>
-                    </button>
-                    
-                    
-                    </div>
-                </>
+                            <div>
+                                <hr />
+
+                                {/* Admin's Power */}
+
+                                {
+                                    session?.data?.user?.role === "admin" ?
+                                        <NavigationDash
+                                            label='All Users'
+                                            address='/dashboard/allUsers'
+                                            icon={ImUsers}
+                                            className={checkActiveRoute('/dashboard/allUsers')}
+                                        />
+                                        :
+                                        ""
+
+                                }
+
+                                {
+                                    session?.data?.user?.role === "admin" ?
+                                        <NavigationDash
+                                            label='All Meetings'
+                                            address='/dashboard/allMeetings'
+                                            icon={ImFilePdf}
+                                            className={checkActiveRoute('/dashboard/allMeetings')}
+                                        />
+                                        :
+                                        ""
+
+                                }
+
+                                {/* Profile Menu */}
+                                <NavigationDash
+                                    label='Profile'
+                                    address='/dashboard/profile'
+                                    icon={ImProfile}
+                                    className={checkActiveRoute('/dashboard/profile')}
+                                />
+
+                                <button
+                                    onClick={() => signOut()}
+                                    className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                                >
+                                    <GrLogout className='w-5 h-5' />
+
+                                    <span className='mx-4 font-medium'>Logout</span>
+                                </button>
+
+
+                            </div>
+                        </>
 
                 }
                 {
-                    admin?
-                    <>
-                    
+                    admin ?
+                        //  if usr is admin 
+                        <>
+                            <div className='container mx-auto text-white '>
+                                <NavigationDash
+                                    label='All Users'
+                                    address='/dashboard/allUsers'
+                                    icon={ImUsers}
+                                    className={checkActiveRoute('/dashboard/allUsers')}
+                                />
+                                <NavigationDash
+                                    label='All Meetings'
+                                    address='/dashboard/allMeetings'
+                                    icon={ImFilePdf}
+                                    className={checkActiveRoute('/dashboard/allMeetings')}
+                                />
+                            </div>
 
-                    
-                    {
-                        session?.data?.user?.role === "admin" ?
-                            <NavigationDash
-                                label='All Users'
-                                address='/dashboard/allUsers'
-                                icon={ImUsers}
-                                className={checkActiveRoute('/dashboard/allUsers')}
-                            />
-                            :
-                            ""
+                            <div>
+                                <hr />
 
-                    }
-                    {
-                        session?.data?.user?.role === "admin" ?
-                             <NavigationDash
-                                label='All Meetings'
-                                address='/dashboard/allMeetings'
-                                icon={ImFilePdf}
-                                className={checkActiveRoute('/dashboard/allMeetings')}
-                            />
-                            :
-                            ""
+                                {/* Profile Menu */}
+                                <NavigationDash
+                                    label='Profile'
+                                    address='/dashboard/profile'
+                                    icon={ImProfile}
+                                    className={checkActiveRoute('/dashboard/profile')}
+                                />
 
-                    }
-                    {
-                        session?.data?.user?.role === "admin" ?
-                        <NavigationDash
-                        label='Profile'
-                        address='/dashboard/profile'
-                        icon={ImProfile}
-                        className={checkActiveRoute('/dashboard/profile')}
-                    />
-                            :
-                            ""
+                                <button
+                                    onClick={() => signOut()}
+                                    className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                                >
+                                    <GrLogout className='w-5 h-5' />
 
-                    }
-                    {
-                        session?.data?.user?.role === "admin" ?
-                        <button
-                        onClick={()=>signOut()}
-                        className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
-                    >
-                        <GrLogout className='w-5 h-5' />
+                                    <span className='mx-4 font-medium'>Logout</span>
+                                </button>
+                            </div>
 
-                        <span className='mx-4 font-medium'>Logout</span>
-                    </button>
-                            :
-                            ""
+                            {/* Profile Menu */}
 
-                    }
+                        </>
+                        :
+                        // if user is not admin but normal user
+                        <>
+                            <div className='container mx-auto text-white '>
+                                <NavigationDash
+                                    label='Create Meeting'
+                                    address='/dashboard/createMeeting'
+                                    icon={BsPlus}
+                                    className={checkActiveRoute('/dashboard/createMeeting')}
+                                />
 
-                    {/* Profile Menu */}
-                   
-                
-                
-                    </>
-                    :
-                    <>
-                    <div className='container mx-auto text-white '>
-                    <NavigationDash
-                        label='Create Meeting'
-                        address='/dashboard/createMeeting'
-                        icon={BsPlus}
-                        className={checkActiveRoute('/dashboard/createMeeting')}
-                    />
+                                <NavigationDash
+                                    label='Meeting Library'
+                                    address='/dashboard/meetingType'
+                                    icon={BsHandbag}
+                                    className={checkActiveRoute('/dashboard/meetingType')}
+                                />
+                                <NavigationDash
+                                    label='Scheduled Meeting'
+                                    address='/dashboard/scheduledMeeting'
+                                    icon={BsFillBagCheckFill}
+                                    className={checkActiveRoute('/dashboard/scheduledMeeting')}
+                                />
+                                <NavigationDash
+                                    label='Availability'
+                                    address='/dashboard/availability'
+                                    icon={CiClock2}
+                                    className={checkActiveRoute('/dashboard/availability')}
+                                />
+                                <NavigationDash
+                                    label='Meeting Analytics'
+                                    address='/dashboard/meetingAnalytics'
+                                    icon={IoMdAnalytics}
+                                    className={checkActiveRoute('/dashboard/meetingAnalytics')}
+                                />
 
-                    <NavigationDash
-                        label='Meeting Library'
-                        address='/dashboard/meetingType'
-                        icon={BsHandbag}
-                        className={checkActiveRoute('/dashboard/meetingType')}
-                    />
-                    <NavigationDash
-                        label='Scheduled Meeting'
-                        address='/dashboard/scheduledMeeting'
-                        icon={BsFillBagCheckFill}
-                        className={checkActiveRoute('/dashboard/scheduledMeeting')}
-                    />
-                    <NavigationDash
-                        label='Availability'
-                        address='/dashboard/availability'
-                        icon={CiClock2}
-                        className={checkActiveRoute('/dashboard/availability')}
-                    />
-                    <NavigationDash
-                        label='Meeting Analytics'
-                        address='/dashboard/meetingAnalytics'
-                        icon={IoMdAnalytics}
-                        className={checkActiveRoute('/dashboard/meetingAnalytics')}
-                    />
-                    
 
-                </div>
+                            </div>
 
-                <div>
-                    <hr />
+                            <div>
+                                <hr />
 
-                    
+                                {/* Profile Menu */}
+                                <NavigationDash
+                                    label='Profile'
+                                    address='/dashboard/profile'
+                                    icon={ImProfile}
+                                    className={checkActiveRoute('/dashboard/profile')}
+                                />
 
-                    {/* Profile Menu */}
-                    <NavigationDash
-                        label='Profile'
-                        address='/dashboard/profile'
-                        icon={ImProfile}
-                        className={checkActiveRoute('/dashboard/profile')}
-                    />
+                                <button
+                                    onClick={() => signOut()}
+                                    className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                                >
+                                    <GrLogout className='w-5 h-5' />
 
-                    <button
-                        onClick={()=>signOut()}
-                        className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
-                    >
-                        <GrLogout className='w-5 h-5' />
-
-                        <span className='mx-4 font-medium'>Logout</span>
-                    </button>
-                </div>
-                    </>
+                                    <span className='mx-4 font-medium'>Logout</span>
+                                </button>
+                            </div>
+                        </>
                 }
-                
 
-                
+
+
             </div>
 
         </>
