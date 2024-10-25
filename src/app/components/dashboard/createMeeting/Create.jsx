@@ -11,6 +11,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import TimeZoneSelector from "../../Homepage/Timezone";
+import 'animate.css';
 
 const Create = () => {
   const session = useSession();
@@ -36,6 +37,7 @@ const Create = () => {
   // Time zone setting
   const eventTime = new Date(); // Example event time in "Asia/Dhaka" time zone
 
+  
 
   // Function to generate date range between start and end date
   const generateDateRange = (start, end) => {
@@ -118,16 +120,77 @@ const Create = () => {
     return typeof time === 'string' && time.trim() !== '';
   };
 
-  const handleTimeChange = (date, timeType, value) => {
-    setAvailability((prevAvailability) => ({
-      ...prevAvailability,
-      [date]: {
-        ...prevAvailability[date],
-        [timeType]: value,
-        bookedTimes: prevAvailability[date]?.bookedTimes ?? [], // Ensure bookedTimes is null if not present
-      },
-    }));
-  };
+  const addMinutesToTime = (time, minutes) => {
+    const [hours, minutesPart] = time.split(':');
+    const date = new Date(0, 0, 0, hours, minutesPart);
+    date.setMinutes(date.getMinutes() + minutes);
+    const newHours = String(date.getHours()).padStart(2, '0');
+    const newMinutes = String(date.getMinutes()).padStart(2, '0');
+    return `${newHours}:${newMinutes}`;
+};
+
+const handleTimeChange = (date, timeType, value) => {
+    setAvailability((prevAvailability) => {
+        const updatedAvailability = {
+            ...prevAvailability,
+            [date]: {   
+                ...prevAvailability[date],
+                [timeType]: value,
+                bookedTimes: prevAvailability[date]?.bookedTimes,
+            },
+        };
+
+        // If startTime is changed, update endTime based on default duration
+        if (timeType === 'startTime') {
+            const defaultDuration = parseInt(duration, 10); // Assuming duration is in minutes
+            if (!isNaN(defaultDuration)) {
+                const minEndTime = addMinutesToTime(value, defaultDuration);
+                updatedAvailability[date].endTime = minEndTime; // Set endTime based on duration
+            }
+        }
+
+        // If endTime is changed, check if it meets the requirements
+        if (timeType === 'endTime') {
+            const startTime = updatedAvailability[date].startTime;
+
+            const startDateTime = new Date(`1970-01-01T${startTime}:00`);
+            const endDateTime = new Date(`1970-01-01T${value}:00`);
+
+            // If endTime is before startTime
+            if (endDateTime <= startDateTime) {
+                Swal.fire({
+                    title: 'Invalid Time',
+                    text: 'End time cannot be before start time!',
+                    icon: 'error',
+                    confirmButtonText: 'OK',
+                    background: "#000000",  // Black background
+                    color: "#F8FAFC",  
+                });
+                return prevAvailability; // Return previous state to prevent change
+            }
+
+            // Calculate expected end time based on default duration
+            const defaultDuration = parseInt(duration, 10);
+            const expectedEndTime = addMinutesToTime(startTime, defaultDuration);
+            const expectedEndDateTime = new Date(`1970-01-01T${expectedEndTime}:00`);
+
+            // Check if the endTime is less than the expected end time
+            if (endDateTime < expectedEndDateTime) {
+                Swal.fire({
+                    title: 'Duration Mismatch',
+                    text: 'End time must be at least the duration from the start time!',
+                    icon: 'warning',
+                    confirmButtonText: 'OK',
+                    background: "#000000",  // Black background
+                    color: "#F8FAFC",  
+                });
+                return prevAvailability; // Return previous state to prevent change
+            }
+        }
+
+        return updatedAvailability;
+    });
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -136,6 +199,8 @@ const Create = () => {
         icon: "error",
         title: "Oops...",
         text: "Please fill in all the required fields!",
+        background: "#000000",  // Black background
+        color: "#F8FAFC"
       });
       return;
     }
@@ -155,7 +220,8 @@ const Create = () => {
       url: url,
       startDate: startDateLocal,
       endDate: endDateLocal,
-      availability: availability, // Include availability object
+      availability: availability,
+      createDate: new Date(), // Include availability object
     };
     setLoading(true);
     try {
@@ -175,6 +241,8 @@ const Create = () => {
           title: "Your meeting has been created",
           showConfirmButton: false,
           timer: 1500,
+          background: "#000000",  // Black background
+          color: "#F8FAFC"
         });
         router.push("/dashboard/meetingType");
       }
@@ -190,12 +258,17 @@ const Create = () => {
 
 
   return (
-    <form onSubmit={handleSubmit} className="text-white flex lg:flex-row md:flex-col flex-col">
-      <div className="lg:border-e-2 md:border-e-2 lg:w-1/3 md:w-full w-full min-h-screen">
-        <div className="pt-5 space-y-3 pl-5 bg-black min-h-screen">
-          <Link className="flex items-center space-x-2 text-lg" href="/dashboard">
-            <IoIosArrowBack /> <h4>Cancel</h4>
-          </Link>
+    <div className="container mx-auto">
+    <div className="text-left bg-black ">
+      <Link className="flex items-center space-x-1 text-base" href="/dashboard">
+        <IoIosArrowBack className="text-white " /><h4 className="text-white">Cancel</h4>
+      </Link>
+    </div>
+
+    <form onSubmit={handleSubmit} className="text-white flex lg:flex-row md:flex-col-reverse flex-col-reverse gap-2">
+      <div className=" lg:w-1/3 md:w-full w-full min-h-screen">
+        <div className="pt-5 space-y-3 pl-5  min-h-screen">
+          
           <h2 className="font-semibold text-2xl">Create New Event</h2>
 
           <h4 className="font-semibold">Event Name *</h4>
@@ -220,14 +293,25 @@ const Create = () => {
           <select
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
-            className="border rounded-md p-2 text-black"
+            className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black mb-2"
           >
             <option value="15 min">15 min</option>
             <option value="30 min">30 min</option>
             <option value="45 min">45 min</option>
             <option value="60 min">60 min</option>
           </select>
+          
+          <h4 className="font-semibold">Select Type Add Url*</h4>
 
+          {selected && (
+            <input
+              type="text"
+              placeholder={`Add ${selected} url `}
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
+            />
+          )}
           <div className="flex pb-4">
             <button type="button" onClick={() => setSelected("Zoom")}>
               <Image
@@ -247,17 +331,9 @@ const Create = () => {
             </button>
           </div>
 
-          {selected && <p className="text-lg">Selected: {selected}</p>}
+         
 
-          {selected && (
-            <input
-              type="text"
-              placeholder="Add URL"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
-            />
-          )}
+     
 
            {/* anam added part */}
            {/* <div className="bg-orange-100 md:w-[300px] text-black">
@@ -266,50 +342,66 @@ const Create = () => {
 
           <button
             disabled={loading}
-            className="py-2 w-4/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 text-white"
+            className="py-2 w-4/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 hover:bg-green-900 text-white"
           >
             {loading ? <FaFan className="animate-spin"></FaFan> : "Create"}
           </button>
          
         </div>
       </div>
-      <div className="bg-black lg:w-full md:w-full w-full  lg:shadow-2xl md:shadow-2xl lg:m-5 p-5  min-h-screen mt-7">
-        <div className=" grid grid-cols-3  gap-5 ">
-          <div className=" w-full space-y-5">
-            <h3 className="text-3xl font-extrabold font-raleway">
-              Meet<span className="text-green-600">Wise</span>
-            </h3>
+      <div className="bg-black lg:w-full md:w-full w-full  lg:shadow-2xl md:shadow-2xl  px-5  min-h-screen ">
+      <div className="container mx-auto md:w-2/3  mb-5 animate__animated animate__zoomIn">
 
-            <h2 className="text-2xl font-bold">
-              Event Name: <span className="text-xl font-medium">{eventName}</span>
-            </h2>
-            <h2 className="text-xl font-bold">
-              Description: <span className="text-base font-medium">{description}</span>
-            </h2>
-            <div className="flex items-center space-x-2">
-              <FaClock />
-              <h2 className="font-semibold">Meeting Duration: {duration}</h2>
-            </div>
-            <div className="flex items-center space-x-2">
-              <FaLocationArrow />
-              <p className="font-raleway font-bold text-xl">
-                Type: <span className="font-medium text-base">{selected} Meeting</span>
-              </p>
-            </div>
-            <p className="cursor-pointer text-xl text-white font-bold">
-              Meeting Url: <span className="text-blue-500 font-medium text-base">{url}</span>
-            </p>
+<h2 className="font-semibold text-4xl text-center "> Simply Schedule Your Meeting</h2>
 
 
+<div className="border-b-2  border-green-500 w-1/3 mx-auto mb-2"></div>
 
-          </div>
+{/* <p className="text-center text-gray-100 mt-2 ">Fill out the fields, pick your platform, and you're all set!</p> */}
 
-          <div className="w-full overflow-auto">
-            <div className="lg:flex-1 md:flex-1 p-4 rounded-lg bg-orange-50 text-black h-[450px] ">
-              <h2 className="font-semibold text-xl mb-4">Set Date</h2>
+</div>
 
-              <div className="w-full border border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
-                <div className="min-w-full "> {/* Enable horizontal scrolling */}
+        <div className="  pt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5 ">
+         <div>
+         <div className="w-full mx-auto p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px] animate__animated animate__flipInY">
+                      <h2 className="text-lg md:text-xl lg:text-xl font-semibold">See Your Availability 🔍</h2>
+                      <div className="flex justify-start mb-5 mt-1">
+                        <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+                      </div>
+                      <div className="overflow-y-auto h-72">
+                        <div className="grid grid-cols-1  gap-4">
+                          {availableDays.map(day => (
+                            <div
+                              className="bg-green-800 p-4 rounded-lg shadow-md hover:bg-gray-700 transition duration-300 flex flex-col justify-center items-start gap-2"
+                              key={day}
+                            >
+                              <h2 className="text-lg md:text-xl lg:text-xl font-semibold">{day}</h2>
+                              <p className="text-sm md:text-base">
+                                <span className="font-bold">Available:</span> {availableTimes[day]?.startTime} - {availableTimes[day]?.endTime}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className=" mt-5">
+                        <Link className=" font-raleway text-lg" href="/dashboard/availability">
+                          <h1>Update Your <span className="text-orange-500 font-extrabold"> Availability</span> with Ease ✨.</h1>
+                        </Link>
+
+                      </div>
+                    </div>
+         </div>
+ <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px]">
+ <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Date 📅 </h2>
+                      <div className="flex justify-start mb-5 mt-1">
+                        <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+                      </div>
+ <div className="w-full overflow-auto">
+            
+             
+
+              <div className="w-full border bg-black text-slate-50 border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
+                <div className="min-w-full  custom-datepicker-container "> {/* Enable horizontal scrolling */}
                   <DateRange
                     editableDateInputs={true}
                     onChange={(item) => setState([item.selection])}
@@ -319,46 +411,56 @@ const Create = () => {
                     className="w-full"
                     rangeColors={["green"]}// Ensure it takes full width of the parent
                   />
-                </div>
+                
               </div>
             </div>
           </div>
+ </div>
+         
 
 
-          <div className="max-w-72 mx-auto  p-4  bg-orange-50 text-black rounded-lg shadow-lg h-[450px]">
-            <h3 className="mt-4 text-lg font-semibold">Set Time :</h3>
-            <div className="mt-4">
-              {/* <p className="text-lg">
-      Start Date: {new Date(state[0].startDate).toLocaleDateString("en-GB")}
-    </p>
-    <p className="text-lg">
-      End Date: {state[0].endDate ? new Date(state[0].endDate).toLocaleDateString("en-GB") : "N/A"}
-    </p> */}
-              {state[0].endDate && (
+          <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px]">
+          <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Time ⏳</h2>
+                      <div className="flex justify-start mb-2 mt-1">
+                        <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+                      </div>
+                 
+                  <div className=" container mx-auto flex flex-row items-start gap-6">
+                    {/* Set Time Section */}
+                    <div className="flex-1">
+                  
+                      <div className="">
+                      {state[0].endDate && (
                 <>
-                  <div className="max-h-72 border font-raleway border-green-700 overflow-y-auto mt-5 pb-4">
-                    <ul className="list-disc ml-6 ">
+                  <div className="max-h-72  font-raleway overflow-y-auto mt-5 pb-4">
+                    <ul className="list-disc ml-3 ">
                       {generateDateRange(state[0].startDate, state[0].endDate).map((date, index) => (
-                        <li key={index} className="flex items-center justify-between mt-5 ">
-                          <span className="font-extrabold"> Date:{date}</span>
-                          <div className="ml-4">
-                            <label className="block text-sm font-medium text-gray-700">Start Time:</label>
+                        <li key={index}  className="flex flex-col items-start mt-2">
+                          <div className="flex items-center">
+                                    {/* Circle bullet point */}
+                                    <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
+                                    <span className="font-extrabold text-xl text-slate-50">{date}</span> {/* Show date with day */}
+                                  </div>
+                                  <div className="flex flex-row items-center mt-2 mb-2 justify-start ml-2">
+                          <div className="">
+                            <label className="block text-sm font-medium text-white">Start Time:</label>
                             <input
                               type="time"
-                              className="mt-1 block border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                              className="mt-1 w-3/4 block border text-black  border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                               value={availability[date]?.startTime || ""}
                               onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
                               required
                             />
                           </div>
-                          <div className="ml-4">
-                            <label className="block text-sm font-medium text-gray-700">End Time:</label>
+                          <div className=" ">
+                            <label className="block text-sm font-medium text-white">End Time:</label>
                             <input
                               type="time"
-                              className="mt-1 block border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                              className="mt-1 block border w-3/4 text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                               value={availability[date]?.endTime || ""}
                               onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
                             />
+                          </div>
                           </div>
                         </li>
                       ))}
@@ -367,32 +469,22 @@ const Create = () => {
                 </>
               )}
 
-            </div>
-          </div>
+                      </div>
+                     
+                    </div>
+
+                    {/* Availability Section */}
+                 
+                  </div>
+                </div>
+
         </div>
-        <div className='bg-black text-white w-full p-6 pt-2'>
-          <h1 className='text-3xl font-bold text-center mb-6'>See Your Available Times</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {availableDays.map(day => (
-              <div
-                className="bg-gray-800 p-4 rounded-lg shadow-md hover:bg-gray-700 transition duration-300 flex flex-col justify-center items-start gap-2"
-                key={day}
-              >
-                <h2 className="text-lg md:text-xl lg:text-2xl font-semibold">{day}</h2>
-                <p className="text-sm md:text-base">
-                  <span className="font-bold">Start Time:</span> {availableTimes[day]?.startTime}
-                </p>
-                <p className="text-sm md:text-base">
-                  <span className="font-bold">End Time:</span> {availableTimes[day]?.endTime}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+      
 
       </div>
 
     </form>
+    </div>
   );
 };
 

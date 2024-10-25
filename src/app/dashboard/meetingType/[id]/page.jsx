@@ -1,7 +1,9 @@
 
 import MeetingDetails from '@/app/components/dashboard/meetingType/MeetingDetails';
 import PrivateRoute from '@/app/services/PrivateRoute';
+import Link from 'next/link';
 import React from 'react';
+import { IoIosArrowBack } from "react-icons/io";
 
 const Page = async ({ params }) => {
     const { id } = params; // Get the dynamic id from URL
@@ -15,8 +17,13 @@ const Page = async ({ params }) => {
 
     return (
         <PrivateRoute>
-            <div className='bg-slate-950 min-h-screen'>
-             <h2 className='text-4xl font-bold pt-3 text-white text-center container mx-auto'>📅 Simplified Meeting Booking</h2>
+            <div className='bg-slate-950 container mx-auto min-h-screen'>
+            <div className="text-left bg-slate-950 ">
+      <Link className="flex items-center space-x-1 text-base" href="/dashboard">
+        <IoIosArrowBack className="text-white " /><h4 className="text-white">Cancel</h4>
+      </Link>
+    </div>
+             <h2 className='text-4xl font-bold  text-white text-center container mx-auto'>📅 Simplified Meeting Booking</h2>
             <div className="border border-orange-600 rounded-xl text-center mx-auto container w-[200px] mb-2 mt-2"></div>
             <p className='p-2 pb-3 text-center mx-auto font-medium font-raleway text-xl text-gray-300'>Enjoy a stress-free meeting booking experience.</p>
             <MeetingDetails meetingDetails={meetingDetails} />
