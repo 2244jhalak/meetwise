@@ -377,7 +377,7 @@ const handleTimeChange = (date, timeType, value) => {
                             >
                               <h2 className="text-lg md:text-xl lg:text-xl font-semibold">{day}</h2>
                               <p className="text-sm md:text-base">
-                                <span className="font-bold">Available Time:</span> {availableTimes[day]?.startTime} - {availableTimes[day]?.endTime}
+                                <span className="font-bold">Available:</span> {availableTimes[day]?.startTime} - {availableTimes[day]?.endTime}
                               </p>
                             </div>
                           ))}
@@ -441,22 +441,22 @@ const handleTimeChange = (date, timeType, value) => {
                                     <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
                                     <span className="font-extrabold text-xl text-slate-50">{date}</span> {/* Show date with day */}
                                   </div>
-                                  <div className="flex flex-row items-center mt-2 mb-2 justify-around">
-                          <div className="ml-2">
+                                  <div className="flex flex-row items-center mt-2 mb-2 justify-start ml-2">
+                          <div className="">
                             <label className="block text-sm font-medium text-white">Start Time:</label>
                             <input
                               type="time"
-                              className="mt-1 block border text-black  border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                              className="mt-1 w-3/4 block border text-black  border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                               value={availability[date]?.startTime || ""}
                               onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
                               required
                             />
                           </div>
-                          <div className="ml-4">
+                          <div className=" ">
                             <label className="block text-sm font-medium text-white">End Time:</label>
                             <input
                               type="time"
-                              className="mt-1 block border text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                              className="mt-1 block border w-3/4 text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                               value={availability[date]?.endTime || ""}
                               onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
                             />
