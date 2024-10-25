@@ -113,6 +113,7 @@ const MeetingDetails = ({ meetingDetails }) => {
           meetingLocation: meetingDetails.selected,
           url: meetingDetails.url,
           meetingName: meetingDetails?.eventName,
+          userTimeZone: meetingDetails?.userTimeZone,
         };
         //send email notification code here
 
@@ -125,7 +126,7 @@ const MeetingDetails = ({ meetingDetails }) => {
           // Show success message with SweetAlert
           Swal.fire({
             title: 'Check Your Mail Please',
-       
+
             icon: 'success',
             confirmButtonText: 'OK',
             background: "#000000",  // Black background
@@ -191,10 +192,10 @@ const MeetingDetails = ({ meetingDetails }) => {
 
     return (
       <div
-      className={`custom-full h-[6px] mb-0 flex items-center justify-center relative ${isSelected ? 'bg-red-500' : isInRange ? 'bg-green-500' : ''}`}
-      onClick={() => handleDateSelect(date)}
-    >
-    </div>
+        className={`custom-full h-[6px] mb-0 flex items-center justify-center relative ${isSelected ? 'bg-red-500' : isInRange ? 'bg-green-500' : ''}`}
+        onClick={() => handleDateSelect(date)}
+      >
+      </div>
     );
   };
 
@@ -220,6 +221,7 @@ const MeetingDetails = ({ meetingDetails }) => {
             <p><strong>URL:</strong> <a href={meetingDetails.url} className="text-blue-500 underline"><span className='text-slate-300'> {meetingDetails.url}</span></a></p>
             <p><strong>Start Date:</strong><span className='text-slate-300'> {meetingDetails.startDate}</span></p>
             <p><strong>End Date:</strong><span className='text-slate-300'> {meetingDetails.endDate}</span></p>
+            <p><strong>Time Zone:</strong><span className='text-slate-300'> {meetingDetails.userTimeZone}</span></p>
           </div>
         ) : (
           <p>No meeting details available.</p>
@@ -229,14 +231,14 @@ const MeetingDetails = ({ meetingDetails }) => {
       <div className=" border-t-0 card glass font-raleway border-l-0 border-b-0 border-2 border-dashed border-r-blue-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
         <h2 className="text-2xl font-bold mb-4 text-slate-50">Select Your Date 📅</h2>
         <div className='custom-date-container'>
-        <Calendar
-          tileContent={tileContent}
-          tileDisabled={tileDisabled}
-          className="mt-2 bg-black rounded-xl"
-          rangeColors={["green"]}
-        />
+          <Calendar
+            tileContent={tileContent}
+            tileDisabled={tileDisabled}
+            className="mt-2 bg-black rounded-xl"
+            rangeColors={["green"]}
+          />
         </div>
-        
+
       </div>
 
       <div className=" border-t-0 border-l-0  text-slate-50 card glass border-b-0 border-2 border-dashed border-l-green-500 border-r-green-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
