@@ -19,6 +19,7 @@ const SocialLogin = () => {
 
     const handleSignIn = async (provider) => {
         const res = await signIn(provider, { redirect: false });
+        localStorage.removeItem('role');
         
         if (res?.error) {
             console.error("Login failed:", res.error);
