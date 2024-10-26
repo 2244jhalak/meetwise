@@ -37,7 +37,9 @@ const SignIn = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
+            localStorage.removeItem('role');
             router.push(callbackUrl); // লগইন সফল হলে callbackUrl এ রিডাইরেক্ট করবে
+            
         } else if (res?.error) {
             Swal.fire({
                 position: "top-end",
