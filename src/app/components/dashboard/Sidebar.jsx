@@ -29,6 +29,7 @@ const Sidebar = () => {
 
     useEffect(() => {
         const storedRole = localStorage.getItem('role');
+        
         if (storedRole === 'admin') {
             setAdmin(true);
             setUser(false);
@@ -36,7 +37,19 @@ const Sidebar = () => {
             setUser(true);
             setAdmin(false);
         }
-    }, []);
+        else if(session?.data?.user.role === "user"){
+            setUser(true);
+        setAdmin(false);
+        localStorage.setItem('role', 'user');
+
+        }
+        else if(session?.data?.user.role === "admin"){
+            setUser(false);
+        setAdmin(true);
+        localStorage.setItem('role', 'admin');
+
+        }
+    }, [session?.data?.user.role]);
 
 
     const handleAdmin = () => {
