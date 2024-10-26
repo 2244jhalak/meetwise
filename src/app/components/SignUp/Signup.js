@@ -91,7 +91,9 @@ const Signup = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          localStorage.removeItem('role');
           router.push(callbackUrl)// Redirect to home or desired page
+          
         } else {
           throw new Error("Signup failed");
         }
