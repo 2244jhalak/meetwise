@@ -115,13 +115,13 @@ const Signup = () => {
     <div className="container mx-auto pb-5 ">
       <div className="flex flex-col gap-2 lg:flex-row items-center justify-center">
         {/* left side  */}
-        <div className="md:w-1/2 lg:min-h-screen md:pt-10 ">
+        <div className="  md:w-1/2 lg:min-h-screen md:pt-10 ">
           <LottieAnimation animationData={signup}></LottieAnimation>
         </div>
 
         <div className="md:w-1/2 flex pt-5 flex-col items-center space-y-6 lg:min-h-screen">
           <div className="relative font-raleway font-bold mx-auto text-5xl text-center">
-            <h1 className="text-2xl pb-3 font-extrabold text-center mx-auto text-white lg:text-3xl dark:text-white">
+            <h1 className="text-2xl pb-3 font-extrabold text-center mx-auto text-black lg:text-3xl dark:text-white">
               Create New account
             </h1>
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-700 w-[50%] transition-all duration-300 ease-in-out p-4 cursor-pointer"></div>
@@ -131,7 +131,7 @@ const Signup = () => {
             <form onSubmit={handleSubmit} className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-raleway font-bold text-lg text-white">
+                  <span className="label-text font-raleway font-bold text-lg text-black">
                     Name
                   </span>
                 </label>
@@ -145,7 +145,7 @@ const Signup = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-raleway font-bold text-lg text-white">
+                  <span className="label-text font-raleway font-bold text-lg text-black">
                     Profile Photo
                   </span>
                 </label>
@@ -158,7 +158,7 @@ const Signup = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-raleway font-bold text-lg text-white">
+                  <span className="label-text font-raleway font-bold text-lg text-black">
                     Email
                   </span>
                 </label>
@@ -172,7 +172,7 @@ const Signup = () => {
               </div>
               <div className="form-control relative">
                 <label className="label">
-                  <span className="label-text font-raleway font-bold text-lg text-white">
+                  <span className="label-text font-raleway font-bold text-lg text-black">
                     Create Password
                   </span>
                 </label>
@@ -196,7 +196,7 @@ const Signup = () => {
               </div>
               <div className="form-control relative">
                 <label className="label">
-                  <span className="label-text font-raleway font-bold text-lg text-white">
+                  <span className="label-text font-raleway font-bold text-lg text-black">
                     Confirm Password
                   </span>
                 </label>
@@ -221,7 +221,7 @@ const Signup = () => {
               <div className="form-control mt-6">
                 <button
                   disabled={loading}
-                  className="btn text-green bg-orange-600 hover:bg-orange-800 text-white"
+                  className="btn text-green bg-green-600 hover:bg-green-800 text-white"
                 >
                   {loading ? (
                     <FaFan className="animate-spin"></FaFan>
@@ -238,7 +238,7 @@ const Signup = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-row text-white px-8 py-5 space-x-1 font-raleway font-bold">
+            <div className="flex flex-row text-black px-8 py-5 space-x-1 font-raleway font-bold">
               <p>Already have an account?Please</p>
               <Link href="/login">
                 <span className="underline text-green-500  font-raleway font-extrabold">
