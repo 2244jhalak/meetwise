@@ -126,7 +126,8 @@ const AllUsers = () => {
 
     return (
         <div className='container mx-auto p-6 font-raleway text-white bg-blue-50  shadow-lg rounded-md'>
-             <h1 className="text-2xl pb-3 font-bold  rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl w-[500px] dark:text-white mb-7">User Management</h1>
+           <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white"> User Management</h1>
+     
              <h2 className='text-3xl text-black font-semibold mt-5 mb-5'>User Overview: <span className="text-green-500 font-bold">Total Users</span>- {users.length}</h2>
             {/* Loading State */}
            

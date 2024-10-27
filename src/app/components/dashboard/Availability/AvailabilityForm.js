@@ -162,10 +162,9 @@ const AvailabilityForm = () => {
   }, [session?.data?.user?.email]);
 
   return (
-    <div className="container mx-auto  p-6 text-black bg-gray-300 shadow-lg rounded-md">
-      <h1 className="text-2xl pb-3 font-bold  rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl w-[500px] dark:text-white mb-6">
-        Save Your Availability
-      </h1>
+    <div className="container mx-auto  p-6 text-black bg-gray-300 shadow-lg rounded-md pl-6">
+       <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white"> Save Your Availability</h1>
+     
       {/* <h1 className="text-2xl  font-semibold text-center ">Save Your Availability</h1>
             <div className="border border-green-600 text-center mx-auto container w-[90px] mb-5"></div> */}
       <form onSubmit={handleSubmit}>
