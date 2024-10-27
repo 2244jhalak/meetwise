@@ -14,7 +14,7 @@ const Page = () => {
            <div className='md:w-1/4'>
                <Sidebar />
            </div>
-           <div className='container mx-auto md:w-4/4 p-2'>
+           <div className='container mx-auto md:w-3/4 p-2'>
          <AvailabilityForm></AvailabilityForm>
            </div>
        </div>
