@@ -7,18 +7,24 @@ import React from 'react';
 const page = () => {
 
     return (
-      
-            <PrivateRoute>
-                <AdminRoute>
-            <div>
-            <Sidebar></Sidebar>
-            <div className='pl-[270px] mt-10'>
-                <AllUsers></AllUsers>
-            </div>
+        <PrivateRoute>
+
+        <AdminRoute>
+        <div className=' bg-gray-200 md:flex md:flex-row md:justify-between'>
+
+     
+
+        <div className='md:w-1/4'>
+            <Sidebar />
         </div>
-            </AdminRoute>
-            </PrivateRoute>
-            
+        <div className='container mx-auto md:w-3/4 p-5'>
+        <AllUsers></AllUsers>
+        </div>
+    </div>
+    
+        </AdminRoute>
+    </PrivateRoute>
+       
         
 
     );

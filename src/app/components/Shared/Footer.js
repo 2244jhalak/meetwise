@@ -85,12 +85,12 @@ const Footer = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="bg-white/10 backdrop-blur-md backdrop-opacity-70 text-gray-40">
+    <div className="bg-gray-200  text-black">
       <footer className="flex flex-col md:flex-row py-14 text-gray-400 w-11/12 mx-auto">
         {/* remove the svg file  */}
         <aside>
-          <p className="text-3xl font-bold text-gray-300">
-            Meet <span className="text-green-500">Wise</span>
+          <p className="text-3xl font-bold text-slate-900">
+            Meet<span className="text-green-500">Wise</span>
           </p>
           <p>{content[language].tagline}</p>
         </aside>
@@ -98,7 +98,7 @@ const Footer = () => {
         <nav className="grid grid-cols-2 md:grid-cols-4 w-full">
           {/* 1st col  */}
           <nav className="flex flex-col mt-5 md:mt-0  md:text-right">
-            <h6 className="footer-title text-white">
+            <h6 className="footer-title text-black">
               {content[language].product}
             </h6>
             {/* <br /> */}
@@ -120,7 +120,7 @@ const Footer = () => {
 
           {/* 2nd col  */}
           <nav className=" flex flex-col mt-5 md:mt-0 md:text-right">
-            <h6 className="footer-title text-white">
+            <h6 className="footer-title text-black">
               {content[language].company}
             </h6>
             {/* <br /> */}
@@ -142,7 +142,7 @@ const Footer = () => {
 
           {/* 3rd col  */}
           <nav className="flex flex-col mt-5 md:mt-0 md:text-right">
-            <h6 className="footer-title text-white">
+            <h6 className="footer-title text-black">
               {content[language].resources}
             </h6>
             <a className="link link-hover text-sm md:text-base mt-1" href="/">
@@ -161,7 +161,7 @@ const Footer = () => {
 
           {/* 4th col social icon  */}
           <div className="space-y-3 text-gray-400 mt-5 md:mt-0 md:text-right">
-            <div className="footer-title text-white">
+            <div className="footer-title text-black">
               {content[language].socialMedia}
             </div>
             <div className="flex justify-start md:justify-end space-x-3">
