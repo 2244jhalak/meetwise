@@ -265,15 +265,15 @@ const Create = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="text-left bg-black ">
+      <div className="text-left bg-gray-200 ">
         <Link className="flex items-center space-x-1 text-base" href="/dashboard">
-          <IoIosArrowBack className="text-white " /><h4 className="text-white">Cancel</h4>
+          <IoIosArrowBack className="text-black " /><h4 className="text-black">Cancel</h4>
         </Link>
       </div>
 
       <form onSubmit={handleSubmit} className="text-white flex lg:flex-row md:flex-col-reverse flex-col-reverse gap-2">
         <div className=" lg:w-1/3 md:w-full w-full min-h-screen">
-          <div className="pt-5 space-y-3 pl-5  min-h-screen">
+          <div className="pt-5 space-y-3 pl-5  rounded-r-xl text-black bg-blue-50 min-h-screen">
 
             <h2 className="font-semibold text-2xl">Create New Event</h2>
 
@@ -348,14 +348,14 @@ const Create = () => {
 
             <button
               disabled={loading}
-              className="py-2 w-4/5 text-lg font-raleway border-orange-600 rounded-lg pl-5 btn bg-green-700 hover:bg-green-900 text-white"
+              className="py-2 w-4/5 text-lg font-raleway border-blue-600 rounded-lg pl-5 btn bg-green-700 hover:bg-green-900 text-white"
             >
               {loading ? <FaFan className="animate-spin"></FaFan> : "Create"}
             </button>
 
           </div>
         </div>
-        <div className="bg-black lg:w-full md:w-full w-full  lg:shadow-2xl md:shadow-2xl  px-5  min-h-screen ">
+        <div className="bg-gray-200 lg:w-full text-black md:w-full w-full  lg:shadow-2xl md:shadow-2xl  px-5  min-h-screen ">
           <div className="container mx-auto md:w-2/3  mb-5 animate__animated animate__zoomIn">
 
             <h2 className="font-semibold text-4xl text-center "> Simply Schedule Your Meeting</h2>
@@ -369,10 +369,10 @@ const Create = () => {
 
           <div className="  pt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5 ">
             <div>
-              <div className="w-full mx-auto p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px] animate__animated animate__flipInY">
+              <div className="w-full mx-auto p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-blue-500  border-t-blue-500 bg-gray-800 opacity-90 text-white rounded-lg shadow-lg h-[450px] animate__animated animate__flipInY">
                 <h2 className="text-lg md:text-xl lg:text-xl font-semibold">See Your Availability 🔍</h2>
                 <div className="flex justify-start mb-5 mt-1">
-                  <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+                  <div className="border-b-2 rounded-lg border-green-500 w-1/5"></div> {/* Orange border */}
                 </div>
                 <div className="overflow-y-auto h-72">
                   <div className="grid grid-cols-1  gap-4">
@@ -391,22 +391,22 @@ const Create = () => {
                 </div>
                 <div className=" mt-5">
                   <Link className=" font-raleway text-lg" href="/dashboard/availability">
-                    <h1>Update Your <span className="text-orange-500 font-extrabold"> Availability</span> with Ease ✨.</h1>
+                    <h1>Update Your <span className="text-green-500 font-extrabold"> Availability</span> with Ease ✨.</h1>
                   </Link>
 
                 </div>
               </div>
             </div>
-            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px]">
+            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-gray-800 opacity-90 text-white rounded-lg shadow-lg h-[450px]">
               <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Date 📅 </h2>
               <div className="flex justify-start mb-5 mt-1">
-                <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+                <div className="border-b-2 rounded-lg border-green-500 w-1/5"></div> {/* Orange border */}
               </div>
               <div className="w-full overflow-auto">
 
 
 
-                <div className="w-full border bg-black text-slate-50 border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
+                <div className="w-full border bg-gray-800 text-slate-50 border-gray-300 rounded-lg shadow-lg overflow-x-auto"> {/* Added border and shadow */}
                   <div className="min-w-full  custom-datepicker-container "> {/* Enable horizontal scrolling */}
                     <DateRange
                       editableDateInputs={true}
@@ -425,10 +425,10 @@ const Create = () => {
 
 
 
-            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-black opacity-90 text-white rounded-lg shadow-lg h-[450px]">
+            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-green-500  border-t-blue-500 bg-gray-800 opacity-90 text-white rounded-lg shadow-lg h-[450px]">
               <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Time ⏳</h2>
               <div className="flex justify-start mb-2 mt-1">
-                <div className="border-b-2 rounded-lg border-orange-500 w-1/5"></div> {/* Orange border */}
+                <div className="border-b-2 rounded-lg border-green-500 w-1/5"></div> {/* Orange border */}
               </div>
 
               <div className=" container mx-auto flex flex-row items-start gap-6">
