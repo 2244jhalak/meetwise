@@ -8,7 +8,7 @@ const Page = () => {
     
         return (
            <PrivateRoute>
-             <div className='bg-slate-900'>
+             <div className='bg-gray-200'>
                 <Create />
             </div>
            </PrivateRoute>

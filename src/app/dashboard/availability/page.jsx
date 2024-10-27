@@ -10,7 +10,7 @@ const Page = () => {
         return (
            
             <PrivateRoute>
-            <div className=' bg-slate-950 min-h-xcreen md:flex md:flex-row md:justify-between'>
+            <div className=' bg-gray-300 min-h-xcreen md:flex md:flex-row md:justify-between'>
            <div className='md:w-1/4'>
                <Sidebar />
            </div>
