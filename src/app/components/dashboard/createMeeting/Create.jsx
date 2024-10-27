@@ -226,7 +226,7 @@ const Create = () => {
       endDate: endDateLocal,
       availability: availability,
       createDate: new Date(), // Include availability object
-      userTimeZone:userTimeZone,
+      userTimeZone: userTimeZone,
 
     };
     setLoading(true);
@@ -279,7 +279,7 @@ const Create = () => {
 
             <h4 className="font-semibold">Event Name *</h4>
             <input
-              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
+              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black dark:text-white"
               type="text"
               placeholder="Name of your meeting event"
               value={eventName}
@@ -288,7 +288,7 @@ const Create = () => {
 
             <h4 className="font-semibold">Short Description</h4>
             <input
-              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
+              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black dark:text-white"
               type="text"
               placeholder="Short Description"
               value={description}
@@ -299,7 +299,7 @@ const Create = () => {
             <select
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
-              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black mb-2"
+              className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black dark:text-white mb-2"
             >
               <option value="15 min">15 min</option>
               <option value="30 min">30 min</option>
@@ -315,7 +315,7 @@ const Create = () => {
                 placeholder={`Add ${selected} url `}
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black"
+                className="py-2 w-4/5 border-2 rounded-lg pl-5 text-black dark:text-white"
               />
             )}
             <div className="flex pb-4">
@@ -452,14 +452,14 @@ const Create = () => {
                                     <label className="block text-sm font-medium text-white">Start Time:</label>
                                     <input
                                       type="time"
-                                      className="mt-1 w-3/4 block border text-black  border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                                      className="mt-1 w-3/4 block border text-black dark:text-white  border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                                       value={availability[date]?.startTime || ""}
                                       onChange={(e) => handleTimeChange(date, "startTime", e.target.value)}
                                       required
                                     />
                                   </div>
                                   <div className=" ">
-                                    <label className="block text-sm font-medium text-white">End Time:</label>
+                                    <label className="block text-sm font-medium text-white dark:text-white">End Time:</label>
                                     <input
                                       type="time"
                                       className="mt-1 block border w-3/4 text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
