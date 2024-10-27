@@ -55,35 +55,35 @@ const SignIn = () => {
         <div className="container mx-auto pb-5">
             <div className='flex flex-col-reverse gap-2 lg:flex-row items-center justify-center'>
                 {/* Left side */}
-                <div className="lg:w-4/5 lg:min-h-screen md:pt-16">
+                <div className="md:block hidden lg:w-4/5 lg:min-h-screen md:pt-16">
                     <LottieAnimation animationData={Login}></LottieAnimation>
                 </div>
                 {/* Form */}
                 <div className="lg:w-4/5 flex pt-5 flex-col items-center space-y-6 lg:min-h-screen">
                     <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
-                        <h1 className="text-2xl pb-3 font-extrabold text-center mx-auto text-white lg:text-3xl dark:text-white">
+                        <h1 className="text-2xl pb-3 font-extrabold text-center mx-auto text-black lg:text-3xl dark:text-white">
                             Log In Now
                         </h1>
-                        <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-orange-600 w-[50%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
+                        <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-600 w-[50%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
                     </div>
-                    <div className="card w-full bg-white/10 backdrop-blur-md backdrop-opacity-70 border border-orange-200 max-w-sm shrink-0 shadow-2xl">
+                    <div className="card w-full bg-white/60 backdrop-blur-md backdrop-opacity-70 border border-green-200 max-w-sm shrink-0 shadow-2xl">
                         <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text font raleway text-white font-bold text-lg">Email</span>
+                                    <span className="label-text font raleway text-black font-bold text-lg">Email</span>
                                 </label>
                                 <input type="email" name="email" placeholder="email" className="input input-bordered" required />
                             </div>
                             <div className="form-control relative">
                                 <label className="label">
-                                    <span className="label-text font raleway text-white font-bold text-lg">Password</span>
+                                    <span className="label-text font raleway text-black font-bold text-lg">Password</span>
                                 </label>
                                 <input type={showpassword ? "text" : "password"} name="password" placeholder="password" className="input input-bordered" required />
                                 <p onClick={() => setShowpassword(!showpassword)} className="absolute top-[44%] left-[82%] md:left-[85%]">
                                     {showpassword ? <FaEyeSlash className="h-[100%] text-black" /> : <FaEye className="h-[100%] text-black" />}
                                 </p>
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link text-white link-hover font raleway font-bold text-lg">Forgot password?</a>
+                                    <a href="#" className="label-text-alt link text-black  link-hover font raleway font-bold text-lg">Forgot password?</a>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
@@ -98,8 +98,8 @@ const SignIn = () => {
                             </div>
                         </div>
                         <div className='flex flex-row text-black px-8 py-2 space-x-1'>
-                            <p className="font-raleway font-bold text-white">Create an account? Please</p>
-                            <Link href="/signup"><span className='underline text-orange-600 font-raleway font-extrabold'>Signup</span></Link>
+                            <p className="font-raleway font-bold text-black">Create an account? Please</p>
+                            <Link href="/signup"><span className='underline text-blue-600 font-raleway font-extrabold'>Signup</span></Link>
                         </div>
                     </div>
                 </div>
