@@ -44,7 +44,7 @@ const SocialLogin = () => {
                     height={30}
                     className="object-contain"
                 />
-                <p className="font-semibold text-black hover:text-white transition-all duration-500 ease-in">Continue With Google</p>
+                <p className="font-semibold text-black hover:text-white transition-all duration-500 ease-in">Continue with Google</p>
             </button>
         </div>
     );
