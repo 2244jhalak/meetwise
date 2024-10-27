@@ -45,12 +45,14 @@ const MeetingAnalytics = () => {
                 label: 'Meetings Over Time',
                 data: Object.values(meetingCounts),
                 backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                color: '#FFFFFF',
             }]
         };
     };
 
     const getMeetingTypeDistributionData = () => {
         const typeCounts = {};
+        
         filteredMeetings.forEach(meet => {
             const type = meet.selected;
             typeCounts[type] = (typeCounts[type] || 0) + 1;
@@ -61,27 +63,24 @@ const MeetingAnalytics = () => {
             datasets: [{
                 label: 'Meeting Type Distribution',
                 data: Object.values(typeCounts),
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.6)',
-                    'rgba(54, 162, 235, 0.6)',
-                    'rgba(255, 206, 86, 0.6)',
-                    'rgba(75, 192, 192, 0.6)',
-                ],
+                backgroundColor: ['#2ecc71', '#27ae60', '#1e8449'],
+                color: '#FFFFFF',
             }]
         };
     };
 
     return (
-        <div className='container font-raleway mx-auto p-4 text-white shadow-lg rounded-md'>
-            <h2 className='text-3xl font-bold text-center'>Your Meeting Analytics</h2>
-            <div className="border border-orange-600 rounded-xl text-center mx-auto mb-2 mt-2 w-24"></div>
+        <div className='container font-raleway mx-auto p-4 bg-gray-300  text-white shadow-lg rounded-md'>
+            <h2 className='text-3xl font-bold text-center text-black'>Your Meeting Analytics</h2>
+            <div className="border border-green-600 rounded-xl text-center mx-auto mb-2 mt-2 w-24"></div>
 
             {/* Chart Section */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
-                <div className="glass p-4 rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
-                    <h3 className="text-xl font-bold text-center">Meetings Over Time</h3>
+                <div className="glass p-4  bg-gray-400 border-2 border-l-0 border-r-0 border-b-0 border-t-blue-500 border-dashed  rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
+                    <h3 className="text-xl text-black font-bold text-center">Meetings Over Time</h3>
                     <Bar 
                         data={getMeetingsOverTimeData()} 
+                      
                         options={{
                             responsive: true,
                             maintainAspectRatio: true, // Maintain the aspect ratio so height doesn't increase
@@ -107,10 +106,11 @@ const MeetingAnalytics = () => {
                     />
                 </div>
 
-                <div className="glass p-4 rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
+                <div className="glass p-4  bg-gray-400 border-2 border-l-0 border-r-0 border-b-0 border-t-blue-500 border-dashed  text-black rounded-lg shadow-md flex-1 min-w-[300px]" style={{ height: '500px' }}>
                     <h3 className="text-xl font-bold text-center">Meeting Type Distribution</h3>
                     <Pie 
                         data={getMeetingTypeDistributionData()} 
+                           
                         options={{
                             responsive: true,
                             maintainAspectRatio: true, // Maintain the aspect ratio so height doesn't increase

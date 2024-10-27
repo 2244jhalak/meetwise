@@ -147,9 +147,9 @@ const handleShareMeeting = (meet) => {
     };
 
     return (
-        <div className='container font-raleway mx-auto mt-10 p-6 text-white bg-slate-950 shadow-lg min-h-screen rounded-md'>
-            <h2 className='text-4xl font-bold mt-5 text-white text-center container mx-auto'>Your Meeting Library</h2>
-            <div className="border border-orange-600 rounded-xl text-center mx-auto container w-[110px] mb-2 mt-2"></div>
+        <div className='container font-raleway mx-auto pr-6 pb-6 pt-2 pl-2 text-black bg-gray-200 shadow-lg min-h-screen rounded-md'>
+            <h2 className='text-4xl font-bold mt-5 text-black text-center container mx-auto'>Your Meeting Library</h2>
+            <div className="border border-green-600 rounded-xl text-center mx-auto container w-[110px] mb-2 mt-2"></div>
             <p className='p-4 text-center mx-auto font-medium font-raleway text-lg'>View, manage, and share all your scheduled meetings in one place with quick access to copy meeting links</p>
             
             {/* Search bar */}
@@ -162,7 +162,7 @@ const handleShareMeeting = (meet) => {
             placeholder="Search meetings by name..."
             value={searchTerm}
             onChange={handleSearch}
-            className="p-3 pl-10 rounded-full w-full bg-black text-white border border-gray-600"
+            className="p-3 pl-10 rounded-full w-full bg-white text-black border border-green-600 "
         />
         <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
             <FaSearch className="text-gray-400" size={20} /> {/* Search icon from react-icons */}
@@ -176,7 +176,7 @@ const handleShareMeeting = (meet) => {
 <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-5 ' >
     {
         filteredMeetings.map(meet => (
-            <div className='rounded-lg relative border border-green-500 bg-black text-white shadow-2xl 'data-aos="fade-up" key={meet._id}>
+            <div className='rounded-lg relative border border-green-500 bg-gray-800 text-white shadow-2xl 'data-aos="fade-up" key={meet._id}>
                 {/* Delete Icon */}
                 <FaTrash 
                     className='absolute top-2 left-2 cursor-pointer' 
@@ -208,7 +208,7 @@ const handleShareMeeting = (meet) => {
                             <p>Copy Link</p>
                         </div>
                         <button
-                            className='text-orange-500 underline cursor-pointer'
+                            className='text-white underline cursor-pointer'
                             onClick={() => handleViewDetails(meet._id)}
                         >
                             View Details
