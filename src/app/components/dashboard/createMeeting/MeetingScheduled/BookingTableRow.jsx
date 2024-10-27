@@ -22,14 +22,14 @@ const BookingTableRow = ({ meeting }) => {
             <td className="px-4 py-4 text-sm text-slate-950 whitespace-nowrap">
                 <div>
                     <h4 className=" dark:text-gray-200">{meeting?.meetingLocation}</h4>
-
                 </div>
             </td>
 
 
 
             <td className="px-4 py-4 text-sm  text-slate-950whitespace-nowrap">
-                <a target="_blank" className="link w-2/3 h-1.5">{meeting?.url}</a>
+                <a target="_blank"
+                    rel="noopener noreferrer" href={meeting?.url} className="link w-2/3 h-1.5">link</a>
             </td>
 
             <td className="px-4 py-4 text-sm whitespace-nowrap">
