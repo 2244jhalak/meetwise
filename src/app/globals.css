@@ -29,16 +29,18 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 .custom-datepicker-container .rdrCalendarWrapper{
-  background-color: black;
+  background-color: rgb(235, 235, 237);
   color: white;
 }
 .custom-datepicker-container .rdrDateDisplayWrapper {
-  background-color: rgb(51, 52, 55);
+  background-color: rgb(235, 235, 237);
 
 }
 .custom-datepicker-container .rdrMonth {
   width: 100%;
+  color: white;
 }
+
 
 .custom-datepicker-container .rdrDayDisabled {
   background-color: rgb(74, 72, 72);

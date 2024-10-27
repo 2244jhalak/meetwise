@@ -36,14 +36,14 @@ const AllMeetings = () => {
     
 
     return (
-        <div className='container font-raleway mx-auto mt-10 p-6 text-white shadow-lg min-h-screen rounded-md'>
-            <h2 className='text-4xl font-bold mt-5 text-white text-center container mx-auto'>All Meetings</h2>
-            <div className="border border-orange-600 rounded-xl text-center mx-auto container w-[110px] mb-2 mt-2"></div>
-            <p className='p-4 text-center mx-auto font-medium font-raleway text-lg'>View, manage, and share all your scheduled meetings in one place with quick access to copy meeting links</p>
+        <div className='container font-raleway bg-gray-300 mx-auto mt-10 p-6 text-white shadow-lg min-h-screen rounded-md'>
+            <h2 className='text-4xl font-bold mt-5 text-black text-center container mx-auto'>All Meetings</h2>
+            <div className="border border-green-600 rounded-xl text-center mx-auto container w-[110px] mb-2 mt-2"></div>
+            <p className='p-4 text-center text-gray-700 mx-auto font-medium font-raleway text-lg'>View, manage, and share all your scheduled meetings in one place with quick access to copy meeting links</p>
             <div className='grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-4 mt-5 '>
                 {
                     meeting.map(meet => (
-                        <div className='rounded-lg relative border border-green-500 bg-black text-white  shadow-2xl ' key={meet._id}>
+                        <div className='rounded-lg relative border border-green-500 bg-gray-800 text-white shadow-2xl ' key={meet._id}>
                             
                             <div className='bg-green-700 w-full h-[30px] rounded-t-lg'></div>
                             <div className='p-8 space-y-4'>

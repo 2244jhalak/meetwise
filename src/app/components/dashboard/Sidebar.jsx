@@ -70,7 +70,7 @@ const Sidebar = () => {
         <>
 
             {/* Small screen Navbar */}
-            <div className=' bg-black text-white flex justify-between md:hidden '>
+            <div className=' bg-blue-50  text-black flex justify-between md:hidden '>
                 <div>
                     <div className='block cursor-pointer p-4 font-bold'>
                         <Link href='/'>
@@ -93,31 +93,35 @@ const Sidebar = () => {
 
             {/* Sidebar */}
             <div
-                className={`z-30 lg:z-10 md:fixed flex flex-col justify-between overflow-x-hidden text-white bg-black w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
+                className={`z-30 lg:z-10 md:fixed flex flex-col justify-between overflow-x-hidden text-black border-2 border-r-green-800 bg-blue-50 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${isActive && '-translate-x-full'
                     }  md:translate-x-0  transition duration-200 ease-in-out`}
             >
                 <div>
                     <div>
-                        <div className='w-full text-2xl text-white hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center card glass mx-auto'>
+                        <div className='w-full text-2xl text-black bg-black hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center card glass mx-auto'>
                             <Link href='/' >
                                 <h1 className='text-white font-extrabold'>Meet<span className='text-green-600'>Wise</span></h1>
                             </Link>
                         </div>
+                      
+
                     </div>
+                 
 
 
                     {/* Nav Items */}
                 </div>
+               
                 {
                     // if there is admin login 
                     session?.data?.user?.role === "admin" ?
 
-                        <div className='flex ps-14 py-10 fixed'>
-                            <div className="">
-                                <button onClick={handleAdmin} className={`${admin ? "text-white bg-green-600 rounded-l-3xl p-2" : "disabled"}`}>Admin</button>
-                                <button onClick={handleUser} className={`${user ? "text-white bg-green-600 rounded-r-3xl p-2" : "disabled"}`}>User</button>
+                        <div className='flex ps-14 py-20 fixed font-raleway font-bold   pt-10 mb-10'>
+                            <div className="border-2 border-green-900 rounded-3xl  ">
+                                <button onClick={handleAdmin} className={`${admin ? "text-white  bg-green-600  rounded-l-3xl p-2 px-2" : "px-2 disabled"}`}>Admin</button>
+                                <button onClick={handleUser} className={`${user ? "text-white  bg-green-600 rounded-r-3xl p-2 px-2" : "px-2 disabled"}`}>User</button>
                             </div>
-
+                                           
                         </div>
                         :
                         <></>
@@ -212,12 +216,13 @@ const Sidebar = () => {
                     // </>
 
                 }
+             
                 {
                     admin ?
                         //  if usr is admin 
                         <>
                             {session?.data?.user?.role === "admin" ?
-                                <div className='container mx-auto text-white '>
+                                <div className='container mx-auto text-black'>
                                     <NavigationDash
                                         label='All Users'
                                         address='/dashboard/allUsers'
@@ -234,7 +239,7 @@ const Sidebar = () => {
                             }
 
                             <div>
-                                <hr />
+                              <div className='border border-t-green-800 w-full'></div>
 
                                 {/* Profile Menu */}
                                 <NavigationDash
@@ -246,7 +251,7 @@ const Sidebar = () => {
 
                                 <button
                                     onClick={() => signOut()}
-                                    className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                                    className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-black hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
                                 >
                                     <GrLogout className='w-5 h-5' />
 
@@ -261,7 +266,9 @@ const Sidebar = () => {
 
                         // if user is not admin but normal user
                         <>
-                            <div className='container mx-auto text-white '>
+
+                            <div className='container mx-auto text-black pt-10'>
+           
                                 <NavigationDash
                                     label='Create Meeting'
                                     address='/dashboard/createMeeting'
@@ -298,7 +305,7 @@ const Sidebar = () => {
                             </div>
 
                             <div>
-                                <hr />
+                            <div className='border border-t-green-800 w-full'></div>
 
                                 {/* Profile Menu */}
                                 <NavigationDash
@@ -310,7 +317,7 @@ const Sidebar = () => {
 
                                 <button
                                     onClick={() => signOut()}
-                                    className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-white hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
+                                    className='flex w-full items-center px-4 py-2 mt-5 rounded-xl text-black hover:bg-green-700 hover:text-white transform transition-all duration-500 ease-in font-raleway'
                                 >
                                     <GrLogout className='w-5 h-5' />
 

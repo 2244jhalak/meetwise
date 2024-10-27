@@ -156,15 +156,17 @@ const Hiw = () => {
   }, []);
 
     return (
-        <div className='container border brder-r-0 border-l-0 border-b-0 border-t-orange-500 mx-auto pt-10 bg-black/30 backdrop-blur-md backdrop-opacity-70  p-4 md:px-14 py-10 rounded-t-xl shadow-t-xl' data-aos="fade-up">
-            <div className='mb-7 md:mx-auto text-center pb-7 flex md:flex-row flex-col items-center justify-between'>
-                <div className='relative font-raleway font-bold text-center md:text-left text-2xl md:text-5xl md:w-1/2'>
-                    <h1 className='mb-3 text-white'>{translations[language].title}</h1>
-                    <div className='absolute bottom-0 left-[30%] md:left-0 border-b-2 border-orange-600 w-[40%]  md:hover:w-[50%] transition-all duration-300 ease-in-out p-4 cursor-pointer mb-2'></div>
-                </div>
-                <p className='text-lg font-raleway md:w-1/2 text-slate-100 mt-4 md:text-left text-center'>{translations[language].description}</p>
+        <div className='container   mx-auto  bg-gray-100 p-4 md:px-14 py-10 ' >
+             <div className='flex flex-col items-center justify-center '>
+               
+            <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white">{translations[language].title}</h1>
+            
+
+                <p className='text-lg font-raleway w-1/2 text-gray-500 mt-4 text-center my-8'>
+                {translations[language].description}
+                </p>
             </div>
-            <div data-aos="fade-up" className='grid md:grid-cols-1 grid-cols-1 lg:grid-cols-2 gap-5 lg:py-8 lg:px-8 text-gray-600 bg-green-100 rounded-xl shadow-xl border-2 border-t-orange-500   '>
+            <div className='grid md:grid-cols-1 grid-cols-1 lg:grid-cols-2 gap-5 lg:py-8 lg:px-8 text-black bg-green-50 rounded-xl shadow-xl border-2 border-t-green-500   '>
                 <div className="overflow-hidden">
                     <Slider ref={sliderRef} {...settings} className="h-full">
                         {translations[language].steps.map((step, index) => (
@@ -172,14 +174,14 @@ const Hiw = () => {
                                 <div className="flex flex-col md:flex-row items-center">
                                     <div className="p-6 md:w-1/2">
                                         <div>
-                                            <span className="text-xs font-bold text-orange-400 uppercase dark:text-orange-400 font-raleway">{step.step}</span>
+                                            <span className="text-xs font-bold text-blue-400 uppercase dark:text-orange-400 font-raleway">{step.step}</span>
                                             <a href="#" className="block mt-2 text-xl font-extrabold font-raleway  transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" tabIndex="0" role="link">
                                                 {step.title}
                                             </a>
                                             <p className="mt-2 text-sm  dark:text-gray-400 font-raleway">{step.description}</p>
                                         </div>
                                         <div className="mt-4">
-                                            <button type="button" className="px-8 py-3 border transition-all duration-500 ease-in font-raleway border-orange-600  hover:bg-green-700 hover:text-white font-semibold rounded-full dark:bg-gray-800 dark:text-gray-00">Learn More</button>
+                                            <button type="button" className="px-8 py-3 border transition-all duration-500 ease-in font-raleway border-green-600  hover:bg-green-700 hover:text-white font-semibold rounded-full dark:bg-gray-800 dark:text-gray-00">Learn More</button>
                                         </div>
                                     </div>
                                     <div className="md:w-1/2 mt-4">

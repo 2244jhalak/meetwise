@@ -42,7 +42,7 @@ const Navbar = () => {
     const { language } = useLanguage();
 
     return (
-        <div className='flex justify-between items-start md:items-center bg-black/10 backdrop-blur-md backdrop-opacity-70'>
+        <div className='flex justify-between items-start md:items-center bg-[#FFFFFF]'>
             <div onClick={() => setOpen(!open)} className='container mx-auto    lg:hidden '>
                 <p>
                     {open ? <FaWindowClose className='text-white' /> : <FaBars className='text-white' />}
@@ -50,11 +50,11 @@ const Navbar = () => {
             </div>
             <div className='font-semibold flex items-center space-x-2'>
                 
-                <h2 className='text-2xl md:text-4xl font-bold text-slate-100 font-raleway ml-6'>
+                <h2 className='text-2xl md:text-4xl font-bold text-[##2e1972] font-raleway ml-6'>
                     <i>Meet<span className='text-green-600'>Wise</span></i>
                 </h2>
             </div>
-            <div className={`${open ? 'top-16 z-10 lg:z-0 md:z-20 lg:bg-black  bg-white p-4 rounded-lg shadow-md block item-start font-bold font-raleway  ' : '-top-72  gap-5 text-green-600'} flex  lg:flex-row font-raleway font-bold flex-col px-2 py-4 absolute lg:static items-center rounded-b-lg ms-4 text-[13px] z-50  duration-1000 lg:gap-5 text-black`} style={{ zIndex: 1000 }}>
+            <div className={`${open ? 'top-16 z-10 lg:z-0 md:z-20 lg:bg-none  bg-white p-4 rounded-lg shadow-md block item-start font-bold font-raleway  ' : '-top-72  gap-5 text-green-600'} flex  lg:flex-row font-raleway font-bold flex-col px-2 py-4 absolute lg:static items-center rounded-b-lg ms-4 text-[13px] z-50  duration-1000 lg:gap-5 text-black`} style={{ zIndex: 1000 }}>
                 <Links />
                 <LanguageSelector />
                 {session.data ? (
@@ -72,7 +72,7 @@ const Navbar = () => {
                         <button className='btn  border border-slate-300 bg-[#28272B]  hover:bg-green-500  text-white' onClick={() => signOut()}>{translations[language].logout}</button>
                     </div>
                 ) : (
-                    <Link href='/login' className='btn border border-slate-300 bg-[#28272B]   hover:bg-green-500  text-white'>{translations[language].login}</Link>
+                    <Link href='/login' className='btn border border-slate-300 bg-[#2e1972]   hover:bg-green-500  text-white'>{translations[language].login}</Link>
                 )}
             </div>
         </div>
