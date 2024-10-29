@@ -33,7 +33,7 @@ const Partners = () => {
     <div id="partner" className=" container mx-auto">
       <div className=" rounded-t-xl shadow-t-xl pt-10   bg-gray-100 ">
         <div className="flex flex-col items-center justify-center ">
-          <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white">
+          <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4">
             {translations[language].title}
           </h1>
 
