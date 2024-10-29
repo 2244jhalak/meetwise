@@ -6,6 +6,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Swal from 'sweetalert2'; // Import SweetAlert
 import emailjs from '@emailjs/browser';
+import TimeZoneSelector from '../../Homepage/Timezone';
 
 const parseDate = (dateString) => {
   const [day, month, year] = dateString.split('/');
@@ -242,7 +243,10 @@ const MeetingDetails = ({ meetingDetails }) => {
       </div>
 
       <div className=" border-t-0 bg-gray-800 opacity-90 border-l-0  text-slate-50 card glass border-b-0 border-2 border-dashed border-l-green-500 border-r-green-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h3 className="text-2xl font-bold mb-4 text-gray-50">Select Your Time ⏰ </h3>
+        <h3 className="text-2xl font-bold  text-gray-50">Select Your Time ⏰ </h3>
+        {/* timezone */}
+        <TimeZoneSelector></TimeZoneSelector>
+
         {selectedDate ? (
           <p>{`You have selected: ${selectedDate.toLocaleDateString('en-GB')}`}</p>
         ) : (
