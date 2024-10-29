@@ -126,11 +126,11 @@ const AllUsers = () => {
 
     return (
         <div className='container mx-auto p-6 font-raleway text-white bg-blue-50  shadow-lg rounded-md'>
-           <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white"> User Management</h1>
-     
-             <h2 className='text-3xl text-black font-semibold mt-5 mb-5'>User Overview: <span className="text-green-500 font-bold">Total Users</span>- {users.length}</h2>
+            <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4"> User Management</h1>
+
+            <h2 className='text-3xl text-black font-semibold mt-5 mb-5'>User Overview: <span className="text-green-500 font-bold">Total Users</span>- {users.length}</h2>
             {/* Loading State */}
-           
+
 
             {/* All Users */}
             <div className="overflow-x-auto">
@@ -145,22 +145,22 @@ const AllUsers = () => {
                         </tr>
                     </thead>
                     {
-                    loading && 
-                    <p className='flex justify-center mt-10'>
-                        <span className="loading loading-ring loading-lg"></span>
-                    </p>
+                        loading &&
+                        <p className='flex justify-center mt-10'>
+                            <span className="loading loading-ring loading-lg"></span>
+                        </p>
                     }
                     <tbody>
                         {/* Map through users to create table rows */}
                         {
-                            users.map(user => 
+                            users.map(user =>
                                 <tr key={user._id}>
                                     <td>
                                         <div className="flex items-center gap-3">
                                             <div className="avatar">
                                                 <div className="mask mask-squircle h-12 w-12 animate__animated animate__flipInY">
                                                     <Image width={50} height={50} src={user.image} alt='' />
-                                                </div>  
+                                                </div>
                                             </div>
                                             <div>
                                                 <div className="font-bold text-black">{user.name}</div>
@@ -171,20 +171,20 @@ const AllUsers = () => {
                                         <span className="text-gray-900">{user.email}</span>
                                     </td>
                                     <td>
-                                        <button 
-                                            disabled={user?.role==="admin"}
+                                        <button
+                                            disabled={user?.role === "admin"}
                                             onClick={() => handleRoleUpdate(user._id)} // Call handleRoleUpdate with the user ID
                                         >
-                                            { 
-                                            user.role === "admin" ?
-                                                <p className='font-semibold text-green-600 rounded-xl'>Admin</p>
-                                                :
-                                                <p className='font-semibold text-blue-600 rounded-xl'>User</p>
+                                            {
+                                                user.role === "admin" ?
+                                                    <p className='font-semibold text-green-600 rounded-xl'>Admin</p>
+                                                    :
+                                                    <p className='font-semibold text-blue-600 rounded-xl'>User</p>
                                             }
                                         </button>
                                     </td>
                                     <td>
-                                        <FaTrash 
+                                        <FaTrash
                                             className="cursor-pointer text-red-500"
                                             onClick={() => handleDeleteUser(user._id, user.role)} // Pass user ID and role to the function
                                         />
