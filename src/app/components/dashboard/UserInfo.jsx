@@ -111,7 +111,7 @@ const UserInfo = () => {
 
     return (
         <div className='px-3 bg-gray-300'>
-            <h1 className="text-2xl text-black pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-green-600 text-center lg:mx-auto lg:text-3xl dark:text-white my-4 md:mx-auto mx-6">
+            <h1 className="text-2xl text-black pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-green-600 text-center lg:mx-auto lg:text-3xl my-4 md:mx-auto mx-6">
                 My Profile
             </h1>
             <div className=' text-white w-full lg:w-[700px] md:w-96 border-2 border-gray-700 bg-blue-100  rounded-lg shadow-lg glass p-6 mx-auto'>
@@ -140,7 +140,7 @@ const UserInfo = () => {
                             <div className="text-sm text-center mt-2 px-6 text-gray-700">
                                 <h6>{description}</h6>
                             </div>
-                          
+
                         </div>
                     </div>
                     <form onSubmit={handleUpdate} className="space-y-4 w-80 mt-8 mx-auto">

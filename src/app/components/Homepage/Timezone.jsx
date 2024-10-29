@@ -25,7 +25,7 @@ const TimeZoneSelector = ({ eventTime }) => {
 
   // Function to convert event time to the selected time zone
   const convertEventTime = (time, timezone) => {
-    const eventMoment = moment.tz(time,Intl.DateTimeFormat().resolvedOptions().timeZone); // assuming event time is in Dhaka time
+    const eventMoment = moment.tz(time, Intl.DateTimeFormat().resolvedOptions().timeZone); // assuming event time is in Dhaka time
     const userLocalTime = eventMoment.clone().tz(timezone);
     setConvertedTime(userLocalTime.format('YYYY-MM-DD HH:mm'));
   };
@@ -40,15 +40,15 @@ const TimeZoneSelector = ({ eventTime }) => {
   return (
     <div className=' text-black pl-4 p-1 bg-gray-800'>
       <h3 className=' text-white  font-bold'>Check Your Time Zone</h3>
-      <select value={selectedTimezone} onChange={handleTimezoneChange}>
+      <select className='dark:text-white' value={selectedTimezone} onChange={handleTimezoneChange}>
         {timezones.map((tz) => (
-          <option key={tz} value={tz}>
+          <option className='dark:text-white' key={tz} value={tz}>
             {tz}
           </option>
         ))}
       </select>
 
-      <div> 
+      <div>
         {/* <h4 >Event Time in Your Time Zone:</h4> */}
         <p className='text-white' >{convertedTime ? convertedTime : "Loading..."}</p>
       </div>
