@@ -38,8 +38,8 @@ const TimeZoneSelector = ({ eventTime }) => {
   }, [eventTime, selectedTimezone]);
 
   return (
-    <div>
-      <h3>Select Your Time Zone:</h3>
+    <div className=' text-black pl-4 p-1 bg-gray-800'>
+      <h3 className=' text-white  font-bold'>Check Your Time Zone</h3>
       <select value={selectedTimezone} onChange={handleTimezoneChange}>
         {timezones.map((tz) => (
           <option key={tz} value={tz}>
@@ -48,9 +48,9 @@ const TimeZoneSelector = ({ eventTime }) => {
         ))}
       </select>
 
-      <div>
-        <h4>Event Time in Your Time Zone:</h4>
-        <p>{convertedTime ? convertedTime : "Loading..."}</p>
+      <div> 
+        {/* <h4 >Event Time in Your Time Zone:</h4> */}
+        <p className='text-white' >{convertedTime ? convertedTime : "Loading..."}</p>
       </div>
     </div>
   );
