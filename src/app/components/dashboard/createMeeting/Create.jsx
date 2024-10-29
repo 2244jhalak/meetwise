@@ -447,7 +447,7 @@ const Create = () => {
                                   <div className="h-3 w-3 rounded-full bg-green-500 mr-2"></div>
                                   <span className="font-extrabold text-xl text-slate-50">{date}</span> {/* Show date with day */}
                                 </div>
-                                <div className="flex flex-row items-center mt-2 mb-2 justify-start ml-2">
+                                <div className="flex flex-row items-center mt-2 mb-2 justify-start ml-3">
                                   <div className="">
                                     <label className="block text-sm font-medium text-white">Start Time:</label>
                                     <input
@@ -462,7 +462,7 @@ const Create = () => {
                                     <label className="block text-sm font-medium text-white dark:text-white">End Time:</label>
                                     <input
                                       type="time"
-                                      className="mt-1 block border w-3/4 text-black border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
+                                      className="mt-1 block border w-3/4 text-black dark:text-white border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-200"
                                       value={availability[date]?.endTime || ""}
                                       onChange={(e) => handleTimeChange(date, "endTime", e.target.value)}
                                     />
