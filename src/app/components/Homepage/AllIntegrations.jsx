@@ -110,7 +110,7 @@ const AllIntegrations = () => {
            
                </div>
             {/* <h3 className='text-4xl font-bold mb-10'>{title}</h3> */}
-            <div className='md:flex justify-between gap-10 mx-auto '>
+            <div className='md:flex justify-center gap-14 mx-auto '>
                 <div className='bg-white p-7 lg:w-96 pr-5 md:w-[370px] rounded-2xl shadow-xl text-start mt-5  shadow-green-900'>
                     <div className='rounded-full p-3 w-16 bg-white shadow-xl lg:hover:scale-105 animate__animated animate__zoomIn'>
                         <Image src={googleMeet.image} alt="" width={1000} height={1000} />

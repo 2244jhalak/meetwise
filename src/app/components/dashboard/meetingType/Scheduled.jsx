@@ -208,7 +208,7 @@ const handleShareMeeting = (meet) => {
                             <p>Copy Link</p>
                         </div>
                         <button
-                            className='text-white underline cursor-pointer'
+                            className='text-blue-500 underline cursor-pointer'
                             onClick={() => handleViewDetails(meet._id)}
                         >
                             View Details
