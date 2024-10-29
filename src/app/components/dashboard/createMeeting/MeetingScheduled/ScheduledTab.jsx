@@ -6,10 +6,8 @@ import UpComingTab from './UpComingTab';
 
 const CustomTabs = () => {
     return (
-        <div className='container mx-auto  mr-4 p-6 text-white bg-slate-950 shadow-lg rounded-md'>
-            <h1 className="text-2xl pb-3 font-bold  rounded-2xl  border-b-2 border-slate-200 text-center mx-auto text-slate-100 lg:text-3xl w-[500px] dark:text-white mb-6">
-            Scheduled & Concluded Meetings
-      </h1>
+        <div className='container mx-auto  mr-4 p-6 text-slate-950 bg-blue-50 shadow-lg rounded-md'>
+            <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-2xl lg:w-2/4 md:w-1/4 dark:text-white"> Scheduled & Concluded Meetings</h1>
               
             <Tabs>
             <TabList>
