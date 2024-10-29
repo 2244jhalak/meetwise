@@ -17,81 +17,82 @@ const AllIntegrations = () => {
 
     const translations = {
         en: {
-            title: "All Integrations",
-            description: "Connect effortlessly with popular meeting platforms through our AI-powered recording integrations.",
+            title: "Meeting Integrations",
+            description: "Easily create meetings on our platform using Google Meet and Zoom links with our seamless integration.",
             googleMeet: {
                 title: "Google Meet",
                 image: "/all_integrations/google_meet.png",
-                description: "Easily integrate our AI-powered recording platform with Google Meet for an enhanced meeting experience."
+                description: "Easily create meetings using Google Meet links with our platform for a streamlined experience."
             },
             zoom: {
                 title: "Zoom",
                 image: "/all_integrations/zoom.png",
-                description: "Enhance your Zoom meetings with seamless integration of our AI-powered recording platform."
+                description: "Enhance your experience by creating meetings with Zoom links directly on our platform."
             },
             microsoftTeams: {
                 title: "Microsoft Teams",
                 image: "/all_integrations/microsoft_team.webp",
-                description: "Boost your Microsoft Teams meetings with our AI-powered recording integration for smoother collaboration."
+                description: "Improve collaboration with Microsoft Teams by integrating meeting links directly into our platform."
             }
         },
         es: {
-            title: "Todas las Integraciones",
-            description: "Conéctate fácilmente con plataformas de reuniones populares a través de nuestras integraciones de grabación impulsadas por IA.",
+            title: "Integraciones de reuniones",
+            description: "Crea reuniones fácilmente en nuestra plataforma utilizando enlaces de Google Meet y Zoom con nuestra integración perfecta.",
             googleMeet: {
                 title: "Google Meet",
                 image: "/all_integrations/google_meet.png",
-                description: "Integra fácilmente nuestra plataforma de grabación impulsada por IA con Google Meet para una mejor experiencia de reunión."
+                description: "Crea reuniones fácilmente utilizando enlaces de Google Meet en nuestra plataforma para una experiencia fluida."
             },
             zoom: {
                 title: "Zoom",
                 image: "/all_integrations/zoom.png",
-                description: "Mejora tus reuniones de Zoom con la integración de nuestra plataforma de grabación impulsada por IA."
+                description: "Mejora tu experiencia creando reuniones con enlaces de Zoom directamente en nuestra plataforma."
             },
             microsoftTeams: {
                 title: "Microsoft Teams",
                 image: "/all_integrations/microsoft_team.webp",
-                description: "Optimiza tus reuniones en Microsoft Teams con nuestra integración de grabación impulsada por IA."
+                description: "Mejora la colaboración en Microsoft Teams integrando enlaces de reuniones directamente en nuestra plataforma."
             }
         },
         fr: {
-            title: "Toutes les Intégrations",
-            description: "Connectez-vous facilement aux plateformes de réunion populaires grâce à nos intégrations d'enregistrement alimentées par IA.",
+            title: "Intégrations de réunion",
+            description: "Créez facilement des réunions sur notre plateforme en utilisant des liens Google Meet et Zoom avec notre intégration fluide.",
             googleMeet: {
                 title: "Google Meet",
                 image: "/all_integrations/google_meet.png",
-                description: "Intégrez facilement notre plateforme d'enregistrement alimentée par IA avec Google Meet pour une meilleure expérience de réunion."
+                description: "Créez facilement des réunions en utilisant des liens Google Meet sur notre plateforme pour une expérience sans faille."
             },
             zoom: {
                 title: "Zoom",
                 image: "/all_integrations/zoom.png",
-                description: "Améliorez vos réunions Zoom avec l'intégration de notre plateforme d'enregistrement alimentée par IA."
+                description: "Améliorez votre expérience en créant des réunions avec des liens Zoom directement sur notre plateforme."
             },
             microsoftTeams: {
                 title: "Microsoft Teams",
                 image: "/all_integrations/microsoft_team.webp",
-                description: "Boostez vos réunions Microsoft Teams avec notre intégration d'enregistrement alimentée par IA."
+                description: "Améliorez la collaboration avec Microsoft Teams en intégrant des liens de réunion directement dans notre plateforme."
             }
         },
         bn: {
-            title: "সমস্ত একীকরণ",
-            description: "আমাদের AI-চালিত রেকর্ডিং একীকরণের মাধ্যমে জনপ্রিয় বৈঠক প্ল্যাটফর্মগুলির সাথে সহজে সংযুক্ত হোন।",
+            title: "মিটিং একীকরণ",
+            description: "আমাদের প্ল্যাটফর্মে গুগল মিট ও জুম লিংক ব্যবহার করে সহজে মিটিং তৈরি করুন আমাদের নিরবচ্ছিন্ন একীভূতকরণের মাধ্যমে।",
             googleMeet: {
                 title: "গুগল মিট",
                 image: "/all_integrations/google_meet.png",
-                description: "উন্নত বৈঠকের অভিজ্ঞতার জন্য আমাদের AI-চালিত রেকর্ডিং প্ল্যাটফর্মকে গুগল মিটের সাথে সহজেই একীভূত করুন।"
+                description: "সহজেই গুগল মিট লিংক ব্যবহার করে আমাদের প্ল্যাটফর্মে মিটিং তৈরি করুন একটি মসৃণ অভিজ্ঞতার জন্য।"
             },
             zoom: {
                 title: "জুম",
                 image: "/all_integrations/zoom.png",
-                description: "আমাদের AI-চালিত রেকর্ডিং প্ল্যাটফর্মের একীকরণের মাধ্যমে আপনার জুম বৈঠকগুলি উন্নত করুন।"
+                description: "আমাদের প্ল্যাটফর্মে সরাসরি জুম লিংক ব্যবহার করে মিটিং তৈরি করে আপনার অভিজ্ঞতা উন্নত করুন।"
             },
             microsoftTeams: {
                 title: "মাইক্রোসফট টিমস",
                 image: "/all_integrations/microsoft_team.webp",
-                description: "AI-চালিত রেকর্ডিং একীকরণের মাধ্যমে মাইক্রোসফট টিমস বৈঠকগুলি আরও উন্নত করুন।"
+                description: "মাইক্রোসফট টিমসের মিটিং লিংক সরাসরি আমাদের প্ল্যাটফর্মে সংযুক্ত করে সহযোগিতা উন্নত করুন।"
             }
         }
+        
 
 
     };
