@@ -63,7 +63,7 @@ const MeetingAnalytics = () => {
             datasets: [{
                 label: 'Meeting Type Distribution',
                 data: Object.values(typeCounts),
-                backgroundColor: ['#2ecc71', '#27ae60', '#1e8449'],
+                backgroundColor: ['#4BC0C0', '#36A2EB', '#1e8449'],
                 color: '#FFFFFF',
             }]
         };
