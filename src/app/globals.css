@@ -91,8 +91,13 @@ overflow: hidden;
   position: relative; /* Allows the dot to be placed absolutely relative to this element */
 }
 
-
-
+.slider-container{
+  background-color: none;
+}
+.slider-container .slick-prev:before, .slick-next:before {
+  color: green !important;
+  font-size: 24px !important;
+}
 
 @layer utilities {
   .text-balance {
