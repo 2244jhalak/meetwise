@@ -128,7 +128,7 @@ const Carousel = () => {
                    
              
 
-                <p className='text-lg font-raleway w-1/2 text-gray-500 mt-4 text-center my-8'>
+                <p className='text-lg font-raleway md:w-1/2 text-gray-500 mt-4 text-center my-8'>
                     {currentContent.paragraph || "Our users’ feedback is the driving force behind everything we do. Here’s what they have to say about how our platform has made scheduling meetings easier and more efficient for their businesses."}
                 </p>
             </div>
@@ -148,13 +148,14 @@ const Carousel = () => {
                                         className="object-cover md:rounded-[50px] lg:rounded-[50px] rounded-2xl"
                                         style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 0% 100%)' }}
                                     />
+                                      <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/40 to-transparent rounded-t-[50px]" />
                                     <div className="text-end md:-mt-20">
                                         <h3 className="text-xl text-black font-bold">{slide.title}</h3>
                                         <p className="text-gray-400 text-md">{slide.position}</p>
                                     </div>
                                 </div>
 
-                                <div className='absolute bg-green-100 text-gray-700 p-4 shadow-lg lg:-mt-96 md:-mt-60 -mt-52 lg:ml-[450px] md:ml-[280px] ml-44 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36 shadow-green-900'>
+                                <div className='absolute bg-gray-800 text-slate-100 p-4 shadow-lg lg:-mt-96 md:-mt-60 -mt-52 lg:ml-[450px] md:ml-[280px] ml-44 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36 shadow-green-900'>
                                     <p className="lg:text-[38px] md:text-3xl text-[10px] font-bold inline-block leading-snug rounded-lg ">{slide.quote}</p>
                                 </div>
                             </div>

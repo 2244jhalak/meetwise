@@ -85,31 +85,31 @@ const ChooseUs = () => {
     const t = translations[language]; // Get translations for the selected language
 
     return (
-        <div className="container mx-auto md:my-12 backdrop-blur-md backdrop-opacity-70 px-4" data-aos="fade-up">
-            <h2 className="text-2xl pb-3 font-semibold rounded-2xl border-b-2 border-orange-500 text-center mx-auto text-gray-200 lg:text-3xl md:w-1/2 dark:text-white px-8">
+        <div className="container mx-auto md:py-12 bg-gray-200 px-4" >
+            <h2 className="text-2xl pb-3 font-semibold rounded-2xl border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/2 dark:text-white px-8">
                 {t.title}
             </h2>
             <div className="flex flex-col md:gap-4 md:flex-row mx-4 mt-10 justify-between">
                 {/* Left side */}
-                <section className="md:text-xl md:w-1/2 shadow-xl bg-green-50/90 p-2 md:p-4 border-r-2 border-blue-800 rounded-2xl my-5" data-aos="fade-right">
+                <section className="md:text-xl md:w-1/2 shadow-xl bg-white p-2 md:p-4 border-l-2 border-blue-800 rounded-2xl my-5" data-aos="fade-right">
                     <article className="my-2 md:my-4 px-5">
-                        <h3 className="font-semibold md:text-2xl mb-2">{t.whyChooseUsTitle}</h3>
+                        <h3 className="font-bold md:text-2xl mb-2 text-green-700">{t.whyChooseUsTitle}</h3>
                         <p>{t.whyChooseUsDesc}</p>
                     </article>
                     <article className="my-2 px-5">
-                        <h3 className="font-semibold md:text-2xl mb-2">{t.ourValuesTitle}</h3>
+                        <h3 className="font-bold md:text-2xl mb-2 text-green-700">{t.ourValuesTitle}</h3>
                         <p>{t.ourValuesDesc}</p>
                     </article>
                 </section>
 
                 {/* Right side */}
-                <section className="md:w-1/2 md:text-xl md:p-4 border-l-2 rounded-2xl shadow-xl bg-orange-50/90 border-blue-800 my-5" data-aos="fade-left">
+                <section className="md:w-1/2 md:text-xl md:p-4 border-r-2 rounded-2xl shadow-xl bg-white border-green-800 my-5" data-aos="fade-left">
                     <article className="my-2 md:my-4 px-5">
-                        <h3 className="font-semibold md:text-2xl mb-2">{t.meetTeamTitle}</h3>
+                        <h3 className="font-bold md:text-2xl mb-2 text-blue-700">{t.meetTeamTitle}</h3>
                         <p>{t.meetTeamDesc}</p>
                     </article>
                     <article className="my-2 px-5">
-                        <h3 className="font-semibold md:text-2xl mb-2">{t.joinUsTitle}</h3>
+                        <h3 className="font-bold md:text-2xl mb-2 text-blue-700">{t.joinUsTitle}</h3>
                         <p>{t.joinUsDesc}</p>
                     </article>
                 </section>
