@@ -25,7 +25,7 @@ const AboutHeader = () => {
     const { language } = useLanguage(); // Access the selected language
 
     return (
-        <div className='container mx-auto px-4 backdrop-blur-md'>
+        <div className='container mx-auto px-4 md:backdrop-blur-md'>
             <div
                 className="hero md:h-[300px] lg::h-[450px] h-[350px] rounded-sm "
                 style={{
