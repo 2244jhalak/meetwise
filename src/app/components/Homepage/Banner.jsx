@@ -64,7 +64,7 @@ const Banner = () => {
   const { language } = useLanguage();
   const session = useSession();
   return (
-    <div className="container lg:h-full h-[400px] pt-7 mx-auto bg-black/10 lg:backdrop-blur-md lg:backdrop-opacity-70 lg:pt-0  " style={{ zIndex: 10 }}
+    <div className="container lg:h-full h-[400px] pt-7 mx-auto bg-black/10 lg:pt-0 z-10"
     >
       <div className="container mx-auto flex flex-col-reverse lg:flex-row  items-center justify-between">
         {/* Left Side */}

@@ -114,6 +114,7 @@ const MeetingDetails = ({ meetingDetails }) => {
           url: meetingDetails.url,
           meetingName: meetingDetails?.eventName,
           userTimeZone: meetingDetails?.userTimeZone,
+          currentTime: new Date().toLocaleTimeString()
         };
         //send email notification code here
 
