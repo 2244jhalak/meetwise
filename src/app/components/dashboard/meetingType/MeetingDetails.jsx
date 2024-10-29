@@ -6,6 +6,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Swal from 'sweetalert2'; // Import SweetAlert
 import emailjs from '@emailjs/browser';
+import TimeZoneSelector from '../../Homepage/Timezone';
 
 const parseDate = (dateString) => {
   const [day, month, year] = dateString.split('/');
@@ -210,8 +211,8 @@ const MeetingDetails = ({ meetingDetails }) => {
   console.log(availableTimes)
   return (
     <div className="flex flex-col shadow-lg  backdrop-opacity-70 rounded-lg  md:flex-row gap-8 items-start p-4 font-raleway">
-      <div className="border-t-0 text-slate-50 card glass border-b-0  border-l-0 border-2 border-dashed border-r-orange-500  border-t-orange-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h2 className="text-2xl font-bold mb-4 text-orange-500">Meeting Details 📋</h2>
+      <div className="border-t-0 bg-gray-800 opacity-90 text-slate-50 card glass border-b-0  border-l-0 border-2 border-dashed border-r-red-500  border-t-red-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h2 className="text-2xl font-bold mb-4 text-gray-50">Meeting Details 📋</h2>
         {meetingDetails ? (
           <div className="space-y-2 ">
             <p><strong>Name:</strong><span className='text-slate-300'> {meetingDetails.name}</span></p>
@@ -229,8 +230,8 @@ const MeetingDetails = ({ meetingDetails }) => {
         )}
       </div>
 
-      <div className=" border-t-0 card glass font-raleway border-l-0 border-b-0 border-2 border-dashed border-r-blue-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h2 className="text-2xl font-bold mb-4 text-slate-50">Select Your Date 📅</h2>
+      <div className=" border-t-0 bg-gray-800 opacity-90 card glass font-raleway border-l-0 border-b-0 border-2 border-dashed border-r-blue-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h2 className="text-2xl font-bold mb-4 text-gray-50">Select Your Date 📅</h2>
         <div className='custom-date-container'>
           <Calendar
             tileContent={tileContent}
@@ -242,8 +243,11 @@ const MeetingDetails = ({ meetingDetails }) => {
 
       </div>
 
-      <div className=" border-t-0 border-l-0  text-slate-50 card glass border-b-0 border-2 border-dashed border-l-green-500 border-r-green-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
-        <h3 className="text-2xl font-bold mb-4 text-green-500">Select Your Time ⏰ </h3>
+      <div className=" border-t-0 bg-gray-800 opacity-90 border-l-0  text-slate-50 card glass border-b-0 border-2 border-dashed border-l-green-500 border-r-green-500  p-4 w-full md:w-1/3 mb-4 h-full flex-grow min-h-[400px]">
+        <h3 className="text-2xl font-bold  text-gray-50">Select Your Time ⏰ </h3>
+        {/* timezone */}
+        <TimeZoneSelector></TimeZoneSelector>
+
         {selectedDate ? (
           <p>{`You have selected: ${selectedDate.toLocaleDateString('en-GB')}`}</p>
         ) : (
@@ -296,7 +300,7 @@ const MeetingDetails = ({ meetingDetails }) => {
                       <ul className='flex flex-col gap-2'>
                         {timeSlots.map((slot, idx) => (
                           <li
-                            className={`border-2 px-2 py-2 cursor-pointer font-raleway font-bold border-green-500 gap-5 rounded-2xl ${selectedTime === slot ? 'bg-orange-500' : 'hover:bg-green-500'}`}
+                            className={`border-2 px-2 py-2 cursor-pointer font-raleway font-bold border-green-500 gap-5 rounded-2xl ${selectedTime === slot ? 'bg-red-500' : 'hover:bg-green-500'}`}
                             key={idx}
                             onClick={() => handleTimeSelect(slot)} // Update selected time on click
                           >

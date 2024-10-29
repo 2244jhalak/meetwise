@@ -162,20 +162,19 @@ const AvailabilityForm = () => {
   }, [session?.data?.user?.email]);
 
   return (
-    <div className="container mx-auto  p-6 text-white bg-slate-950 shadow-lg rounded-md">
-      <h1 className="text-2xl pb-3 font-bold  rounded-2xl  border-b-2 border-slate-200 text-center mx-auto text-slate-100 lg:text-3xl w-[500px] dark:text-white mb-6">
-        Save Your Availability
-      </h1>
+    <div className="container mx-auto  p-6 text-black bg-gray-300 shadow-lg rounded-md pl-6">
+       <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white"> Save Your Availability</h1>
+     
       {/* <h1 className="text-2xl  font-semibold text-center ">Save Your Availability</h1>
             <div className="border border-green-600 text-center mx-auto container w-[90px] mb-5"></div> */}
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* First Column: Days */}
-          <div className="bg-black  border border-green-500 px-5 py-5 rounded-lg shadow-lg animate__animated animate__flipInY">
+          <div className="bg-blue-100 border-2 border-dashed border-l-0 border-r-0  border-t-blue-500 px-5 py-5 rounded-lg shadow-lg animate__animated animate__flipInY">
             <label className="block text-green-600 font-bold text-2xl font-raleway">
               Select Days
             </label>
-            <div className="border border-orange-600 w-[60px] mb-5"></div>
+            <div className="border border-blue-600 w-[60px] mb-5"></div>
             <div className="flex flex-col items-start  space-y-2">
               {availabilityData.daysOfWeek.map((day, index) => (
                 <div key={index} className="flex items-center gap-2 ">
@@ -197,15 +196,15 @@ const AvailabilityForm = () => {
           </div>
 
           {/* Second Column: Time Inputs */}
-          <div className="bg-black px-5 border border-orange-500 py-5 rounded-lg shadow-lg animate__animated animate__flipInY">
+          <div className=" px-5 bg-blue-100 border-2 border-dashed border-l-0 border-r-0  border-t-green-500 py-5 rounded-lg shadow-lg animate__animated animate__flipInY">
             <label className="block text-green-600 font-bold text-2xl font-raleway">
               Set Time
             </label>
-            <div className="border border-orange-900 w-[60px] mb-5"></div>
+            <div className="border border-blue-00 w-[60px] mb-5"></div>
             <div className="max-h-80 overflow-y-auto">
             {selectedDays.map((day) => (
   <div key={day} className="mb-4">
-    <h3 className="text-xl font-semibold mb-2 text-orange-600">
+    <h3 className="text-xl font-semibold mb-2 text-blue-600">
       {day}
     </h3>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

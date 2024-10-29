@@ -120,16 +120,15 @@ const Carousel = () => {
     const currentContent = content[language] || {};
 
     return (
-        <div className='bg-black/30 backdrop-blur-md backdrop-opacity-70  lg:p-14 p-5 '>
+        <div id='testimonial' className='bg-gray-100 lg:p-14 p-5 '>
             <div className='flex flex-col items-center justify-center '>
-                <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
-                    <h1 className="text-3xl pb-3 font-bold text-center mx-auto lg:text-5xl text-white">
-                    {currentContent.heading || "Testimonials"}
-                    </h1>
-                    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-600 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
-                </div>
 
-                <p className='text-lg font-raleway w-1/2 text-slate-400 mt-4 text-center my-8'>
+                <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-blue-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white">  {currentContent.heading || "Testimonials"}</h1>
+
+
+
+
+                <p className='text-lg font-raleway md:w-1/2 text-gray-500 mt-4 text-center my-8'>
                     {currentContent.paragraph || "Our users’ feedback is the driving force behind everything we do. Here’s what they have to say about how our platform has made scheduling meetings easier and more efficient for their businesses."}
                 </p>
             </div>
@@ -149,13 +148,14 @@ const Carousel = () => {
                                         className="object-cover md:rounded-[50px] lg:rounded-[50px] rounded-2xl"
                                         style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 0% 100%)' }}
                                     />
+                                    <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/40 to-transparent rounded-t-[50px]" />
                                     <div className="text-end md:-mt-20">
-                                        <h3 className="text-xl text-white font-bold">{slide.title}</h3>
+                                        <h3 className="text-xl text-black font-bold">{slide.title}</h3>
                                         <p className="text-gray-400 text-md">{slide.position}</p>
                                     </div>
                                 </div>
 
-                                <div className='absolute bg-green-100 text-gray-700 p-4 shadow-lg lg:-mt-96 md:-mt-60 -mt-52 lg:ml-[450px] md:ml-[280px] ml-44 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36 shadow-green-900'>
+                                <div className='absolute bg-gray-800 text-slate-100 p-4 shadow-lg lg:-mt-96 md:-mt-60 -mt-52 lg:ml-[450px] md:ml-[280px] ml-44 space-y-2 rounded-lg mr-5 md:max-w-xl max-w-36 shadow-green-900'>
                                     <p className="lg:text-[38px] md:text-3xl text-[10px] font-bold inline-block leading-snug rounded-lg ">{slide.quote}</p>
                                 </div>
                             </div>

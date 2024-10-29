@@ -12,13 +12,19 @@ const Footer = () => {
       overview: "Overview",
       meetWiseAI: "Meet-wise AI",
       integration: "Integration",
-      company: "Company",
-      about: "About",
+      section: "Section",
+      feature: "Feature",
+      testimonial: "Testimonial",
+      allIntegration: "All-Integration",
+      zoom: "Zoom",
+      meet: "Google Meet",
+      HIW: "How  it works",
+      about: "About us",
       mission: "Mission and Values",
       pricing: "Pricing",
       resources: "Resources",
       career: "Career",
-      contact: "Contact us",
+      contact: "Contact ",
       blog: "Blog",
       socialMedia: "Social media",
       rights:
@@ -31,7 +37,13 @@ const Footer = () => {
       overview: "সারসংক্ষেপ",
       meetWiseAI: "মিট-ওয়াইজ এআই",
       integration: "ইন্টিগ্রেশন",
-      company: "কোম্পানি",
+      section: "সেকশন",
+      feature: "বৈশিষ্ট্য",
+      testimonial: "প্রশংসাপত্র",
+      allIntegration: "সব ইন্টিগ্রেশন",
+      zoom: "জুম",
+      meet: "গুগল মিট",
+      HIW: "কিভাবে কাজ করে",
       about: "আমাদের সম্পর্কে",
       mission: "মিশন এবং মূল্যবোধ",
       pricing: "মূল্য নির্ধারণ",
@@ -50,13 +62,19 @@ const Footer = () => {
       overview: "Descripción general",
       meetWiseAI: "Meet-wise AI",
       integration: "Integración",
-      company: "Empresa",
-      about: "Acerca de",
+      zoom: "Zoom",
+      meet: "Google Meet",
+      HIW: "Cómo Funciona",
+      section: "Sección",
+      feature: "Característica",
+      testimonial: "Testimonio",
+      allIntegration: "Toda Integración",
+      about: "Acerca",
       mission: "Misión y Valores",
       pricing: "Precios",
       resources: "Recursos",
       career: "Carrera",
-      contact: "Contáctenos",
+      contact: "Contáctenos de",
       blog: "Blog",
       socialMedia: "Redes sociales",
       rights:
@@ -69,13 +87,19 @@ const Footer = () => {
       overview: "Aperçu",
       meetWiseAI: "Meet-wise AI",
       integration: "Intégration",
-      company: "Société",
-      about: "À propos",
+      section: "Section",
+      feature: "Fonctionnalité",
+      testimonial: "Témoignage",
+      allIntegration: "Toda Integración",
+      zoom: "Zoom",
+      meet: "Google Meet",
+      HIW: "Comment Ça Fonctionne",
+      about: "propos",
       mission: "Mission et valeurs",
       pricing: "Tarification",
       resources: "Ressources",
       career: "Carrière",
-      contact: "Contactez-nous",
+      contact: "À Contactez-nous",
       blog: "Blog",
       socialMedia: "Réseaux sociaux",
       rights:
@@ -85,13 +109,13 @@ const Footer = () => {
   const { language } = useLanguage();
 
   return (
-    <div className="bg-white/10 backdrop-blur-md backdrop-opacity-70 text-gray-40">
+    <div className="bg-gray-800  text-black">
       <footer className="flex flex-col md:flex-row py-14 text-gray-400 w-11/12 mx-auto">
         {/* remove the svg file  */}
-        <aside>
-          <p className="text-3xl font-bold text-gray-300">
-            Meet <span className="text-green-500">Wise</span>
-          </p>
+        <aside className="">
+          <a href="/" className="text-3xl font-bold text-slate-200">
+            Meet<span className="text-green-500">Wise</span>
+          </a>
           <p>{content[language].tagline}</p>
         </aside>
 
@@ -102,41 +126,62 @@ const Footer = () => {
               {content[language].product}
             </h6>
             {/* <br /> */}
-            <a className="link link-hover text-sm md:text-base mt-1" href="/">
+            <a
+              target="_blank"
+              className="link link-hover text-sm md:text-base mt-1"
+              href="https://www.zoom.com/"
+            >
               {" "}
-              {content[language].overview}
+              {content[language].zoom}
             </a>
             {/* <br /> */}
-            <a className="link link-hover text-sm md:text-base mt-1" href="/">
+            <a
+              target="_blank"
+              className="link link-hover text-sm md:text-base mt-1"
+              href="https://meet.google.com/landing"
+            >
               {" "}
-              {content[language].meetWiseAI}
-            </a>
-            {/* <br /> */}
-            <a className="link link-hover text-sm md:text-base mt-1" href="/">
-              {" "}
-              {content[language].integration}
+              {content[language].meet}
             </a>
           </nav>
 
           {/* 2nd col  */}
           <nav className=" flex flex-col mt-5 md:mt-0 md:text-right">
             <h6 className="footer-title text-white">
-              {content[language].company}
+              {content[language].section}
             </h6>
             {/* <br /> */}
-            <a className="link link-hover text-sm md:text-base mt-1" href="/">
+            <a
+              className="link link-hover text-sm md:text-base mt-1"
+              href="#feature"
+            >
               {" "}
-              {content[language].about}
+              {content[language].feature}
             </a>
             {/* <br /> */}
-            <a className="link link-hover text-sm md:text-base mt-1" href="/">
+            <a
+              target="_blank"
+              className="link link-hover text-sm md:text-base mt-1"
+              href="#howItWorks"
+            >
               {" "}
-              {content[language].mission}
+              {content[language].HIW}
             </a>
             {/* <br /> */}
-            <a className="link link-hover text-sm md:text-base mt-1" href="/">
+            <a
+              className="link link-hover text-sm md:text-base mt-1"
+              href="#all-Integration"
+            >
               {" "}
-              {content[language].pricing}
+              {content[language].allIntegration}
+            </a>
+
+            <a
+              className="link link-hover text-sm md:text-base mt-1"
+              href="#testimonial"
+            >
+              {" "}
+              {content[language].testimonial}
             </a>
           </nav>
 
@@ -145,17 +190,20 @@ const Footer = () => {
             <h6 className="footer-title text-white">
               {content[language].resources}
             </h6>
-            <a className="link link-hover text-sm md:text-base mt-1" href="/">
+            {/* about  us */}
+            <a
+              className="link link-hover text-sm md:text-base mt-1"
+              href={`${process.env.NEXT_PUBLIC_CLIENT_URL}/about`}
+            >
               {" "}
-              {content[language].career}
+              {content[language].about}
             </a>
-            <a className="link link-hover text-sm md:text-base mt-1" href="/">
+            <a
+              className="link link-hover text-sm md:text-base mt-1"
+              href={`${process.env.NEXT_PUBLIC_CLIENT_URL}/contact`}
+            >
               {" "}
               {content[language].contact}
-            </a>
-            <a className="link link-hover text-sm md:text-base mt-1" href="/">
-              {" "}
-              {content[language].blog}
             </a>
           </nav>
 

@@ -29,16 +29,18 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 .custom-datepicker-container .rdrCalendarWrapper{
-  background-color: black;
+  background-color: rgb(235, 235, 237);
   color: white;
 }
 .custom-datepicker-container .rdrDateDisplayWrapper {
-  background-color: rgb(51, 52, 55);
+  background-color: rgb(235, 235, 237);
 
 }
 .custom-datepicker-container .rdrMonth {
   width: 100%;
+  color: white;
 }
+
 
 .custom-datepicker-container .rdrDayDisabled {
   background-color: rgb(74, 72, 72);
@@ -89,8 +91,13 @@ overflow: hidden;
   position: relative; /* Allows the dot to be placed absolutely relative to this element */
 }
 
-
-
+.slider-container{
+  background-color: none;
+}
+.slider-container .slick-prev:before, .slick-next:before {
+  color: green !important;
+  font-size: 24px !important;
+}
 
 @layer utilities {
   .text-balance {
