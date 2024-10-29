@@ -118,17 +118,17 @@ const Faq = () => {
   };
 
   return (
-    <div className='container mx-auto pt-10 md:my-12 backdrop-blur-md backdrop-opacity-70' data-aos="fade-up">
+    <div className='container mx-auto pt-10 md:py-12 bg-gray-200 rounded-lg' >
 
       <div className='flex flex-col items-center justify-center '>
         <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
-          <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-slate-50 lg:text-3xl dark:text-white">
+          <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-black lg:text-3xl dark:text-white">
             {texts[language].title}
           </h1>
-          <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-orange-500 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
+          <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-500 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
         </div>
 
-        <p className='text-lg font-raleway w-1/2 text-slate-50 mt-4 text-center'>
+        <p className='text-lg font-raleway w-1/2 text-gray-500 mt-4 text-center'>
           {texts[language].description}
         </p>
       </div>
@@ -150,15 +150,15 @@ const Faq = () => {
 
               <div className="mt-12 space-y-8">
                 {texts[language].faqs.map((faq, index) => (
-                  <div key={index} className="border-2 border-orange-300 rounded-lg dark:border-gray-700">
+                  <div key={index} className="border-2 border-gray-700 rounded-lg dark:border-gray-700">
                     <button
                       className="flex items-center justify-between w-full p-8"
                       onClick={() => toggleFAQ(index)}
                     >
-                      <h1 className="font-semibold text-white dark:text-white">
+                      <h1 className="font-semibold text-black dark:text-white">
                         {faq.question}
                       </h1>
-                      <span className="text-white bg-green-500 rounded-full">
+                      <span className="text-black bg-green-500 rounded-full">
                         <svg
                           className={`w-6 h-6 transform ${activeIndex === index ? 'rotate-180' : 'rotate-0'
                             }`}
@@ -173,7 +173,7 @@ const Faq = () => {
                     </button>
                     {activeIndex === index && (
                       <div className="p-6 border-t-2 border-gray-700">
-                        <p className="text-white">{faq.answer}</p>
+                        <p className="text-black">{faq.answer}</p>
                       </div>
                     )}
                   </div>

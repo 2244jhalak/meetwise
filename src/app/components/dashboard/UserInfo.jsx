@@ -110,13 +110,13 @@ const UserInfo = () => {
     };
 
     return (
-        <div className='px-3'>
-            <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-orange-600 text-center lg:mx-auto text-gray-200 lg:text-3xl dark:text-white my-4 md:mx-auto mx-6">
+        <div className='px-3 bg-gray-300'>
+            <h1 className="text-2xl text-black pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-green-600 text-center lg:mx-auto lg:text-3xl dark:text-white my-4 md:mx-auto mx-6">
                 My Profile
             </h1>
-            <div className=' text-white w-full lg:w-[700px] md:w-96 border-2 border-gray-700 rounded-lg shadow-lg glass p-6 mx-auto'>
-                <h3 className='text-center text-2xl font-semibold text-gray-200 mb-2'>Update Profile</h3>
-                <div className="border border-orange-600 rounded-xl text-center mx-auto my-2 w-24"></div>
+            <div className=' text-white w-full lg:w-[700px] md:w-96 border-2 border-gray-700 bg-blue-100  rounded-lg shadow-lg glass p-6 mx-auto'>
+                <h3 className='text-center text-2xl font-semibold text-green-800 mb-2'>Update Profile</h3>
+                <div className="border border-blue-600 rounded-xl text-center mx-auto my-2 w-24"></div>
 
                 {/* Update Profile Form */}
                 <div className='lg:flex  justify-between'>
@@ -127,19 +127,20 @@ const UserInfo = () => {
                                     <Image src={image} alt='' width={96} height={96} className='object-cover'></Image>
                                 </div>
                             </div>
-                            <div className="text-2xl mt-2 font-semibold text-orange-600">
+                            <div className="text-2xl mt-2 font-extrabold text-green-600">
                                 <h4>{name}</h4>
                             </div>
-                            <div className="text-lg text-gray-400">
+                            <div className='flex items-center font-bold mt-2'>
+                                <FaEnvelope className='text-blue-900 mr-2' />
+                                <p className='text-blue-900'>{session?.user?.email}</p>
+                            </div>
+                            <div className="text-lg font-bold mt-2 text-gray-800">
                                 <h5>{title}</h5>
                             </div>
-                            <div className="text-sm text-center mt-2 px-6 text-gray-300">
+                            <div className="text-sm text-center mt-2 px-6 text-gray-700">
                                 <h6>{description}</h6>
                             </div>
-                            <div className='flex items-center mt-6'>
-                                <FaEnvelope className='text-orange-400 mr-2' />
-                                <p className='text-orange-400'>{session?.user?.email}</p>
-                            </div>
+                          
                         </div>
                     </div>
                     <form onSubmit={handleUpdate} className="space-y-4 w-80 mt-8 mx-auto">
@@ -148,30 +149,30 @@ const UserInfo = () => {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Update name"
-                            className="input input-bordered w-full bg-slate-900 text-gray-300 border-gray-700 focus:border-blue-500 focus:bg-slate-900"
+                            className="input input-bordered w-full bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-500 focus:bg-slate-900"
                         />
                         <input
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             placeholder="Update title"
-                            className="input input-bordered w-full bg-slate-900 text-gray-300 border-gray-700 focus:border-blue-500 focus:bg-slate-900"
+                            className="input input-bordered w-full bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-500 focus:bg-slate-900"
                         />
                         <textarea
                             type="text"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder="Update description"
-                            className="input input-bordered w-full bg-slate-900 text-gray-300 border-gray-700 focus:border-blue-500 focus:bg-slate-900"
+                            className="input input-bordered w-full bg-gray-900 text-gray-300 border-gray-700 focus:border-blue-500 focus:bg-slate-900"
                         />
                         <input
                             type="file"
                             accept="image/*"
                             onChange={handleImageChange}
-                            className="file-input file-input-bordered text-gray-300 bg-slate-900 border-gray-700 hover:bg-slate-700"
+                            className="file-input file-input-bordered text-gray-300 bg-gray-900 border-gray-700 hover:bg-slate-700"
                         />
                         <div className='flex justify-end'>
-                            <button type="submit" className="btn btn-primary bg-orange-600 hover:bg-orange-700 border-0 px-6 py-2 mt-4">
+                            <button type="submit" className="btn btn-primary bg-blue-900 hover:bg-blue-950 border-0 px-6 py-2 mt-4">
                                 <FaEdit /> Update Info
                             </button>
                         </div>

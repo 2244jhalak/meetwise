@@ -17,15 +17,15 @@ const Page = async ({ params }) => {
 
     return (
         <PrivateRoute>
-            <div className='bg-slate-950 container mx-auto min-h-screen'>
-            <div className="text-left bg-slate-950 ">
+            <div className='bg-gray-300  container mx-auto min-h-screen'>
+            <div className="text-left bg-gray-300 ">
       <Link className="flex items-center space-x-1 text-base" href="/dashboard">
-        <IoIosArrowBack className="text-white " /><h4 className="text-white">Cancel</h4>
+        <IoIosArrowBack className="text-black " /><h4 className="text-black">Cancel</h4>
       </Link>
     </div>
-             <h2 className='text-4xl font-bold  text-white text-center container mx-auto'>📅 Simplified Meeting Booking</h2>
-            <div className="border border-orange-600 rounded-xl text-center mx-auto container w-[200px] mb-2 mt-2"></div>
-            <p className='p-2 pb-3 text-center mx-auto font-medium font-raleway text-xl text-gray-300'>Enjoy a stress-free meeting booking experience.</p>
+             <h2 className='text-4xl font-bold  text-black text-center container mx-auto'>📅 Simplified Meeting Booking</h2>
+            <div className="border border-green-600 rounded-xl text-center mx-auto container w-[200px] mb-2 mt-2"></div>
+            <p className='p-2 pb-3 text-center mx-auto font-medium font-raleway text-xl text-gray-600'>Enjoy a stress-free meeting booking experience.</p>
             <MeetingDetails meetingDetails={meetingDetails} />
         </div>
         </PrivateRoute>

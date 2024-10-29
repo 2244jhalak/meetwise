@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { motion } from 'framer-motion';
 
 const translations = {
   en: {
@@ -69,10 +70,14 @@ const Banner = () => {
       <div className="container mx-auto flex flex-col-reverse lg:flex-row  items-center justify-between">
         {/* Left Side */}
         <div className="lg:w-1/2 w-full text-center lg:text-left p-5">
-          <h1 className="text-4xl lg:text-7xl font-bold text-slate-100 mb-4">
+        <div className="bg-gradient-to-r from-green-600 to-blue-600 text-transparent bg-clip-text">
+          
+        <h1 className="text-4xl lg:text-7xl font-bold  mb-4">
             {translations[language].title}
           </h1>
-          <p className="text-lg  font-normal leading-7 text-slate-200  mb-6">
+        </div>
+         
+          <p className="text-lg  font-normal leading-7 text-gray-500  mb-6">
             {translations[language].description}
           </p>
           <div className="flex justify-center lg:justify-start gap-4 mb-6">

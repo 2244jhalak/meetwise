@@ -125,9 +125,10 @@ const AllUsers = () => {
     };
 
     return (
-        <div className='container mx-auto p-6 font-raleway text-white bg-slate-950 shadow-lg rounded-md'>
-             <h1 className="text-2xl pb-3 font-bold  rounded-2xl  border-b-2 border-slate-200 text-center mx-auto text-slate-100 lg:text-3xl w-[500px] dark:text-white mb-7">User Management</h1>
-             <h2 className='text-3xl text-white font-semibold mt-5 mb-5'>User Overview: <span className="text-orange-500 font-bold">Total Users</span>- {users.length}</h2>
+        <div className='container mx-auto p-6 font-raleway text-white bg-blue-50  shadow-lg rounded-md'>
+           <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white"> User Management</h1>
+     
+             <h2 className='text-3xl text-black font-semibold mt-5 mb-5'>User Overview: <span className="text-green-500 font-bold">Total Users</span>- {users.length}</h2>
             {/* Loading State */}
            
 
@@ -136,7 +137,7 @@ const AllUsers = () => {
                 <table className="table">
                     {/* head */}
                     <thead>
-                        <tr className='text-slate-300'>
+                        <tr className='text-gray-700'>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
@@ -162,12 +163,12 @@ const AllUsers = () => {
                                                 </div>  
                                             </div>
                                             <div>
-                                                <div className="font-bold">{user.name}</div>
+                                                <div className="font-bold text-black">{user.name}</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <span className="text-[#F94C10]">{user.email}</span>
+                                        <span className="text-gray-900">{user.email}</span>
                                     </td>
                                     <td>
                                         <button 

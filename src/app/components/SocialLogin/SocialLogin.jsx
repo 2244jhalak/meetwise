@@ -34,7 +34,7 @@ const SocialLogin = () => {
     return (
         <div>
             <button 
-                className='flex flex-row items-center space-x-2 p-2 border border-green-900 bg-slate-100 hover:bg-green-800 transition-all duration-500 ease-in font-raleway rounded-md' 
+                className='flex flex-row items-center space-x-2 lg:w-[310px] w-[240px] justify-center p-2 border border-green-900 bg-slate-100 hover:bg-green-800 transition-all duration-500 ease-in font-raleway rounded-md' 
                 onClick={() => handleSignIn("google")}
             >
                 <Image
