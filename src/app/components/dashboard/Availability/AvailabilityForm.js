@@ -35,11 +35,10 @@ const AvailabilityForm = () => {
     }
   };
 
- 
   const handleTimeChange = (day, timeType, value) => {
     // Get the current start time for the specific day
     const currentStartTime = timeData[day]?.startTime;
-  
+
     // Update the time data
     const updatedTimeData = {
       ...timeData,
@@ -48,32 +47,31 @@ const AvailabilityForm = () => {
         [timeType]: value,
       },
     };
-  
+
     // If the time type is endTime, check the condition
-    if (timeType === 'endTime') {
+    if (timeType === "endTime") {
       const startDateTime = new Date(`1970-01-01T${currentStartTime}:00`);
       const endDateTime = new Date(`1970-01-01T${value}:00`);
-  
+
       // If endTime is before startTime, show an error and reset endTime
       if (endDateTime <= startDateTime) {
         Swal.fire({
-          title: 'Invalid Time',
-          text: 'End time cannot be before start time!',
-          icon: 'error',
-          confirmButtonText: 'OK',
-          background: "#000000",  // Black background
-          color: "#F8FAFC",  
+          title: "Invalid Time",
+          text: "End time cannot be before start time!",
+          icon: "error",
+          confirmButtonText: "OK",
+          background: "#000000", // Black background
+          color: "#F8FAFC",
         });
-        
+
         // Reset end time to start time
-        updatedTimeData[day].endTime = currentStartTime; 
+        updatedTimeData[day].endTime = currentStartTime;
       }
     }
-  
+
     // Update the state with the potentially modified time data
     setTimeData(updatedTimeData);
   };
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -104,8 +102,8 @@ const AvailabilityForm = () => {
           text: "Availability successfully saved.",
           icon: "success",
           confirmButtonText: "OK",
-          background: "#000000",  // Black background
-          color: "#F8FAFC", 
+          background: "#000000", // Black background
+          color: "#F8FAFC",
         }).then(() => {
           window.location.reload();
         });
@@ -115,8 +113,8 @@ const AvailabilityForm = () => {
           text: "Failed to save availability.",
           icon: "error",
           confirmButtonText: "Try Again",
-          background: "#000000",  // Black background
-          color: "#F8FAFC", 
+          background: "#000000", // Black background
+          color: "#F8FAFC",
         });
       }
     } catch (error) {
@@ -163,8 +161,11 @@ const AvailabilityForm = () => {
 
   return (
     <div className="container mx-auto  p-6 text-black bg-gray-300 shadow-lg rounded-md pl-6">
-       <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white"> Save Your Availability</h1>
-     
+      <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 ">
+        {" "}
+        Save Your Availability
+      </h1>
+
       {/* <h1 className="text-2xl  font-semibold text-center ">Save Your Availability</h1>
             <div className="border border-green-600 text-center mx-auto container w-[90px] mb-5"></div> */}
       <form onSubmit={handleSubmit}>
@@ -202,47 +203,46 @@ const AvailabilityForm = () => {
             </label>
             <div className="border border-blue-00 w-[60px] mb-5"></div>
             <div className="max-h-80 overflow-y-auto">
-            {selectedDays.map((day) => (
-  <div key={day} className="mb-4">
-    <h3 className="text-xl font-semibold mb-2 text-blue-600">
-      {day}
-    </h3>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {/* Start Time */}
-      <div className="mb-4">
-        <label className="block pb-2 font-raleway">
-          Start Time
-        </label>
-        <input
-          type="time"
-          value={timeData[day]?.startTime || ""}
-          onChange={(e) =>
-            handleTimeChange(day, "startTime", e.target.value)
-          }
-          className="border border-green-200 text-black dark:text-white p-2 rounded-md w-full"
-          required
-        />
-      </div>
+              {selectedDays.map((day) => (
+                <div key={day} className="mb-4">
+                  <h3 className="text-xl font-semibold mb-2 text-blue-600">
+                    {day}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Start Time */}
+                    <div className="mb-4">
+                      <label className="block pb-2 font-raleway">
+                        Start Time
+                      </label>
+                      <input
+                        type="time"
+                        value={timeData[day]?.startTime || ""}
+                        onChange={(e) =>
+                          handleTimeChange(day, "startTime", e.target.value)
+                        }
+                        className="border border-green-200 text-black dark:text-white p-2 rounded-md w-full"
+                        required
+                      />
+                    </div>
 
-      {/* End Time */}
-      <div className="mb-4">
-        <label className="block pb-2 font-raleway">
-          End Time
-        </label>
-        <input
-          type="time"
-          value={timeData[day]?.endTime || ""}
-          onChange={(e) =>
-            handleTimeChange(day, "endTime", e.target.value)
-          }
-          className="border border-green-200 text-black dark:text-white p-2 rounded-md w-full"
-          required
-        />
-      </div>
-    </div>
-  </div>
-))}
-
+                    {/* End Time */}
+                    <div className="mb-4">
+                      <label className="block pb-2 font-raleway">
+                        End Time
+                      </label>
+                      <input
+                        type="time"
+                        value={timeData[day]?.endTime || ""}
+                        onChange={(e) =>
+                          handleTimeChange(day, "endTime", e.target.value)
+                        }
+                        className="border border-green-200 text-black dark:text-white p-2 rounded-md w-full"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
