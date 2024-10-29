@@ -33,8 +33,9 @@ const Partners = () => {
                <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-green-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white">{translations[language].title}</h1>
                
    
-               <p className='text-lg font-raleway w-1/2 text-gray-500 mt-4 text-center my-8'>
-               {translations[language].description} </p>
+                   <p className='text-lg font-raleway w-1/2 text-gray-500 mt-4 text-center my-8'>
+                   {translations[language].description}
+                   </p>
                </div>
            
             {/* Gradient background with transparency on the edges */}
@@ -52,55 +53,20 @@ const Partners = () => {
                     className='pb-5 z-0 cursor-pointer'>
                     
                     {/* Partner Logos */}
-                    <div style={{ margin: "0 20px" }}>
-                        <Image
-                            src="/partner/calender-removebg-preview.png" 
-                            alt="Google Calendar"
-                            width={200}
-                            height={200}
-                        />
-                    </div>
-                    <div style={{ margin: "0 20px" }}>
-                        <a></a>
-                        <Image
-                            src="/partner/outlook.png"
-                            alt="Outlook"
-                            width={200}
-                            height={200}
-                        />
-                    </div>
-                    <div style={{ margin: "0 20px" }}>
-                        <Image
-                            src="/partner/zoom.png"
-                            alt="Zoom"
-                            width={200}
-                            height={200}
-                        />
-                    </div>
-                    <div style={{ margin: "0 20px" }}>
-                        <Image
-                            src="/partner/calendly.png"
-                            alt="Calendly"
-                            width={200}
-                            height={200}
-                        />
-                    </div>
-                    <div style={{ margin: "0 20px" }}>
-                        <Image
-                            src="/partner/meet-removebg-preview.png"
-                            alt="Google Meet"
-                            width={300}
-                            height={300}
-                        />
-                    </div>
-                    <div style={{ margin: "0 20px" }}>
-                        <Image
-                            src="/partner/slack2.png"
-                            alt="Zoom"
-                            width={300}
-                            height={200}
-                        />
-                    </div>
+                    {["calender-removebg-preview.png", "outlook.png", "zoom.png", "calendly.png", "meet-removebg-preview.png", "slack2.png"].map((logo, index) => (
+        <div key={index} className="mx-5">
+            {/* Card Design */}
+            <div className="bg-white rounded-lg shadow-lg p-4 flex items-center justify-center">
+                <Image
+                    src={`/partner/${logo}`} 
+                    alt={`Partner Logo ${index + 1}`}
+                    width={200}
+                    height={200}
+                    className="object-contain h-20 w-auto" // Adjust height as necessary
+                />
+            </div>
+        </div>
+    ))}
                 </Marquee>
             </div>
         </div>
