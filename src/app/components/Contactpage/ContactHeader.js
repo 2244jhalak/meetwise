@@ -46,7 +46,7 @@ const ContactHeader = () => {
               {translations[language].title}{" "}
               {/* Dynamic title based on language */}
             </h1>
-            dsf
+          
             <p className="mt-2 md:mt-5 text-base md:text-xl w-full text-gray-200 p-4 font-raleway md:mb-4">
               {translations[language].description}{" "}
               {/* Dynamic description based on language */}
