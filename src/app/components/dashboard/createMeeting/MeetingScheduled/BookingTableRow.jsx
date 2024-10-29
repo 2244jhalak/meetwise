@@ -13,7 +13,7 @@ const BookingTableRow = ({ meeting }) => {
                 </div>
             </td>
             {/* user email   */}
-            <td className="px-12 py-4 text-orange-700 text-sm font-bold whitespace-nowrap">
+            <td className="px-12 py-4 text-blue-500 text-sm font-bold whitespace-nowrap">
                 <div className="inline px-3 py-1 text-sm font-bold rounded-full gap-x-2  dark:bg-gray-800">
                     {meeting?.email}
                 </div>
@@ -27,7 +27,7 @@ const BookingTableRow = ({ meeting }) => {
 
 
 
-            <td className="px-4 py-4 text-sm  text-slate-950whitespace-nowrap">
+            <td className="px-4 py-4 text-sm  text-blue-700 whitespace-nowrap">
                 <a target="_blank"
                     rel="noopener noreferrer" href={meeting?.url} className="link w-2/3 h-1.5">link</a>
             </td>
