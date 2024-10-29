@@ -108,15 +108,19 @@ const Form = () => {
 
     return (
         <div className='container mx-auto'>
-            <section className="py-6 bg-black/10 backdrop-blur-md backdrop-opacity-70 text-slate-50 mt-10" data-aos="fade-up">
-                <div className='flex flex-col items-center justify-center'>
-                    <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-slate-50 lg:text-3xl dark:text-white">
-                        {texts[language].title}
-                    </h1>
-                    <p className='text-lg font-raleway w-1/2 text-slate-50 mt-2 text-center pb-10'>
+               <div className='flex flex-col items-center justify-center bg-gray-200'>
+               <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
+          <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-black lg:text-3xl dark:text-white">
+            {texts[language].title}
+          </h1>
+          <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-500 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
+        </div>
+                    <p className='text-lg font-raleway w-1/2 text-black  mt-2 text-center pb-10'>
                         {texts[language].subtitle}
                     </p>
                 </div>
+            <section className="py-6 pt-10 bg-black/10 backdrop-blur-md backdrop-opacity-70 text-slate-50 " >
+             
                 <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                     <div className="py-6 md:py-0 md:px-6 mt-16">
                         <h1 className="text-4xl font-bold font-raleway">{texts[language].getInTouch}</h1>
