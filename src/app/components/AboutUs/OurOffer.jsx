@@ -63,7 +63,7 @@ const OurOffer = () => {
                 '8. Integración con Google Meet & Zoom: Cree reuniones con enlaces directos desde Google Meet o Zoom.',
             ],
         },
-        
+
     };
 
     const { language } = useLanguage(); // Get current language from context
@@ -79,21 +79,21 @@ const OurOffer = () => {
 
     return (
         <div className="text-black container mx-auto md:p-7 rounded-lg  hero-overlay bg-gray-200 md:py-28 py-10  px-4" >
-            <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-green-500 text-center mx-auto text-BLACK lg:text-3xl dark:text-white">
+            <h1 className="text-2xl pb-3 font-semibold rounded-2xl md:w-1/4 border-b-2 border-green-500 text-center mx-auto text-BLACK lg:text-3xl">
                 {t.title}
             </h1>
 
             <p className="md:text-xl px-5 py-8 text-gray-600 font-bold ">{t.description} :</p>
             <ul className="mx-auto md:text-xl px-5 pb-5 grid grid-cols-1 md:grid-cols-2 gap-4" data-aos="fade-up">
-    {t.features.map((feature, index) => (
-        <li 
-            key={index} 
-            className="bg-gray-800 text-white rounded-lg shadow-lg p-5 transform transition-transform hover:scale-105 duration-300 ease-in-out"
-        >
-            <span className="font-semibold text-lg">{feature}</span>
-        </li>
-    ))}
-</ul>
+                {t.features.map((feature, index) => (
+                    <li
+                        key={index}
+                        className="bg-gray-800 text-white rounded-lg shadow-lg p-5 transform transition-transform hover:scale-105 duration-300 ease-in-out"
+                    >
+                        <span className="font-semibold text-lg">{feature}</span>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
