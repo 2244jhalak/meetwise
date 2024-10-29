@@ -13,22 +13,22 @@ import React from "react";
 import Slider from "react-slick";
 const translations = {
     en: {
-        title: 'Our All Features',
+        title: 'Our Features',
         description: 'Discover powerful features designed to simplify scheduling and enhance productivity.'
     },
     bn: {
-        title: 'আমাদের সমস্ত বৈশিষ্ট্য',
+        title: 'আমাদের বৈশিষ্ট্য',
         description: 'সূচি সহজ ও উৎপাদনশীলতা বৃদ্ধির জন্য শক্তিশালী বৈশিষ্ট্য আবিষ্কার করুন।'
     },
     fr: {
-        title: 'Nos toutes les fonctionnalités',
+        title: 'Nos fonctionnalités',
         description: 'Découvrez des fonctionnalités puissantes pour simplifier la planification et améliorer la productivité.'
     },
     es: {
-        title: 'Todas nuestras características',
+        title: 'Nuestras características',
         description: 'Descubre características potentes para simplificar la programación y mejorar la productividad.'
-    },
-
+    }
+    
 
 }
 
