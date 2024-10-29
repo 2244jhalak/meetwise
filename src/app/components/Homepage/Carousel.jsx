@@ -120,13 +120,13 @@ const Carousel = () => {
     const currentContent = content[language] || {};
 
     return (
-        <div className='bg-gray-100 lg:p-14 p-5 '>
+        <div id='testimonial' className='bg-gray-100 lg:p-14 p-5 '>
             <div className='flex flex-col items-center justify-center '>
-               
+
                 <h1 className="text-2xl pb-3 font-semibold my-4 md:my-8 rounded-2xl  border-b-2 border-blue-500 text-center mx-auto text-black lg:text-3xl md:w-1/4 dark:text-white">  {currentContent.heading || "Testimonials"}</h1>
-            
-                   
-             
+
+
+
 
                 <p className='text-lg font-raleway md:w-1/2 text-gray-500 mt-4 text-center my-8'>
                     {currentContent.paragraph || "Our users’ feedback is the driving force behind everything we do. Here’s what they have to say about how our platform has made scheduling meetings easier and more efficient for their businesses."}
@@ -148,7 +148,7 @@ const Carousel = () => {
                                         className="object-cover md:rounded-[50px] lg:rounded-[50px] rounded-2xl"
                                         style={{ clipPath: 'polygon(0 0, 100% 0, 100% 75%, 0% 100%)' }}
                                     />
-                                      <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/40 to-transparent rounded-t-[50px]" />
+                                    <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/40 to-transparent rounded-t-[50px]" />
                                     <div className="text-end md:-mt-20">
                                         <h3 className="text-xl text-black font-bold">{slide.title}</h3>
                                         <p className="text-gray-400 text-md">{slide.position}</p>
