@@ -11,102 +11,104 @@ import Link from 'next/link';
 
 
 const translations = {
-   en: {
-    title: 'How It Works',
-    description: 'Invitees can easily schedule a meeting by selecting a time that works for them, and it will automatically sync with your calendar, preventing conflicts.',
-    steps: [
-        {
-            step: 'Step-1',
-            title: 'Create Meeting',
-            description: 'Connect your calendar and Calendly will help you create scheduling links and booking pages based on your availability.',
-            img:"/Hiw/appointment-booking-with-calendar.png",
-        },
-        {
-            step: 'Step-2',
-            title: 'Meeting Booking',
-            description: 'Booking links can be based on different event types – from 15-minute Zoom calls to 30-minute in-person meetings.',
-            img:"/Hiw/hand-drawn-team-starting-business-project.png",
-        },
-        {
-            step: 'Step-3',
-            title: 'Schedule Details',
-            description: 'Workflows and integrations connect Calendly to your process and other tools.',
-            img:"/Hiw/time-management-concept-illustration.png",
-        }
-    ],
-},
-bn: {
-    title: 'কীভাবে কাজ করে',
-    description: 'আমন্ত্রিতরা সহজেই একটি সময় নির্বাচন করে মিটিং সূচি করতে পারে, এবং এটি স্বয়ংক্রিয়ভাবে আপনার ক্যালেন্ডারের সাথে সিঙ্ক হয়ে যাবে, বিরোধিতাগুলি প্রতিরোধ করবে।',
-    steps: [
-        {
-            step: 'ধাপ-১',
-            title: 'মিটিং তৈরি করুন',
-            description: 'আপনার ক্যালেন্ডার সংযোগ করুন এবং ক্যালেন্ডি আপনাকে আপনার উপলব্ধতার ভিত্তিতে সময়সূচী লিঙ্ক এবং বুকিং পৃষ্ঠা তৈরি করতে সহায়তা করবে।',
-            img:"/Hiw/appointment-booking-with-calendar.png",
-        },
-        {
-            step: 'ধাপ-২',
-            title: 'মিটিং বুকিং',
-            description: 'বুকিং লিঙ্কগুলি বিভিন্ন ইভেন্টের ধরনের উপর ভিত্তি করে হতে পারে – ১৫ মিনিটের জুম কল থেকে ৩০ মিনিটের অফিস মিটিং।',
-            img:"/Hiw/hand-drawn-team-starting-business-project.png",
-        },
-        {
-            step: 'ধাপ-৩',
-            title: 'সময়ের বিবরণ',
-            description: 'কর্মপ্রবাহ এবং ইন্টিগ্রেশন ক্যালেন্ডিকে আপনার প্রক্রিয়া এবং অন্যান্য সরঞ্জামের সাথে সংযুক্ত করে।',
-            img:"/Hiw/time-management-concept-illustration.png",
-        }
-    ],
-},
-fr: {
-    title: 'Comment ça marche',
-    description: 'Les invités peuvent facilement planifier une réunion en sélectionnant un moment qui leur convient, et cela se synchronisera automatiquement avec votre calendrier, évitant ainsi les conflits.',
-    steps: [
-        {
-            step: 'Étape-1',
-            title: 'Créer une réunion',
-            description: 'Connectez votre calendrier et Calendly vous aidera à créer des liens de planification et des pages de réservation en fonction de votre disponibilité.',
-            img:"/Hiw/appointment-booking-with-calendar.png",
-        },
-        {
-            step: 'Étape-2',
-            title: 'Réservation de réunion',
-            description: 'Les liens de réservation peuvent être basés sur différents types d\'événements – des appels Zoom de 15 minutes aux réunions en personne de 30 minutes.',
-            img:"/Hiw/hand-drawn-team-starting-business-project.png",
-        },
-        {
-            step: 'Étape-3',
-            title: 'Détails du calendrier',
-            description: 'Les flux de travail et les intégrations connectent Calendly à votre processus et à d\'autres outils.',
-            img:"/Hiw/time-management-concept-illustration.png",
-        }
-    ],
-},
-es: {
-    title: 'Cómo funciona',
-    description: 'Los invitados pueden programar fácilmente una reunión seleccionando un momento que les convenga, y se sincronizará automáticamente con su calendario, evitando conflictos.',
-    steps: [
-        {
-            step: 'Paso-1',
-            title: 'Crear reunión',
-            description: 'Conecte su calendario y Calendly le ayudará a crear enlaces de programación y páginas de reserva según su disponibilidad.',
-            img:"/Hiw/appointment-booking-with-calendar.png",
-        },
-        {
-            step: 'Paso-2',
-            title: 'Reserva de reunión',
-            description: 'Los enlaces de reserva pueden basarse en diferentes tipos de eventos, desde llamadas de Zoom de 15 minutos hasta reuniones en persona de 30 minutos.',
-            img:"/Hiw/hand-drawn-team-starting-business-project.png",
-        },
-        {
-            step: 'Paso-3',
-            title: 'Detalles del horario',
-            description: 'Los flujos de trabajo y las integraciones conectan Calendly a su proceso y a otras herramientas.',
-            img:"/Hiw/time-management-concept-illustration.png",
-        }
-    ],
-},
+    en: {
+        title: 'How It Works',
+        description: 'Invitees can easily schedule a meeting by selecting a time that works for them, and it will automatically sync with your calendar, preventing conflicts.',
+        steps: [
+            {
+                step: 'Step-1',
+                title: 'Create Meeting',
+                description: 'Connect your calendar and Calendly will help you create scheduling links and booking pages based on your availability.',
+                img:"/Hiw/appointment-booking-with-calendar.png",
+            },
+            {
+                step: 'Step-2',
+                title: 'Meeting Booking',
+                description: 'Booking links can be based on different event types – from 15-minute Zoom calls to 30-minute in-person meetings.',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
+            },
+            {
+                step: 'Step-3',
+                title: 'Schedule Details',
+                description: 'Organizers can join upcoming meetings directly from the upcoming meetings table for seamless access.',
+                img:"/Hiw/time-management-concept-illustration.png",
+            }
+        ],
+    },
+    bn: {
+        title: 'কীভাবে কাজ করে',
+        description: 'আমন্ত্রিতরা সহজেই একটি সময় নির্বাচন করে মিটিং সূচি করতে পারে, এবং এটি স্বয়ংক্রিয়ভাবে আপনার ক্যালেন্ডারের সাথে সিঙ্ক হয়ে যাবে, বিরোধিতাগুলি প্রতিরোধ করবে।',
+        steps: [
+            {
+                step: 'ধাপ-১',
+                title: 'মিটিং তৈরি করুন',
+                description: 'আপনার ক্যালেন্ডার সংযোগ করুন এবং ক্যালেন্ডি আপনাকে আপনার উপলব্ধতার ভিত্তিতে সময়সূচী লিঙ্ক এবং বুকিং পৃষ্ঠা তৈরি করতে সহায়তা করবে।',
+                img:"/Hiw/appointment-booking-with-calendar.png",
+            },
+            {
+                step: 'ধাপ-২',
+                title: 'মিটিং বুকিং',
+                description: 'বুকিং লিঙ্কগুলি বিভিন্ন ইভেন্টের ধরনের উপর ভিত্তি করে হতে পারে – ১৫ মিনিটের জুম কল থেকে ৩০ মিনিটের অফিস মিটিং।',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
+            },
+            {
+                step: 'ধাপ-৩',
+                title: 'সময়ের বিবরণ',
+                description: 'আয়োজকরা আসন্ন মিটিং টেবিল থেকে সরাসরি আসন্ন মিটিংয়ে যোগ দিতে পারবেন।',
+                img:"/Hiw/time-management-concept-illustration.png",
+            }
+        ],
+    },
+    fr: {
+        title: 'Comment ça marche',
+        description: 'Les invités peuvent facilement planifier une réunion en sélectionnant un moment qui leur convient, et cela se synchronisera automatiquement avec votre calendrier, évitant ainsi les conflits.',
+        steps: [
+            {
+                step: 'Étape-1',
+                title: 'Créer une réunion',
+                description: 'Connectez votre calendrier et Calendly vous aidera à créer des liens de planification et des pages de réservation en fonction de votre disponibilité.',
+                img:"/Hiw/appointment-booking-with-calendar.png",
+            },
+            {
+                step: 'Étape-2',
+                title: 'Réservation de réunion',
+                description: 'Les liens de réservation peuvent être basés sur différents types d\'événements – des appels Zoom de 15 minutes aux réunions en personne de 30 minutes.',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
+            },
+            {
+                step: 'Étape-3',
+                title: 'Détails du calendrier',
+                description: 'Les organisateurs peuvent rejoindre les réunions à venir directement depuis le tableau des réunions à venir pour un accès sans faille.',
+                img:"/Hiw/time-management-concept-illustration.png",
+            }
+        ],
+    },
+    es: {
+        title: 'Cómo funciona',
+        description: 'Los invitados pueden programar fácilmente una reunión seleccionando un momento que les convenga, y se sincronizará automáticamente con su calendario, evitando conflictos.',
+        steps: [
+            {
+                step: 'Paso-1',
+                title: 'Crear reunión',
+                description: 'Conecte su calendario y Calendly le ayudará a crear enlaces de programación y páginas de reserva según su disponibilidad.',
+                img:"/Hiw/appointment-booking-with-calendar.png",
+            },
+            {
+                step: 'Paso-2',
+                title: 'Reserva de reunión',
+                description: 'Los enlaces de reserva pueden basarse en diferentes tipos de eventos, desde llamadas de Zoom de 15 minutos hasta reuniones en persona de 30 minutos.',
+                img:"/Hiw/hand-drawn-team-starting-business-project.png",
+            },
+            {
+                step: 'Paso-3',
+                title: 'Detalles del horario',
+                description: 'Los organizadores pueden unirse a las reuniones próximas directamente desde la tabla de reuniones próximas para un acceso sin problemas.',
+                img:"/Hiw/time-management-concept-illustration.png",
+            }
+        ],
+    }
+    
+
 };
 
 const settings = {
