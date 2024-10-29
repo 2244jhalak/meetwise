@@ -3,25 +3,23 @@
 import { useLanguage } from "../context/LanguageContext";
 
 const translations = {
-    en: {
-      title: 'Selecting Meeting Type',
-      promo:"Enable users to select different types of meetings such as one-on-one, group meetings, or webinars."
-    },
-    bn: {
-      title: 'মিটিং টাইপ নির্বাচন করা হচ্ছে',
-      promo:'একের পর এক, গ্রুপ মিটিং বা ওয়েবিনারের মতো বিভিন্ন ধরনের মিটিং বেছে নিতে ব্যবহারকারীদের সক্ষম করুন।'
-      
-    },
-    fr: {
-      title: "Sélection du type de réunion",
-      promo:"Permettez aux utilisateurs de sélectionner différents types de réunions, telles que des réunions individuelles, de groupe ou des webinaires."
-      
-    },
-    es: {
-      title: 'Seleccionar el tipo de reunión',
-      promo:'Permita a los usuarios seleccionar diferentes tipos de reuniones, como reuniones individuales, grupales o seminarios web.'
-      
-    },
+  en: {
+    title: 'Meeting Schedule Overview',
+    promo: "After booking, organizers can view their scheduled meetings sorted as upcoming and expired."
+  },
+  bn: {
+    title: 'মিটিং সময়সূচির বিবরণ',
+    promo: 'বুকিং করার পর, আয়োজকরা তাদের নির্ধারিত মিটিংগুলি আসন্ন এবং মেয়াদোত্তীর্ণ হিসাবে সাজানো দেখতে পারবেন।'
+  },
+  fr: {
+    title: "Aperçu du calendrier des réunions",
+    promo: "Après la réservation, les organisateurs peuvent voir leurs réunions planifiées triées en à venir et expirées."
+  },
+  es: {
+    title: 'Resumen del horario de reuniones',
+    promo: 'Después de reservar, los organizadores pueden ver sus reuniones programadas organizadas como próximas y vencidas.'
+  }
+  
   
   }
 const FeatureCard6 = () => {
