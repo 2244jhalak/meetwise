@@ -3,37 +3,33 @@
 import { useLanguage } from "../context/LanguageContext";
 
 const translations = {
-    en: {
-      title: 'Updating Profile',
-      promo:"Allow users to easily update their profile information, including personal details and preferences."
-    },
-    bn: {
-      title: 'প্রোফাইল আপডেট করা হচ্ছে',
-      promo:'ব্যবহারকারীদের ব্যক্তিগত বিবরণ এবং পছন্দ সহ তাদের প্রোফাইল তথ্য সহজেই আপডেট করার অনুমতি দিন।'
-      
-    },
-    fr: {
-      title: "Mise à jour du profil",
-      promo:"Permettez aux utilisateurs de mettre facilement à jour les informations de leur profil, y compris les informations personnelles et les préférences."
-      
-    },
-    es: {
-      title: 'Actualizando perfil',
-      promo:'Permita a los usuarios actualizar fácilmente la información de su perfil, incluidos los detalles personales y las preferencias.'
-      
-    },
-  
+  en: {
+    title: 'Meeting Booking',
+    promo: "Allow users to easily book their meetings, including selecting dates, times, and preferences."
+},
+bn: {
+    title: 'মিটিং বুকিং',
+    promo: 'ব্যবহারকারীদের তাদের মিটিংগুলি সহজেই বুক করতে দিন, তারিখ, সময় এবং পছন্দ নির্বাচন সহ।'
+},
+fr: {
+    title: "Réservation de réunion",
+    promo: "Permettez aux utilisateurs de réserver facilement leurs réunions, y compris la sélection des dates, heures et préférences."
+},
+es: {
+    title: 'Reserva de reuniones',
+    promo: 'Permita a los usuarios reservar fácilmente sus reuniones, incluida la selección de fechas, horarios y preferencias.'
+},
+
   }
 const FeatureCard4 = () => {
     const {language} =useLanguage()
     return (
         <div>
-            <div className="card-body">
-                <h2 className="card-title">{translations[language].title}</h2>
-                <p>
+          <div className="card-body font-raleway">
+                <h2 className="card-title text-white font-bold text-2xl">{translations[language].title}</h2>
+                <p className="text-white text-base font medium">
                     {translations[language].promo}
                 </p>
-
             </div>
         </div>
     );

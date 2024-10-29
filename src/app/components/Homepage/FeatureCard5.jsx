@@ -28,12 +28,11 @@ const FeatureCard5 = () => {
     const {language}=useLanguage();
     return (
         <div>
-            <div className="card-body">
-                <h2 className="card-title">{translations[language].title}</h2>
-                <p>
+           <div className="card-body font-raleway">
+                <h2 className="card-title text-white font-bold text-2xl">{translations[language].title}</h2>
+                <p className="text-white text-base font medium">
                     {translations[language].promo}
                 </p>
-
             </div>
         </div>
     );

@@ -369,7 +369,7 @@ const Create = () => {
 
           <div className="  pt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-5 ">
             <div>
-              <div className="w-full mx-auto p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-blue-500  border-t-blue-500 bg-gray-800 opacity-90 text-white rounded-lg shadow-lg h-[450px] animate__animated animate__flipInY">
+              <div className="w-full mx-auto p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed  bg-gray-800 opacity-90 text-white rounded-lg shadow-lg h-[450px] animate__animated animate__flipInY">
                 <h2 className="text-lg md:text-xl lg:text-xl font-semibold">See Your Availability 🔍</h2>
                 <div className="flex justify-start mb-5 mt-1">
                   <div className="border-b-2 rounded-lg border-green-500 w-1/5"></div> {/* Orange border */}
@@ -397,7 +397,7 @@ const Create = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-orange-500  border-t-blue-500 bg-gray-800 opacity-90 text-white rounded-lg shadow-lg h-[450px]">
+            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed  bg-gray-800 opacity-90 text-white rounded-lg shadow-lg h-[450px]">
               <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Date 📅 </h2>
               <div className="flex justify-start mb-5 mt-1">
                 <div className="border-b-2 rounded-lg border-green-500 w-1/5"></div> {/* Orange border */}
@@ -425,7 +425,7 @@ const Create = () => {
 
 
 
-            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed border-r-green-500  border-t-blue-500 bg-gray-800 opacity-90 text-white rounded-lg shadow-lg h-[450px]">
+            <div className="w-full mx-auto animate__animated animate__flipInY p-4 border-l-0  card glass border-b-0  border-r-0 border-2 border-dashed  bg-gray-800 opacity-90 text-white rounded-lg shadow-lg h-[450px]">
               <h2 className="text-lg md:text-xl lg:text-xl font-semibold">Set Schedule Time ⏳</h2>
               <div className="flex justify-start mb-2 mt-1">
                 <div className="border-b-2 rounded-lg border-green-500 w-1/5"></div> {/* Orange border */}
