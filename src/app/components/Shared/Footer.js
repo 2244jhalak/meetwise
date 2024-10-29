@@ -119,7 +119,7 @@ const Footer = () => {
           <p>{content[language].tagline}</p>
         </aside>
 
-        <nav className="grid grid-cols-2 md:grid-cols-4 w-full">
+        <nav className="grid grid-cols-2 md:grid-cols-3 w-full">
           {/* 1st col  */}
           <nav className="flex flex-col mt-5 md:mt-0  md:text-right">
             <h6 className="footer-title text-white">
@@ -208,7 +208,7 @@ const Footer = () => {
           </nav>
 
           {/* 4th col social icon  */}
-          <div className="space-y-3 text-gray-400 mt-5 md:mt-0 md:text-right">
+          {/* <div className="space-y-3 text-gray-400 mt-5 md:mt-0 md:text-right">
             <div className="footer-title text-white">
               {content[language].socialMedia}
             </div>
@@ -258,7 +258,7 @@ const Footer = () => {
                 </svg>
               </a>
             </div>
-          </div>
+          </div> */}
         </nav>
       </footer>
 

@@ -29,7 +29,7 @@ const ContactHeader = () => {
   const { language } = useLanguage(); // Get current language from context
 
   return (
-    <div className="container mx-auto  backdrop-blur-md ">
+    <div className="container mx-auto  md:backdrop-blur-md ">
       <div
         className="hero h-[300px] lg:h-[350px] rounded-sm"
         style={{
