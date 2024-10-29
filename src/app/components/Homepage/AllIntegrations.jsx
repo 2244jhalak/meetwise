@@ -92,14 +92,14 @@ const AllIntegrations = () => {
                 description: "AI-চালিত রেকর্ডিং একীকরণের মাধ্যমে মাইক্রোসফট টিমস বৈঠকগুলি আরও উন্নত করুন।"
             }
         }
-        
-        
+
+
     };
 
     const { title, googleMeet, zoom, microsoftTeams } = translations[language];
 
     return (
-     <div className='container mx-auto  bg-gray-100 py-10'>
+        <div id='all-Integration' className='container mx-auto  bg-gray-100 py-10'>
         <div className='container  md:py-16 md:px-28 p-5 text-center mx-autorounded-t-xl shadow-t-xl pt-2 dark:text-black' >
         <div className='mb-7 md:mx-auto text-center pb-7 flex md:flex-row flex-col items-center justify-between'>
                 <div className='relative font-raleway font-bold text-center md:text-left text-2xl md:text-5xl md:w-1/2'>
