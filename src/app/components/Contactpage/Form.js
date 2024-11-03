@@ -13,8 +13,8 @@ const Form = () => {
 
     useEffect(() => {
         AOS.init({
-          duration: 2000, // Duration of animations (optional)
-          once: false, // Whether animation should happen only once while scrolling down (optional)
+            duration: 2000, // Duration of animations (optional)
+            once: false, // Whether animation should happen only once while scrolling down (optional)
         });
     }, []);
 
@@ -81,46 +81,46 @@ const Form = () => {
             formData,
             'R6ugbQ72oiCVc6W_y'
         )
-        .then((response) => {
-            console.log('SUCCESS!', response.status, response.text);
-            if(response.status === 200){
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Message sent successfully!",
-                    showConfirmButton: false,
-                    timer: 1500
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                if (response.status === 200) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Message sent successfully!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+
+                // Reset form fields
+                setFormData({
+                    from_name: '',
+                    from_email: '',
+                    message: ''
                 });
-            }
-            
-            // Reset form fields
-            setFormData({
-                from_name: '',
-                from_email: '',
-                message: ''
+            })
+            .catch((error) => {
+                console.log('FAILED...', error);
+                alert('Failed to send message. Please try again later.');
             });
-        })
-        .catch((error) => {
-            console.log('FAILED...', error);
-            alert('Failed to send message. Please try again later.');
-        });
     };
 
     return (
         <div className='container mx-auto'>
-               <div className='flex flex-col items-center justify-center bg-gray-200'>
-               <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
-          <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-black lg:text-3xl dark:text-white">
-            {texts[language].title}
-          </h1>
-          <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-500 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
-        </div>
-                    <p className='text-lg font-raleway w-1/2 text-black  mt-2 text-center pb-10'>
-                        {texts[language].subtitle}
-                    </p>
+            <div className='flex flex-col items-center justify-center bg-gray-200'>
+                <div className='relative font-raleway font-bold mx-auto text-5xl text-center'>
+                    <h1 className="text-2xl pb-3 font-semibold text-center mx-auto text-black lg:text-3xl dark:text-white">
+                        {texts[language].title}
+                    </h1>
+                    <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mx-auto border-b-2 border-green-500 w-[50%] hover:w-[100%] transition-all duration-300 ease-in-out p-4 cursor-pointer'></div>
                 </div>
+                <p className='text-lg font-raleway w-1/2 text-black  mt-2 text-center pb-10'>
+                    {texts[language].subtitle}
+                </p>
+            </div>
             <section className="py-6 pt-10 bg-black/10 backdrop-blur-md backdrop-opacity-70 text-slate-50 " >
-             
+
                 <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                     <div className="py-6 md:py-0 md:px-6 mt-16">
                         <h1 className="text-4xl font-bold font-raleway">{texts[language].getInTouch}</h1>
@@ -135,7 +135,7 @@ const Form = () => {
                                 value={formData.from_name}
                                 onChange={handleChange}
                                 placeholder={texts[language].namePlaceholder}
-                                type="text" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2" required/>
+                                type="text" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2 text-slate-800" required />
                         </label>
                         <label className="block" htmlFor='from_email'>
                             <span className="mb-2 font-bold">Email address</span>
@@ -143,8 +143,8 @@ const Form = () => {
                                 name="from_email"
                                 value={formData.from_email}
                                 onChange={handleChange}
-                                placeholder={texts[language].emailPlaceholder} 
-                                type="email" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2" required/>
+                                placeholder={texts[language].emailPlaceholder}
+                                type="email" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-600 bg-white p-2 text-slate-800" required />
                         </label>
                         <label className="block" htmlFor='message'>
                             <span className="mb-2 font-bold">Message</span>
@@ -152,10 +152,10 @@ const Form = () => {
                                 name="message"
                                 placeholder={texts[language].messagePlaceholder}
                                 value={formData.message}
-                                onChange={handleChange} 
-                                rows="3" className="block w-full p-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-orange-600 bg-white" required></textarea>
+                                onChange={handleChange}
+                                rows="3" className="block w-full p-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-orange-600 bg-white text-slate-800" required></textarea>
                         </label>
-                        <input type='submit' value={texts[language].submit} className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-green-500 text-gray-50 focus:ring-green-600 hover:ring-green-800"></input>
+                        <input type='submit' value={texts[language].submit} className="self-center px-8 py-3 text-lg rounded focus:ring hover:ring focus:ring-opacity-75 bg-green-500 focus:ring-green-600 hover:ring-green-800"></input>
                     </form>
                 </div>
             </section>
