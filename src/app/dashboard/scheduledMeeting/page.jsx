@@ -13,7 +13,7 @@ const Page = () => {
             <div className='md:w-1/4'>
                 <Sidebar />
             </div>
-            <div className='container mx-auto md:w-3/4 p-2'>
+            <div className='container md:w-3/4 mx-auto p-2'>
           
             <CustomTabs />
             </div>
